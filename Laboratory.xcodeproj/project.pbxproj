@@ -12,6 +12,10 @@
 		C34438682281DDFA0021168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34438662281DDFA0021168B /* Main.storyboard */; };
 		C344386A2281DDFC0021168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34438692281DDFC0021168B /* Assets.xcassets */; };
 		C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C344386B2281DDFC0021168B /* LaunchScreen.storyboard */; };
+		C34438772281F7970021168B /* LabAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */; };
+		C34438782281F7970021168B /* LabAssignmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */; };
+		C344387B2281FC9E0021168B /* LabAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */; };
+		C344387E2282041F0021168B /* LabAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* LabAssignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		C34438692281DDFC0021168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C344386C2281DDFC0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C344386E2281DDFC0021168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentTableViewCell.swift; sourceTree = "<group>"; };
+		C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabAssignmentTableViewCell.xib; sourceTree = "<group>"; };
+		C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentViewController.swift; sourceTree = "<group>"; };
+		C344387D2282041F0021168B /* LabAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,10 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C344387F228206A80021168B /* ViewModel */,
+				C344387C228202AA0021168B /* Model */,
+				C34438792281FC370021168B /* Controller */,
+				C34438742281F6F10021168B /* View */,
 				C34438622281DDFA0021168B /* AppDelegate.swift */,
 				C34438642281DDFA0021168B /* ViewController.swift */,
 				C34438662281DDFA0021168B /* Main.storyboard */,
@@ -62,6 +74,38 @@
 				C344386E2281DDFC0021168B /* Info.plist */,
 			);
 			path = Laboratory;
+			sourceTree = "<group>";
+		};
+		C34438742281F6F10021168B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */,
+				C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C34438792281FC370021168B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C344387C228202AA0021168B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C344387D2282041F0021168B /* LabAssignment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C344387F228206A80021168B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +169,7 @@
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
+				C34438782281F7970021168B /* LabAssignmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C344387B2281FC9E0021168B /* LabAssignmentViewController.swift in Sources */,
 				C34438652281DDFA0021168B /* ViewController.swift in Sources */,
+				C34438772281F7970021168B /* LabAssignmentTableViewCell.swift in Sources */,
+				C344387E2282041F0021168B /* LabAssignment.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
@@ -289,8 +338,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.2letterss.Laboratory325sfdgdvdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
@@ -307,8 +358,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.2letterss.Laboratory325sfdgdvdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
