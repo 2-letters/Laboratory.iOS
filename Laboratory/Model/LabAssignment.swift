@@ -9,6 +9,6 @@
 import Foundation
 
 struct LabAssignment {
-    var name: String
-    var description: String
+    var name: String!
+    var description: String!
 }

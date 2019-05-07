@@ -8,30 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		C34438632281DDFA0021168B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438622281DDFA0021168B /* AppDelegate.swift */; };
-		C34438652281DDFA0021168B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438642281DDFA0021168B /* ViewController.swift */; };
 		C34438682281DDFA0021168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34438662281DDFA0021168B /* Main.storyboard */; };
 		C344386A2281DDFC0021168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34438692281DDFC0021168B /* Assets.xcassets */; };
 		C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C344386B2281DDFC0021168B /* LaunchScreen.storyboard */; };
-		C34438772281F7970021168B /* LabAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */; };
-		C34438782281F7970021168B /* LabAssignmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */; };
-		C344387B2281FC9E0021168B /* LabAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */; };
+		C34438772281F7970021168B /* LabAssignmentTbVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabAssignmentTbVCell.swift */; };
+		C34438782281F7970021168B /* LabAssignmentTbVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabAssignmentTbVCell.xib */; };
+		C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentVC.swift */; };
 		C344387E2282041F0021168B /* LabAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* LabAssignment.swift */; };
-		C34438812282094A0021168B /* LabAssignmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabAssignmentViewModel.swift */; };
+		C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabAssignmentVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C344385F2281DDFA0021168B /* Laboratory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laboratory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34438622281DDFA0021168B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C34438642281DDFA0021168B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C34438672281DDFA0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C34438692281DDFC0021168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C344386C2281DDFC0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C344386E2281DDFC0021168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentTableViewCell.swift; sourceTree = "<group>"; };
-		C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabAssignmentTableViewCell.xib; sourceTree = "<group>"; };
-		C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentViewController.swift; sourceTree = "<group>"; };
+		C34438752281F7970021168B /* LabAssignmentTbVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentTbVCell.swift; sourceTree = "<group>"; };
+		C34438762281F7970021168B /* LabAssignmentTbVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabAssignmentTbVCell.xib; sourceTree = "<group>"; };
+		C344387A2281FC9E0021168B /* LabAssignmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVC.swift; sourceTree = "<group>"; };
 		C344387D2282041F0021168B /* LabAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignment.swift; sourceTree = "<group>"; };
-		C34438802282094A0021168B /* LabAssignmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentViewModel.swift; sourceTree = "<group>"; };
+		C34438802282094A0021168B /* LabAssignmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +64,9 @@
 			children = (
 				C344387F228206A80021168B /* ViewModel */,
 				C344387C228202AA0021168B /* Model */,
-				C34438792281FC370021168B /* Controller */,
 				C34438742281F6F10021168B /* View */,
+				C34438792281FC370021168B /* Controller */,
 				C34438622281DDFA0021168B /* AppDelegate.swift */,
-				C34438642281DDFA0021168B /* ViewController.swift */,
 				C34438662281DDFA0021168B /* Main.storyboard */,
 				C34438692281DDFC0021168B /* Assets.xcassets */,
 				C344386B2281DDFC0021168B /* LaunchScreen.storyboard */,
@@ -81,8 +78,8 @@
 		C34438742281F6F10021168B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C34438752281F7970021168B /* LabAssignmentTableViewCell.swift */,
-				C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */,
+				C34438752281F7970021168B /* LabAssignmentTbVCell.swift */,
+				C34438762281F7970021168B /* LabAssignmentTbVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,7 +87,7 @@
 		C34438792281FC370021168B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */,
+				C344387A2281FC9E0021168B /* LabAssignmentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,7 +103,7 @@
 		C344387F228206A80021168B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C34438802282094A0021168B /* LabAssignmentViewModel.swift */,
+				C34438802282094A0021168B /* LabAssignmentVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,7 +169,7 @@
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
-				C34438782281F7970021168B /* LabAssignmentTableViewCell.xib in Resources */,
+				C34438782281F7970021168B /* LabAssignmentTbVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,12 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C344387B2281FC9E0021168B /* LabAssignmentViewController.swift in Sources */,
-				C34438652281DDFA0021168B /* ViewController.swift in Sources */,
-				C34438772281F7970021168B /* LabAssignmentTableViewCell.swift in Sources */,
+				C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */,
+				C34438772281F7970021168B /* LabAssignmentTbVCell.swift in Sources */,
 				C344387E2282041F0021168B /* LabAssignment.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
-				C34438812282094A0021168B /* LabAssignmentViewModel.swift in Sources */,
+				C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

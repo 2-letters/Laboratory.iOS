@@ -8,6 +8,10 @@
 
 import Foundation
 
-class LabAssignmentViewModel {
+class LabAssignmentVM {
+    var labAssignmentName: String
     
+    init(assignment: LabAssignment) {
+        self.labAssignmentName = assignment.name
+    }
 }

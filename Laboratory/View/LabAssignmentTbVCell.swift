@@ -8,9 +8,10 @@
 
 import UIKit
 
-class LabAssignmentTableViewCell: UITableViewCell {
+class LabAssignmentTbVCell: UITableViewCell {
 
-    @IBOutlet var LabNameLabel: UILabel!
+    @IBOutlet var labAssigmentNameLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,6 +21,9 @@ class LabAssignmentTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func LabAssignmentInfoBtn(_ sender: UIButton) {
     }
     
 }
