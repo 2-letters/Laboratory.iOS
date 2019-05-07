@@ -16,6 +16,7 @@
 		C34438782281F7970021168B /* LabAssignmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */; };
 		C344387B2281FC9E0021168B /* LabAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */; };
 		C344387E2282041F0021168B /* LabAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* LabAssignment.swift */; };
+		C34438812282094A0021168B /* LabAssignmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabAssignmentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C34438762281F7970021168B /* LabAssignmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabAssignmentTableViewCell.xib; sourceTree = "<group>"; };
 		C344387A2281FC9E0021168B /* LabAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentViewController.swift; sourceTree = "<group>"; };
 		C344387D2282041F0021168B /* LabAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignment.swift; sourceTree = "<group>"; };
+		C34438802282094A0021168B /* LabAssignmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		C344387F228206A80021168B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C34438802282094A0021168B /* LabAssignmentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				C34438772281F7970021168B /* LabAssignmentTableViewCell.swift in Sources */,
 				C344387E2282041F0021168B /* LabAssignment.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
+				C34438812282094A0021168B /* LabAssignmentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
