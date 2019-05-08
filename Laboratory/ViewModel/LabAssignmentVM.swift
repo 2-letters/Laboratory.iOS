@@ -6,12 +6,14 @@
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class LabAssignmentVM {
-    var labAssignmentName: String
+    let labAssignmentName: String
+    let accessoryType: UITableViewCell.AccessoryType
     
     init(assignment: LabAssignment) {
         self.labAssignmentName = assignment.name
+        accessoryType = .detailDisclosureButton
     }
 }

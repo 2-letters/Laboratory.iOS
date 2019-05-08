@@ -12,15 +12,11 @@ class LabAssignmentTbVCell: UITableViewCell {
 
     @IBOutlet var labAssigmentNameLbl: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var courseViewModel: LabAssignmentVM! {
+        didSet {
+            labAssigmentNameLbl.text = courseViewModel.labAssignmentName
+            accessoryType = courseViewModel.accessoryType
+        }
     }
     
     @IBAction func LabAssignmentInfoBtn(_ sender: UIButton) {

@@ -16,6 +16,7 @@
 		C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentVC.swift */; };
 		C344387E2282041F0021168B /* LabAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* LabAssignment.swift */; };
 		C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabAssignmentVM.swift */; };
+		C361E0FC2283258900938933 /* LabAssignmentSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FB2283258900938933 /* LabAssignmentSvc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C344387A2281FC9E0021168B /* LabAssignmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVC.swift; sourceTree = "<group>"; };
 		C344387D2282041F0021168B /* LabAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignment.swift; sourceTree = "<group>"; };
 		C34438802282094A0021168B /* LabAssignmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVM.swift; sourceTree = "<group>"; };
+		C361E0FB2283258900938933 /* LabAssignmentSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentSvc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C361E0FA2283254E00938933 /* Service */,
 				C344387F228206A80021168B /* ViewModel */,
 				C344387C228202AA0021168B /* Model */,
 				C34438742281F6F10021168B /* View */,
@@ -106,6 +109,14 @@
 				C34438802282094A0021168B /* LabAssignmentVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C361E0FA2283254E00938933 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C361E0FB2283258900938933 /* LabAssignmentSvc.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */,
 				C34438772281F7970021168B /* LabAssignmentTbVCell.swift in Sources */,
 				C344387E2282041F0021168B /* LabAssignment.swift in Sources */,
+				C361E0FC2283258900938933 /* LabAssignmentSvc.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */,
 			);
