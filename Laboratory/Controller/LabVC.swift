@@ -53,9 +53,9 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
         if isSearching {
-            cell.courseViewModel = searchedLabVMs[indexPath.row]
+            cell.labVM = searchedLabVMs[indexPath.row]
         } else {
-            cell.courseViewModel = labVMs[indexPath.row]
+            cell.labVM = labVMs[indexPath.row]
         }
         
         return cell

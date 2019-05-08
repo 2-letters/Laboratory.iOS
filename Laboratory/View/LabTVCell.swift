@@ -12,10 +12,10 @@ class LabTVCell: UITableViewCell {
 
     @IBOutlet var labNameLbl: UILabel!
     
-    var courseViewModel: LabVM! {
+    var labVM: LabVM! {
         didSet {
-            labNameLbl.text = courseViewModel.labName
-            accessoryType = courseViewModel.accessoryType
+            labNameLbl.text = labVM.labName
+            accessoryType = labVM.accessoryType
         }
     }
     

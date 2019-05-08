@@ -18,6 +18,10 @@
 		C34438812282094A0021168B /* LabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabVM.swift */; };
 		C361E0FC2283258900938933 /* LabSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FB2283258900938933 /* LabSvc.swift */; };
 		C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FD22833EC800938933 /* LabCreateVC.swift */; };
+		C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E02283849C00966461 /* LabItemTVCell.swift */; };
+		C3A1C7E32283849C00966461 /* LabItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A1C7E12283849C00966461 /* LabItemTVCell.xib */; };
+		C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabItemVM.swift */; };
+		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		C34438802282094A0021168B /* LabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVM.swift; sourceTree = "<group>"; };
 		C361E0FB2283258900938933 /* LabSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabSvc.swift; sourceTree = "<group>"; };
 		C361E0FD22833EC800938933 /* LabCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateVC.swift; sourceTree = "<group>"; };
+		C3A1C7E02283849C00966461 /* LabItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemTVCell.swift; sourceTree = "<group>"; };
+		C3A1C7E12283849C00966461 /* LabItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemTVCell.xib; sourceTree = "<group>"; };
+		C3A1C7E42283854D00966461 /* LabItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVM.swift; sourceTree = "<group>"; };
+		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,8 @@
 			children = (
 				C34438752281F7970021168B /* LabTVCell.swift */,
 				C34438762281F7970021168B /* LabTVCell.xib */,
+				C3A1C7E02283849C00966461 /* LabItemTVCell.swift */,
+				C3A1C7E12283849C00966461 /* LabItemTVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				C344387D2282041F0021168B /* Lab.swift */,
+				C3A1C7E6228385B700966461 /* LabItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C34438802282094A0021168B /* LabVM.swift */,
+				C3A1C7E42283854D00966461 /* LabItemVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +196,7 @@
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
 				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
+				C3A1C7E32283849C00966461 /* LabItemTVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,10 +209,13 @@
 			files = (
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
 				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
+				C3A1C7E7228385B700966461 /* LabItem.swift in Sources */,
 				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C361E0FC2283258900938933 /* LabSvc.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
+				C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */,
+				C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */,
 				C34438812282094A0021168B /* LabVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
