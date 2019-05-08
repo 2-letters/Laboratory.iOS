@@ -24,8 +24,8 @@ class LabAssignmentSvc {
             ]
         
         var searchedLabAssignmentVms = labAssignmentVMs
-            .filter({$0.labAssignmentName
-                .prefix(searchText.count) == searchText})
+            .filter({$0.labAssignmentName.lowercased()
+                .prefix(searchText.count) == searchText.lowercased()})
         
         return searchedLabAssignmentVms
     }

@@ -15,6 +15,7 @@ class LabAssignmentVC: UIViewController {
     @IBOutlet var labAssignmentTV: UITableView!
     
     var labAssignmentVMs = [LabAssignmentVM]()
+    var searchedLabAssignmentVMs = [LabAssignmentVM]()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class LabAssignmentVC: UIViewController {
 
         labAssignmentTV.delegate = self
         labAssignmentTV.dataSource = self
+        labAssignmentSearchBar.delegate = self
         labAssignmentVMs = LabAssignmentSvc.fetchData()
         // Do any additional setup after loading the view.
     }
@@ -42,13 +44,20 @@ class LabAssignmentVC: UIViewController {
 extension LabAssignmentVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            return searchedLabAssignmentVMs.count
+        }
         return labAssignmentVMs.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("LabAssignmentTbVCell", owner: self, options: nil)?.first as! LabAssignmentTbVCell
+        if isSearching {
+            cell.courseViewModel = searchedLabAssignmentVMs[indexPath.row]
+        } else {
+            cell.courseViewModel = labAssignmentVMs[indexPath.row]
+        }
         
-        cell.courseViewModel = labAssignmentVMs[indexPath.row]
         return cell
     }
 }
@@ -56,6 +65,14 @@ extension LabAssignmentVC: UITableViewDataSource, UITableViewDelegate {
 // MARK: Search bar
 extension LabAssignmentVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        labAssignmentVMs = LabAssignmentSvc.filter(with: searchText)
+        isSearching = true
+        searchedLabAssignmentVMs = LabAssignmentSvc.filter(with: searchText)
+        labAssignmentTV.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.text = ""
+        labAssignmentTV.reloadData()
     }
 }
