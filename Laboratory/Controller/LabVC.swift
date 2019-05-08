@@ -8,23 +8,23 @@
 
 import UIKit
 
-class LabAssignmentVC: UIViewController {
+class LabVC: UIViewController {
 
     
-    @IBOutlet var labAssignmentSearchBar: UISearchBar!
-    @IBOutlet var labAssignmentTV: UITableView!
+    @IBOutlet var labSearchBar: UISearchBar!
+    @IBOutlet var labTV: UITableView!
     
-    var labAssignmentVMs = [LabAssignmentVM]()
-    var searchedLabAssignmentVMs = [LabAssignmentVM]()
+    var labVMs = [LabVM]()
+    var searchedLabVMs = [LabVM]()
     var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        labAssignmentTV.delegate = self
-        labAssignmentTV.dataSource = self
-        labAssignmentSearchBar.delegate = self
-        labAssignmentVMs = LabAssignmentSvc.fetchData()
+        labTV.delegate = self
+        labTV.dataSource = self
+        labSearchBar.delegate = self
+        labVMs = LabSvc.fetchData()
         // Do any additional setup after loading the view.
     }
 
@@ -41,21 +41,21 @@ class LabAssignmentVC: UIViewController {
 }
 
 // MARK: Table View
-extension LabAssignmentVC: UITableViewDataSource, UITableViewDelegate {
+extension LabVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            return searchedLabAssignmentVMs.count
+            return searchedLabVMs.count
         }
-        return labAssignmentVMs.count
+        return labVMs.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("LabAssignmentTbVCell", owner: self, options: nil)?.first as! LabAssignmentTbVCell
+        let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
         if isSearching {
-            cell.courseViewModel = searchedLabAssignmentVMs[indexPath.row]
+            cell.courseViewModel = searchedLabVMs[indexPath.row]
         } else {
-            cell.courseViewModel = labAssignmentVMs[indexPath.row]
+            cell.courseViewModel = labVMs[indexPath.row]
         }
         
         return cell
@@ -63,16 +63,16 @@ extension LabAssignmentVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: Search bar
-extension LabAssignmentVC: UISearchBarDelegate {
+extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
-        searchedLabAssignmentVMs = LabAssignmentSvc.filter(with: searchText)
-        labAssignmentTV.reloadData()
+        searchedLabVMs = LabSvc.filter(with: searchText)
+        labTV.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
-        labAssignmentTV.reloadData()
+        labTV.reloadData()
     }
 }

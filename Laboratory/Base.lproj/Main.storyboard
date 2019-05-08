@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lab AssignmentVC-->
+        <!--LabVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LabAssignmentVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LabVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,18 +52,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="labAssignmentSearchBar" destination="0k8-FF-Fs3" id="qyK-fC-ePZ"/>
-                        <outlet property="labAssignmentTV" destination="gVH-JR-fJh" id="452-b7-Q1Y"/>
+                        <outlet property="labSearchBar" destination="0k8-FF-Fs3" id="qyK-fC-ePZ"/>
+                        <outlet property="labTV" destination="gVH-JR-fJh" id="452-b7-Q1Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976.79999999999995" y="26.53673163418291"/>
+            <point key="canvasLocation" x="806" y="-672"/>
         </scene>
-        <!--View Controller-->
+        <!--Lab CreateVC-->
         <scene sceneID="G39-yG-5GY">
             <objects>
-                <viewController id="ffj-QB-BuC" sceneMemberID="viewController">
+                <viewController id="ffj-QB-BuC" customClass="LabCreateVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LTG-0V-YCe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFh-zv-Cjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1382" y="717"/>
+            <point key="canvasLocation" x="2358" y="-672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GVG-qi-G2A">
@@ -155,7 +155,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksE-EF-tK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312.80000000000001" y="717.39130434782612"/>
+            <point key="canvasLocation" x="1596" y="-672"/>
         </scene>
     </scenes>
 </document>

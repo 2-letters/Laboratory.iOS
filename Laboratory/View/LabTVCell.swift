@@ -8,13 +8,13 @@
 
 import UIKit
 
-class LabAssignmentTbVCell: UITableViewCell {
+class LabTVCell: UITableViewCell {
 
-    @IBOutlet var labAssigmentNameLbl: UILabel!
+    @IBOutlet var labNameLbl: UILabel!
     
-    var courseViewModel: LabAssignmentVM! {
+    var courseViewModel: LabVM! {
         didSet {
-            labAssigmentNameLbl.text = courseViewModel.labAssignmentName
+            labNameLbl.text = courseViewModel.labName
             accessoryType = courseViewModel.accessoryType
         }
     }

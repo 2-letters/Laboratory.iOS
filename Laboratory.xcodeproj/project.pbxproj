@@ -11,12 +11,13 @@
 		C34438682281DDFA0021168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34438662281DDFA0021168B /* Main.storyboard */; };
 		C344386A2281DDFC0021168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34438692281DDFC0021168B /* Assets.xcassets */; };
 		C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C344386B2281DDFC0021168B /* LaunchScreen.storyboard */; };
-		C34438772281F7970021168B /* LabAssignmentTbVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabAssignmentTbVCell.swift */; };
-		C34438782281F7970021168B /* LabAssignmentTbVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabAssignmentTbVCell.xib */; };
-		C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabAssignmentVC.swift */; };
-		C344387E2282041F0021168B /* LabAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* LabAssignment.swift */; };
-		C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabAssignmentVM.swift */; };
-		C361E0FC2283258900938933 /* LabAssignmentSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FB2283258900938933 /* LabAssignmentSvc.swift */; };
+		C34438772281F7970021168B /* LabTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabTVCell.swift */; };
+		C34438782281F7970021168B /* LabTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabTVCell.xib */; };
+		C344387B2281FC9E0021168B /* LabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabVC.swift */; };
+		C344387E2282041F0021168B /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* Lab.swift */; };
+		C34438812282094A0021168B /* LabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabVM.swift */; };
+		C361E0FC2283258900938933 /* LabSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FB2283258900938933 /* LabSvc.swift */; };
+		C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FD22833EC800938933 /* LabCreateVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,12 +27,13 @@
 		C34438692281DDFC0021168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C344386C2281DDFC0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C344386E2281DDFC0021168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C34438752281F7970021168B /* LabAssignmentTbVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentTbVCell.swift; sourceTree = "<group>"; };
-		C34438762281F7970021168B /* LabAssignmentTbVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabAssignmentTbVCell.xib; sourceTree = "<group>"; };
-		C344387A2281FC9E0021168B /* LabAssignmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVC.swift; sourceTree = "<group>"; };
-		C344387D2282041F0021168B /* LabAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignment.swift; sourceTree = "<group>"; };
-		C34438802282094A0021168B /* LabAssignmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentVM.swift; sourceTree = "<group>"; };
-		C361E0FB2283258900938933 /* LabAssignmentSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabAssignmentSvc.swift; sourceTree = "<group>"; };
+		C34438752281F7970021168B /* LabTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTVCell.swift; sourceTree = "<group>"; };
+		C34438762281F7970021168B /* LabTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabTVCell.xib; sourceTree = "<group>"; };
+		C344387A2281FC9E0021168B /* LabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVC.swift; sourceTree = "<group>"; };
+		C344387D2282041F0021168B /* Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
+		C34438802282094A0021168B /* LabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVM.swift; sourceTree = "<group>"; };
+		C361E0FB2283258900938933 /* LabSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabSvc.swift; sourceTree = "<group>"; };
+		C361E0FD22833EC800938933 /* LabCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +83,8 @@
 		C34438742281F6F10021168B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C34438752281F7970021168B /* LabAssignmentTbVCell.swift */,
-				C34438762281F7970021168B /* LabAssignmentTbVCell.xib */,
+				C34438752281F7970021168B /* LabTVCell.swift */,
+				C34438762281F7970021168B /* LabTVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,7 +92,8 @@
 		C34438792281FC370021168B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C344387A2281FC9E0021168B /* LabAssignmentVC.swift */,
+				C344387A2281FC9E0021168B /* LabVC.swift */,
+				C361E0FD22833EC800938933 /* LabCreateVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,7 +101,7 @@
 		C344387C228202AA0021168B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C344387D2282041F0021168B /* LabAssignment.swift */,
+				C344387D2282041F0021168B /* Lab.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,7 +109,7 @@
 		C344387F228206A80021168B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C34438802282094A0021168B /* LabAssignmentVM.swift */,
+				C34438802282094A0021168B /* LabVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -114,7 +117,7 @@
 		C361E0FA2283254E00938933 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C361E0FB2283258900938933 /* LabAssignmentSvc.swift */,
+				C361E0FB2283258900938933 /* LabSvc.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -180,7 +183,7 @@
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
-				C34438782281F7970021168B /* LabAssignmentTbVCell.xib in Resources */,
+				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,12 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C344387B2281FC9E0021168B /* LabAssignmentVC.swift in Sources */,
-				C34438772281F7970021168B /* LabAssignmentTbVCell.swift in Sources */,
-				C344387E2282041F0021168B /* LabAssignment.swift in Sources */,
-				C361E0FC2283258900938933 /* LabAssignmentSvc.swift in Sources */,
+				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
+				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
+				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
+				C344387E2282041F0021168B /* Lab.swift in Sources */,
+				C361E0FC2283258900938933 /* LabSvc.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
-				C34438812282094A0021168B /* LabAssignmentVM.swift in Sources */,
+				C34438812282094A0021168B /* LabVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

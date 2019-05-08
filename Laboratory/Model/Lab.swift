@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LabAssignment {
+struct Lab {
     var name: String!
     var description: String!
 }

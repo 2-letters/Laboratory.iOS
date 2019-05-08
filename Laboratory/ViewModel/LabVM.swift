@@ -8,12 +8,12 @@
 
 import UIKit
 
-class LabAssignmentVM {
-    let labAssignmentName: String
+class LabVM {
+    let labName: String
     let accessoryType: UITableViewCell.AccessoryType
     
-    init(assignment: LabAssignment) {
-        self.labAssignmentName = assignment.name
+    init(_ labInstance: Lab) {
+        self.labName = labInstance.name
         accessoryType = .detailDisclosureButton
     }
 }
