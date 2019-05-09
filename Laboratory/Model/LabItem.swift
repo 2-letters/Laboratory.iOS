@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct LabItem {
+    var itemName: String!
+    var description: String!
+}

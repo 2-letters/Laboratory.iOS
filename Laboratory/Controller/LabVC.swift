@@ -18,13 +18,17 @@ class LabVC: UIViewController {
     var searchedLabVMs = [LabVM]()
     var isSearching = false
     
+    var service: LabSvc!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         labTV.delegate = self
         labTV.dataSource = self
         labSearchBar.delegate = self
-        labVMs = LabSvc.fetchData()
+        
+        service = LabSvc()
+        labVMs = service.fetchData()
         // Do any additional setup after loading the view.
     }
 
@@ -66,7 +70,7 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
 extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
-        searchedLabVMs = LabSvc.filter(with: searchText)
+        searchedLabVMs = service.filter(with: searchText)
         labTV.reloadData()
     }
     

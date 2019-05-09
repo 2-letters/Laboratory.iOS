@@ -10,13 +10,5 @@ import UIKit
 
 class LabItemTVCell: UITableViewCell {
 
-    var itemName: String
-    var quantity: Int
-    
-    var labItemVM: LabItemVM {
-        didSet {
-            
-        }
-    }
     
 }

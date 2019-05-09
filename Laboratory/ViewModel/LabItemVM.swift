@@ -13,6 +13,7 @@ class LabItemVM {
     var accessoryType: UITableViewCell.AccessoryType
     
     init(_ item: LabItem) {
-        <#statements#>
+        self.itemName = item.itemName
+        accessoryType = .detailDisclosureButton
     }
 }
