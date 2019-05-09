@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>66143255642-nejtqdv35fqavuudo2nru1aom3lt6ifm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.66143255642-nejtqdv35fqavuudo2nru1aom3lt6ifm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBJePPBB9dRz3CB2mGJAI1pv9s772PGXMc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>66143255642</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>twoletters.Laboratory</string>
+	<key>PROJECT_ID</key>
+	<string>laboratory-2letter</string>
+	<key>STORAGE_BUCKET</key>
+	<string>laboratory-2letter.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:66143255642:ios:939940adf6335fd1</string>
+	<key>DATABASE_URL</key>
+	<string>https://laboratory-2letter.firebaseio.com</string>
+</dict>
+</plist>
