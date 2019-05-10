@@ -9,42 +9,32 @@
 import Foundation
 import FirebaseFirestore
 
+enum LabResult {
+    case success([LabVM])
+    case failure(String)
+}
+
 class LabSvc {
     
-    var db: Firestore
-    init() {
-        db = Firestore.firestore()
-    }
-    
-//    func fetchData() -> [LabVM] {
-//
-//
-//        let labVMs = [
-//            LabVM(Lab(name: "lab1", description: "abc")),
-//            LabVM(Lab(name: "lab2", description: "abc2")),
-//        ]
-//        return labVMs
-//    }
-    
-    func fetchData() -> [LabVM] {
+    static func fetchLabData(completion: @escaping (LabResult) -> Void) {
         var labVMs = [LabVM]()
-        db.collection("Lab").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
+        Firestore.firestore().collection("Lab").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
             if error != nil {
-                print(error ?? "Error fetching data")
+                completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
                 for document in (snapshot?.documents)! {
                     if let labName = document.data()["labName"] as? String {
                         if let description = document.data()["description"] as? String {
                             labVMs.append(LabVM(Lab(name: labName, description: description)))
+                            completion(.success(labVMs))
                         }
                     }
                 }
             }
         }
-        return labVMs
     }
     
-    func filter(with searchText: String) -> [LabVM] {
+    static func filter(with searchText: String) -> [LabVM] {
         let labAssignmentVMs = [
             LabVM(Lab(name: "lab1", description: "abc")),
             LabVM(Lab(name: "lab2", description: "abc2")),

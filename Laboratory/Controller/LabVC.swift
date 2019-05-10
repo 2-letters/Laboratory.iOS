@@ -18,8 +18,6 @@ class LabVC: UIViewController {
     var searchedLabVMs = [LabVM]()
     var isSearching = false
     
-    var service: LabSvc!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,24 +25,11 @@ class LabVC: UIViewController {
         labTV.dataSource = self
         labSearchBar.delegate = self
         
-        service = LabSvc()
-        labVMs = service.fetchData()
-        // Do any additional setup after loading the view.
+        loadLabData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-// MARK: Table View
+// MARK: - Table View
 extension LabVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,11 +51,11 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// MARK: Search bar
+// MARK: - Search bar
 extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
-        searchedLabVMs = service.filter(with: searchText)
+        searchedLabVMs = LabSvc.filter(with: searchText)
         labTV.reloadData()
     }
     
@@ -78,5 +63,24 @@ extension LabVC: UISearchBarDelegate {
         isSearching = false
         searchBar.text = ""
         labTV.reloadData()
+    }
+}
+
+// MARK: - Additional helpers
+extension LabVC {
+    func loadLabData() {
+        LabSvc.fetchLabData() { [unowned self] (LabResult) in
+            switch LabResult {
+            case let .success(viewModels):
+                self.labVMs = viewModels
+                // TODO: save to cache (look at Trvlr)
+            case let .failure(error):
+                print(error)
+            }
+            
+            DispatchQueue.main.async {
+                self.labTV.reloadData()
+            }
+        }
     }
 }
