@@ -44,6 +44,7 @@ extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.labItemVM = labItemVMs[indexPath.row]
         }
+        return cell
     }
 }
 
@@ -51,6 +52,18 @@ extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Additional Helpers
 extension LabItemVC {
     func loadLabItemData() {
-    
+        LabSvc.fetchLabItem() { [unowned self] (LabItemResult) in
+            switch LabItemResult {
+            case let .success(viewModels):
+                self.labItemVMs = viewModels
+            // TODO: save to cache
+            case let .failure(error):
+                print(error)
+            }
+            
+            DispatchQueue.main.async {
+                self.labItemTV.reloadData()
+            }
+        }
     }
 }

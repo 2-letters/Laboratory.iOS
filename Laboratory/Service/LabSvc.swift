@@ -14,6 +14,12 @@ enum LabResult {
     case failure(String)
 }
 
+enum LabItemResult {
+    case success([LabItemVM])
+    case failure(String)
+}
+
+
 class LabSvc {
     static func fetchLabData(completion: @escaping (LabResult) -> Void) {
         var labVMs = [LabVM]()
@@ -44,5 +50,30 @@ class LabSvc {
                 .prefix(searchText.count) == searchText.lowercased()})
         
         return searchedLabAssignmentVms
+    }
+    
+    static func fetchLabItem(completion: @escaping (LabItemResult) -> Void) {
+        var labItemVMs = [LabItemVM]()
+        Firestore.firestore().collection("LabItem").order(by: "itemName", descending: false)
+            .getDocuments { (snapshot, error) in
+            
+                if error != nil {
+                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Items data"))
+                } else {
+                    for document in (snapshot?.documents)! {
+                        guard let itemName = document.data()["itemName"] as? String else {
+                            completion(.failure("ERR fetching Lab Item name"))
+                            return
+                        }
+                        guard let quantity = document.data()["quantity"] as? Int else {
+                            completion(.failure("ERR fetching Lab Item name"))
+                            return
+                        }
+                        labItemVMs.append(LabItemVM(LabItem(itemName: itemName, quantity: quantity)))
+                        completion(.success(labItemVMs))
+                    }
+                    completion(.success(labItemVMs))
+                }
+        }
     }
 }

@@ -15,6 +15,7 @@ class LabItemVM {
     
     init(_ item: LabItem) {
         self.itemName = item.itemName
+        self.quantity = item.quantity
         accessoryType = .disclosureIndicator
     }
 }
