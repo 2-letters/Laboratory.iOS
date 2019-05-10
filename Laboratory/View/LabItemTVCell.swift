@@ -10,5 +10,19 @@ import UIKit
 
 class LabItemTVCell: UITableViewCell {
 
+    @IBOutlet var itemNameLbl: UILabel!
+    @IBOutlet var quantityLbl: UILabel!
     
+    var labItemVM: LabItemVM! {
+        didSet {
+            itemNameLbl.text = labItemVM.itemName
+            accessoryType = labItemVM.accessoryType
+        }
+    }
+    
+    @IBAction func addQuantity(_ sender: UIButton) {
+    }
+    
+    @IBAction func subtractQuantity(_ sender: UIButton) {
+    }
 }

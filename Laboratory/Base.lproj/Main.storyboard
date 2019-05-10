@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="1535" y="45"/>
         </scene>
-        <!--View Controller-->
+        <!--Lab ItemVC-->
         <scene sceneID="ogX-mx-b3j">
             <objects>
-                <viewController id="D6r-hq-vP7" sceneMemberID="viewController">
+                <viewController id="D6r-hq-vP7" customClass="LabItemVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niC-BV-X9V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,6 +172,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e6n-PU-xq8"/>
                     </view>
+                    <connections>
+                        <outlet property="labItemSearchBar" destination="wNM-zi-urh" id="tJp-9p-aib"/>
+                        <outlet property="labItemTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

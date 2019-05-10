@@ -10,10 +10,11 @@ import UIKit
 
 class LabItemVM {
     var itemName: String
+    var quantity: Int
     var accessoryType: UITableViewCell.AccessoryType
     
     init(_ item: LabItem) {
         self.itemName = item.itemName
-        accessoryType = .detailDisclosureButton
+        accessoryType = .disclosureIndicator
     }
 }

@@ -15,7 +15,6 @@ enum LabResult {
 }
 
 class LabSvc {
-    
     static func fetchLabData(completion: @escaping (LabResult) -> Void) {
         var labVMs = [LabVM]()
         Firestore.firestore().collection("Lab").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
@@ -34,7 +33,7 @@ class LabSvc {
         }
     }
     
-    static func filter(with searchText: String) -> [LabVM] {
+    static func filterLab(with searchText: String) -> [LabVM] {
         let labAssignmentVMs = [
             LabVM(Lab(name: "lab1", description: "abc")),
             LabVM(Lab(name: "lab2", description: "abc2")),
