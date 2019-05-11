@@ -52,6 +52,11 @@ extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Search bar
 extension LabItemVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            isSearching = false
+            labItemTV.reloadData()
+            return
+        }
         isSearching = true
         searchedLabItemVMs = labItemVMs.filter({$0.itemName.lowercased().contains(searchText.lowercased())})
         labItemTV.reloadData()
