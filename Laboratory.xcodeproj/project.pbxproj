@@ -25,6 +25,7 @@
 		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
 		C3AEBD002285D2D50031DA3F /* LabItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
+		DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
 		C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedLabItemTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				C344387A2281FC9E0021168B /* LabVC.swift */,
 				C361E0FD22833EC800938933 /* LabCreateVC.swift */,
 				C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */,
+				DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
+				DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */,
 				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
 				C3A1C7E7228385B700966461 /* LabItem.swift in Sources */,
 				C34438772281F7970021168B /* LabTVCell.swift in Sources */,

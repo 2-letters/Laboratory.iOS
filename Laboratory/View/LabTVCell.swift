@@ -18,8 +18,4 @@ class LabTVCell: UITableViewCell {
             accessoryType = labVM.accessoryType
         }
     }
-    
-    @IBAction func LabAssignmentInfoBtn(_ sender: UIButton) {
-    }
-    
 }

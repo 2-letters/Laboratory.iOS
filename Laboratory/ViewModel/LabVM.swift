@@ -14,6 +14,6 @@ class LabVM {
     
     init(_ labInstance: Lab) {
         self.labName = labInstance.name
-        accessoryType = .detailDisclosureButton
+        accessoryType = .disclosureIndicator
     }
 }
