@@ -39,19 +39,6 @@ class LabSvc {
         }
     }
     
-    static func filterLab(with searchText: String) -> [LabVM] {
-        let labAssignmentVMs = [
-            LabVM(Lab(name: "lab1", description: "abc")),
-            LabVM(Lab(name: "lab2", description: "abc2")),
-            ]
-        
-        let searchedLabAssignmentVms = labAssignmentVMs
-            .filter({$0.labName.lowercased()
-                .prefix(searchText.count) == searchText.lowercased()})
-        
-        return searchedLabAssignmentVms
-    }
-    
     static func fetchLabItem(completion: @escaping (LabItemResult) -> Void) {
         var labItemVMs = [LabItemVM]()
         Firestore.firestore().collection("LabItem").order(by: "itemName", descending: false)

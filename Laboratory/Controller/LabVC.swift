@@ -55,7 +55,9 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
 extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
-        searchedLabVMs = LabSvc.filterLab(with: searchText)
+//        searchedLabVMs = LabSvc.filterLab(with: searchText)
+        searchedLabVMs = labVMs.filter({$0.labName.lowercased()
+                .prefix(searchText.count) == searchText.lowercased()})
         labTV.reloadData()
     }
     

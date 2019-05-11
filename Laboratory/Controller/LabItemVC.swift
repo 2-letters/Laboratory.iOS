@@ -20,6 +20,7 @@ class LabItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        labItemSearchBar.delegate = self
         labItemTV.delegate = self
         labItemTV.dataSource = self
         
@@ -45,6 +46,21 @@ extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
             cell.labItemVM = labItemVMs[indexPath.row]
         }
         return cell
+    }
+}
+
+// MARK: - Search bar
+extension LabItemVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        searchedLabItemVMs = labItemVMs.filter({$0.itemName.lowercased().contains(searchText.lowercased())})
+        labItemTV.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        labItemSearchBar.text = ""
+        labItemTV.reloadData()
     }
 }
 
