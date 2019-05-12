@@ -23,7 +23,7 @@ enum LabItemResult {
 class LabSvc {
     static func fetchLabData(completion: @escaping (LabResult) -> Void) {
         var labVMs = [LabVM]()
-        Firestore.firestore().collection("Lab").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
@@ -41,7 +41,7 @@ class LabSvc {
     
     static func fetchLabItem(completion: @escaping (LabItemResult) -> Void) {
         var labItemVMs = [LabItemVM]()
-        Firestore.firestore().collection("LabItem").order(by: "itemName", descending: false)
+        Firestore.firestore().collection("labItems").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
             
                 if error != nil {
