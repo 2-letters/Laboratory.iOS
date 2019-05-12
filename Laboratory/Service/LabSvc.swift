@@ -63,4 +63,16 @@ class LabSvc {
                 }
         }
     }
+    
+    static func createLab(withName name: String, description: String) {
+        let newLab = ["name" : name,
+                      "description": description]
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").addDocument(data: newLab) { err in
+                if let err = err {
+                    print("ERR creating a new Lab \(err)")
+                } else {
+                    print("Successfully added new lab: \(name)")
+                }
+        }
+    }
 }

@@ -23,8 +23,19 @@ class LabCreateVC: UIViewController {
     }
     
     @IBAction func doneAddingLab(_ sender: UIBarButtonItem) {
-        // TODO: add lab to Firestore
+        let newLabName = labCreateView.nameTextField.text ?? ""
+        let newLabDescription = labCreateView.descriptionTextField.text ?? ""
+        
+        if (newLabName.isEmpty || newLabDescription.isEmpty) {
+            let ac = UIAlertController(title: "Oops!", message: "Please make sure your lab has a name.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(ac, animated: true, completion: nil)
+        } else {
+            LabSvc.createLab(withName: newLabName, description: newLabDescription)
+            dismiss(animated: true, completion: nil)
+        }
     }
+    
     /*
     // MARK: - Navigation
 
