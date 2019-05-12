@@ -10,16 +10,21 @@ import UIKit
 
 class LabCreateVC: UIViewController {
 
+    @IBOutlet var labCreateView: LabInfoView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func doneAddingLab(_ sender: UIBarButtonItem) {
+        // TODO: add lab to Firestore
+    }
     /*
     // MARK: - Navigation
 

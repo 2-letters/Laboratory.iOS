@@ -27,6 +27,11 @@ class LabVC: UIViewController {
         
         loadLabData()
     }
+    
+    @IBAction func createLab(_ sender: UIBarButtonItem) {
+        let labCreateVC = LabCreateVC(nibName: "LabInfoView", bundle: nil)
+        self.present(labCreateVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Table View

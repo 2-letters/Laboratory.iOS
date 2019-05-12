@@ -42,7 +42,8 @@
                     <navigationItem key="navigationItem" id="jyS-6k-HYS">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7f5-gW-Z8Y">
                             <connections>
-                                <segue destination="dja-co-qHs" kind="presentation" id="bsd-bn-akq"/>
+                                <action selector="createLab:" destination="BYZ-38-t0r" id="WfR-7F-m6O"/>
+                                <segue destination="NgE-BO-VB2" kind="presentation" id="DPU-VF-ErZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -56,9 +57,51 @@
             <point key="canvasLocation" x="806" y="-672"/>
         </scene>
         <!--Lab CreateVC-->
+        <scene sceneID="Fuo-z8-gNz">
+            <objects>
+                <viewController id="0KV-X4-D08" customClass="LabCreateVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Jc-qe-i6W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1X-FA-aJB" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="As5-Lk-UsG" firstAttribute="bottom" secondItem="T1X-FA-aJB" secondAttribute="bottom" id="0ue-22-R78"/>
+                            <constraint firstItem="T1X-FA-aJB" firstAttribute="leading" secondItem="As5-Lk-UsG" secondAttribute="leading" id="YUD-5p-ELu"/>
+                            <constraint firstItem="As5-Lk-UsG" firstAttribute="trailing" secondItem="T1X-FA-aJB" secondAttribute="trailing" id="hA6-NB-hgI"/>
+                            <constraint firstItem="T1X-FA-aJB" firstAttribute="top" secondItem="As5-Lk-UsG" secondAttribute="top" id="wF4-1q-Rt6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="As5-Lk-UsG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8rE-0E-Iwg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gqb-qw-v6f">
+                            <connections>
+                                <action selector="cancel:" destination="0KV-X4-D08" id="ZrQ-gn-SYA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KBj-4a-fnp">
+                            <connections>
+                                <action selector="doneAddingLab:" destination="0KV-X4-D08" id="iIS-2P-lzv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="labCreateView" destination="T1X-FA-aJB" id="53S-Ge-epq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nuf-iW-pR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="37"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="G39-yG-5GY">
             <objects>
-                <viewController id="ffj-QB-BuC" customClass="LabCreateVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ffj-QB-BuC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LTG-0V-YCe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,11 +160,7 @@
                         <viewLayoutGuide key="safeArea" id="fDh-SM-YDg"/>
                     </view>
                     <navigationItem key="navigationItem" id="fGG-dl-ElH">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SSK-0J-Vsz">
-                            <connections>
-                                <action selector="cancel:" destination="ffj-QB-BuC" id="ZWd-2h-36F"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SSK-0J-Vsz"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="LPm-ln-hzT">
                             <connections>
                                 <segue destination="D6r-hq-vP7" kind="show" id="c2d-jM-OWZ"/>
@@ -131,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFh-zv-Cjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="45"/>
+            <point key="canvasLocation" x="1500" y="813"/>
         </scene>
         <!--Lab ItemVC-->
         <scene sceneID="ogX-mx-b3j">
@@ -182,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231" y="45"/>
+            <point key="canvasLocation" x="2306" y="563"/>
         </scene>
         <!--Added Lab ItemTVC-->
         <scene sceneID="cUq-ek-ZBS">
@@ -217,7 +256,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQN-RL-h1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2999" y="769"/>
+            <point key="canvasLocation" x="3458" y="1157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GVG-qi-G2A">
@@ -253,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksE-EF-tK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="45"/>
+            <point key="canvasLocation" x="767" y="865"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VCr-4u-pT3">
@@ -271,7 +310,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9i-Y1-Uqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2229.5999999999999" y="768.66566716641682"/>
+            <point key="canvasLocation" x="2330" y="1323"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lGb-Us-hXh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NgE-BO-VB2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ig3-Yh-B8U">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0KV-X4-D08" kind="relationship" relationship="rootViewController" id="ubt-BK-jgz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9g7-Mb-AoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="38"/>
         </scene>
     </scenes>
 </document>

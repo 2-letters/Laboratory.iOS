@@ -25,7 +25,9 @@
 		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
 		C3AEBD002285D2D50031DA3F /* LabItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
+		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
 		DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */; };
+		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +53,9 @@
 		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
 		C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
 		DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedLabItemTVC.swift; sourceTree = "<group>"; };
+		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				C34438762281F7970021168B /* LabTVCell.xib */,
 				C3A1C7E02283849C00966461 /* LabItemTVCell.swift */,
 				C3A1C7E12283849C00966461 /* LabItemTVCell.xib */,
+				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
+				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 				TargetAttributes = {
 					C344385E2281DDFA0021168B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -228,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
+				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
 				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
@@ -302,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
 				DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */,
 				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
@@ -471,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -492,7 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

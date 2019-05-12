@@ -25,6 +25,13 @@ class LabItemVC: UIViewController {
         labItemTV.dataSource = self
         
         loadLabItemData()
+        
+        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingItems))
+        self.navigationItem.rightBarButtonItem = doneBtn
+    }
+    
+    @objc func doneAddingItems() {
+        
     }
 }
 
