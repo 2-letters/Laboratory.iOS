@@ -8,21 +8,24 @@
 
 import UIKit
 
-class LabItemVC: UIViewController {
+class LabItemSelectionVC: UIViewController {
 
-    @IBOutlet var labItemSearchBar: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var labItemTV: UITableView!
     
-    var labItemVMs = [LabItemVM]()
-    var searchedLabItemVMs = [LabItemVM]()
+    var labItemVMs = [LabItemSelectionVM]()
+    var searchedLabItemVMs = [LabItemSelectionVM]()
     var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        labItemSearchBar.delegate = self
+        searchBar.delegate = self
         labItemTV.delegate = self
         labItemTV.dataSource = self
+        
+        let nib = UINib(nibName: "LabItemSelectTVCell", bundle: nil)
+        labItemTV.register(nib, forCellReuseIdentifier: "LabItemSelectionCell")
         
         loadLabItemData()
         
@@ -37,7 +40,7 @@ class LabItemVC: UIViewController {
 
 
 // MARK: - Table View
-extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
+extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return searchedLabItemVMs.count
@@ -46,18 +49,19 @@ extension LabItemVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("LabItemTVCell", owner: self, options: nil)?.first as! LabItemTVCell
+//        let cell = Bundle.main.loadNibNamed("LabItemTVCell", owner: self, options: nil)?.first as! LabItemTVCell
+        let cell = labItemTV.dequeueReusableCell(withIdentifier: "LabItemSelectionCell") as! LabItemSelectionTVCell
         if isSearching {
-            cell.labItemVM = searchedLabItemVMs[indexPath.row]
+            cell.labItemSelectionVM = searchedLabItemVMs[indexPath.row]
         } else {
-            cell.labItemVM = labItemVMs[indexPath.row]
+            cell.labItemSelectionVM = labItemVMs[indexPath.row]
         }
         return cell
     }
 }
 
 // MARK: - Search bar
-extension LabItemVC: UISearchBarDelegate {
+extension LabItemSelectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
@@ -71,14 +75,14 @@ extension LabItemVC: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
-        labItemSearchBar.text = ""
+        searchBar.text = ""
         labItemTV.reloadData()
     }
 }
 
 
 // MARK: - Additional Helpers
-extension LabItemVC {
+extension LabItemSelectionVC {
     func loadLabItemData() {
         LabSvc.fetchLabItem() { [unowned self] (LabItemResult) in
             switch LabItemResult {

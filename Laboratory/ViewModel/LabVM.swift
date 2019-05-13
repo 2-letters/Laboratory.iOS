@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabVM {
+struct LabVM {
     let labName: String
     let accessoryType: UITableViewCell.AccessoryType
     

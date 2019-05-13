@@ -1,5 +1,5 @@
 //
-//  LabInfoView.swift
+//  LabCreateView.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/12/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabInfoView: UIView {
+class LabCreateView: UIView {
 
     @IBOutlet var contentView: UIView!
     

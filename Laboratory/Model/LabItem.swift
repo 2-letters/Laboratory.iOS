@@ -11,4 +11,8 @@ import Foundation
 struct LabItem {
     var itemName: String!
     var quantity: Int!
+    
+    init(itemName: String) {
+        self.itemName = itemName
+    }
 }
