@@ -15,7 +15,14 @@ class LabCreateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        labCreateView.addItemsBtn.addTarget(self, action: #selector(addItems), for: .touchUpInside)
+    }
+    
+    @objc func addItems() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let labItemSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labItemSelection") as! LabItemSelectionVC
+        let navController = UINavigationController(rootViewController: labItemSelectionVC)
+        present(navController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

@@ -14,6 +14,6 @@ struct LabItemSelectionVM {
     
     init(_ item: LabItem) {
         itemName = item.itemName
-        selectionStyle = .default
+        selectionStyle = .blue
     }
 }

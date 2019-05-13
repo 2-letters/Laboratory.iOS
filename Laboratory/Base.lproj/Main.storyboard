@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NHD-oG-205">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NHD-oG-205">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LabVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-FF-Fs3">
@@ -101,7 +101,7 @@
         <!--Lab Item SelectionVC-->
         <scene sceneID="ogX-mx-b3j">
             <objects>
-                <viewController id="D6r-hq-vP7" customClass="LabItemSelectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="labItemSelection" id="D6r-hq-vP7" customClass="LabItemSelectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niC-BV-X9V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,6 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e6n-PU-xq8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="APA-NH-o3D"/>
                     <connections>
                         <outlet property="labItemTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
                         <outlet property="searchBar" destination="wNM-zi-urh" id="OG1-mX-58M"/>
@@ -134,42 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2306" y="563"/>
-        </scene>
-        <!--Added Lab ItemTVC-->
-        <scene sceneID="cUq-ek-ZBS">
-            <objects>
-                <tableViewController id="L1w-c4-kzP" customClass="AddedLabItemTVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="osr-pZ-TcZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="an1-d8-jjP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="an1-d8-jjP" id="qns-Cc-qGb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="L1w-c4-kzP" id="jho-Pl-48b"/>
-                            <outlet property="delegate" destination="L1w-c4-kzP" id="Z1H-gm-mj5"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="zDM-ZA-sFa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="0Ys-V0-pKR">
-                            <connections>
-                                <action selector="done:" destination="L1w-c4-kzP" id="mSG-et-kmy"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RQN-RL-h1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3458" y="1157"/>
+            <point key="canvasLocation" x="2516" y="742.5787106446777"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GVG-qi-G2A">

@@ -16,6 +16,8 @@ class LabCreateView: UIView {
     
     @IBOutlet var descriptionTextField: UITextField!
     
+    @IBOutlet var addItemsBtn: UIButton!
+    
     @IBOutlet var labItemTV: UITableView!
     
     override init(frame: CGRect) {
@@ -29,7 +31,7 @@ class LabCreateView: UIView {
     }
     
     func commonInit() {
-    Bundle.main.loadNibNamed("LabInfoView", owner: self, options: nil)
+    Bundle.main.loadNibNamed("LabCreateView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

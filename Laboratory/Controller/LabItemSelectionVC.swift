@@ -23,18 +23,30 @@ class LabItemSelectionVC: UIViewController {
         searchBar.delegate = self
         labItemTV.delegate = self
         labItemTV.dataSource = self
+        // allow multiple selections
+        labItemTV.allowsMultipleSelection = true
         
-        let nib = UINib(nibName: "LabItemSelectTVCell", bundle: nil)
+        // load LabItems TableView
+        let nib = UINib(nibName: "LabItemSelectionTVCell", bundle: nil)
         labItemTV.register(nib, forCellReuseIdentifier: "LabItemSelectionCell")
         
         loadLabItemData()
         
-        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingItems))
-        self.navigationItem.rightBarButtonItem = doneBtn
+        // navbar buttons
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingItems))
+
+    }
+    
+    @objc func cancel() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func doneAddingItems() {
-        
+        if let selectedIndexes = labItemTV.indexPathsForSelectedRows {
+            print(selectedIndexes)
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -57,6 +69,17 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
             cell.labItemSelectionVM = labItemVMs[indexPath.row]
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.backgroundColor = .blue
+        cell?.tintColor = .blue
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 }
 
