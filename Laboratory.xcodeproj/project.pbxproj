@@ -25,6 +25,7 @@
 		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
 		C3AEBD002285D2D50031DA3F /* LabItemSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemSelectionVC.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
+		C92459DC228B3BBE00AC2E13 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92459DB228B3BBE00AC2E13 /* Observable.swift */; };
 		DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabCreateView.swift */; };
 		DE605A2622892E4E00D1B679 /* LabItemSelectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* LabItemSelectionTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* LabItemSelectionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* LabItemSelectionTVCell.xib */; };
@@ -56,6 +57,7 @@
 		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
 		C3AEBCFF2285D2D50031DA3F /* LabItemSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemSelectionVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C92459DB228B3BBE00AC2E13 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = ../../../../Observable.swift; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateView.swift; sourceTree = "<group>"; };
 		DE605A2422892E4E00D1B679 /* LabItemSelectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemSelectionTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* LabItemSelectionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemSelectionTVCell.xib; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C92459DA228B3B9400AC2E13 /* Custom Class */,
 				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
 				C361E0FA2283254E00938933 /* Service */,
 				C344387F228206A80021168B /* ViewModel */,
@@ -180,6 +183,14 @@
 				C361E0FB2283258900938933 /* LabSvc.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C92459DA228B3B9400AC2E13 /* Custom Class */ = {
+			isa = PBXGroup;
+			children = (
+				C92459DB228B3BBE00AC2E13 /* Observable.swift */,
+			);
+			path = "Custom Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,10 +299,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -301,10 +314,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -322,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92459DC228B3BBE00AC2E13 /* Observable.swift in Sources */,
 				DE605A2622892E4E00D1B679 /* LabItemSelectionTVCell.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */,
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
@@ -487,6 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,7 +511,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -508,6 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,7 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -10,12 +10,15 @@ import UIKit
 
 struct LabItemSelectionVM {
     var itemName: String
-    var selectionStyle: UITableViewCell.SelectionStyle
-    var accessoryType: UITableViewCell.AccessoryType
+//    var selectionStyle: UITableViewCell.SelectionStyle
+//    var accessoryType: UITableViewCell.AccessoryType
+    let isSelected: Observable<Bool>
     
     init(_ item: LabItem) {
         itemName = item.itemName
-        selectionStyle = .blue
-        accessoryType = .none
+//        selectionStyle = .blue
+//        accessoryType = .none
+//
+        isSelected = Observable()
     }
 }

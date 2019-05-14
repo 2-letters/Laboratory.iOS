@@ -64,9 +64,9 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
 //        let cell = Bundle.main.loadNibNamed("LabItemTVCell", owner: self, options: nil)?.first as! LabItemTVCell
         let cell = labItemTV.dequeueReusableCell(withIdentifier: "LabItemSelectionCell") as! LabItemSelectionTVCell
         if isSearching {
-            cell.labItemSelectionVM = searchedLabItemVMs[indexPath.row]
+            cell.setup(viewModel: searchedLabItemVMs[indexPath.row])
         } else {
-            cell.labItemSelectionVM = labItemVMs[indexPath.row]
+            cell.setup(viewModel: labItemVMs[indexPath.row])
         }
         return cell
     }
@@ -74,7 +74,7 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var vm = labItemVMs[indexPath.row]
-        vm.accessoryType = .checkmark
+        vm.isSelected.value = true
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.cyan
         cell?.selectedBackgroundView = backgroundView
@@ -84,7 +84,7 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var vm = labItemVMs[indexPath.row]
-        vm.accessoryType = .checkmark
+        vm.isSelected.value = false
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell?.selectedBackgroundView = backgroundView

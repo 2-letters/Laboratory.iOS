@@ -8,4 +8,6 @@ target 'Laboratory' do
   # Pods for Laboratory
 	pod 'Firebase/Core'
   	pod 'Firebase/Firestore'
+	pod 'RxSwift', '~> 5'
+    	pod 'RxCocoa', '~> 5'
 end
