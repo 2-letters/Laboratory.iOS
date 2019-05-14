@@ -11,9 +11,11 @@ import UIKit
 struct LabItemSelectionVM {
     var itemName: String
     var selectionStyle: UITableViewCell.SelectionStyle
+    var accessoryType: UITableViewCell.AccessoryType
     
     init(_ item: LabItem) {
         itemName = item.itemName
         selectionStyle = .blue
+        accessoryType = .none
     }
 }

@@ -73,13 +73,23 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.backgroundColor = .blue
-        cell?.tintColor = .blue
+        var vm = labItemVMs[indexPath.row]
+        vm.accessoryType = .checkmark
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.cyan
+        cell?.selectedBackgroundView = backgroundView
+//        labItemTV.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        let cell = tableView.cellForRow(at: indexPath)
+        var vm = labItemVMs[indexPath.row]
+        vm.accessoryType = .checkmark
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.clear
+        cell?.selectedBackgroundView = backgroundView
+//        cell?.contentView.backgroundColor =
+        
     }
 }
 

@@ -20,6 +20,7 @@ class LabItemSelectionTVCell: UITableViewCell {
         didSet {
             itemNameLabel.text = labItemSelectionVM.itemName
             selectionStyle = labItemSelectionVM.selectionStyle
+            accessoryType = labItemSelectionVM.accessoryType
         }
     }
 }
