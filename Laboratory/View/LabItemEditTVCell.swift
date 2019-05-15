@@ -12,7 +12,7 @@ class LabItemEditTVCell: UITableViewCell {
 
     @IBOutlet var itemNameLabel: UILabel!
     
-    var labItemEditVM: LabItemEditVM?
+//    var labItemEditVM: LabItemEditVM?
 //        didSet {
 //            itemNameLabel.text = labItemSelectionVM?.itemName
 //
@@ -28,7 +28,7 @@ class LabItemEditTVCell: UITableViewCell {
 //        }
 //    }
     func setup(viewModel: LabItemEditVM) {
-        labItemEditVM = viewModel
+//        labItemEditVM = viewModel
         itemNameLabel.text = viewModel.itemName
         accessoryType = .disclosureIndicator
         

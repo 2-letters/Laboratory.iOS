@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item {
+struct Item {
     var name: String
     var description: String
     var quantity: Int
@@ -23,7 +23,11 @@ class Item {
         self.pictureUrl = pictureUrl
     }
     
-    convenience init(name: String) {
+    init(name: String) {
         self.name = name
+        self.description = ""
+        self.quantity = 0
+        self.location = ""
+        self.pictureUrl = ""
     }
 }

@@ -79,8 +79,8 @@ extension LabVC: UISearchBarDelegate {
 // MARK: - Additional helpers
 extension LabVC {
     func loadLabData() {
-        LabSvc.fetchLabData() { [unowned self] (LabResult) in
-            switch LabResult {
+        LabSvc.fetchLabData() { [unowned self] (labResult) in
+            switch labResult {
             case let .success(viewModels):
                 self.labVMs = viewModels
                 // TODO: save to cache (look at Trvlr)
