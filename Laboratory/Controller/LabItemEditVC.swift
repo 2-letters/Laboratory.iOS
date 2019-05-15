@@ -8,13 +8,13 @@
 
 import UIKit
 
-class LabItemSelectionVC: UIViewController {
+class LabItemEditVC: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var labItemTV: UITableView!
     
-    var labItemVMs = [LabItemSelectionVM]()
-    var searchedLabItemVMs = [LabItemSelectionVM]()
+    var labItemVMs = [LabItemEditVM]()
+    var searchedLabItemVMs = [LabItemEditVM]()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ class LabItemSelectionVC: UIViewController {
         labItemTV.allowsMultipleSelection = true
         
         // load LabItems TableView
-        let nib = UINib(nibName: "LabItemSelectionTVCell", bundle: nil)
-        labItemTV.register(nib, forCellReuseIdentifier: "LabItemSelectionCell")
+        let nib = UINib(nibName: "LabItemEditTVCell", bundle: nil)
+        labItemTV.register(nib, forCellReuseIdentifier: "LabItemEditCell")
         
         loadLabItemData()
         
@@ -52,7 +52,19 @@ class LabItemSelectionVC: UIViewController {
 
 
 // MARK: - Table View
-extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
+extension LabItemEditVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Added Items"
+        } else {
+            return "Available Items"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return searchedLabItemVMs.count
@@ -61,8 +73,13 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            
+        }
+        
+        // TODO: 
 //        let cell = Bundle.main.loadNibNamed("LabItemTVCell", owner: self, options: nil)?.first as! LabItemTVCell
-        let cell = labItemTV.dequeueReusableCell(withIdentifier: "LabItemSelectionCell") as! LabItemSelectionTVCell
+        let cell = labItemTV.dequeueReusableCell(withIdentifier: "LabItemEditCell") as! LabItemEditTVCell
         if isSearching {
             cell.setup(viewModel: searchedLabItemVMs[indexPath.row])
         } else {
@@ -74,7 +91,7 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var vm = labItemVMs[indexPath.row]
-        vm.isSelected.value = true
+//        vm.isSelected.value = true
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.cyan
         cell?.selectedBackgroundView = backgroundView
@@ -84,7 +101,7 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var vm = labItemVMs[indexPath.row]
-        vm.isSelected.value = false
+//        vm.isSelected.value = false
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell?.selectedBackgroundView = backgroundView
@@ -94,7 +111,7 @@ extension LabItemSelectionVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Search bar
-extension LabItemSelectionVC: UISearchBarDelegate {
+extension LabItemEditVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
@@ -115,7 +132,7 @@ extension LabItemSelectionVC: UISearchBarDelegate {
 
 
 // MARK: - Additional Helpers
-extension LabItemSelectionVC {
+extension LabItemEditVC {
     func loadLabItemData() {
         LabSvc.fetchLabItem() { [unowned self] (LabItemResult) in
             switch LabItemResult {

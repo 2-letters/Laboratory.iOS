@@ -15,7 +15,7 @@ enum LabResult {
 }
 
 enum LabItemSelectionResult {
-    case success([LabItemSelectionVM])
+    case success([LabItemEditVM])
     case failure(String)
 }
 
@@ -40,7 +40,7 @@ class LabSvc {
     }
     
     static func fetchLabItem(completion: @escaping (LabItemSelectionResult) -> Void) {
-        var labItemSelectionVMs = [LabItemSelectionVM]()
+        var labItemSelectionVMs = [LabItemEditVM]()
         Firestore.firestore().collection("labItems").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
             
@@ -56,7 +56,7 @@ class LabSvc {
 //                            completion(.failure("ERR fetching Lab Item name"))
 //                            return
 //                        }
-                        labItemSelectionVMs.append(LabItemSelectionVM(LabItem(itemName: itemName)))
+                        labItemSelectionVMs.append(LabItemEditVM(LabItem(itemName: itemName)))
                         completion(.success(labItemSelectionVMs))
                     }
                     completion(.success(labItemSelectionVMs))

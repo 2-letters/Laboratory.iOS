@@ -23,13 +23,12 @@
 		C3A1C7E32283849C00966461 /* LabItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A1C7E12283849C00966461 /* LabItemTVCell.xib */; };
 		C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabItemVM.swift */; };
 		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
-		C3AEBD002285D2D50031DA3F /* LabItemSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemSelectionVC.swift */; };
+		C3AEBD002285D2D50031DA3F /* LabItemEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
-		C92459DC228B3BBE00AC2E13 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92459DB228B3BBE00AC2E13 /* Observable.swift */; };
 		DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabCreateView.swift */; };
-		DE605A2622892E4E00D1B679 /* LabItemSelectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* LabItemSelectionTVCell.swift */; };
-		DE605A2722892E4E00D1B679 /* LabItemSelectionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* LabItemSelectionTVCell.xib */; };
-		DE605A292289337800D1B679 /* LabItemSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* LabItemSelectionVM.swift */; };
+		DE605A2622892E4E00D1B679 /* LabItemEditTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */; };
+		DE605A2722892E4E00D1B679 /* LabItemEditTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */; };
+		DE605A292289337800D1B679 /* LabItemEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* LabItemEditVM.swift */; };
 		DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */; };
 		DE9629622287C81800E9EC8D /* LabCreateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabCreateView.xib */; };
 /* End PBXBuildFile section */
@@ -55,13 +54,12 @@
 		C3A1C7E12283849C00966461 /* LabItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemTVCell.xib; sourceTree = "<group>"; };
 		C3A1C7E42283854D00966461 /* LabItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVM.swift; sourceTree = "<group>"; };
 		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
-		C3AEBCFF2285D2D50031DA3F /* LabItemSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemSelectionVC.swift; sourceTree = "<group>"; };
+		C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C92459DB228B3BBE00AC2E13 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = ../../../../Observable.swift; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateView.swift; sourceTree = "<group>"; };
-		DE605A2422892E4E00D1B679 /* LabItemSelectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemSelectionTVCell.swift; sourceTree = "<group>"; };
-		DE605A2522892E4E00D1B679 /* LabItemSelectionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemSelectionTVCell.xib; sourceTree = "<group>"; };
-		DE605A282289337800D1B679 /* LabItemSelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemSelectionVM.swift; sourceTree = "<group>"; };
+		DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditTVCell.swift; sourceTree = "<group>"; };
+		DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemEditTVCell.xib; sourceTree = "<group>"; };
+		DE605A282289337800D1B679 /* LabItemEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditVM.swift; sourceTree = "<group>"; };
 		DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedLabItemTVC.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabCreateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCreateView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,8 +139,8 @@
 				C3A1C7E12283849C00966461 /* LabItemTVCell.xib */,
 				DE9629612287C81800E9EC8D /* LabCreateView.xib */,
 				DE170D3A228883BE0086DB85 /* LabCreateView.swift */,
-				DE605A2422892E4E00D1B679 /* LabItemSelectionTVCell.swift */,
-				DE605A2522892E4E00D1B679 /* LabItemSelectionTVCell.xib */,
+				DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */,
+				DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,7 +150,7 @@
 			children = (
 				C344387A2281FC9E0021168B /* LabVC.swift */,
 				C361E0FD22833EC800938933 /* LabCreateVC.swift */,
-				C3AEBCFF2285D2D50031DA3F /* LabItemSelectionVC.swift */,
+				C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */,
 				DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */,
 			);
 			path = Controller;
@@ -172,7 +170,7 @@
 			children = (
 				C34438802282094A0021168B /* LabVM.swift */,
 				C3A1C7E42283854D00966461 /* LabItemVM.swift */,
-				DE605A282289337800D1B679 /* LabItemSelectionVM.swift */,
+				DE605A282289337800D1B679 /* LabItemEditVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,7 +186,6 @@
 		C92459DA228B3B9400AC2E13 /* Custom Class */ = {
 			isa = PBXGroup;
 			children = (
-				C92459DB228B3BBE00AC2E13 /* Observable.swift */,
 			);
 			path = "Custom Class";
 			sourceTree = "<group>";
@@ -254,7 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE605A2722892E4E00D1B679 /* LabItemSelectionTVCell.xib in Resources */,
+				DE605A2722892E4E00D1B679 /* LabItemEditTVCell.xib in Resources */,
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
 				DE9629622287C81800E9EC8D /* LabCreateView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
@@ -337,17 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C92459DC228B3BBE00AC2E13 /* Observable.swift in Sources */,
-				DE605A2622892E4E00D1B679 /* LabItemSelectionTVCell.swift in Sources */,
+				DE605A2622892E4E00D1B679 /* LabItemEditTVCell.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */,
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
-				DE605A292289337800D1B679 /* LabItemSelectionVM.swift in Sources */,
+				DE605A292289337800D1B679 /* LabItemEditVM.swift in Sources */,
 				DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */,
 				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
 				C3A1C7E7228385B700966461 /* LabItem.swift in Sources */,
 				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
-				C3AEBD002285D2D50031DA3F /* LabItemSelectionVC.swift in Sources */,
+				C3AEBD002285D2D50031DA3F /* LabItemEditVC.swift in Sources */,
 				C361E0FC2283258900938933 /* LabSvc.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */,

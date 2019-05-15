@@ -8,11 +8,11 @@
 
 import UIKit
 
-class LabItemSelectionTVCell: UITableViewCell {
+class LabItemEditTVCell: UITableViewCell {
 
     @IBOutlet var itemNameLabel: UILabel!
     
-    var labItemSelectionVM: LabItemSelectionVM?
+    var labItemEditVM: LabItemEditVM?
 //        didSet {
 //            itemNameLabel.text = labItemSelectionVM?.itemName
 //
@@ -27,25 +27,26 @@ class LabItemSelectionTVCell: UITableViewCell {
 //            }
 //        }
 //    }
-    func setup(viewModel: LabItemSelectionVM) {
-        labItemSelectionVM = viewModel
+    func setup(viewModel: LabItemEditVM) {
+        labItemEditVM = viewModel
         itemNameLabel.text = viewModel.itemName
+        accessoryType = .disclosureIndicator
         
         // listen to the change of the isSelected property
         // TODO: use subscribe of RxSwift instead
-        labItemSelectionVM?.isSelected.valueChanged = { [unowned self] (isSelected) in
-            if isSelected {
-                self.accessoryType = .checkmark
-            } else {
-                self.accessoryType = .none
-            }
-        }
+//        labItemSelectionVM?.isSelected.valueChanged = { [unowned self] (isSelected) in
+//            if isSelected {
+//                self.accessoryType = .checkmark
+//            } else {
+//                self.accessoryType = .none
+//            }
+//        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         // Unregister the observer to avoid the glitch when different view models update the same cell
-        labItemSelectionVM?.isSelected.valueChanged = nil
+//        labItemEditVM?.isSelected.valueChanged = nil
     }
     
 

@@ -20,7 +20,7 @@ class LabCreateVC: UIViewController {
     
     @objc func addItems() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let labItemSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labItemSelection") as! LabItemSelectionVC
+        let labItemSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labItemSelection") as! LabItemEditVC
         let navController = UINavigationController(rootViewController: labItemSelectionVC)
         present(navController, animated: true, completion: nil)
     }
