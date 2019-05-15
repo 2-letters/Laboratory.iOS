@@ -14,20 +14,20 @@ enum LabResult {
     case failure(String)
 }
 
-enum LabItemSelectionResult {
+enum LabItemEditResult {
     case success([LabItemEditVM])
     case failure(String)
 }
 
 
-class LabSvc {
+struct LabSvc {
     static func fetchLabData(completion: @escaping (LabResult) -> Void) {
         var labVMs = [LabVM]()
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
-                for document in (snapshot?.documents)! {
+                for document in (snapshot!.documents) {
                     if let labName = document.data()["labName"] as? String {
                         if let description = document.data()["description"] as? String {
                             labVMs.append(LabVM(Lab(name: labName, description: description)))
@@ -39,7 +39,7 @@ class LabSvc {
         }
     }
     
-    static func fetchLabItem(completion: @escaping (LabItemSelectionResult) -> Void) {
+    static func fetchLabItem(completion: @escaping (LabItemEditResult) -> Void) {
         var labItemSelectionVMs = [LabItemEditVM]()
         Firestore.firestore().collection("labItems").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
@@ -47,7 +47,7 @@ class LabSvc {
                 if error != nil {
                     completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Items data"))
                 } else {
-                    for document in (snapshot?.documents)! {
+                    for document in (snapshot!.documents) {
                         guard let itemName = document.data()["itemName"] as? String else {
                             completion(.failure("ERR fetching Lab Item name"))
                             return

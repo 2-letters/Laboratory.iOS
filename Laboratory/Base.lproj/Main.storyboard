@@ -159,7 +159,7 @@
         <!--Item-->
         <scene sceneID="IeG-eC-dYu">
             <objects>
-                <viewController id="m8J-3U-eDS" sceneMemberID="viewController">
+                <viewController id="m8J-3U-eDS" customClass="ItemVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CL1-D0-Vi2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,6 +186,10 @@
                         <viewLayoutGuide key="safeArea" id="1wn-z5-gCN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bhP-2z-uXt"/>
+                    <connections>
+                        <outlet property="searchBar" destination="zWT-2d-Z7Z" id="lK9-kq-1g0"/>
+                        <outlet property="tableView" destination="AGQ-aK-lpY" id="8gO-eH-BEd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bM7-j8-WUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
