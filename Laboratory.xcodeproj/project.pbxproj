@@ -26,6 +26,7 @@
 		C3AEBD002285D2D50031DA3F /* LabItemEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
 		DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabCreateView.swift */; };
+		DE420945228BC15900ADFEA1 /* ItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* ItemVC.swift */; };
 		DE605A2622892E4E00D1B679 /* LabItemEditTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* LabItemEditTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */; };
 		DE605A292289337800D1B679 /* LabItemEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* LabItemEditVM.swift */; };
@@ -57,6 +58,7 @@
 		C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateView.swift; sourceTree = "<group>"; };
+		DE420944228BC15900ADFEA1 /* ItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVC.swift; sourceTree = "<group>"; };
 		DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemEditTVCell.xib; sourceTree = "<group>"; };
 		DE605A282289337800D1B679 /* LabItemEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditVM.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				C361E0FD22833EC800938933 /* LabCreateVC.swift */,
 				C3AEBCFF2285D2D50031DA3F /* LabItemEditVC.swift */,
 				DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */,
+				DE420944228BC15900ADFEA1 /* ItemVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */,
 				C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */,
 				C34438812282094A0021168B /* LabVM.swift in Sources */,
+				DE420945228BC15900ADFEA1 /* ItemVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

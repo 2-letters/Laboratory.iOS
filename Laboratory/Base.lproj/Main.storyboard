@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NHD-oG-205">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I8n-V7-Zay">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,15 +15,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LabVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-FF-Fs3">
-                                <rect key="frame" x="0.0" y="64" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVH-JR-fJh">
-                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -50,18 +54,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="-672"/>
+            <point key="canvasLocation" x="1744.8" y="-672.41379310344837"/>
         </scene>
         <!--Lab CreateVC-->
         <scene sceneID="Fuo-z8-gNz">
             <objects>
                 <viewController id="0KV-X4-D08" customClass="LabCreateVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Jc-qe-i6W">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1X-FA-aJB" customClass="LabCreateView" customModule="Laboratory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -99,15 +103,15 @@
             <objects>
                 <viewController storyboardIdentifier="labItemSelection" id="D6r-hq-vP7" customClass="LabItemEditVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niC-BV-X9V">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-zi-urh">
-                                <rect key="frame" x="0.0" y="20" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-bD-7Oh">
-                                <rect key="frame" x="0.0" y="76" width="600" height="524"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -133,10 +137,11 @@
             </objects>
             <point key="canvasLocation" x="2516" y="742.5787106446777"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Lab-->
         <scene sceneID="GVG-qi-G2A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NHD-oG-205" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Lab" id="H0K-hg-FJe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftx-OS-Jzq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -149,7 +154,42 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgg-Vk-c5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.600000000000001" y="-671.51424287856082"/>
+            <point key="canvasLocation" x="976.79999999999995" y="-671.51424287856082"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="IeG-eC-dYu">
+            <objects>
+                <viewController id="m8J-3U-eDS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CL1-D0-Vi2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zWT-2d-Z7Z">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AGQ-aK-lpY">
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AGQ-aK-lpY" firstAttribute="leading" secondItem="1wn-z5-gCN" secondAttribute="leading" id="2jx-dz-AgQ"/>
+                            <constraint firstItem="zWT-2d-Z7Z" firstAttribute="leading" secondItem="1wn-z5-gCN" secondAttribute="leading" id="3io-1C-ukH"/>
+                            <constraint firstItem="zWT-2d-Z7Z" firstAttribute="trailing" secondItem="1wn-z5-gCN" secondAttribute="trailing" id="94d-3D-pkz"/>
+                            <constraint firstItem="1wn-z5-gCN" firstAttribute="trailing" secondItem="AGQ-aK-lpY" secondAttribute="trailing" id="DS0-nn-0l9"/>
+                            <constraint firstItem="AGQ-aK-lpY" firstAttribute="top" secondItem="zWT-2d-Z7Z" secondAttribute="bottom" id="aiw-bj-pys"/>
+                            <constraint firstItem="zWT-2d-Z7Z" firstAttribute="top" secondItem="1wn-z5-gCN" secondAttribute="top" id="b0p-Ll-9ac"/>
+                            <constraint firstItem="1wn-z5-gCN" firstAttribute="bottom" secondItem="AGQ-aK-lpY" secondAttribute="bottom" id="iqC-m1-6XX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1wn-z5-gCN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="bhP-2z-uXt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bM7-j8-WUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lGb-Us-hXh">
@@ -168,6 +208,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9g7-Mb-AoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="806" y="38"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="JUm-Rg-vP4">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="I8n-V7-Zay" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QxX-X9-1f1">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="NHD-oG-205" kind="relationship" relationship="viewControllers" id="mb9-eB-q7G"/>
+                        <segue destination="m8J-3U-eDS" kind="relationship" relationship="viewControllers" id="0VE-2u-w1E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVi-gH-dPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="-671.51424287856082"/>
         </scene>
     </scenes>
 </document>
