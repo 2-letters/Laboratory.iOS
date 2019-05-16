@@ -83,6 +83,11 @@ extension ItemVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemName = itemVMs[indexPath.row].itemName
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let equipmentInfoVC = storyboard.instantiateViewController(withIdentifier: "EquipmentInfoVC") as! EquipmentInfoVC
+        equipmentInfoVC.equipmentName = itemName
+        
+        self.navigationController?.pushViewController(equipmentInfoVC, animated: true)
         // TODO send data to Item Info View -> ItemSvc.fetchtemInfo(byName:)
     }
 }
