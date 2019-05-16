@@ -39,4 +39,8 @@ struct ItemSvc {
             }
         }
     }
+    
+    static func fetchItemInfo(byName name: String, department: String, institution: String) {
+        
+    }
 }

@@ -81,7 +81,8 @@ extension ItemVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemName = itemVMs[indexPath.row].itemName
+        // TODO send data to Item Info View -> ItemSvc.fetchtemInfo(byName:)
+    }
 }

@@ -10,6 +10,12 @@ import UIKit
 
 class EquipmentInfoView: UIView {
 
+    @IBOutlet var nameLabel: UILabel!
     
-
+    @IBOutlet var locationTextView: UITextView!
+    
+    @IBOutlet var descriptionTextView: UITextView!
+    
+    @IBOutlet var equipmentImageView: UIImageView!
+    
 }
