@@ -10,6 +10,8 @@ import UIKit
 
 class EquipmentInfoView: UIView {
 
+    @IBOutlet var availableLabel: UILabel!
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet var nameLabel: UILabel!
