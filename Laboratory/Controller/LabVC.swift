@@ -54,6 +54,13 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let labName = labVMs[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let labInfoVC = storyboard.instantiateViewController(withIdentifier: "LabInfoVC") as! LabInfoVC
+        self.navigationController?.pushViewController(labInfoVC, animated: true)
+    }
 }
 
 // MARK: - Search bar
