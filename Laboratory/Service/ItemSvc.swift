@@ -14,6 +14,11 @@ enum ItemResult {
     case failure(String)
 }
 
+enum ItemInfoResult {
+    case success(ItemVM)
+    case failure(String)
+}
+
 struct ItemSvc {
     static func fetchItemData(completion: @escaping (ItemResult) -> Void) {
         var itemVMs = [LabItemEditVM]()
@@ -40,7 +45,24 @@ struct ItemSvc {
         }
     }
     
-    static func fetchItemInfo(byName name: String, department: String, institution: String) {
-        
+    static func fetchItemInfo(byName name: String, completion: @escaping (ItemInfoResult) -> Void) {
+        // TODO: get department and instituion from Cache?
+    Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").whereField("name", isEqualTo: name).getDocuments { (snapshot, error) in
+        if error != nil {
+            completion(.failure(error?.localizedDescription ?? "ERR fetching Item Info data"))
+        } else {
+            let document = snapshot!.documents.first!
+            if let itemName = document.data()["name"] as? String,
+                let quantity = document.data()["quantity"] as? Int,
+                let description = document.data()["description"] as? String,
+                let location = document.data()["location"] as? String,
+                let pictureUrl = document.data()["pictureUrl"] as? String
+            {
+                completion(.success(ItemVM(item: Item(name: itemName, quantity: quantity, description: description, location: location, pictureUrl: pictureUrl))))
+            } else {
+                completion(.failure(error?.localizedDescription ?? "ERR converting Item Info into Item class"))
+            }
+        }
+        }
     }
 }

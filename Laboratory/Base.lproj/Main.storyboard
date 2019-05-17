@@ -202,9 +202,24 @@
                     <view key="view" contentMode="scaleToFill" id="zR4-df-DMb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBh-ax-Bds" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zxb-0j-AIi" firstAttribute="trailing" secondItem="ZBh-ax-Bds" secondAttribute="trailing" id="FVQ-Pw-sd9"/>
+                            <constraint firstItem="Zxb-0j-AIi" firstAttribute="bottom" secondItem="ZBh-ax-Bds" secondAttribute="bottom" id="J8n-Qj-dzA"/>
+                            <constraint firstItem="ZBh-ax-Bds" firstAttribute="leading" secondItem="Zxb-0j-AIi" secondAttribute="leading" id="ogd-gI-p6c"/>
+                            <constraint firstItem="ZBh-ax-Bds" firstAttribute="top" secondItem="Zxb-0j-AIi" secondAttribute="top" id="zNT-XO-nxh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zxb-0j-AIi"/>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="ZBh-ax-Bds" id="2oJ-jI-aDd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mq0-5F-6qY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

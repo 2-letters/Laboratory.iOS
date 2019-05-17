@@ -10,53 +10,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="DJr-Xa-2Ac">
-                    <rect key="frame" x="123" y="52" width="168" height="34"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIL-6c-7Qj">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="34"/>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
-                            <state key="normal" title="-"/>
-                        </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-ox-Ams">
-                            <rect key="frame" x="64" y="0.0" width="40" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="ALq-xl-MGA"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPW-Af-IsV">
-                            <rect key="frame" x="128" y="0.0" width="40" height="34"/>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
-                            <state key="normal" title="+"/>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="34" id="euN-Ga-4oy"/>
-                    </constraints>
-                </stackView>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="DJr-Xa-2Ac" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="8dg-Ai-rS6"/>
-                <constraint firstItem="DJr-Xa-2Ac" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="V1b-4g-K6f"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
             <connections>
-                <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="g1y-wk-fHo"/>
-                <outlet property="nameLabel" destination="O5B-nS-CIn" id="4WX-sZ-7gO"/>
+                <outlet property="contentView" destination="c5y-RN-dVf" id="iP2-Pm-ror"/>
+                <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="GNc-Sp-sPB"/>
+                <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="Egl-US-a85"/>
+                <outlet property="locationTextView" destination="kRb-gL-WFs" id="PyO-Cb-kEk"/>
+                <outlet property="nameLabel" destination="O5B-nS-CIn" id="7IN-EM-EnH"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
-        </view>
-        <view contentMode="scaleToFill" id="c5y-RN-dVf" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="c5y-RN-dVf">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -136,12 +100,6 @@
                 <constraint firstItem="SxJ-5z-LwO" firstAttribute="trailing" secondItem="Fzk-oy-24n" secondAttribute="trailing" id="rJP-Wv-Vqu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SxJ-5z-LwO"/>
-            <connections>
-                <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="Xm7-Dp-6QN"/>
-                <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="7Xa-Cm-avM"/>
-                <outlet property="locationTextView" destination="kRb-gL-WFs" id="urg-Lp-oCb"/>
-                <outlet property="nameLabel" destination="O5B-nS-CIn" id="aoQ-Hp-2dF"/>
-            </connections>
             <point key="canvasLocation" x="926.08695652173924" y="170.75892857142856"/>
         </view>
     </objects>
