@@ -10,7 +10,7 @@ import UIKit
 
 class LabCreateVC: UIViewController {
 
-    @IBOutlet var labCreateView: LabCreateView!
+    @IBOutlet var labCreateView: LabInfoView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

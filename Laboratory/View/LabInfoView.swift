@@ -1,5 +1,5 @@
 //
-//  LabCreateView.swift
+//  LabInfoView.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/12/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabCreateView: UIView {
+class LabInfoView: UIView {
 
     @IBOutlet var contentView: UIView!
     
@@ -31,7 +31,7 @@ class LabCreateView: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed("LabCreateView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("LabInfoView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

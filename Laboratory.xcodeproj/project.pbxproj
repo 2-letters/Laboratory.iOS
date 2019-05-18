@@ -29,7 +29,7 @@
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
 		C9F43E74228F2B740049C68D /* LabInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F43E73228F2B740049C68D /* LabInfoVC.swift */; };
-		DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabCreateView.swift */; };
+		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
 		DE420945228BC15900ADFEA1 /* ItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* ItemVC.swift */; };
 		DE420947228BCA9B00ADFEA1 /* ItemSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420946228BCA9B00ADFEA1 /* ItemSvc.swift */; };
 		DE420949228BCC6A00ADFEA1 /* ItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* ItemVM.swift */; };
@@ -38,7 +38,7 @@
 		DE605A2722892E4E00D1B679 /* LabItemEditTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */; };
 		DE605A292289337800D1B679 /* LabItemEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* LabItemEditVM.swift */; };
 		DE7186FB22867168008B0F82 /* AddedLabItemTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */; };
-		DE9629622287C81800E9EC8D /* LabCreateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabCreateView.xib */; };
+		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,7 @@
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
 		C9F43E73228F2B740049C68D /* LabInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVC.swift; sourceTree = "<group>"; };
-		DE170D3A228883BE0086DB85 /* LabCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateView.swift; sourceTree = "<group>"; };
+		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
 		DE420944228BC15900ADFEA1 /* ItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVC.swift; sourceTree = "<group>"; };
 		DE420946228BCA9B00ADFEA1 /* ItemSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSvc.swift; sourceTree = "<group>"; };
 		DE420948228BCC6A00ADFEA1 /* ItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVM.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemEditTVCell.xib; sourceTree = "<group>"; };
 		DE605A282289337800D1B679 /* LabItemEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemEditVM.swift; sourceTree = "<group>"; };
 		DE7186FA22867168008B0F82 /* AddedLabItemTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedLabItemTVC.swift; sourceTree = "<group>"; };
-		DE9629612287C81800E9EC8D /* LabCreateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCreateView.xib; sourceTree = "<group>"; };
+		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +153,8 @@
 				C34438762281F7970021168B /* LabTVCell.xib */,
 				C3A1C7E02283849C00966461 /* LabItemTVCell.swift */,
 				C3A1C7E12283849C00966461 /* LabItemTVCell.xib */,
-				DE9629612287C81800E9EC8D /* LabCreateView.xib */,
-				DE170D3A228883BE0086DB85 /* LabCreateView.swift */,
+				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
+				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
 				DE605A2422892E4E00D1B679 /* LabItemEditTVCell.swift */,
 				DE605A2522892E4E00D1B679 /* LabItemEditTVCell.xib */,
 				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
@@ -278,7 +278,7 @@
 				DE605A2722892E4E00D1B679 /* LabItemEditTVCell.xib in Resources */,
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
 				C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */,
-				DE9629622287C81800E9EC8D /* LabCreateView.xib in Resources */,
+				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
 				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
@@ -362,7 +362,7 @@
 				DE605A2622892E4E00D1B679 /* LabItemEditTVCell.swift in Sources */,
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* ItemVM.swift in Sources */,
-				DE170D3B228883BE0086DB85 /* LabCreateView.swift in Sources */,
+				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
 				DE420947228BCA9B00ADFEA1 /* ItemSvc.swift in Sources */,
 				DE605A292289337800D1B679 /* LabItemEditVM.swift in Sources */,
