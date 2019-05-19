@@ -17,7 +17,11 @@ class LabCreateVC: UIViewController {
 
         labCreateView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
     }
-    
+}
+
+
+// MARK: - User Interaction
+extension LabCreateVC {
     @objc func addEquipments() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let labEquipmentSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC") as! LabEquipmentSelectionVC
@@ -42,15 +46,4 @@ class LabCreateVC: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

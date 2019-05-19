@@ -9,8 +9,6 @@
 import UIKit
 
 class LabVC: UIViewController {
-
-    
     @IBOutlet var labSearchBar: UISearchBar!
     @IBOutlet var labTV: UITableView!
     
@@ -26,6 +24,14 @@ class LabVC: UIViewController {
         labSearchBar.delegate = self
         
         loadLabData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showLabInfo {
+            let labInfoVC = segue.destination as! LabInfoVC
+            // send labVM to LabInfo View Controller
+            labInfoVC.labVM = sender as? LabVM
+        }
     }
     
 //    @IBAction func createLab(_ sender: UIBarButtonItem) {
@@ -45,7 +51,9 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // get the table cell
         let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
+        
         if isSearching {
             cell.labVM = searchedLabVMs[indexPath.row]
         } else {
@@ -56,10 +64,9 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let labName = labVMs[indexPath.row]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let labInfoVC = storyboard.instantiateViewController(withIdentifier: "LabInfoVC") as! LabInfoVC
-        self.navigationController?.pushViewController(labInfoVC, animated: true)
+        let labVM = labVMs[indexPath.row]
+        // show LabInfo View and send labVM to it
+        performSegue(withIdentifier: "showLabInfo", sender: labVM)
     }
 }
 
@@ -67,16 +74,20 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
 extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
+            // not a valid search, show all Items again
             isSearching = false
             labTV.reloadData()
-        }
-        isSearching = true
-        searchedLabVMs = labVMs.filter({$0.labName.lowercased()
+        } else {
+            // a valid search, start filtering
+            isSearching = true
+            searchedLabVMs = labVMs.filter({$0.labName.lowercased()
                 .prefix(searchText.count) == searchText.lowercased()})
-        labTV.reloadData()
+            labTV.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // cancel searching
         isSearching = false
         searchBar.text = ""
         labTV.reloadData()

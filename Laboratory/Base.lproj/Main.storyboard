@@ -50,11 +50,12 @@
                     <connections>
                         <outlet property="labSearchBar" destination="0k8-FF-Fs3" id="qyK-fC-ePZ"/>
                         <outlet property="labTV" destination="gVH-JR-fJh" id="452-b7-Q1Y"/>
+                        <segue destination="0cc-Dk-jsw" kind="show" identifier="showLabInfo" id="BKV-X0-UKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="-672"/>
+            <point key="canvasLocation" x="2319" y="-672"/>
         </scene>
         <!--Lab InfoVC-->
         <scene sceneID="u5g-r4-aj8">
@@ -65,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-0L-dq6" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -78,13 +79,26 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="34Q-Mw-go4"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VJm-KE-ACh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Nwa-xr-w6F">
+                            <connections>
+                                <action selector="cancel:" destination="0cc-Dk-jsw" id="GCD-f3-29m"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="OHP-th-Rog">
+                            <connections>
+                                <action selector="save:" destination="0cc-Dk-jsw" id="HZU-8K-imf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
+                        <outlet property="saveBtn" destination="OHP-th-Rog" id="qUu-ZS-GfX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBY-t3-Ihl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="-677"/>
+            <point key="canvasLocation" x="3396" y="-672"/>
         </scene>
         <!--Lab CreateVC-->
         <scene sceneID="Fuo-z8-gNz">
