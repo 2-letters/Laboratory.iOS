@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I8n-V7-Zay">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LabVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-FF-Fs3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVH-JR-fJh">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -55,18 +55,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2319" y="-672"/>
+            <point key="canvasLocation" x="2110" y="-672"/>
         </scene>
         <!--Lab InfoVC-->
         <scene sceneID="u5g-r4-aj8">
             <objects>
                 <viewController storyboardIdentifier="LabInfoVC" id="0cc-Dk-jsw" customClass="LabInfoVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fig-9v-6xp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-0L-dq6" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -98,18 +98,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBY-t3-Ihl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3396" y="-672"/>
+            <point key="canvasLocation" x="2929" y="-672"/>
         </scene>
         <!--Lab CreateVC-->
         <scene sceneID="Fuo-z8-gNz">
             <objects>
                 <viewController id="0KV-X4-D08" customClass="LabCreateVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Jc-qe-i6W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1X-FA-aJB" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -140,22 +140,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nuf-iW-pR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3286" y="86"/>
+            <point key="canvasLocation" x="2929" y="57"/>
         </scene>
         <!--Lab Equipment SelectionVC-->
         <scene sceneID="ogX-mx-b3j">
             <objects>
                 <viewController storyboardIdentifier="labEquipmentSelectionVC" id="D6r-hq-vP7" customClass="LabEquipmentSelectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niC-BV-X9V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-zi-urh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-bD-7Oh">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2929" y="748"/>
+            <point key="canvasLocation" x="1232" y="57"/>
         </scene>
         <!--Lab-->
         <scene sceneID="GVG-qi-G2A">
@@ -188,7 +188,7 @@
                     <tabBarItem key="tabBarItem" title="Lab" id="H0K-hg-FJe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftx-OS-Jzq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -198,22 +198,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgg-Vk-c5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="-672"/>
+            <point key="canvasLocation" x="1233" y="-672"/>
         </scene>
         <!--EquipmentVC-->
         <scene sceneID="IeG-eC-dYu">
             <objects>
                 <viewController id="m8J-3U-eDS" customClass="EquipmentVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CL1-D0-Vi2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zWT-2d-Z7Z">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AGQ-aK-lpY">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -233,22 +233,23 @@
                     <connections>
                         <outlet property="equipmentTableView" destination="AGQ-aK-lpY" id="XJa-4B-jw8"/>
                         <outlet property="searchBar" destination="zWT-2d-Z7Z" id="lK9-kq-1g0"/>
+                        <segue destination="g91-L7-Nax" kind="show" identifier="showEquipmentInfo" id="fAj-fS-x2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bM7-j8-WUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="86"/>
+            <point key="canvasLocation" x="864" y="748"/>
         </scene>
         <!--Equipment InfoVC-->
         <scene sceneID="q3C-iP-zlp">
             <objects>
                 <viewController storyboardIdentifier="EquipmentInfoVC" id="g91-L7-Nax" customClass="EquipmentInfoVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zR4-df-DMb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBh-ax-Bds" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -267,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mq0-5F-6qY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558" y="86"/>
+            <point key="canvasLocation" x="1700" y="748"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lGb-Us-hXh">
@@ -275,7 +276,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NgE-BO-VB2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ig3-Yh-B8U">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -285,7 +286,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9g7-Mb-AoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="86"/>
+            <point key="canvasLocation" x="2109" y="57"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JUm-Rg-vP4">
@@ -313,7 +314,7 @@
                     <tabBarItem key="tabBarItem" title="Equipment" id="bhP-2z-uXt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VKI-X4-SvA">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -323,7 +324,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egE-UN-Tr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="86"/>
+            <point key="canvasLocation" x="36" y="748"/>
         </scene>
     </scenes>
 </document>

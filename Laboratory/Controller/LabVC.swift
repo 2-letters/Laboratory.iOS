@@ -66,7 +66,7 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let labVM = labVMs[indexPath.row]
         // show LabInfo View and send labVM to it
-        performSegue(withIdentifier: "showLabInfo", sender: labVM)
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: labVM)
     }
 }
 

@@ -12,43 +12,47 @@ class EquipmentInfoVC: UIViewController {
     
     @IBOutlet var mainView: EquipmentInfoView!
     
-    var equipmentName: String = "" {
-        didSet {
-            loadEquipmentInfo()
-        }
-    }
+    var labEquipmentEditVM: LabEquipmentEditVM?
+    
+//    var equipmentName: String = "" {
+//        didSet {
+//            loadEquipmentInfo()
+//        }
+//    }
     
     var equipmentInfoVM: EquipmentVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view.
+        loadEquipmentInfo()
     }
     
 
     func loadEquipmentInfo() {
-        EquipmentSvc.fetchEquipmentInfo(byName: equipmentName) { [unowned self] (itemInfoResult) in
-            switch itemInfoResult {
-            case let .failure(errorStr):
-                print(errorStr)
-            case let .success(viewModel):
-                self.equipmentInfoVM = viewModel
-                self.updateUI()
+        if let equipmentName = labEquipmentEditVM?.equipmentName {
+            EquipmentSvc.fetchEquipmentInfo(byName: equipmentName) { [unowned self] (itemInfoResult) in
+                switch itemInfoResult {
+                case let .failure(errorStr):
+                    print(errorStr)
+                case let .success(viewModel):
+                    self.equipmentInfoVM = viewModel
+                    self.updateUI()
+                }
             }
         }
+        
     }
     
     private func updateUI() {
-        mainView.availableLabel.text = "Available: \(equipmentInfoVM!.quantity)"
+        mainView.availableLabel.text = "Available: \(equipmentInfoVM?.quantity ?? 0)"
         mainView.nameLabel.text = "Name: \(equipmentInfoVM?.equipmentName ?? "")"
         mainView.locationTextView.text = equipmentInfoVM?.location
         adjustUITextViewHeight(arg: mainView.locationTextView)
         mainView.descriptionTextView.text = equipmentInfoVM?.description
         adjustUITextViewHeight(arg: mainView.descriptionTextView)
         do {
-            let url = URL(string: equipmentInfoVM!.pictureUrl)!
+            let url = URL(string: equipmentInfoVM?.pictureUrl ?? "")!
             let data = try Data(contentsOf: url)
             mainView.equipmentImageView.image = UIImage(data: data)
         }

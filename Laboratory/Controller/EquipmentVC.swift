@@ -24,10 +24,21 @@ class EquipmentVC: UIViewController {
         equipmentTableView.delegate = self
         equipmentTableView.dataSource = self
         
+        setupUI()
+        loadEquipmentData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showEquipmentInfo {
+            let equipmentInfoVC = segue.destination as! EquipmentInfoVC
+            equipmentInfoVC.labEquipmentEditVM = sender as? LabEquipmentEditVM
+        }
+    }
+    
+    // MARK: Layout
+    func setupUI() {
         let nib = UINib(nibName: "LabEquipmentEditTVCell", bundle: nil)
         equipmentTableView.register(nib, forCellReuseIdentifier: "LabEquipmentEditCell")
-        
-        loadEquipmentData()
     }
     
     func loadEquipmentData() {
@@ -82,12 +93,13 @@ extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemName = equipmentVMs[indexPath.row].equipmentName
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let equipmentInfoVC = storyboard.instantiateViewController(withIdentifier: "EquipmentInfoVC") as! EquipmentInfoVC
-        equipmentInfoVC.equipmentName = itemName
-        
-        self.navigationController?.pushViewController(equipmentInfoVC, animated: true)
-        // TODO send data to Equipment Info View -> EquipmentSvc.fetchtemInfo(byName:)
+        let labEquipmentEditVM = equipmentVMs[indexPath.row]
+        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: labEquipmentEditVM)
+//        let itemName = equipmentVMs[indexPath.row].equipmentName
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let equipmentInfoVC = storyboard.instantiateViewController(withIdentifier: "EquipmentInfoVC") as! EquipmentInfoVC
+//        equipmentInfoVC.equipmentName = itemName
+//
+//        self.navigationController?.pushViewController(equipmentInfoVC, animated: true)
     }
 }
