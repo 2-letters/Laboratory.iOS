@@ -1,5 +1,5 @@
 //
-//  LabItemVM.swift
+//  LabEquipmentVM.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/8/19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct LabItemVM {
-    var itemName: String
+struct LabEquipmentVM {
+    var equipmentName: String
     var quantity: Int
     var accessoryType: UITableViewCell.AccessoryType
     
-    init(_ item: LabItem) {
-        self.itemName = item.itemName
-        self.quantity = item.quantity
+    init(_ equipment: LabEquipment) {
+        self.equipmentName = equipment.equipmentName
+        self.quantity = equipment.quantity
         accessoryType = .disclosureIndicator
     }
 }

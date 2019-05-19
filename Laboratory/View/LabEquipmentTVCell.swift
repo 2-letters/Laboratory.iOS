@@ -1,5 +1,5 @@
 //
-//  LabItemTVCell.swift
+//  LabEquipmentTVCell.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/8/19.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class LabItemTVCell: UITableViewCell {
+class LabEquipmentTVCell: UITableViewCell {
 
-    @IBOutlet var itemNameLbl: UILabel!
+    @IBOutlet var equipmentNameLbl: UILabel!
     @IBOutlet var quantityLbl: UILabel!
     
-    var labItemVM: LabItemVM! {
+    var labEquipmentVM: LabEquipmentVM! {
         didSet {
-            itemNameLbl.text = labItemVM.itemName
-            accessoryType = labItemVM.accessoryType
+            equipmentNameLbl.text = labEquipmentVM.equipmentName
+            accessoryType = labEquipmentVM.accessoryType
         }
     }
     

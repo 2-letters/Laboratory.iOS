@@ -1,5 +1,5 @@
 //
-//  LabItemEditVM.swift
+//  LabEquipmentEditVM.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/13/19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct LabItemEditVM {
-    var itemName: String
+struct LabEquipmentEditVM {
+    var equipmentName: String
 //    var selectionStyle: UITableViewCell.SelectionStyle
 //    var accessoryType: UITableViewCell.AccessoryType
 //    let isSelected: Observable<Bool>
     
-    init(_ item: LabItem) {
-        itemName = item.itemName
+    init(_ equipment: LabEquipment) {
+        equipmentName = equipment.equipmentName
 //        selectionStyle = .blue
 //        accessoryType = .none
 //

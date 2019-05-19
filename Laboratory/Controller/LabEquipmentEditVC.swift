@@ -1,5 +1,5 @@
 //
-//  LabItemVC.swift
+//  LabEquipmentVC.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/10/19.
@@ -8,33 +8,33 @@
 
 import UIKit
 
-class LabItemEditVC: UIViewController {
+class LabEquipmentSelectionVC: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var labItemTV: UITableView!
+    @IBOutlet var labEquipmentTV: UITableView!
     
-    var labItemVMs = [LabItemEditVM]()
-    var searchedLabItemVMs = [LabItemEditVM]()
+    var labEquipmentVMs = [LabEquipmentEditVM]()
+    var searchedLabEquipmentVMs = [LabEquipmentEditVM]()
     var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchBar.delegate = self
-        labItemTV.delegate = self
-        labItemTV.dataSource = self
+        labEquipmentTV.delegate = self
+        labEquipmentTV.dataSource = self
         // allow multiple selections
-        labItemTV.allowsMultipleSelection = true
+        labEquipmentTV.allowsMultipleSelection = true
         
         // load LabItems TableView
-        let nib = UINib(nibName: "LabItemEditTVCell", bundle: nil)
-        labItemTV.register(nib, forCellReuseIdentifier: "LabItemEditCell")
+        let nib = UINib(nibName: "LabEquipmentEditTVCell", bundle: nil)
+        labEquipmentTV.register(nib, forCellReuseIdentifier: "LabEquipmentEditCell")
         
-        loadLabItemData()
+        loadLabEquipmentData()
         
         // navbar buttons
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingItems))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingEquipments))
 
     }
     
@@ -42,8 +42,8 @@ class LabItemEditVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func doneAddingItems() {
-        if let selectedIndexes = labItemTV.indexPathsForSelectedRows {
+    @objc func doneAddingEquipments() {
+        if let selectedIndexes = labEquipmentTV.indexPathsForSelectedRows {
             print(selectedIndexes)
         }
         dismiss(animated: true, completion: nil)
@@ -52,24 +52,24 @@ class LabItemEditVC: UIViewController {
 
 
 // MARK: - Table View
-extension LabItemEditVC: UITableViewDelegate, UITableViewDataSource {
+extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Added Items"
+            return "Added Equipments"
         } else {
-            return "Available Items"
+            return "Available Equipments"
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            return searchedLabItemVMs.count
+            return searchedLabEquipmentVMs.count
         }
-        return labItemVMs.count
+        return labEquipmentVMs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,29 +78,29 @@ extension LabItemEditVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         // TODO: 
-//        let cell = Bundle.main.loadNibNamed("LabItemTVCell", owner: self, options: nil)?.first as! LabItemTVCell
-        let cell = labItemTV.dequeueReusableCell(withIdentifier: "LabItemEditCell") as! LabItemEditTVCell
+//        let cell = Bundle.main.loadNibNamed("LabEquipmentTVCell", owner: self, options: nil)?.first as! LabEquipmentTVCell
+        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: "LabEquipmentEditCell") as! LabEquipmentEditTVCell
         if isSearching {
-            cell.setup(viewModel: searchedLabItemVMs[indexPath.row])
+            cell.setup(viewModel: searchedLabEquipmentVMs[indexPath.row])
         } else {
-            cell.setup(viewModel: labItemVMs[indexPath.row])
+            cell.setup(viewModel: labEquipmentVMs[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        var vm = labItemVMs[indexPath.row]
+        var vm = labEquipmentVMs[indexPath.row]
 //        vm.isSelected.value = true
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.cyan
         cell?.selectedBackgroundView = backgroundView
-//        labItemTV.reloadData()
+//        labEquipmentTV.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        var vm = labItemVMs[indexPath.row]
+        var vm = labEquipmentVMs[indexPath.row]
 //        vm.isSelected.value = false
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
@@ -111,40 +111,40 @@ extension LabItemEditVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Search bar
-extension LabItemEditVC: UISearchBarDelegate {
+extension LabEquipmentSelectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
-            labItemTV.reloadData()
+            labEquipmentTV.reloadData()
             return
         }
         isSearching = true
-        searchedLabItemVMs = labItemVMs.filter({$0.itemName.lowercased().contains(searchText.lowercased())})
-        labItemTV.reloadData()
+        searchedLabEquipmentVMs = labEquipmentVMs.filter({$0.equipmentName.lowercased().contains(searchText.lowercased())})
+        labEquipmentTV.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
-        labItemTV.reloadData()
+        labEquipmentTV.reloadData()
     }
 }
 
 
 // MARK: - Additional Helpers
-extension LabItemEditVC {
-    func loadLabItemData() {
-        LabSvc.fetchLabItem() { [unowned self] (LabItemResult) in
-            switch LabItemResult {
+extension LabEquipmentSelectionVC {
+    func loadLabEquipmentData() {
+        LabSvc.fetchLabEquipment() { [unowned self] (labEquipmentResult) in
+            switch labEquipmentResult {
             case let .success(viewModels):
-                self.labItemVMs = viewModels
+                self.labEquipmentVMs = viewModels
             // TODO: save to cache
             case let .failure(error):
                 print(error)
             }
             
             DispatchQueue.main.async {
-                self.labItemTV.reloadData()
+                self.labEquipmentTV.reloadData()
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  LabItem.swift
+//  LabEquipment.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/8/19.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct LabItem {
-    var itemName: String!
+struct LabEquipment {
+    var equipmentName: String!
     var quantity: Int!
     
-    init(itemName: String) {
-        self.itemName = itemName
+    init(equipmentName: String) {
+        self.equipmentName = equipmentName
     }
 }

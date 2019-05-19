@@ -1,5 +1,5 @@
 //
-//  ItemVC.swift
+//  EquipmentVC.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/14/19.
@@ -8,86 +8,86 @@
 
 import UIKit
 
-class ItemVC: UIViewController {
+class EquipmentVC: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var itemTableView: UITableView!
+    @IBOutlet var equipmentTableView: UITableView!
     
     var isSearching = false
-    var itemVMs = [LabItemEditVM]()
-    var searchedItemVMs = [LabItemEditVM]()
+    var equipmentVMs = [LabEquipmentEditVM]()
+    var searchedEquipmentVMs = [LabEquipmentEditVM]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchBar.delegate = self
-        itemTableView.delegate = self
-        itemTableView.dataSource = self
+        equipmentTableView.delegate = self
+        equipmentTableView.dataSource = self
         
-        let nib = UINib(nibName: "LabItemEditTVCell", bundle: nil)
-        itemTableView.register(nib, forCellReuseIdentifier: "LabItemEditCell")
+        let nib = UINib(nibName: "LabEquipmentEditTVCell", bundle: nil)
+        equipmentTableView.register(nib, forCellReuseIdentifier: "LabEquipmentEditCell")
         
-        loadItemData()
+        loadEquipmentData()
     }
     
-    func loadItemData() {
-        ItemSvc.fetchItemData() { [unowned self] (itemResult) in
+    func loadEquipmentData() {
+        EquipmentSvc.fetchEquipmentData() { [unowned self] (itemResult) in
             switch itemResult {
             case let .failure(error):
                 print(error)
             case let .success(viewModels):
-                self.itemVMs = viewModels
+                self.equipmentVMs = viewModels
             }
-            self.itemTableView.reloadData()
+            self.equipmentTableView.reloadData()
         }
     }
 }
 
 // MARK:  - Search Bar
-extension ItemVC: UISearchBarDelegate {
+extension EquipmentVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
-            itemTableView.reloadData()
+            equipmentTableView.reloadData()
             return
         }
         isSearching = true
-        searchedItemVMs = itemVMs.filter({$0.itemName.lowercased().contains(searchText.lowercased())})
-        itemTableView.reloadData()
+        searchedEquipmentVMs = equipmentVMs.filter({$0.equipmentName.lowercased().contains(searchText.lowercased())})
+        equipmentTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
-        itemTableView.reloadData()
+        equipmentTableView.reloadData()
     }
 }
 
 
 // MARK: - Table View
-extension ItemVC: UITableViewDelegate, UITableViewDataSource {
+extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching == true ? searchedItemVMs.count : itemVMs.count
+        return isSearching == true ? searchedEquipmentVMs.count : equipmentVMs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = itemTableView.dequeueReusableCell(withIdentifier: "LabItemEditCell") as! LabItemEditTVCell
+        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: "LabEquipmentEditCell") as! LabEquipmentEditTVCell
         if isSearching {
-            cell.setup(viewModel: searchedItemVMs[indexPath.row])
+            cell.setup(viewModel: searchedEquipmentVMs[indexPath.row])
         } else {
-            cell.setup(viewModel: itemVMs[indexPath.row])
+            cell.setup(viewModel: equipmentVMs[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemName = itemVMs[indexPath.row].itemName
+        let itemName = equipmentVMs[indexPath.row].equipmentName
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let equipmentInfoVC = storyboard.instantiateViewController(withIdentifier: "EquipmentInfoVC") as! EquipmentInfoVC
         equipmentInfoVC.equipmentName = itemName
         
         self.navigationController?.pushViewController(equipmentInfoVC, animated: true)
-        // TODO send data to Item Info View -> ItemSvc.fetchtemInfo(byName:)
+        // TODO send data to Equipment Info View -> EquipmentSvc.fetchtemInfo(byName:)
     }
 }

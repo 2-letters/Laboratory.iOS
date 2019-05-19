@@ -14,8 +14,8 @@ enum LabResult {
     case failure(String)
 }
 
-enum LabItemEditResult {
-    case success([LabItemEditVM])
+enum LabEquipmentEditResult {
+    case success([LabEquipmentEditVM])
     case failure(String)
 }
 
@@ -39,8 +39,8 @@ struct LabSvc {
         }
     }
     
-    static func fetchLabItem(completion: @escaping (LabItemEditResult) -> Void) {
-        var labItemSelectionVMs = [LabItemEditVM]()
+    static func fetchLabEquipment(completion: @escaping (LabEquipmentEditResult) -> Void) {
+        var labEquipmentSelectionVMs = [LabEquipmentEditVM]()
         Firestore.firestore().collection("labItems").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
             
@@ -48,18 +48,18 @@ struct LabSvc {
                     completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Items data"))
                 } else {
                     for document in (snapshot!.documents) {
-                        guard let itemName = document.data()["itemName"] as? String else {
-                            completion(.failure("ERR fetching Lab Item name"))
+                        guard let equipmentName = document.data()["itemName"] as? String else {
+                            completion(.failure("ERR fetching Lab Equipment name"))
                             return
                         }
 //                        guard let quantity = document.data()["quantity"] as? Int else {
-//                            completion(.failure("ERR fetching Lab Item name"))
+//                            completion(.failure("ERR fetching Lab Equipment name"))
 //                            return
 //                        }
-                        labItemSelectionVMs.append(LabItemEditVM(LabItem(itemName: itemName)))
-                        completion(.success(labItemSelectionVMs))
+                        labEquipmentSelectionVMs.append(LabEquipmentEditVM(LabEquipment(equipmentName: equipmentName)))
+                        completion(.success(labEquipmentSelectionVMs))
                     }
-                    completion(.success(labItemSelectionVMs))
+                    completion(.success(labEquipmentSelectionVMs))
                 }
         }
     }

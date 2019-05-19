@@ -12,10 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
             <connections>
-                <outlet property="addItemsBtn" destination="gSt-bB-Eni" id="dWS-hW-uG1"/>
+                <outlet property="addEquipmentsBtn" destination="gSt-bB-Eni" id="dWS-hW-uG1"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="tZf-xW-nu8"/>
                 <outlet property="descriptionTextField" destination="OCt-80-gVw" id="dOD-97-d8d"/>
-                <outlet property="labItemTV" destination="e7i-yQ-Tle" id="Be7-Oi-bJ0"/>
+                <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="Be7-Oi-bJ0"/>
                 <outlet property="nameTextField" destination="KyW-6i-9gj" id="ktC-q4-Uwl"/>
             </connections>
         </placeholder>
@@ -53,7 +53,7 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-bB-Eni">
                             <rect key="frame" x="0.0" y="133" width="374" height="30"/>
-                            <state key="normal" title="Add items..."/>
+                            <state key="normal" title="Add Equipments..."/>
                         </button>
                     </subviews>
                     <constraints>

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class LabItemEditTVCell: UITableViewCell {
+class LabEquipmentEditTVCell: UITableViewCell {
 
-    @IBOutlet var itemNameLabel: UILabel!
+    @IBOutlet var equipmentNameLabel: UILabel!
     
-//    var labItemEditVM: LabItemEditVM?
+//    var labItemEditVM: LabEquipmentEditVM?
 //        didSet {
-//            itemNameLabel.text = labItemSelectionVM?.itemName
+//            equipmentNameLabel.text = labItemSelectionVM?.equipmentName
 //
 //            // listen to the change of the isSelected property
 //            // TODO: use subscribe of RxSwift instead
@@ -27,9 +27,9 @@ class LabItemEditTVCell: UITableViewCell {
 //            }
 //        }
 //    }
-    func setup(viewModel: LabItemEditVM) {
+    func setup(viewModel: LabEquipmentEditVM) {
 //        labItemEditVM = viewModel
-        itemNameLabel.text = viewModel.itemName
+        equipmentNameLabel.text = viewModel.equipmentName
         accessoryType = .disclosureIndicator
         
         // listen to the change of the isSelected property
@@ -53,7 +53,7 @@ class LabItemEditTVCell: UITableViewCell {
     
 //    var labItemSelectionVM: LabItemSelectionVM! {
 //        didSet {
-//            itemNameLabel.text = labItemSelectionVM.itemName
+//            equipmentNameLabel.text = labItemSelectionVM.equipmentName
 //            selectionStyle = labItemSelectionVM.selectionStyle
 //            accessoryType = labItemSelectionVM.accessoryType
 //        }

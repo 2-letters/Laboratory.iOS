@@ -10,21 +10,20 @@ import UIKit
 
 class LabInfoVC: UIViewController {
 
+    @IBOutlet var labInfoView: LabInfoView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        labInfoView.addEquipmentsBtn.setTitle("Edit equipments...", for: .normal)
+        labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func editEquipments() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let labEquipmentSelectionVC = storyboard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC")
+        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
+        present(navController, animated: true, completion: nil)
     }
-    */
 
 }

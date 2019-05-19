@@ -18,7 +18,7 @@ class EquipmentInfoVC: UIViewController {
         }
     }
     
-    var equipmentInfoVM: ItemVM?
+    var equipmentInfoVM: EquipmentVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class EquipmentInfoVC: UIViewController {
     
 
     func loadEquipmentInfo() {
-        ItemSvc.fetchItemInfo(byName: equipmentName) { [unowned self] (itemInfoResult) in
+        EquipmentSvc.fetchEquipmentInfo(byName: equipmentName) { [unowned self] (itemInfoResult) in
             switch itemInfoResult {
             case let .failure(errorStr):
                 print(errorStr)
@@ -42,7 +42,7 @@ class EquipmentInfoVC: UIViewController {
     
     private func updateUI() {
         mainView.availableLabel.text = "Available: \(equipmentInfoVM!.quantity)"
-        mainView.nameLabel.text = "Name: \(equipmentInfoVM?.itemName ?? "")"
+        mainView.nameLabel.text = "Name: \(equipmentInfoVM?.equipmentName ?? "")"
         mainView.locationTextView.text = equipmentInfoVM?.location
         adjustUITextViewHeight(arg: mainView.locationTextView)
         mainView.descriptionTextView.text = equipmentInfoVM?.description

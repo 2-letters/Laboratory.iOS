@@ -15,13 +15,13 @@ class LabCreateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        labCreateView.addItemsBtn.addTarget(self, action: #selector(addItems), for: .touchUpInside)
+        labCreateView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
     }
     
-    @objc func addItems() {
+    @objc func addEquipments() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let labItemSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labItemSelection") as! LabItemEditVC
-        let navController = UINavigationController(rootViewController: labItemSelectionVC)
+        let labEquipmentSelectionVC = storyBoard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC") as! LabEquipmentSelectionVC
+        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
         present(navController, animated: true, completion: nil)
     }
     

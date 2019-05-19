@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  Equipment.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/15/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Item {
+struct Equipment {
     var name: String
     var quantity: Int
     var description: String

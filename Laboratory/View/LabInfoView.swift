@@ -16,9 +16,9 @@ class LabInfoView: UIView {
     
     @IBOutlet var descriptionTextField: UITextField!
     
-    @IBOutlet var addItemsBtn: UIButton!
+    @IBOutlet var addEquipmentsBtn: UIButton!
     
-    @IBOutlet var labItemTV: UITableView!
+    @IBOutlet var labEquipmentTV: UITableView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
