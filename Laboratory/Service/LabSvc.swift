@@ -41,7 +41,7 @@ struct LabSvc {
     
     static func fetchLabEquipment(byName labName: String, completion: @escaping (LabEquipmentResult) -> Void) {
         var labEquipmentSelectionVMs = [LabEquipmentVM]()
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document("labName").collection("items").order(by: "itemName", descending: false)
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document("labName").collection("equipments").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
             
                 if error != nil {

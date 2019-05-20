@@ -11,11 +11,10 @@ import UIKit
 struct LabVM {
     let labName: String
     let description: String
-    let accessoryType: UITableViewCell.AccessoryType
+    let accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
     init(_ labInstance: Lab) {
         self.labName = labInstance.name
         self.description = labInstance.description
-        accessoryType = .disclosureIndicator
     }
 }

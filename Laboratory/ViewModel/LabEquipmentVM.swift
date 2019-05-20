@@ -11,11 +11,10 @@ import UIKit
 struct LabEquipmentVM {
     var equipmentName: String
     var quantity: Int
-    var accessoryType: UITableViewCell.AccessoryType
+    var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
     init(_ equipment: LabEquipment) {
         self.equipmentName = equipment.equipmentName
         self.quantity = equipment.quantity
-        accessoryType = .disclosureIndicator
     }
 }
