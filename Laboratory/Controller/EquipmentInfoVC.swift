@@ -12,7 +12,7 @@ class EquipmentInfoVC: UIViewController {
     
     @IBOutlet var mainView: EquipmentInfoView!
     
-    var labEquipmentEditVM: LabEquipmentEditVM?
+    var labEquipmentEditVM: LabEquipmentSelectionVM?
     
 //    var equipmentName: String = "" {
 //        didSet {

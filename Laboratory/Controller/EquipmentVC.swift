@@ -14,8 +14,8 @@ class EquipmentVC: UIViewController {
     @IBOutlet var equipmentTableView: UITableView!
     
     var isSearching = false
-    var equipmentVMs = [LabEquipmentEditVM]()
-    var searchedEquipmentVMs = [LabEquipmentEditVM]()
+    var equipmentVMs = [LabEquipmentSelectionVM]()
+    var searchedEquipmentVMs = [LabEquipmentSelectionVM]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +31,14 @@ class EquipmentVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
-            equipmentInfoVC.labEquipmentEditVM = sender as? LabEquipmentEditVM
+            equipmentInfoVC.labEquipmentEditVM = sender as? LabEquipmentSelectionVM
         }
     }
     
     // MARK: Layout
     func setupUI() {
-        let nib = UINib(nibName: "LabEquipmentEditTVCell", bundle: nil)
-        equipmentTableView.register(nib, forCellReuseIdentifier: "LabEquipmentEditCell")
+        let nib = UINib(nibName: "LabEquipmentSelectionTVCell", bundle: nil)
+        equipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
     }
     
     func loadEquipmentData() {
@@ -83,7 +83,7 @@ extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: "LabEquipmentEditCell") as! LabEquipmentEditTVCell
+        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! LabEquipmentSelectionTVCell
         if isSearching {
             cell.setup(viewModel: searchedEquipmentVMs[indexPath.row])
         } else {

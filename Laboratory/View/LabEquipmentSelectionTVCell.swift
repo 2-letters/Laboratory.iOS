@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabEquipmentEditTVCell: UITableViewCell {
+class LabEquipmentSelectionTVCell: UITableViewCell {
 
     @IBOutlet var equipmentNameLabel: UILabel!
     
@@ -27,7 +27,7 @@ class LabEquipmentEditTVCell: UITableViewCell {
 //            }
 //        }
 //    }
-    func setup(viewModel: LabEquipmentEditVM) {
+    func setup(viewModel: LabEquipmentSelectionVM) {
 //        labItemEditVM = viewModel
         equipmentNameLabel.text = viewModel.equipmentName
         accessoryType = .disclosureIndicator

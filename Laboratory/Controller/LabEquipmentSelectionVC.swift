@@ -13,8 +13,8 @@ class LabEquipmentSelectionVC: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var labEquipmentTV: UITableView!
     
-    var labEquipmentVMs = [LabEquipmentEditVM]()
-    var searchedLabEquipmentVMs = [LabEquipmentEditVM]()
+    var labEquipmentVMs = [LabEquipmentSelectionVM]()
+    var searchedLabEquipmentVMs = [LabEquipmentSelectionVM]()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ class LabEquipmentSelectionVC: UIViewController {
         labEquipmentTV.allowsMultipleSelection = true
         
         // load LabItems TableView
-        let nib = UINib(nibName: "LabEquipmentEditTVCell", bundle: nil)
-        labEquipmentTV.register(nib, forCellReuseIdentifier: "LabEquipmentEditCell")
+        let nib = UINib(nibName: "LabEquipmentSelectionTVCell", bundle: nil)
+        labEquipmentTV.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
         
         loadLabEquipmentData()
         
@@ -79,7 +79,7 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
         
         // TODO: 
 //        let cell = Bundle.main.loadNibNamed("LabEquipmentTVCell", owner: self, options: nil)?.first as! LabEquipmentTVCell
-        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: "LabEquipmentEditCell") as! LabEquipmentEditTVCell
+        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! LabEquipmentSelectionTVCell
         if isSearching {
             cell.setup(viewModel: searchedLabEquipmentVMs[indexPath.row])
         } else {

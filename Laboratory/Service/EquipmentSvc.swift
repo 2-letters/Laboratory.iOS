@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 enum EquipmentResult {
-    case success([LabEquipmentEditVM])
+    case success([LabEquipmentSelectionVM])
     case failure(String)
 }
 
@@ -21,7 +21,7 @@ enum EquipmentInfoResult {
 
 struct EquipmentSvc {
     static func fetchEquipmentData(completion: @escaping (EquipmentResult) -> Void) {
-        var equipmentVMs = [LabEquipmentEditVM]()
+        var equipmentVMs = [LabEquipmentSelectionVM]()
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
@@ -33,7 +33,7 @@ struct EquipmentSvc {
 //                        let location = document.data()["location"] as? String,
 //                        let photoUrl = document.data()["photoUrl"] as? String
                     {
-                        equipmentVMs.append(LabEquipmentEditVM(LabEquipment(equipmentName: equipmentName)))
+                        equipmentVMs.append(LabEquipmentSelectionVM(LabEquipment(equipmentName: equipmentName)))
                     }
 //                    guard let equipmentName = document.data()["equipmentName"] else {
 //                        return

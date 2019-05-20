@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct LabEquipmentEditVM {
+struct LabEquipmentSelectionVM {
     var equipmentName: String
 //    var selectionStyle: UITableViewCell.SelectionStyle
 //    var accessoryType: UITableViewCell.AccessoryType
