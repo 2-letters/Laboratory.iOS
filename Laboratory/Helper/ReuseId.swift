@@ -10,5 +10,4 @@ import Foundation
 
 struct ReuseId {
     static let labEquipmentSelectionCell = "LabEquipmentSelectionCell"
-    
 }

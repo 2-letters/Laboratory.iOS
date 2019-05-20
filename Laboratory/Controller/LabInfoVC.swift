@@ -14,11 +14,17 @@ class LabInfoVC: UIViewController {
     @IBOutlet var saveBtn: UIBarButtonItem!
     
     var labVM: LabVM?
+    var labEquipmentVMs = [LabEquipmentVM]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadAddedEquipments()
         setupUI()
+    }
+    
+    func loadAddedEquipments() {
+        LabSvc
     }
     
     // MARK: Layout

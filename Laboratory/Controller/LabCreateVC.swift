@@ -19,7 +19,6 @@ class LabCreateVC: UIViewController {
     }
 }
 
-
 // MARK: - User Interaction
 extension LabCreateVC {
     @objc func addEquipments() {
@@ -45,5 +44,15 @@ extension LabCreateVC {
             LabSvc.createLab(withName: newLabName, description: newLabDescription)
             dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension LabCreateVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
     }
 }

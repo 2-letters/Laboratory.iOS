@@ -9,10 +9,6 @@
 import Foundation
 
 struct LabEquipment {
-    var equipmentName: String!
-    var quantity: Int!
-    
-    init(equipmentName: String) {
-        self.equipmentName = equipmentName
-    }
+    var equipmentName: String
+    var quantity: Int
 }

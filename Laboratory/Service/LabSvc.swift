@@ -14,8 +14,8 @@ enum LabResult {
     case failure(String)
 }
 
-enum LabEquipmentEditResult {
-    case success([LabEquipmentSelectionVM])
+enum LabEquipmentResult {
+    case success([LabEquipmentVM])
     case failure(String)
 }
 
@@ -39,25 +39,27 @@ struct LabSvc {
         }
     }
     
-    static func fetchLabEquipment(completion: @escaping (LabEquipmentEditResult) -> Void) {
-        var labEquipmentSelectionVMs = [LabEquipmentSelectionVM]()
-        Firestore.firestore().collection("labItems").order(by: "itemName", descending: false)
+    static func fetchLabEquipment(byName labName: String, completion: @escaping (LabEquipmentResult) -> Void) {
+        var labEquipmentSelectionVMs = [LabEquipmentVM]()
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document("labName").collection("items").order(by: "itemName", descending: false)
             .getDocuments { (snapshot, error) in
             
                 if error != nil {
-                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Items data"))
+                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
                 } else {
-                    for document in (snapshot!.documents) {
-                        guard let equipmentName = document.data()["itemName"] as? String else {
-                            completion(.failure("ERR fetching Lab Equipment name"))
+                    for document in (snapshot!.documents)
+                    {
+                        guard let equipmentName = document.data()["itemName"] as? String,
+                            let quantity =
+                            document.data()["quantity"] as? Int
+                            else
+                        {
+                            completion(.failure("ERR reading datas from Lab Equipment"))
                             return
                         }
-//                        guard let quantity = document.data()["quantity"] as? Int else {
-//                            completion(.failure("ERR fetching Lab Equipment name"))
-//                            return
-//                        }
-                        labEquipmentSelectionVMs.append(LabEquipmentSelectionVM(LabEquipment(equipmentName: equipmentName)))
-                        completion(.success(labEquipmentSelectionVMs))
+                        labEquipmentSelectionVMs.append(
+                        LabEquipmentVM(LabEquipment(
+                            equipmentName: equipmentName, quantity: quantity)))
                     }
                     completion(.success(labEquipmentSelectionVMs))
                 }
@@ -67,7 +69,7 @@ struct LabSvc {
     static func createLab(withName name: String, description: String) {
         let newLab = ["name" : name,
                       "description": description]
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").addDocument(data: newLab) { err in
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(name).setData(newLab) { err in
                 if let err = err {
                     print("ERR creating a new Lab \(err)")
                 } else {
