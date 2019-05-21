@@ -8,10 +8,13 @@
 
 import Foundation
 
-class Equipment {
+protocol NamedItem {
+    var name: String { get }
+}
+struct Equipment: NamedItem {
     var name: String
     
-    init(name: String) {
-        self.name = name
-    }
+//    init(name: String) {
+//        self.name = name
+//    }
 }

@@ -28,6 +28,8 @@
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
+		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
+		C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11482294A57400E90B46 /* LabInfoVM.swift */; };
 		C9F43E74228F2B740049C68D /* LabInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F43E73228F2B740049C68D /* LabInfoVC.swift */; };
 		DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */; };
 		DE02CA4C229250D50078A993 /* ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02CA4B229250D50078A993 /* ReuseId.swift */; };
@@ -71,6 +73,8 @@
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
 		C97B114422949B5C00E90B46 /* FullEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEquipment.swift; sourceTree = "<group>"; };
+		C97B11462294A4EB00E90B46 /* LabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfo.swift; sourceTree = "<group>"; };
+		C97B11482294A57400E90B46 /* LabInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVM.swift; sourceTree = "<group>"; };
 		C9F43E73228F2B740049C68D /* LabInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVC.swift; sourceTree = "<group>"; };
 		DE02CA4B229250D50078A993 /* ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseId.swift; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				C3A1C7E6228385B700966461 /* LabEquipment.swift */,
 				DE42094A228BCCF100ADFEA1 /* Equipment.swift */,
 				C97B114422949B5C00E90B46 /* FullEquipment.swift */,
+				C97B11462294A4EB00E90B46 /* LabInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */,
 				DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */,
 				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
+				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
+				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
@@ -395,6 +402,7 @@
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */,
 				C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */,
+				C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */,
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
 				DE02CA4C229250D50078A993 /* ReuseId.swift in Sources */,
