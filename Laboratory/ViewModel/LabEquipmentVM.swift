@@ -14,7 +14,7 @@ struct LabEquipmentVM {
     var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
     init(_ equipment: LabEquipment) {
-        self.equipmentName = equipment.equipmentName
+        self.equipmentName = equipment.name
         self.quantity = equipment.quantity
     }
 }

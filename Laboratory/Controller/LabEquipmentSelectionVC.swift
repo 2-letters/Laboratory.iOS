@@ -13,8 +13,8 @@ class LabEquipmentSelectionVC: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var labEquipmentTV: UITableView!
     
-    var labEquipmentVMs = [LabEquipmentSelectionVM]()
-    var searchedLabEquipmentVMs = [LabEquipmentSelectionVM]()
+    var labEquipmentVMs = [SimpleEquipmentVM]()
+    var searchedLabEquipmentVMs = [SimpleEquipmentVM]()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class LabEquipmentSelectionVC: UIViewController {
         labEquipmentTV.allowsMultipleSelection = true
         
         // load LabItems TableView
-        let nib = UINib(nibName: "LabEquipmentSelectionTVCell", bundle: nil)
+        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         labEquipmentTV.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
         
         loadLabEquipmentData()
@@ -35,7 +35,6 @@ class LabEquipmentSelectionVC: UIViewController {
         // navbar buttons
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingEquipments))
-
     }
     
     @objc func cancel() {
@@ -79,7 +78,7 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
         
         // TODO: 
 //        let cell = Bundle.main.loadNibNamed("LabEquipmentTVCell", owner: self, options: nil)?.first as! LabEquipmentTVCell
-        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! LabEquipmentSelectionTVCell
+        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! SimpleEquipmentTVCell
         if isSearching {
             cell.setup(viewModel: searchedLabEquipmentVMs[indexPath.row])
         } else {
@@ -134,7 +133,7 @@ extension LabEquipmentSelectionVC: UISearchBarDelegate {
 // MARK: - Additional Helpers
 extension LabEquipmentSelectionVC {
     func loadLabEquipmentData() {
-        LabSvc.fetchLabEquipment() { [unowned self] (labEquipmentResult) in
+        EquipmentSvc.fetchEquipmentList { [unowned self] (labEquipmentResult) in
             switch labEquipmentResult {
             case let .success(viewModels):
                 self.labEquipmentVMs = viewModels

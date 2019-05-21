@@ -59,7 +59,7 @@ struct LabSvc {
                         }
                         labEquipmentSelectionVMs.append(
                         LabEquipmentVM(LabEquipment(
-                            equipmentName: equipmentName, quantity: quantity)))
+                            name: equipmentName, quantity: quantity)))
                     }
                     completion(.success(labEquipmentSelectionVMs))
                 }

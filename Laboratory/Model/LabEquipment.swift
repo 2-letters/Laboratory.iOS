@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct LabEquipment {
-    var equipmentName: String
+class LabEquipment: Equipment {
     var quantity: Int
+    
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
 }

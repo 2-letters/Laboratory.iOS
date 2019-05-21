@@ -9,19 +9,19 @@
 import Foundation
 import FirebaseFirestore
 
-enum EquipmentResult {
-    case success([LabEquipmentSelectionVM])
+enum EquipmentListResult {
+    case success([SimpleEquipmentVM])
     case failure(String)
 }
 
 enum EquipmentInfoResult {
-    case success(EquipmentVM)
+    case success(EquipmentInfoVM)
     case failure(String)
 }
 
 struct EquipmentSvc {
-    static func fetchEquipmentData(completion: @escaping (EquipmentResult) -> Void) {
-        var equipmentVMs = [LabEquipmentSelectionVM]()
+    static func fetchEquipmentList(completion: @escaping (EquipmentListResult) -> Void) {
+        var equipmentVMs = [SimpleEquipmentVM]()
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
@@ -33,7 +33,7 @@ struct EquipmentSvc {
 //                        let location = document.data()["location"] as? String,
 //                        let photoUrl = document.data()["photoUrl"] as? String
                     {
-                        equipmentVMs.append(LabEquipmentSelectionVM(LabEquipment(equipmentName: equipmentName)))
+                        equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
                     }
 //                    guard let equipmentName = document.data()["equipmentName"] else {
 //                        return
@@ -58,7 +58,7 @@ struct EquipmentSvc {
                 let location = document.data()["location"] as? String,
                 let pictureUrl = document.data()["pictureUrl"] as? String
             {
-                completion(.success(EquipmentVM(equipment: Equipment(name: equipmentName, quantity: quantity, description: description, location: location, pictureUrl: pictureUrl))))
+                completion(.success(EquipmentInfoVM(equipment: FullEquipment(name: equipmentName, quantity: quantity, description: description, location: location, pictureUrl: pictureUrl))))
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR converting Equipment Info into Equipment class"))
             }

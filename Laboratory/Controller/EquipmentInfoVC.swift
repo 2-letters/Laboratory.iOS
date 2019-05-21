@@ -12,7 +12,7 @@ class EquipmentInfoVC: UIViewController {
     
     @IBOutlet var mainView: EquipmentInfoView!
     
-    var labEquipmentEditVM: LabEquipmentSelectionVM?
+    var labEquipmentEditVM: SimpleEquipmentVM?
     
 //    var equipmentName: String = "" {
 //        didSet {
@@ -20,7 +20,7 @@ class EquipmentInfoVC: UIViewController {
 //        }
 //    }
     
-    var equipmentInfoVM: EquipmentVM?
+    var equipmentInfoVM: EquipmentInfoVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()

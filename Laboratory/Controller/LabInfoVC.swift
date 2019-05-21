@@ -86,9 +86,10 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as? LabEquipmentTVCell
+        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
         let vm = labEquipmentVMs[indexPath.row]
-        cell?.equipmentNameLbl.text = vm.equipmentName
-        cell?.quantityLbl.text = "Quantity: \(vm.quantity)"
+        cell.equipmentNameLbl.text = vm.equipmentName
+        cell.quantityLbl.text = "Quantity: \(vm.quantity)"
+        return cell
     }
 }

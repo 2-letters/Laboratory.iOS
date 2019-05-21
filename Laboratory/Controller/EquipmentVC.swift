@@ -14,8 +14,8 @@ class EquipmentVC: UIViewController {
     @IBOutlet var equipmentTableView: UITableView!
     
     var isSearching = false
-    var equipmentVMs = [LabEquipmentSelectionVM]()
-    var searchedEquipmentVMs = [LabEquipmentSelectionVM]()
+    var equipmentVMs = [SimpleEquipmentVM]()
+    var searchedEquipmentVMs = [SimpleEquipmentVM]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +31,18 @@ class EquipmentVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
-            equipmentInfoVC.labEquipmentEditVM = sender as? LabEquipmentSelectionVM
+            equipmentInfoVC.labEquipmentEditVM = sender as? SimpleEquipmentVM
         }
     }
     
     // MARK: Layout
     func setupUI() {
-        let nib = UINib(nibName: "LabEquipmentSelectionTVCell", bundle: nil)
+        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         equipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
     }
     
     func loadEquipmentData() {
-        EquipmentSvc.fetchEquipmentData() { [unowned self] (itemResult) in
+        EquipmentSvc.fetchEquipmentList() { [unowned self] (itemResult) in
             switch itemResult {
             case let .failure(error):
                 print(error)
@@ -83,7 +83,7 @@ extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! LabEquipmentSelectionTVCell
+        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! SimpleEquipmentTVCell
         if isSearching {
             cell.setup(viewModel: searchedEquipmentVMs[indexPath.row])
         } else {

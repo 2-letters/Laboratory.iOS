@@ -1,5 +1,5 @@
 //
-//  LabItemSelectionTVCell.swift
+//  SimpleEquipmentTVCell.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabEquipmentSelectionTVCell: UITableViewCell {
+class SimpleEquipmentTVCell: UITableViewCell {
 
     @IBOutlet var equipmentNameLabel: UILabel!
     
@@ -27,7 +27,7 @@ class LabEquipmentSelectionTVCell: UITableViewCell {
 //            }
 //        }
 //    }
-    func setup(viewModel: LabEquipmentSelectionVM) {
+    func setup(viewModel: SimpleEquipmentVM) {
 //        labItemEditVM = viewModel
         equipmentNameLabel.text = viewModel.equipmentName
         accessoryType = .disclosureIndicator

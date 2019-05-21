@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct LabEquipmentSelectionVM {
+struct SimpleEquipmentVM {
     var equipmentName: String
 //    var selectionStyle: UITableViewCell.SelectionStyle
 //    var accessoryType: UITableViewCell.AccessoryType
 //    let isSelected: Observable<Bool>
     
-    init(_ equipment: LabEquipment) {
-        equipmentName = equipment.equipmentName
+    init(equipment: Equipment) {
+        equipmentName = equipment.name
 //        selectionStyle = .blue
 //        accessoryType = .none
 //
