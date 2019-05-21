@@ -134,7 +134,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
-				DEC45BE92291004D00F164BD /* Helper */,
+				DEC45BE92291004D00F164BD /* Util */,
 				C92459DA228B3B9400AC2E13 /* Custom Class */,
 				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
 				C361E0FA2283254E00938933 /* Service */,
@@ -219,13 +219,13 @@
 			path = "Custom Class";
 			sourceTree = "<group>";
 		};
-		DEC45BE92291004D00F164BD /* Helper */ = {
+		DEC45BE92291004D00F164BD /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				DEC45BEA2291006200F164BD /* SegueId.swift */,
 				DE02CA4B229250D50078A993 /* ReuseId.swift */,
 			);
-			path = Helper;
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
