@@ -9,28 +9,34 @@
 import UIKit
 
 struct LabEquipmentVM {
-    var equipmentName: String
-    var quantity: Int
+    let labEquipment: LabEquipment
+    
     var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
-    init(_ equipment: LabEquipment) {
-        self.equipmentName = equipment.name
-        self.quantity = equipment.quantity
+    init(equipment: LabEquipment) {
+        self.labEquipment = equipment
     }
     
-    func loadLabEquipments() {
-        guard let labName = labVM?.labName else {
-            return
-        }
-        LabSvc.fetchLabEquipment(byName: labName) { [unowned self] (labEquipmentResult) in
-            switch labEquipmentResult {
-            case let .failure(errorStr):
-                print(errorStr)
-            case let .success(viewModels):
-                self.labEquipmentVMs = viewModels
-                // successfully fetch lab equipments data, reload the table view
-                self.labEquipmentTableView?.reloadData()
-            }
-        }
+    var equipmentName: String { return labEquipment.name }
+    var quantity: String {
+        return "Quantity: \(labEquipment.quantity)"
     }
+    
+    
+    
+//    func loadLabEquipments() {
+//        guard let labName = labVM?.labName else {
+//            return
+//        }
+//        LabSvc.fetchLabEquipment(byName: labName) { [unowned self] (labEquipmentResult) in
+//            switch labEquipmentResult {
+//            case let .failure(errorStr):
+//                print(errorStr)
+//            case let .success(viewModels):
+//                self.labEquipmentVMs = viewModels
+//                // successfully fetch lab equipments data, reload the table view
+//                self.labEquipmentTableView?.reloadData()
+//            }
+//        }
+//    }
 }

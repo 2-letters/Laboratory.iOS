@@ -29,8 +29,12 @@ class LabVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showLabInfo {
             let labInfoVC = segue.destination as! LabInfoVC
-            // send labVM to LabInfo View Controller
-            labInfoVC.labVM = sender as? LabVM
+            // send info to LabInfo View Controller
+            guard let vm = sender as? LabVM else {
+                return
+            }
+            labInfoVC.labInfoVM?.labName = vm.labName
+            labInfoVC.labInfoVM?.description = vm.description
         }
     }
     

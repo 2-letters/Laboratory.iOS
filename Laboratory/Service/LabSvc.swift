@@ -14,10 +14,7 @@ enum LabResult {
     case failure(String)
 }
 
-enum LabEquipmentResult {
-    case success([LabEquipment])
-    case failure(String)
-}
+
 
 
 struct LabSvc {
@@ -29,41 +26,39 @@ struct LabSvc {
             } else {
                 for document in (snapshot!.documents) {
                     if let labName = document.data()["labName"] as? String {
-                        if let description = document.data()["description"] as? String {
-                            labVMs.append(LabVM(Lab(name: labName, description: description)))
-                            completion(.success(labVMs))
-                        }
+                        labVMs.append(LabVM(Lab(name: labName)))
+                        completion(.success(labVMs))
                     }
                 }
             }
         }
     }
     
-    static func fetchLabEquipment(byName labName: String, completion: @escaping (LabEquipmentResult) -> Void) {
-        var labEquipments = [LabEquipment]()
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document("labName").collection("equipments").order(by: "itemName", descending: false)
-            .getDocuments { (snapshot, error) in
-            
-                if error != nil {
-                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
-                } else {
-                    for document in (snapshot!.documents)
-                    {
-                        guard let equipmentName = document.data()["itemName"] as? String,
-                            let quantity =
-                            document.data()["quantity"] as? Int
-                            else
-                        {
-                            completion(.failure("ERR reading datas from Lab Equipment"))
-                            return
-                        }
-                        labEquipments.append(LabEquipment(
-                            name: equipmentName, quantity: quantity))
-                    }
-                    completion(.success(labEquipments))
-                }
-        }
-    }
+//    static func fetchLabEquipment(byName labName: String, completion: @escaping (LabEquipmentResult) -> Void) {
+//        var labEquipments = [LabEquipment]()
+//        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document("labName").collection("equipments").order(by: "itemName", descending: false)
+//            .getDocuments { (snapshot, error) in
+//            
+//                if error != nil {
+//                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
+//                } else {
+//                    for document in (snapshot!.documents)
+//                    {
+//                        guard let equipmentName = document.data()["itemName"] as? String,
+//                            let quantity =
+//                            document.data()["quantity"] as? Int
+//                            else
+//                        {
+//                            completion(.failure("ERR reading datas from Lab Equipment"))
+//                            return
+//                        }
+//                        labEquipments.append(LabEquipment(
+//                            name: equipmentName, quantity: quantity))
+//                    }
+//                    completion(.success(labEquipments))
+//                }
+//        }
+//    }
     
     static func createLab(withName name: String, description: String) {
         let newLab = ["name" : name,

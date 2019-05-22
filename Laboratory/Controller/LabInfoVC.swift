@@ -14,42 +14,27 @@ class LabInfoVC: UIViewController {
     @IBOutlet var saveBtn: UIBarButtonItem!
     
     var labEquipmentTableView: UITableView?
-    var labVM: LabVM?
-    var labEquipmentVMs = [LabEquipmentVM]()
+    
+    var labName: String?
+    var labInfoVM: LabInfoVM?
+    var fetchLabEquipmentHandler: FetchLabEquipmentHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        loadLabEquipments()
         
         labEquipmentTableView?.delegate = self
         labEquipmentTableView?.dataSource = self
-        
-        loadLabEquipments()
-    }
-    
-    func loadLabEquipments() {
-        guard let labName = labVM?.labName else {
-            return
-        }
-        LabSvc.fetchLabEquipment(byName: labName) { [unowned self] (labEquipmentResult) in
-            switch labEquipmentResult {
-            case let .failure(errorStr):
-                print(errorStr)
-            case let .success(viewModels):
-                self.labEquipmentVMs = viewModels
-                // successfully fetch lab equipments data, reload the table view
-                self.labEquipmentTableView?.reloadData()
-            }
-        }
     }
     
     // MARK: Layout
     func setupUI() {
         labEquipmentTableView = labInfoView.labEquipmentTV
         // setup the Lab info views
-        labInfoView.nameTextField.text = labVM?.labName
-        labInfoView.descriptionTextField.text = labVM?.description
+        labInfoView.nameTextField.text = labInfoVM?.labName
+        labInfoView.descriptionTextField.text = labInfoVM?.description
         
         // change button title to "Edit Equipments..."
         labInfoView.addEquipmentsBtn.setTitle("Edit Equipments...", for: .normal)
@@ -57,6 +42,22 @@ class LabInfoVC: UIViewController {
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
+    }
+    
+    func loadLabEquipments() {
+        // start fetching Lab Equipments
+        fetchLabEquipmentHandler = { [unowned self] (labEquipmentResult) in
+            switch labEquipmentResult {
+            case let .failure(errorStr):
+                print(errorStr)
+            case let .success(viewModels):
+                self.labInfoVM?.equipmentVMs = viewModels
+                // successfully fetch lab equipments data, reload the table view
+                self.labEquipmentTableView?.reloadData()
+            }
+        }
+        
+        labInfoVM?.fetchLabEquipment(byName: labInfoVM?.labName, completion: fetchLabEquipmentHandler!)
     }
 }
 
@@ -72,7 +73,6 @@ extension LabInfoVC {
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
@@ -82,14 +82,14 @@ extension LabInfoVC {
 
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labEquipmentVMs.count
+        return labInfoVM?.equipmentVMs.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
-        let vm = labEquipmentVMs[indexPath.row]
-        cell.equipmentNameLbl.text = vm.equipmentName
-        cell.quantityLbl.text = "Quantity: \(vm.quantity)"
+        let vm = labInfoVM?.equipmentVMs[indexPath.row]
+        cell.equipmentNameLbl.text = vm?.equipmentName
+        cell.quantityLbl.text = vm?.quantity
         return cell
     }
 }
