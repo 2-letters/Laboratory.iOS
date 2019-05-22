@@ -10,19 +10,20 @@ import Foundation
 
 struct LabInfo {
     var name: String
-    var description: String
-    var equipments: [LabEquipment]
+    var description: String = ""
+    var equipments: [LabEquipment] = [LabEquipment]()
     
-
     init(dictionary: [String: Any]) {
         name = dictionary["labName"] as? String ?? ""
         description = dictionary["description"] as? String ?? ""
         
-        var labEquipments = [LabEquipment]()
         for (key, value) in dictionary["equipments"] as! [String: Any] {
-            labEquipments.append(LabEquipment(name: key, quantity: value as? Int ?? 0))
+            print("vox key: \(key) value: \(value)")
+            equipments.append(LabEquipment(name: key, quantity: Int(value as! String)!))
         }
-        
-        equipments = labEquipments
+    }
+    
+    init(name: String) {
+        self.name = name
     }
 }

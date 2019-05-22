@@ -13,9 +13,13 @@ class LabInfoVC: UIViewController {
     @IBOutlet var labInfoView: LabInfoView!
     @IBOutlet var saveBtn: UIBarButtonItem!
     
-    var labEquipmentTableView: UITableView?
+    var labEquipmentTableView: UITableView!
     
-    var labName: String?
+    var labName: String? {
+        didSet {
+            labInfoVM = LabInfoVM(name: labName ?? "")
+        }
+    }
     var labInfoVM: LabInfoVM?
     var fetchLabEquipmentHandler: FetchLabEquipmentHandler?
     
@@ -25,8 +29,10 @@ class LabInfoVC: UIViewController {
         setupUI()
         loadLabEquipments()
         
-        labEquipmentTableView?.delegate = self
-        labEquipmentTableView?.dataSource = self
+        labEquipmentTableView = labInfoView.labEquipmentTV
+        
+        labEquipmentTableView.delegate = self
+        labEquipmentTableView.dataSource = self
     }
     
     // MARK: Layout
@@ -42,6 +48,10 @@ class LabInfoVC: UIViewController {
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
+        
+        // register table cells
+        let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentCell)
     }
     
     func loadLabEquipments() {
@@ -50,14 +60,14 @@ class LabInfoVC: UIViewController {
             switch labEquipmentResult {
             case let .failure(errorStr):
                 print(errorStr)
-            case let .success(viewModels):
-                self.labInfoVM?.equipmentVMs = viewModels
+            case let .success(labInfo):
+                self.labInfoVM? = LabInfoVM(labInfo: labInfo)
                 // successfully fetch lab equipments data, reload the table view
                 self.labEquipmentTableView?.reloadData()
             }
         }
         
-        labInfoVM?.fetchLabEquipment(byName: labInfoVM?.labName, completion: fetchLabEquipmentHandler!)
+        labInfoVM?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
     }
 }
 

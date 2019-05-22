@@ -33,8 +33,7 @@ class LabVC: UIViewController {
             guard let vm = sender as? LabVM else {
                 return
             }
-            labInfoVC.labInfoVM?.labName = vm.labName
-            labInfoVC.labInfoVM?.description = vm.description
+            labInfoVC.labName = vm.labName
         }
     }
     

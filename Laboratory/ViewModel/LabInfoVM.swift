@@ -25,30 +25,37 @@ class LabInfoVM {
     
     var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
-    init(_ labInfo: LabInfo) {
+    init(labInfo: LabInfo) {
         self.labInfo = labInfo
+//        labName = labInfo.name
+//        equipmentVMs = [LabEquipmentVM]()
+        equipmentVMs = labInfo.equipments.map({ LabEquipmentVM(equipment: $0) })
+    }
+    
+    init(name: String) {
+        labInfo = LabInfo(name: name)
         equipmentVMs = [LabEquipmentVM]()
     }
     
     
     // TODO: fix this mess. Check with firebase and see if Real Lab can be formatted to Lab Info this way
     func fetchLabEquipment(byName labName: String?, completion: @escaping FetchLabEquipmentHandler) {
-        guard let labName = labName else {
+        guard let name = labName else {
             completion(.failure("ERR could not load Lab Name"))
             return
         }
         var labEquipments = [LabEquipmentVM]()
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labName)
-            .getDocument { (document, error) in
-                if let labInfo = document.flatMap({
-                    $0.data().flatMap({ (data) in
-                        completion(.success(LabInfo(dictionary: data)))
-                    })
-                }) {
-                    print("lab info: \(labInfo)")
-                } else {
-                    completion(.failure("ERR Lab Info does not exist"))
-                }
+    Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(name)
+        .getDocument { (document, error) in
+            if let labInfo = document.flatMap({
+                $0.data().flatMap({ (data) in
+                    completion(.success(LabInfo(dictionary: data)))
+                })
+            }) {
+                print("lab info: \(labInfo)")
+            } else {
+                completion(.failure("ERR Lab Info does not exist"))
+            }
                 
 //                if error != nil {
 //                    completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
