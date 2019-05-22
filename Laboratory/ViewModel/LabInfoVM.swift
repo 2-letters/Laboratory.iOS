@@ -31,7 +31,7 @@ class LabInfoVM {
     }
     
     
-    
+    // TODO: fix this mess. Check with firebase and see if Real Lab can be formatted to Lab Info this way
     func fetchLabEquipment(byName labName: String?, completion: @escaping FetchLabEquipmentHandler) {
         guard let labName = labName else {
             completion(.failure("ERR could not load Lab Name"))

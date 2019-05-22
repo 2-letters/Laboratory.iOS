@@ -13,6 +13,7 @@ struct LabInfo {
     var description: String
     var equipments: [LabEquipment]
     
+
     init(dictionary: [String: Any]) {
         name = dictionary["labName"] as? String ?? ""
         description = dictionary["description"] as? String ?? ""
