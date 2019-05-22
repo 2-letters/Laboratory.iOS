@@ -42,7 +42,7 @@ class EquipmentVC: UIViewController {
     }
     
     func loadEquipmentData() {
-        EquipmentSvc.fetchEquipmentList() { [unowned self] (itemResult) in
+        EquipmentSvc.fetchAllEquipments() { [unowned self] (itemResult) in
             switch itemResult {
             case let .failure(error):
                 print(error)

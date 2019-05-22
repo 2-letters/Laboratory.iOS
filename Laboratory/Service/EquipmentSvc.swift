@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
-enum EquipmentListResult {
+enum AllEquipmentResult {
     case success([SimpleEquipmentVM])
     case failure(String)
 }
@@ -20,7 +20,7 @@ enum EquipmentInfoResult {
 }
 
 struct EquipmentSvc {
-    static func fetchEquipmentList(completion: @escaping (EquipmentListResult) -> Void) {
+    static func fetchAllEquipments(completion: @escaping (AllEquipmentResult) -> Void) {
         var equipmentVMs = [SimpleEquipmentVM]()
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
             if error != nil {

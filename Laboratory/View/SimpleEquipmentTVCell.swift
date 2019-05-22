@@ -27,9 +27,9 @@ class SimpleEquipmentTVCell: UITableViewCell {
 //            }
 //        }
 //    }
-    func setup(viewModel: SimpleEquipmentVM) {
+    func setup(viewModel: SimpleEquipmentVM?) {
 //        labItemEditVM = viewModel
-        equipmentNameLabel.text = viewModel.equipmentName
+        equipmentNameLabel.text = viewModel?.equipmentName
         accessoryType = .disclosureIndicator
         
         // listen to the change of the isSelected property

@@ -94,6 +94,7 @@
                     <connections>
                         <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
                         <outlet property="saveBtn" destination="OHP-th-Rog" id="qUu-ZS-GfX"/>
+                        <segue destination="D6r-hq-vP7" kind="presentation" identifier="editEquipments" id="Fo1-G5-M6g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBY-t3-Ihl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232" y="57"/>
+            <point key="canvasLocation" x="3748" y="-398"/>
         </scene>
         <!--Lab-->
         <scene sceneID="GVG-qi-G2A">

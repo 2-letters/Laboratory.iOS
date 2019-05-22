@@ -9,6 +9,10 @@
 import Foundation
 
 struct SegueId {
+    // show Segues
     static let showLabInfo = "showLabInfo"
     static let showEquipmentInfo = "showEquipmentInfo"
+    
+    // present Segues
+    static let editEquipments = "editEquipments"
 }

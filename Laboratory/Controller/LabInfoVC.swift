@@ -15,9 +15,9 @@ class LabInfoVC: UIViewController {
     
     var labEquipmentTableView: UITableView!
     
-    var labName: String? {
+    var labName: String! {
         didSet {
-            labInfoVM = LabInfoVM(name: labName ?? "")
+            labInfoVM = LabInfoVM(name: labName)
         }
     }
     var labInfoVM: LabInfoVM?
@@ -26,13 +26,12 @@ class LabInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
-        loadLabEquipments()
-        
         labEquipmentTableView = labInfoView.labEquipmentTV
-        
         labEquipmentTableView.delegate = self
         labEquipmentTableView.dataSource = self
+        
+        setupUI()
+        loadLabEquipments()      
     }
     
     // MARK: Layout
@@ -69,16 +68,32 @@ class LabInfoVC: UIViewController {
         
         labInfoVM?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.editEquipments {
+            let labEquipmentSelectionVC = segue.destination as! LabEquipmentSelectionVC
+            guard let addedEquipments = sender as? [String] else {
+                return
+            }
+            labEquipmentSelectionVC.addedEquipments = addedEquipments
+        }
+    }
 }
 
 
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let labEquipmentSelectionVC = storyboard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC")
-        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
-        present(navController, animated: true, completion: nil)
+        guard let equipmentVMs = labInfoVM?.equipmentVMs else {
+            return
+        }
+        let addedEquipments = equipmentVMs.map { $0.equipmentName }
+        
+        performSegue(withIdentifier: SegueId.editEquipments, sender: addedEquipments)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let labEquipmentSelectionVC = storyboard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC")
+//        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
+//        present(navController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

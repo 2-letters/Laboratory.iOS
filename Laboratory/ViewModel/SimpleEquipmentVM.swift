@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SimpleEquipmentVM {
+struct SimpleEquipmentVM: Equatable {
     var equipmentName: String
 //    var selectionStyle: UITableViewCell.SelectionStyle
 //    var accessoryType: UITableViewCell.AccessoryType
@@ -20,5 +20,9 @@ struct SimpleEquipmentVM {
 //        accessoryType = .none
 //
 //        isSelected = Observable()
+    }
+    
+    static func ==(lhs: SimpleEquipmentVM, rhs: SimpleEquipmentVM) -> Bool {
+        return lhs.equipmentName == rhs.equipmentName
     }
 }
