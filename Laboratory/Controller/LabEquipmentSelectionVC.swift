@@ -36,8 +36,17 @@ class LabEquipmentSelectionVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingEquipments))
         
-        viewModel.fetchEquipments(addedEquipments: addedEquipments) {
-            labEquipmentTV.reloadData()
+        viewModel.fetchEquipments(addedEquipments: addedEquipments) { [unowned self] (fetchResult) in
+            switch fetchResult {
+            case .success:
+                self.labEquipmentTV.reloadData()
+            case .failure:
+                // show an alert and return to the previous page
+                let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
+                self.present(ac, animated: true, completion: nil)
+            }
+            
         }
     }
 }
@@ -52,6 +61,10 @@ extension LabEquipmentSelectionVC {
         if let selectedIndexes = labEquipmentTV.indexPathsForSelectedRows {
             print(selectedIndexes)
         }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func tryAgain(alert: UIAlertAction!) {
         dismiss(animated: true, completion: nil)
     }
 }

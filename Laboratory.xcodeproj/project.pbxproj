@@ -24,6 +24,8 @@
 		C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */; };
 		C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabEquipment.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
+		C90035802296E96500471EE7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900357F2296E96500471EE7 /* Enum.swift */; };
+		C90035832296EEEC00471EE7 /* AlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90035822296EEEC00471EE7 /* AlertString.swift */; };
 		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
@@ -69,6 +71,8 @@
 		C3A1C7E6228385B700966461 /* LabEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipment.swift; sourceTree = "<group>"; };
 		C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C900357F2296E96500471EE7 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		C90035822296EEEC00471EE7 /* AlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertString.swift; sourceTree = "<group>"; };
 		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C90035812296EE6F00471EE7 /* Constant */,
 				DEC45BE92291004D00F164BD /* Util */,
 				C92459DA228B3B9400AC2E13 /* Custom Class */,
 				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
@@ -221,6 +226,16 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		C90035812296EE6F00471EE7 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				DEC45BEA2291006200F164BD /* SegueId.swift */,
+				DE02CA4B229250D50078A993 /* ReuseId.swift */,
+				C90035822296EEEC00471EE7 /* AlertString.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		C92459DA228B3B9400AC2E13 /* Custom Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,8 +246,7 @@
 		DEC45BE92291004D00F164BD /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				DEC45BEA2291006200F164BD /* SegueId.swift */,
-				DE02CA4B229250D50078A993 /* ReuseId.swift */,
+				C900357F2296E96500471EE7 /* Enum.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -400,6 +414,7 @@
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
 				C361E0FC2283258900938933 /* LabSvc.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
+				C90035802296E96500471EE7 /* Enum.swift in Sources */,
 				DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */,
 				C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */,
 				C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */,
@@ -408,6 +423,7 @@
 				DE02CA4C229250D50078A993 /* ReuseId.swift in Sources */,
 				C34438812282094A0021168B /* LabVM.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentVC.swift in Sources */,
+				C90035832296EEEC00471EE7 /* AlertString.swift in Sources */,
 				C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

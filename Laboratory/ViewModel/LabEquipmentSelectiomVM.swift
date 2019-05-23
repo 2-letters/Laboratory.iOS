@@ -22,7 +22,7 @@ class LabEquipmentSelectionVM {
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
     
-    func fetchEquipments(addedEquipments: [String], completion: () -> ()) {
+    func fetchEquipments(addedEquipments: [String], completion: @escaping (FetchResult) -> ()) {
         EquipmentSvc.fetchAllEquipments { [unowned self] (allEquipmentResult) in
             switch allEquipmentResult {
                 
@@ -36,10 +36,12 @@ class LabEquipmentSelectionVM {
                 // assign availableEquipmentVMs to both all and displaying
                 self.allAvailableEquipmentVMs = availableEquipmentVMs
                 self.displayingAvailableEquipmentVMs = availableEquipmentVMs
+                completion(.success)
             // TODO: save to cache
                 
             case let .failure(error):
                 print(error)
+                completion(.failure)
             }
         }
     }
