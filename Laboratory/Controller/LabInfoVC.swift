@@ -36,10 +36,8 @@ class LabInfoVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
+        // get the Table View
         labEquipmentTableView = labInfoView.labEquipmentTV
-        // setup the Lab info views
-        labInfoView.nameTextField.text = labInfoVM?.labName
-        labInfoView.descriptionTextField.text = labInfoVM?.description
         
         // change button title to "Edit Equipments..."
         labInfoView.addEquipmentsBtn.setTitle("Edit Equipments...", for: .normal)
@@ -61,12 +59,20 @@ class LabInfoVC: UIViewController {
                 print(errorStr)
             case let .success(labInfo):
                 self.labInfoVM? = LabInfoVM(labInfo: labInfo)
-                // successfully fetch lab equipments data, reload the table view
+                // successfully fetch lab equipments data, load the labels
+                self.loadLabels()
+                // and reload the table view
                 self.labEquipmentTableView?.reloadData()
             }
         }
         
         labInfoVM?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
+    }
+    
+    func loadLabels() {
+        // setup the Lab info views
+        labInfoView.nameTextField.text = labInfoVM?.labName
+        labInfoView.descriptionTextField.text = labInfoVM?.description
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,12 +113,12 @@ extension LabInfoVC {
 
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labInfoVM?.equipmentVMs.count ?? 0
+        return labInfoVM?.equipmentVMs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
-        let vm = labInfoVM?.equipmentVMs[indexPath.row]
+        let vm = labInfoVM?.equipmentVMs?[indexPath.row]
         cell.equipmentNameLbl.text = vm?.equipmentName
         cell.quantityLbl.text = vm?.quantity
         return cell

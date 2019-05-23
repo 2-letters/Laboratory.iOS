@@ -18,10 +18,10 @@ enum LabEquipmentResult {
 typealias FetchLabEquipmentHandler = (LabEquipmentResult) -> Void
 
 class LabInfoVM {
-    var labInfo: LabInfo
-    var labName: String { return labInfo.name }
-    var description: String { return labInfo.description }
-    var equipmentVMs: [LabEquipmentVM]
+    var labInfo: LabInfo?
+    var labName: String { return labInfo!.name }
+    var description: String { return labInfo!.description }
+    var equipmentVMs: [LabEquipmentVM]?
     
     var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
@@ -34,7 +34,6 @@ class LabInfoVM {
     
     init(name: String) {
         labInfo = LabInfo(name: name)
-        equipmentVMs = [LabEquipmentVM]()
     }
     
     
@@ -44,7 +43,6 @@ class LabInfoVM {
             completion(.failure("ERR could not load Lab Name"))
             return
         }
-        var labEquipments = [LabEquipmentVM]()
     Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(name)
         .getDocument { (document, error) in
             if let labInfo = document.flatMap({

@@ -32,7 +32,7 @@ struct LabEquipmentVM {
 //            switch labEquipmentResult {
 //            case let .failure(errorStr):
 //                print(errorStr)
-//            case let .success(viewModels):
+//            case let .success(viewModel):
 //                self.labEquipmentVMs = viewModels
 //                // successfully fetch lab equipments data, reload the table view
 //                self.labEquipmentTableView?.reloadData()
