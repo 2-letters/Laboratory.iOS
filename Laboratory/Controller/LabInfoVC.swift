@@ -36,6 +36,8 @@ class LabInfoVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
+        //
+        
         // get the Table View
         labEquipmentTableView = labInfoView.labEquipmentTV
         
@@ -77,7 +79,8 @@ class LabInfoVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.editEquipments {
-            let labEquipmentSelectionVC = segue.destination as! LabEquipmentSelectionVC
+            let navC = segue.destination as! UINavigationController
+            let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
             guard let addedEquipments = sender as? [String] else {
                 return
             }

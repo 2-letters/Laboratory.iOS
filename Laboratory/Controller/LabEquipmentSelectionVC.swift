@@ -31,11 +31,6 @@ class LabEquipmentSelectionVC: UIViewController {
         // load LabItems TableView
         let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         labEquipmentTV.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
-        
-        // navbar buttons
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAddingEquipments))
-        
         viewModel.fetchEquipments(addedEquipments: addedEquipments) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
@@ -49,21 +44,14 @@ class LabEquipmentSelectionVC: UIViewController {
             
         }
     }
+    
+    @IBAction func done(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - User Interaction
 extension LabEquipmentSelectionVC {
-    @objc func cancel() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func doneAddingEquipments() {
-        if let selectedIndexes = labEquipmentTV.indexPathsForSelectedRows {
-            print(selectedIndexes)
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
     func tryAgain(alert: UIAlertAction!) {
         dismiss(animated: true, completion: nil)
     }
