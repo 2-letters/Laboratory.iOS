@@ -45,7 +45,7 @@ class EquipmentInfoVC: UIViewController {
     }
     
     private func updateUI() {
-        mainView.availableLabel.text = "Available: \(equipmentInfoVM?.quantity ?? 0)"
+        mainView.availableLabel.text = "Available: \(equipmentInfoVM?.available ?? 0)"
         mainView.nameLabel.text = "Name: \(equipmentInfoVM?.equipmentName ?? "")"
         mainView.locationTextView.text = equipmentInfoVM?.location
         adjustUITextViewHeight(arg: mainView.locationTextView)

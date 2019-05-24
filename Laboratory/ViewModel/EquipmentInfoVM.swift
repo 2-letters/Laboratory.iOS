@@ -10,7 +10,7 @@ import UIKit
 
 struct EquipmentInfoVM {
     var equipmentName: String
-    var quantity: Int
+    var available: Int
     var description: String
     var location: String
     var pictureUrl: String
@@ -19,7 +19,7 @@ struct EquipmentInfoVM {
     
     init(equipment: FullEquipment) {
         equipmentName = equipment.name
-        quantity = equipment.quantity
+        available = equipment.available
         description = equipment.description
         location = equipment.location
         pictureUrl = equipment.pictureUrl

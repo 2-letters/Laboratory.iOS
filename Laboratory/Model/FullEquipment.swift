@@ -10,13 +10,13 @@ import Foundation
 
 struct FullEquipment: NamedItem {
     var name: String
-    var quantity: Int
+    var available: Int
     var description: String
     var location: String
     var pictureUrl: String
 //    
-//    init(name: String, quantity: Int, description: String, location: String, pictureUrl: String) { 
-//        self.quantity = quantity
+//    init(name: String, available: Int, description: String, location: String, pictureUrl: String) { 
+//        self.available = quantity
 //        self.description = description
 //        self.location = location
 //        self.pictureUrl = pictureUrl

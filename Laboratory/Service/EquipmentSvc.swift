@@ -29,7 +29,7 @@ struct EquipmentSvc {
                 for document in (snapshot!.documents) {
                     if let equipmentName = document.data()["name"] as? String
 //                        let description = document.data()["description"] as? String,
-//                        let quantity = document.data()["quantity"] as? Int,
+//                        let available = document.data()["available"] as? Int,
 //                        let location = document.data()["location"] as? String,
 //                        let photoUrl = document.data()["photoUrl"] as? String
                     {
@@ -53,12 +53,12 @@ struct EquipmentSvc {
         } else {
             let document = snapshot!.documents.first!
             if let equipmentName = document.data()["name"] as? String,
-                let quantity = document.data()["quantity"] as? Int,
+                let quantity = document.data()["available"] as? Int,
                 let description = document.data()["description"] as? String,
                 let location = document.data()["location"] as? String,
                 let pictureUrl = document.data()["pictureUrl"] as? String
             {
-                completion(.success(EquipmentInfoVM(equipment: FullEquipment(name: equipmentName, quantity: quantity, description: description, location: location, pictureUrl: pictureUrl))))
+                completion(.success(EquipmentInfoVM(equipment: FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl))))
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR converting Equipment Info into Equipment class"))
             }
