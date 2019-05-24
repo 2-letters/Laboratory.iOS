@@ -182,7 +182,7 @@
                     <connections>
                         <outlet property="labEquipmentTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
                         <outlet property="searchBar" destination="wNM-zi-urh" id="OG1-mX-58M"/>
-                        <segue destination="cly-ig-uLQ" kind="show" id="sx8-EH-ggk"/>
+                        <segue destination="cly-ig-uLQ" kind="show" identifier="showEquipmentEdit" id="sx8-EH-ggk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>

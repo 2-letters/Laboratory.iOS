@@ -38,7 +38,7 @@ class EquipmentVC: UIViewController {
     // MARK: Layout
     func setupUI() {
         let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        equipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
+        equipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.simpleEquipmentCell)
     }
     
     func loadEquipmentData() {
@@ -83,7 +83,7 @@ extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! SimpleEquipmentTVCell
+        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
         if isSearching {
             cell.setup(viewModel: searchedEquipmentVMs[indexPath.row])
         } else {

@@ -14,25 +14,26 @@ class LabEquipmentSelectionVM {
     let availableSectionHeader = "Available Equipments"
     
     // "all" keep a copy of everything before the search
-    var allAddedEquipmentVMs: [SimpleEquipmentVM]?
+    var allAddedEquipmentVMs: [LabEquipmentVM]?
     var allAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
     // "displaying" is for displaying with and without search
-    var displayingAddedEquipmentVMs: [SimpleEquipmentVM]?
+    var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
     
-    func fetchEquipments(addedEquipments: [String], completion: @escaping (FetchResult) -> ()) {
+    func fetchEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping (FetchResult) -> ()) {
         EquipmentSvc.fetchAllEquipments { [unowned self] (allEquipmentResult) in
             switch allEquipmentResult {
                 
             case let .success(allEquipments):
-                let addedEquipmentVMs = addedEquipments.map({ SimpleEquipmentVM(equipment: Equipment(name: $0)) })
+                let addedEquipmentVMs = addedEquipmentVMs.map({ LabEquipmentVM(equipment: LabEquipment(name: $0.equipmentName, quantity: $0.quantity)) })
                 // assign addedEquipmentVMs to both all and displaying
                 self.allAddedEquipmentVMs = addedEquipmentVMs
                 self.displayingAddedEquipmentVMs = addedEquipmentVMs
                 
-                let availableEquipmentVMs = allEquipments.filter({ !self.allAddedEquipmentVMs!.contains($0) })
+                let addedSimpleEquipmentVMs = addedEquipmentVMs.map({ SimpleEquipmentVM(equipment: Equipment(name: $0.equipmentName)) })
+                let availableEquipmentVMs = allEquipments.filter({ addedSimpleEquipmentVMs.contains($0) })
                 // assign availableEquipmentVMs to both all and displaying
                 self.allAvailableEquipmentVMs = availableEquipmentVMs
                 self.displayingAvailableEquipmentVMs = availableEquipmentVMs

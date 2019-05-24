@@ -77,14 +77,15 @@ class LabInfoVC: UIViewController {
         labInfoView.descriptionTextField.text = labInfoVM?.description
     }
     
+    // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.editEquipments {
             let navC = segue.destination as! UINavigationController
             let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
-            guard let addedEquipments = sender as? [String] else {
+            guard let addedEquipmentVMs = sender as? [LabEquipmentVM] else {
                 return
             }
-            labEquipmentSelectionVC.addedEquipments = addedEquipments
+            labEquipmentSelectionVC.addedEquipmentVMs = addedEquipmentVMs
         }
     }
 }
@@ -96,9 +97,8 @@ extension LabInfoVC {
         guard let equipmentVMs = labInfoVM?.equipmentVMs else {
             return
         }
-        let addedEquipments = equipmentVMs.map { $0.equipmentName }
         
-        performSegue(withIdentifier: SegueId.editEquipments, sender: addedEquipments)
+        performSegue(withIdentifier: SegueId.editEquipments, sender: equipmentVMs)
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let labEquipmentSelectionVC = storyboard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC")
 //        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
@@ -121,9 +121,9 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
-        let vm = labInfoVM?.equipmentVMs?[indexPath.row]
-        cell.equipmentNameLbl.text = vm?.equipmentName
-        cell.quantityLbl.text = vm?.quantity
+        let vm = labInfoVM?.equipmentVMs![indexPath.row]
+        cell.setup(viewModel: vm!)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }

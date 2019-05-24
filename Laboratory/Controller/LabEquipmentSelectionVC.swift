@@ -13,7 +13,7 @@ class LabEquipmentSelectionVC: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var labEquipmentTV: UITableView!
     
-    var addedEquipments: [String]!  // for receiving data from Lab Info/Create
+    var addedEquipmentVMs: [LabEquipmentVM]!  // for receiving data from Lab Info/Create
     var viewModel = LabEquipmentSelectionVM()
     
     override func viewDidLoad() {
@@ -29,9 +29,13 @@ class LabEquipmentSelectionVC: UIViewController {
     // MARK: Layout
     func setupUI() {
         // load LabItems TableView
-        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        labEquipmentTV.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentSelectionCell)
-        viewModel.fetchEquipments(addedEquipments: addedEquipments) { [unowned self] (fetchResult) in
+        let labEquipmentNib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
+        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: ReuseId.labEquipmentCell)
+        
+        let simpleEquipmentNib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
+        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: ReuseId.simpleEquipmentCell)
+        
+        viewModel.fetchEquipments(addedEquipmentVMs: addedEquipmentVMs) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
                 self.labEquipmentTV.reloadData()
@@ -42,6 +46,13 @@ class LabEquipmentSelectionVC: UIViewController {
                 self.present(ac, animated: true, completion: nil)
             }
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showEquipmentEdit {
+            let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
+//            labEquipmentEditVC.usi
         }
     }
     
@@ -81,27 +92,30 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentSelectionCell) as! SimpleEquipmentTVCell
+//        let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
         
         if indexPath.section == 0 {
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
             cell.setup(viewModel: viewModel.displayingAddedEquipmentVMs?[indexPath.row])
+            cell.accessoryType = .disclosureIndicator
+            return cell
         } else {
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
             cell.setup(viewModel: viewModel.displayingAvailableEquipmentVMs?[indexPath.row])
+            return cell
         }
-        
-        return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell1 = tableView.cellForRow(at: indexPath)
         let cell2 = labEquipmentTV.cellForRow(at: indexPath)
-        var vm: SimpleEquipmentVM?
         
         if indexPath.section == 0 {
-            vm = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
+            let vm = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
+            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: (vm?.equipmentName, "added"))
         } else {
-            vm = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
+            let vm = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
+            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: (vm?.equipmentName, "available"))
         }
         
 //        let backgroundView = UIView()

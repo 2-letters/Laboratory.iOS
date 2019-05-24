@@ -9,6 +9,6 @@
 import Foundation
 
 struct ReuseId {
-    static let labEquipmentSelectionCell = "SimpleEquipmentCell"
+    static let simpleEquipmentCell = "SimpleEquipmentCell"
     static let labEquipmentCell = "LabEquipmentCell"
 }

@@ -6,20 +6,21 @@
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct LabEquipmentVM {
     let labEquipment: LabEquipment
-    
-    var accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator
     
     init(equipment: LabEquipment) {
         self.labEquipment = equipment
     }
     
     var equipmentName: String { return labEquipment.name }
-    var quantity: String {
+    var quantityString: String {
         return "Quantity: \(labEquipment.quantity)"
+    }
+    var quantity: Int {
+        return labEquipment.quantity
     }
     
     

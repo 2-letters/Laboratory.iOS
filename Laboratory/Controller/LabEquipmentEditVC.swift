@@ -45,12 +45,12 @@ class LabEquipmentEditVC: UIViewController {
     
     // MARK: User Interaction
     @IBAction func decreaseEquipment(_ sender: UIButton) {
-        usingCount -= 1
+//        usingQuantity -= 1
         updateQuantityButtons()
     }
     
     @IBAction func increaseEquipment(_ sender: UIButton) {
-        usingCount += 1
+//        usingQuantity += 1
         updateQuantityButtons()
     }
     
