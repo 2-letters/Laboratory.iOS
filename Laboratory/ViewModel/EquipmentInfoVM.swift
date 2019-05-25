@@ -8,21 +8,37 @@
 
 import UIKit
 
-struct EquipmentInfoVM {
-    var equipmentName: String
-    var available: Int
-    var description: String
-    var location: String
-    var pictureUrl: String
+class EquipmentInfoVM {
+    var equipment: FullEquipment?
+    var equipmentName: String {
+        return "Name: \(equipment!.name)"
+    }
+    var availableString: String {
+        return "Available: \(equipment!.available)"
+    }
+    var available: Int {
+        return equipment?.available ?? 0
+    }
+    var description: String {
+        return equipment!.description
+    }
+    var location: String {
+        return equipment!.location
+    }
+    var pictureUrl: String {
+        return equipment!.pictureUrl
+    }
     
-    var accessoryType: UITableViewCell.AccessoryType
-    
-    init(equipment: FullEquipment) {
-        equipmentName = equipment.name
-        available = equipment.available
-        description = equipment.description
-        location = equipment.location
-        pictureUrl = equipment.pictureUrl
-        accessoryType = .disclosureIndicator
+    func fetchEquipmentInfo(byName name: String, completion: @escaping (FetchResult) -> ()) {
+        EquipmentSvc.fetchEquipmentInfo(byName: name) { [unowned self] (itemInfoResult) in
+            switch itemInfoResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                completion(.failure)
+            case let .success(fullEquipment):
+                self.equipment = fullEquipment
+                completion(.success)
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LabEquipmentVC.swift
+//  LabEquipmentSelectionVC.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/10/19.
@@ -45,14 +45,18 @@ class LabEquipmentSelectionVC: UIViewController {
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
                 self.present(ac, animated: true, completion: nil)
             }
-            
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentEdit {
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
-//            labEquipmentEditVC.usi
+            if let addedEquipmentVM = sender as? LabEquipmentVM {
+                labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
+                labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
+            } else if let availableEquipmentVM = sender as? SimpleEquipmentVM {
+                labEquipmentEditVC?.equipmentName = availableEquipmentVM.equipmentName
+            }
         }
     }
     
@@ -107,15 +111,15 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell1 = tableView.cellForRow(at: indexPath)
-        let cell2 = labEquipmentTV.cellForRow(at: indexPath)
+//        let cell1 = tableView.cellForRow(at: indexPath)
+//        let cell2 = labEquipmentTV.cellForRow(at: indexPath)
         
         if indexPath.section == 0 {
             let vm = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
-            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: (vm?.equipmentName, "added"))
+            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
         } else {
             let vm = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
-            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: (vm?.equipmentName, "available"))
+            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
         }
         
 //        let backgroundView = UIView()

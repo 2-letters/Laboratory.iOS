@@ -15,7 +15,7 @@ enum AllEquipmentResult {
 }
 
 enum EquipmentInfoResult {
-    case success(EquipmentInfoVM)
+    case success(FullEquipment)
     case failure(String)
 }
 
@@ -58,7 +58,7 @@ struct EquipmentSvc {
                 let location = document.data()["location"] as? String,
                 let pictureUrl = document.data()["pictureUrl"] as? String
             {
-                completion(.success(EquipmentInfoVM(equipment: FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl))))
+                completion(.success(FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl)))
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR converting Equipment Info into Equipment class"))
             }

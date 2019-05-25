@@ -11,16 +11,9 @@ import UIKit
 class EquipmentInfoVC: UIViewController {
     
     @IBOutlet var mainView: EquipmentInfoView!
-    
-    var labEquipmentEditVM: SimpleEquipmentVM?
-    
-//    var equipmentName: String = "" {
-//        didSet {
-//            loadEquipmentInfo()
-//        }
-//    }
-    
-    var equipmentInfoVM: EquipmentInfoVM?
+
+    var equipmentName: String?
+    var equipmentInfoVM = EquipmentInfoVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,43 +23,37 @@ class EquipmentInfoVC: UIViewController {
     
 
     func loadEquipmentInfo() {
-        if let equipmentName = labEquipmentEditVM?.equipmentName {
-            EquipmentSvc.fetchEquipmentInfo(byName: equipmentName) { [unowned self] (itemInfoResult) in
-                switch itemInfoResult {
-                case let .failure(errorStr):
-                    print(errorStr)
-                case let .success(viewModel):
-                    self.equipmentInfoVM = viewModel
-                    self.updateUI()
-                }
+        equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+            switch fetchResult {
+            case .success:
+                self.updateUI()
+            case .failure:
+                // show an alert and return to the previous page
+                let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
+                self.present(ac, animated: true, completion: nil)
             }
         }
-        
     }
     
     private func updateUI() {
-        mainView.availableLabel.text = "Available: \(equipmentInfoVM?.available ?? 0)"
-        mainView.nameLabel.text = "Name: \(equipmentInfoVM?.equipmentName ?? "")"
-        mainView.locationTextView.text = equipmentInfoVM?.location
-        adjustUITextViewHeight(arg: mainView.locationTextView)
-        mainView.descriptionTextView.text = equipmentInfoVM?.description
-        adjustUITextViewHeight(arg: mainView.descriptionTextView)
+        mainView.availableLabel.text = equipmentInfoVM.availableString
+        mainView.nameLabel.text = equipmentInfoVM.equipmentName
+        mainView.locationTextView.text = equipmentInfoVM.location
+        LayoutHelper.adjustUITextViewHeight(arg: mainView.locationTextView)
+        mainView.descriptionTextView.text = equipmentInfoVM.description
+        LayoutHelper.adjustUITextViewHeight(arg: mainView.descriptionTextView)
         do {
-            let url = URL(string: equipmentInfoVM?.pictureUrl ?? "")!
+            let url = URL(string: equipmentInfoVM.pictureUrl)!
             let data = try Data(contentsOf: url)
             mainView.equipmentImageView.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-//        mainView.equipmentImageView.image = UIImage(
     }
     
-    func adjustUITextViewHeight(arg : UITextView)
-    {
-        arg.translatesAutoresizingMaskIntoConstraints = true
-        arg.sizeToFit()
-        arg.isScrollEnabled = false
+    func tryAgain(alert: UIAlertAction!) {
+        dismiss(animated: true, completion: nil)
     }
-
 }

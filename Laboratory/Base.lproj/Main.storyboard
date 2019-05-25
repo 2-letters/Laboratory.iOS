@@ -235,7 +235,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoN-vV-ZN5">
-                                                <rect key="frame" x="225" y="8" width="62" height="33"/>
+                                                <rect key="frame" x="235" y="8" width="62" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Remove"/>
                                                 <connections>
@@ -252,7 +252,7 @@
                                             <constraint firstAttribute="trailing" secondItem="LTz-LL-nxc" secondAttribute="trailing" id="474-lT-sbE"/>
                                             <constraint firstItem="RYc-pN-93o" firstAttribute="top" secondItem="sUh-Bc-3QV" secondAttribute="top" constant="8" id="8fD-U0-34x"/>
                                             <constraint firstItem="Uq6-Oy-kOc" firstAttribute="top" secondItem="sUh-Bc-3QV" secondAttribute="top" constant="16" id="FHa-F1-Z1E"/>
-                                            <constraint firstItem="RYc-pN-93o" firstAttribute="trailing" secondItem="EoN-vV-ZN5" secondAttribute="leading" constant="10" id="I7c-Cv-tDc"/>
+                                            <constraint firstItem="RYc-pN-93o" firstAttribute="trailing" secondItem="EoN-vV-ZN5" secondAttribute="leading" id="I7c-Cv-tDc"/>
                                             <constraint firstItem="RYc-pN-93o" firstAttribute="leading" secondItem="0Hb-sC-Ovu" secondAttribute="trailing" constant="10" id="LCd-8A-0Hy"/>
                                             <constraint firstItem="0Hb-sC-Ovu" firstAttribute="leading" secondItem="fU8-2c-DPk" secondAttribute="trailing" constant="10" id="MLo-bo-2Ts"/>
                                             <constraint firstItem="Uq6-Oy-kOc" firstAttribute="leading" secondItem="sUh-Bc-3QV" secondAttribute="leading" constant="10" id="Pxg-kg-cMe"/>
