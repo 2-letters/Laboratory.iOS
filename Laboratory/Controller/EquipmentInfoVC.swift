@@ -54,6 +54,7 @@ class EquipmentInfoVC: UIViewController {
     }
     
     func tryAgain(alert: UIAlertAction!) {
-        dismiss(animated: true, completion: nil)
+        // go back to Equipment List View
+        navigationController?.popViewController(animated: true)
     }
 }

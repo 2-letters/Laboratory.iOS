@@ -104,6 +104,7 @@ class LabEquipmentEditVC: UIViewController {
     }
     
     func tryAgain(alert: UIAlertAction!) {
-        dismiss(animated: true, completion: nil)
+       // go back to Equipment Selection
+        navigationController?.popViewController(animated: true)
     }
 }
