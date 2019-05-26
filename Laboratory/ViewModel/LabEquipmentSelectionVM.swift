@@ -1,5 +1,5 @@
 //
-//  LabEquipmentSelectiomVM.swift
+//  LabEquipmentSelectionVM.swift
 //  Laboratory
 //
 //  Created by Developers on 5/22/19.

@@ -8,7 +8,9 @@
 
 import Foundation
 
+typealias FetchHandler = (FetchResult) -> Void
+
 enum FetchResult {
     case success
-    case failure
+    case failure(String)
 }

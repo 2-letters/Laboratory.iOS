@@ -68,7 +68,9 @@ class LabEquipmentEditVC: UIViewController {
     func loadEquipmentInfo() { equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
-                self.updateEquipmentInfoLayout()
+                DispatchQueue.main.async {
+                    self.updateEquipmentInfoLayout()
+                }
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)

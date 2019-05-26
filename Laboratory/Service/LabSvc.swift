@@ -9,30 +9,26 @@
 import Foundation
 import FirebaseFirestore
 
-enum LabResult {
-    case success([LabVM])
-    case failure(String)
-}
 
 
 
 
 struct LabSvc {
-    static func fetchLabData(completion: @escaping (LabResult) -> Void) {
-        var labVMs = [LabVM]()
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
-            } else {
-                for document in (snapshot!.documents) {
-                    if let labName = document.data()["labName"] as? String {
-                        labVMs.append(LabVM(Lab(name: labName)))
-                        completion(.success(labVMs))
-                    }
-                }
-            }
-        }
-    }
+//    static func fetchLabData(completion: @escaping (LabResult) -> Void) {
+//        var labVMs = [LabVM]()
+//        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { (snapshot, error) in
+//            if error != nil {
+//                completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
+//            } else {
+//                for document in (snapshot!.documents) {
+//                    if let labName = document.data()["labName"] as? String {
+//                        labVMs.append(LabVM(lab: Lab(name: labName)))
+//                        completion(.success(labVMs))
+//                    }
+//                }
+//            }
+//        }
+//    }
     
 //    static func fetchLabEquipment(byName labName: String, completion: @escaping (LabEquipmentResult) -> Void) {
 //        var labEquipments = [LabEquipment]()

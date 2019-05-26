@@ -15,7 +15,6 @@ class LabTVCell: UITableViewCell {
     var labVM: LabVM! {
         didSet {
             labNameLbl.text = labVM.labName
-            accessoryType = labVM.accessoryType
         }
     }
 }

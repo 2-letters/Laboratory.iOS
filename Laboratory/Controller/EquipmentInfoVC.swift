@@ -26,7 +26,9 @@ class EquipmentInfoVC: UIViewController {
         equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
-                self.updateUI()
+                DispatchQueue.main.async {
+                    self.updateUI()
+                }
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)

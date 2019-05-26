@@ -38,7 +38,9 @@ class LabEquipmentSelectionVC: UIViewController {
         viewModel.fetchEquipments(addedEquipmentVMs: addedEquipmentVMs) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
-                self.labEquipmentTV.reloadData()
+                DispatchQueue.main.async {
+                    self.labEquipmentTV.reloadData()
+                }
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)

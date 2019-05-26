@@ -12,9 +12,7 @@ class LabVC: UIViewController {
     @IBOutlet var labSearchBar: UISearchBar!
     @IBOutlet var labTV: UITableView!
     
-    var labVMs = [LabVM]()
-    var searchedLabVMs = [LabVM]()
-    var isSearching = false
+    var labVM = LabVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,68 +28,48 @@ class LabVC: UIViewController {
         if segue.identifier == SegueId.showLabInfo {
             let labInfoVC = segue.destination as! LabInfoVC
             // send info to LabInfo View Controller
-            guard let vm = sender as? LabVM else {
+            guard let labName = sender as? String else {
                 return
             }
-            labInfoVC.labName = vm.labName
+            labInfoVC.labName = labName
         }
     }
-    
-//    @IBAction func createLab(_ sender: UIBarButtonItem) {
-//        let labCreateVC = LabCreateVC(nibName: "LabInfoView", bundle: nil)
-//        self.present(labCreateVC, animated: true, completion: nil)
-//    }
 }
 
 // MARK: - Table View
 extension LabVC: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
-            return searchedLabVMs.count
-        }
-        return labVMs.count
+        return labVM.displayingLabs?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get the table cell
         let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
+        // TODO this may be off, cell should not talk to view model
+        cell.labVM = labVM
         
-        if isSearching {
-            cell.labVM = searchedLabVMs[indexPath.row]
-        } else {
-            cell.labVM = labVMs[indexPath.row]
-        }
-        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let labVM = labVMs[indexPath.row]
+        let selectedLabName = labVM.getName(at: indexPath.row)
         // show LabInfo View and send labVM to it
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: labVM)
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: selectedLabName)
     }
 }
 
 // MARK: - Search bar
 extension LabVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            // not a valid search, show all Items again
-            isSearching = false
-            labTV.reloadData()
-        } else {
-            // a valid search, start filtering
-            isSearching = true
-            searchedLabVMs = labVMs.filter({$0.labName.lowercased()
-                .prefix(searchText.count) == searchText.lowercased()})
-            labTV.reloadData()
+        if searchText != "" {
+            labVM.search(by: searchText)
         }
+        labTV.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         // cancel searching
-        isSearching = false
         searchBar.text = ""
         labTV.reloadData()
     }
@@ -100,17 +78,15 @@ extension LabVC: UISearchBarDelegate {
 // MARK: - Additional helpers
 extension LabVC {
     func loadLabData() {
-        LabSvc.fetchLabData() { [unowned self] (labResult) in
-            switch labResult {
-            case let .success(viewModels):
-                self.labVMs = viewModels
+        labVM.fetchLabData() { [unowned self] (fetchResult) in
+            switch fetchResult {
+            case .success:
+                DispatchQueue.main.async {
+                    self.labTV.reloadData()
+                }
                 // TODO: save to cache (look at Trvlr)
             case let .failure(error):
                 print(error)
-            }
-            
-            DispatchQueue.main.async {
-                self.labTV.reloadData()
             }
         }
     }
