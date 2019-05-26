@@ -14,6 +14,7 @@ class LabEquipmentEditVC: UIViewController {
     @IBOutlet var decreaseBtn: UIButton!
     @IBOutlet var increaseBtn: UIButton!
     @IBOutlet var removeBtn: UIButton!
+    @IBOutlet var separatingLine: UIView!
     @IBOutlet var equipmentInfoView: EquipmentInfoView!
     
     var equipmentInfoVM = EquipmentInfoVM()
@@ -22,6 +23,7 @@ class LabEquipmentEditVC: UIViewController {
     var usingQuantity: Int = 0
     // the quantity being edited
     var editingQuantity: Int = 0
+    var saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
     
     
     override func viewDidLoad() {
@@ -32,17 +34,23 @@ class LabEquipmentEditVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
+        navigationItem.rightBarButtonItem = saveBtn
+        saveBtn.isEnabled = false
+        
         // quantity only accept numbers
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
         editingQuantity = usingQuantity
         
-        updateQuantityLayout()
+        separatingLine.backgroundColor = Color.separatingLine
+        
+        updateUI()
         
         loadEquipmentInfo()
     }
     
-    func updateQuantityLayout() {
+    func updateUI() {
+        // Quantity Layout
         usingQuantityTextField.text = String(editingQuantity)
         if editingQuantity == 0 {
             decreaseBtn.isEnabled = false
@@ -52,10 +60,12 @@ class LabEquipmentEditVC: UIViewController {
             decreaseBtn.isEnabled = true
             increaseBtn.isEnabled = true
         }
+        
+        // "Save" button is only enable when there's change in quantity
+        saveBtn.isEnabled = editingQuantity != usingQuantity
     }
     
-    func loadEquipmentInfo() {
-        equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+    func loadEquipmentInfo() { equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
                 self.updateEquipmentInfoLayout()
@@ -87,24 +97,28 @@ class LabEquipmentEditVC: UIViewController {
     }
     
     // MARK: User Interaction
+    func tryAgain(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func saveChange() {
+        
+    }
+    
     @IBAction func decreaseEquipment(_ sender: UIButton) {
         editingQuantity -= 1
-        updateQuantityLayout()
+        updateUI()
     }
     
     @IBAction func increaseEquipment(_ sender: UIButton) {
         editingQuantity += 1
-        updateQuantityLayout()
+        updateUI()
     }
     
     @IBAction func removeEquipment(_ sender: UIButton) {
         // set quantity to 0
         editingQuantity = 0
-        updateQuantityLayout()
-    }
-    
-    func tryAgain(alert: UIAlertAction!) {
-       // go back to Equipment Selection
-        navigationController?.popViewController(animated: true)
+        updateUI()
     }
 }

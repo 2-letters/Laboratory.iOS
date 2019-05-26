@@ -42,6 +42,7 @@
 		DE420947228BCA9B00ADFEA1 /* EquipmentSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420946228BCA9B00ADFEA1 /* EquipmentSvc.swift */; };
 		DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */; };
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
+		DE59D056229AFD7300E7FDF1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* Color.swift */; };
 		DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */; };
 		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
@@ -90,6 +91,7 @@
 		DE420946228BCA9B00ADFEA1 /* EquipmentSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentSvc.swift; sourceTree = "<group>"; };
 		DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVM.swift; sourceTree = "<group>"; };
 		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		DE59D055229AFD7300E7FDF1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEquipmentTVCell.xib; sourceTree = "<group>"; };
 		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				DEC45BEA2291006200F164BD /* SegueId.swift */,
 				DE02CA4B229250D50078A993 /* ReuseId.swift */,
 				C90035822296EEEC00471EE7 /* AlertString.swift */,
+				DE59D055229AFD7300E7FDF1 /* Color.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
+				DE59D056229AFD7300E7FDF1 /* Color.swift in Sources */,
 				DEC45BEB2291006200F164BD /* SegueId.swift in Sources */,
 				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
 				C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */,
