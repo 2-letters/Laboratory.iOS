@@ -11,10 +11,10 @@ import UIKit
 class EquipmentInfoVM {
     var equipment: FullEquipment?
     var equipmentName: String {
-        return "Name: \(equipment!.name)"
+        return "Name:  \(equipment!.name)"
     }
     var availableString: String {
-        return "Available: \(equipment!.available)"
+        return "Available:  \(equipment!.available) (items)"
     }
     var available: Int {
         return equipment?.available ?? 0

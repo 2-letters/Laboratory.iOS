@@ -27,7 +27,6 @@ class LabEquipmentSelectionVM {
             switch allEquipmentResult {
                 
             case let .success(allEquipments):
-//                let addedEquipmentVMs = addedEquipmentVMs.map({ LabEquipmentVM(equipment: LabEquipment(name: $0.equipmentName, quantity: $0.quantity)) })
                 // assign addedEquipmentVMs to both all and displaying
                 self.allAddedEquipmentVMs = addedEquipmentVMs
                 self.displayingAddedEquipmentVMs = addedEquipmentVMs

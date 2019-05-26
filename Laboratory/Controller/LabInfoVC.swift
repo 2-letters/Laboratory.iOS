@@ -123,7 +123,6 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
         let vm = labInfoVM?.equipmentVMs![indexPath.row]
         cell.setup(viewModel: vm!)
-        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
