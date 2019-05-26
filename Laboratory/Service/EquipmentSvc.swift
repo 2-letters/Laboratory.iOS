@@ -20,30 +20,21 @@ enum EquipmentInfoResult {
 }
 
 struct EquipmentSvc {
-    static func fetchAllEquipments(completion: @escaping (AllEquipmentResult) -> Void) {
-        var equipmentVMs = [SimpleEquipmentVM]()
-        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
-            } else {
-                for document in (snapshot!.documents) {
-                    if let equipmentName = document.data()["name"] as? String
-//                        let description = document.data()["description"] as? String,
-//                        let available = document.data()["available"] as? Int,
-//                        let location = document.data()["location"] as? String,
-//                        let photoUrl = document.data()["photoUrl"] as? String
-                    {
-                        equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
-                    }
-//                    guard let equipmentName = document.data()["equipmentName"] else {
-//                        return
+//    static func fetchAllEquipments(completion: @escaping (AllEquipmentResult) -> Void) {
+//        var equipmentVMs = [SimpleEquipmentVM]()
+//        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
+//            if error != nil {
+//                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
+//            } else {
+//                for document in (snapshot!.documents) {
+//                    if let equipmentName = document.data()["name"] as? String
+//                    { equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
 //                    }
-//                    guard let ite
-                }
-                completion(.success(equipmentVMs))
-            }
-        }
-    }
+//                }
+//                completion(.success(equipmentVMs))
+//            }
+//        }
+//    }
     
     static func fetchEquipmentInfo(byName name: String, completion: @escaping (EquipmentInfoResult) -> Void) {
         // TODO: get department and instituion from Cache?

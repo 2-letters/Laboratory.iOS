@@ -1,5 +1,5 @@
 //
-//  LabViewController.swift
+//  LabListVC.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/7/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabVC: UIViewController {
+class LabListVC: UIViewController {
     @IBOutlet var labSearchBar: UISearchBar!
     @IBOutlet var labTV: UITableView!
     
@@ -37,7 +37,7 @@ class LabVC: UIViewController {
 }
 
 // MARK: - Table View
-extension LabVC: UITableViewDataSource, UITableViewDelegate {
+extension LabListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return labVM.displayingLabs?.count ?? 0
     }
@@ -60,7 +60,7 @@ extension LabVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - Search bar
-extension LabVC: UISearchBarDelegate {
+extension LabListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             labVM.search(by: searchText)
@@ -76,7 +76,7 @@ extension LabVC: UISearchBarDelegate {
 }
 
 // MARK: - Additional helpers
-extension LabVC {
+extension LabListVC {
     func loadLabData() {
         labVM.fetchLabData() { [unowned self] (fetchResult) in
             switch fetchResult {

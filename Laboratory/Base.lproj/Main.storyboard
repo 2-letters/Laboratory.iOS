@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LabVC-->
+        <!--Lab ListVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LabVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LabListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,10 +328,10 @@
             </objects>
             <point key="canvasLocation" x="1233" y="-672"/>
         </scene>
-        <!--EquipmentVC-->
+        <!--Equipment ListVC-->
         <scene sceneID="IeG-eC-dYu">
             <objects>
-                <viewController id="m8J-3U-eDS" customClass="EquipmentVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m8J-3U-eDS" customClass="EquipmentListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CL1-D0-Vi2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

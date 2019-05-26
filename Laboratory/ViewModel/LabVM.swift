@@ -9,11 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
-//enum LabListResult {
-//    case success([Lab])
-//    case failure(String)
-//}
-
+// For Lab ViewController
 class LabVM {
     var allLabs: [Lab]?
     var displayingLabs: [Lab]?

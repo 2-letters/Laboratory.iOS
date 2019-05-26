@@ -1,5 +1,5 @@
 //
-//  EquipmentVC.swift
+//  EquipmentListVC.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/14/19.
@@ -8,14 +8,12 @@
 
 import UIKit
 
-class EquipmentVC: UIViewController {
+class EquipmentListVC: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var equipmentTableView: UITableView!
     
-    var isSearching = false
-    var equipmentVMs = [SimpleEquipmentVM]()
-    var searchedEquipmentVMs = [SimpleEquipmentVM]()
+    var viewModel = EquipmentListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,33 +40,29 @@ class EquipmentVC: UIViewController {
     }
     
     func loadEquipmentData() {
-        EquipmentSvc.fetchAllEquipments() { [unowned self] (itemResult) in
+        viewModel.fetchAllEquipments() { [unowned self] (itemResult) in
             switch itemResult {
             case let .failure(error):
                 print(error)
-            case let .success(viewModels):
-                self.equipmentVMs = viewModels
+            case .success:
+                DispatchQueue.main.async {
+                    self.equipmentTableView.reloadData()
+                }
             }
-            self.equipmentTableView.reloadData()
         }
     }
 }
 
 // MARK:  - Search Bar
-extension EquipmentVC: UISearchBarDelegate {
+extension EquipmentListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            isSearching = false
-            equipmentTableView.reloadData()
-            return
+        if searchText != "" {
+            viewModel.search(by: searchText)
         }
-        isSearching = true
-        searchedEquipmentVMs = equipmentVMs.filter({$0.equipmentName.lowercased().contains(searchText.lowercased())})
         equipmentTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
         searchBar.text = ""
         equipmentTableView.reloadData()
     }
@@ -76,24 +70,21 @@ extension EquipmentVC: UISearchBarDelegate {
 
 
 // MARK: - Table View
-extension EquipmentVC: UITableViewDelegate, UITableViewDataSource {
+extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching == true ? searchedEquipmentVMs.count : equipmentVMs.count
+        return viewModel.displayingEquipmentVMs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
-        if isSearching {
-            cell.setup(viewModel: searchedEquipmentVMs[indexPath.row])
-        } else {
-            cell.setup(viewModel: equipmentVMs[indexPath.row])
-        }
+        
+        cell.setup(viewModel: viewModel.displayingEquipmentVMs?[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let labEquipmentEditVM = equipmentVMs[indexPath.row]
-        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: labEquipmentEditVM.equipmentName)
+        let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]
+        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: equipmentVM.equipmentName)
     }
 }

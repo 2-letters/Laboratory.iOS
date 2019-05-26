@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class LabEquipmentSelectionVM {
     
@@ -22,26 +23,29 @@ class LabEquipmentSelectionVM {
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
     
-    func fetchEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping (FetchResult) -> ()) {
-        EquipmentSvc.fetchAllEquipments { [unowned self] (allEquipmentResult) in
-            switch allEquipmentResult {
-                
-            case let .success(allEquipments):
+    func fetchEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping FetchHandler) {
+        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in
+            if error != nil {
+                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
+            } else {
+                var equipmentVMs = [SimpleEquipmentVM]()
+                for document in (snapshot!.documents) {
+                    if let equipmentName = document.data()["name"] as? String
+                    { equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
+                    }
+                }
                 // assign addedEquipmentVMs to both all and displaying
                 self.allAddedEquipmentVMs = addedEquipmentVMs
                 self.displayingAddedEquipmentVMs = addedEquipmentVMs
                 
+                // convert addedEquipmentVMs to addedSimpleEquipmentVMs to do the subtraction
                 let addedSimpleEquipmentVMs = addedEquipmentVMs.map({ SimpleEquipmentVM(equipment: Equipment(name: $0.equipmentName)) })
-                let availableEquipmentVMs = allEquipments.filter({ !addedSimpleEquipmentVMs.contains($0) })
+                // available = all - added
+                let availableEquipmentVMs = equipmentVMs.filter({ !addedSimpleEquipmentVMs.contains($0) })
                 // assign availableEquipmentVMs to both all and displaying
                 self.allAvailableEquipmentVMs = availableEquipmentVMs
                 self.displayingAvailableEquipmentVMs = availableEquipmentVMs
                 completion(.success)
-            // TODO: save to cache
-                
-            case let .failure(error):
-                print(error)
-                completion(.failure)
             }
         }
     }

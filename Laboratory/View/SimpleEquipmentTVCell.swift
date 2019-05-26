@@ -13,10 +13,7 @@ class SimpleEquipmentTVCell: UITableViewCell {
     @IBOutlet var equipmentNameLabel: UILabel!
     
     func setup(viewModel: SimpleEquipmentVM?) {
-//        labItemEditVM = viewModel
         equipmentNameLabel.text = viewModel?.equipmentName
-        accessoryType = .disclosureIndicator
-        
     }
     
     override func prepareForReuse() {

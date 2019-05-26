@@ -8,11 +8,15 @@
 
 import UIKit
 
+// For SimpleEquipmentCell
 struct SimpleEquipmentVM: Equatable {
-    var equipmentName: String
+    var equipment: Equipment
+    var equipmentName: String {
+        return equipment.name
+    }
     
     init(equipment: Equipment) {
-        equipmentName = equipment.name
+        self.equipment = equipment
     }
     
     static func ==(lhs: SimpleEquipmentVM, rhs: SimpleEquipmentVM) -> Bool {
