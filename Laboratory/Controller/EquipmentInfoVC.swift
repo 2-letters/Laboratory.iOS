@@ -8,19 +8,21 @@
 
 import UIKit
 
-class EquipmentInfoVC: UIViewController {
+class EquipmentInfoVC: UIViewController, SpinnerPresenter {
     
     @IBOutlet private var mainView: EquipmentInfoView!
+    let spinnerVC = SpinnerViewController()
 
     var equipmentName: String?
     private var viewModel = EquipmentInfoVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mainView.isHidden = true
+        showSpinner()
         loadEquipmentInfo()
     }
-    
 
     func loadEquipmentInfo() {
         viewModel.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
@@ -29,6 +31,7 @@ class EquipmentInfoVC: UIViewController {
                 DispatchQueue.main.async {
                     self.updateUI()
                 }
+//                self.hideActivityIndicator()
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
@@ -54,6 +57,11 @@ class EquipmentInfoVC: UIViewController {
         catch{
             print(error)
         }
+        
+        // show the view
+        mainView.isHidden = false
+        // hide spinner
+        hideSpinner()
     }
     
     func tryAgain(alert: UIAlertAction!) {

@@ -8,10 +8,12 @@
 
 import UIKit
 
-class LabEquipmentSelectionVC: UIViewController {
+class LabEquipmentSelectionVC: UIViewController, ActivityIndicatorPresenter {
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
+    
+    var spinnerVC = SpinnerViewController()
     
     var addedEquipmentVMs: [LabEquipmentVM]!  // for receiving data from Lab Info/Create
     private var viewModel = LabEquipmentSelectionVM()
@@ -23,6 +25,11 @@ class LabEquipmentSelectionVC: UIViewController {
         labEquipmentTV.delegate = self
         labEquipmentTV.dataSource = self
         
+        
+        // hide the view until loading is done
+        labEquipmentTV.isHidden = true
+        // hide spinner
+        showSpinner()
         setupUI()
     }
     
@@ -41,6 +48,10 @@ class LabEquipmentSelectionVC: UIViewController {
                 DispatchQueue.main.async {
                     self.labEquipmentTV.reloadData()
                 }
+                // show the view
+                self.labEquipmentTV.isHidden = false
+                // hide spinner
+                self.hideSpinner()
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)

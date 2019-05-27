@@ -8,14 +8,16 @@
 
 import UIKit
 
-class LabEquipmentEditVC: UIViewController {
+class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
 
+    @IBOutlet var mainView: UIView!
     @IBOutlet private var usingQuantityTextField: UITextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
     @IBOutlet private var removeBtn: UIButton!
     @IBOutlet private var separatingLine: UIView!
     @IBOutlet private var equipmentInfoView: EquipmentInfoView!
+    var spinnerVC = SpinnerViewController()
     
     private var equipmentInfoVM = EquipmentInfoVM()
     var equipmentName: String?
@@ -29,6 +31,9 @@ class LabEquipmentEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // hide view until loading is done
+        mainView.isHidden = true
+        showSpinner()
         setupUI()
     }
     
@@ -97,6 +102,11 @@ class LabEquipmentEditVC: UIViewController {
         catch{
             print(error)
         }
+        
+        // show the view
+        mainView.isHidden = false
+        // hide spinner
+        hideSpinner()
     }
     
     // MARK: User Interaction

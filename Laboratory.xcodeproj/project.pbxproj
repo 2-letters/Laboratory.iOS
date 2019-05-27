@@ -43,6 +43,7 @@
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
 		DE59D05C229B5C0700E7FDF1 /* LabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05B229B5C0700E7FDF1 /* LabVM.swift */; };
 		DE59D05E229B94E400E7FDF1 /* LabCreateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05D229B94E400E7FDF1 /* LabCreateVM.swift */; };
+		DE59D060229C420700E7FDF1 /* SpinnerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresenter.swift */; };
 		DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */; };
 		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
@@ -92,6 +93,7 @@
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
 		DE59D05B229B5C0700E7FDF1 /* LabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVM.swift; sourceTree = "<group>"; };
 		DE59D05D229B94E400E7FDF1 /* LabCreateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateVM.swift; sourceTree = "<group>"; };
+		DE59D05F229C420700E7FDF1 /* SpinnerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresenter.swift; sourceTree = "<group>"; };
 		DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEquipmentTVCell.xib; sourceTree = "<group>"; };
 		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				C900357F2296E96500471EE7 /* CustomType.swift */,
 				DE7AF430229A094F0008181E /* LayoutHelper.swift */,
+				DE59D05F229C420700E7FDF1 /* SpinnerPresenter.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
+				DE59D060229C420700E7FDF1 /* SpinnerPresenter.swift in Sources */,
 				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,

@@ -300,6 +300,7 @@
                         <outlet property="decreaseBtn" destination="fU8-2c-DPk" id="qse-Nq-cGC"/>
                         <outlet property="equipmentInfoView" destination="LTz-LL-nxc" id="M32-dm-cgL"/>
                         <outlet property="increaseBtn" destination="RYc-pN-93o" id="7F0-Ah-MEP"/>
+                        <outlet property="mainView" destination="Exs-K7-43T" id="6IK-Vd-2uy"/>
                         <outlet property="removeBtn" destination="EoN-vV-ZN5" id="7GG-ZX-URg"/>
                         <outlet property="separatingLine" destination="2oE-TH-1m4" id="hDl-8B-NHO"/>
                         <outlet property="usingQuantityTextField" destination="0Hb-sC-Ovu" id="iqc-Gm-3zr"/>
