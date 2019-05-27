@@ -66,9 +66,7 @@ extension LabListVC: UITableViewDataSource, UITableViewDelegate {
 // MARK: - Search bar
 extension LabListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText != "" {
-            viewModel.search(by: searchText)
-        }
+        viewModel.search(by: searchText)
         labTV.reloadData()
     }
     

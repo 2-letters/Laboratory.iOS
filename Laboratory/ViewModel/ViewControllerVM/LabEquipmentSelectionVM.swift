@@ -51,10 +51,16 @@ class LabEquipmentSelectionVM {
     }
     
     func search(by text: String) {
-        displayingAddedEquipmentVMs = allAddedEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
-        })
-        
-        displayingAvailableEquipmentVMs = allAvailableEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
-        })
+        if text == "" {
+            // show all when search text is empty
+            displayingAddedEquipmentVMs = allAddedEquipmentVMs
+            displayingAvailableEquipmentVMs = allAvailableEquipmentVMs
+        } else {
+            displayingAddedEquipmentVMs = allAddedEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
+            })
+            
+            displayingAvailableEquipmentVMs = allAvailableEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
+            })
+        }
     }
 }

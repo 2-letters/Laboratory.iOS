@@ -37,9 +37,13 @@ class EquipmentListVM {
     }
     
     func search(by text: String) {
-        displayingEquipmentVMs = allEquipmentVMs?.filter({
-            $0.equipmentName.lowercased()
-            .prefix(text.count) == text.lowercased()
-        })
+        if text == "" {
+            // show all when search text is empty
+            displayingEquipmentVMs = allEquipmentVMs
+        } else {
+            displayingEquipmentVMs = allEquipmentVMs?.filter({
+                $0.equipmentName.lowercased().contains(text.lowercased())
+            })
+        }
     }
 }

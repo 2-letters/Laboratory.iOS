@@ -55,9 +55,7 @@ class EquipmentListVC: UIViewController {
 // MARK:  - Search Bar
 extension EquipmentListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText != "" {
-            viewModel.search(by: searchText)
-        }
+        viewModel.search(by: searchText)
         equipmentTV.reloadData()
     }
     

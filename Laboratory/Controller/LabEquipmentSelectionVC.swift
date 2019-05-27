@@ -129,9 +129,7 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Search bar
 extension LabEquipmentSelectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText != "" {
-            viewModel.search(by: searchText)
-        }
+        viewModel.search(by: searchText)
         // done changing text, reload table view
         labEquipmentTV.reloadData()
     }

@@ -37,7 +37,10 @@ class LabListVM {
     }
     
     func search(by text: String) {
-        displayingLabVMs = allLabVMs?.filter({$0.labName.lowercased()
-            .prefix(text.count) == text.lowercased()})
+        if text == "" {
+            displayingLabVMs = allLabVMs
+        } else {
+            displayingLabVMs = allLabVMs?.filter({$0.labName.lowercased().contains(text.lowercased())})
+        }
     }
 }
