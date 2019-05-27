@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabEquipmentSelectionVC: UIViewController, ActivityIndicatorPresenter {
+class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
