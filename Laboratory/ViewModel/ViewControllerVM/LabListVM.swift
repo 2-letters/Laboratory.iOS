@@ -1,5 +1,5 @@
 //
-//  LabAssignmentViewModel.swift
+//  LabListVM.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/7/19.
@@ -9,13 +9,13 @@
 import Foundation
 import FirebaseFirestore
 
-// For Lab ViewController
-class LabVM {
-    var allLabs: [Lab]?
-    var displayingLabs: [Lab]?
+// For Lab List ViewController
+class LabListVM {
+    var allLabVMs: [LabVM]?
+    var displayingLabVMs: [LabVM]?
     
     func getName(at index: Int) -> String {
-        return displayingLabs![index].name
+        return displayingLabVMs![index].labName
     }
     
     func fetchLabData(completion: @escaping FetchHandler) {
@@ -23,21 +23,21 @@ class LabVM {
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
-                var labs = [Lab]()
+                var labVMs = [LabVM]()
                 for document in (snapshot!.documents) {
                     if let labName = document.data()["labName"] as? String {
-                        labs.append(Lab(name: labName))
+                        labVMs.append(LabVM(lab: Lab(name: labName)))
                     }
                 }
-                self.allLabs = labs
-                self.displayingLabs = labs
+                self.allLabVMs = labVMs
+                self.displayingLabVMs = labVMs
                 completion(.success)
             }
         }
     }
     
     func search(by text: String) {
-        displayingLabs = allLabs?.filter({$0.name.lowercased()
+        displayingLabVMs = allLabVMs?.filter({$0.labName.lowercased()
             .prefix(text.count) == text.lowercased()})
     }
 }
