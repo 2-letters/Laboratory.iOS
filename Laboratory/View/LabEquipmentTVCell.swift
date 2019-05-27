@@ -9,7 +9,7 @@
 import UIKit
 
 class LabEquipmentTVCell: UITableViewCell {
-    static let reuseID =  "LabEquipmentCell"
+    static let reuseId =  "LabEquipmentCell"
     
     @IBOutlet var equipmentNameLbl: UILabel!
     @IBOutlet var quantityLbl: UILabel!

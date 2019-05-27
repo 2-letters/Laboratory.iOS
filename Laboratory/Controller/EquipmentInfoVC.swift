@@ -10,10 +10,10 @@ import UIKit
 
 class EquipmentInfoVC: UIViewController {
     
-    @IBOutlet var mainView: EquipmentInfoView!
+    @IBOutlet private var mainView: EquipmentInfoView!
 
     var equipmentName: String?
-    var viewModel = EquipmentInfoVM()
+    private var viewModel = EquipmentInfoVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,10 @@ import UIKit
 
 class EquipmentListVC: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var equipmentTV: UITableView!
+    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private var equipmentTV: UITableView!
     
-    var viewModel = EquipmentListVM()
+    private var viewModel = EquipmentListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,10 @@ class EquipmentListVC: UIViewController {
         equipmentTV.delegate = self
         equipmentTV.dataSource = self
         
-        setupUI()
+        // register table cells
+        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
+        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
+        
         loadEquipmentData()
     }
     
@@ -34,11 +37,6 @@ class EquipmentListVC: UIViewController {
     }
     
     // MARK: Layout
-    func setupUI() {
-        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseID)
-    }
-    
     func loadEquipmentData() {
         viewModel.fetchAllEquipments() { [unowned self] (itemResult) in
             switch itemResult {
@@ -78,7 +76,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseID) as! SimpleEquipmentTVCell
+        let cell = equipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseId) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         

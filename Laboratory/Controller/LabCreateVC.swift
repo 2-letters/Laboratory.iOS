@@ -10,9 +10,9 @@ import UIKit
 
 class LabCreateVC: UIViewController {
 
-    @IBOutlet var labCreateView: LabInfoView!
+    @IBOutlet private var labCreateView: LabInfoView!
     
-    var viewModel = LabCreateVM()
+    private var viewModel = LabCreateVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()

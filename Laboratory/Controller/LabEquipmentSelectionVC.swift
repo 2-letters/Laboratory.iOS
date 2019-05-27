@@ -10,11 +10,11 @@ import UIKit
 
 class LabEquipmentSelectionVC: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var labEquipmentTV: UITableView!
+    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private var labEquipmentTV: UITableView!
     
     var addedEquipmentVMs: [LabEquipmentVM]!  // for receiving data from Lab Info/Create
-    var viewModel = LabEquipmentSelectionVM()
+    private var viewModel = LabEquipmentSelectionVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +30,10 @@ class LabEquipmentSelectionVC: UIViewController {
     func setupUI() {
         // load LabItems TableView
         let labEquipmentNib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
-        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseID)
+        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
         let simpleEquipmentNib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseID)
+        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
         
         viewModel.fetchEquipments(addedEquipmentVMs: addedEquipmentVMs) { [unowned self] (fetchResult) in
             switch fetchResult {
@@ -100,14 +100,14 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseID) as! LabEquipmentTVCell
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId) as! LabEquipmentTVCell
             
             cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseID) as! SimpleEquipmentTVCell
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseId) as! SimpleEquipmentTVCell
             cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator

@@ -9,12 +9,17 @@
 import UIKit
 
 class LabTVCell: UITableViewCell {
-
+    static let reuseId = "LabCell"
+    
     @IBOutlet var labNameLbl: UILabel!
 
     var viewModel: LabVM? {
         didSet {
             labNameLbl.text = viewModel?.labName
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }

@@ -10,20 +10,20 @@ import UIKit
 
 class LabEquipmentEditVC: UIViewController {
 
-    @IBOutlet var usingQuantityTextField: UITextField!
-    @IBOutlet var decreaseBtn: UIButton!
-    @IBOutlet var increaseBtn: UIButton!
-    @IBOutlet var removeBtn: UIButton!
-    @IBOutlet var separatingLine: UIView!
-    @IBOutlet var equipmentInfoView: EquipmentInfoView!
+    @IBOutlet private var usingQuantityTextField: UITextField!
+    @IBOutlet private var decreaseBtn: UIButton!
+    @IBOutlet private var increaseBtn: UIButton!
+    @IBOutlet private var removeBtn: UIButton!
+    @IBOutlet private var separatingLine: UIView!
+    @IBOutlet private var equipmentInfoView: EquipmentInfoView!
     
-    var equipmentInfoVM = EquipmentInfoVM()
+    private var equipmentInfoVM = EquipmentInfoVM()
     var equipmentName: String?
     // the original using quantiy
     var usingQuantity: Int = 0
     // the quantity being edited
-    var editingQuantity: Int = 0
-    var saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
+    private var editingQuantity: Int = 0
+    private var saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
     
     
     override func viewDidLoad() {

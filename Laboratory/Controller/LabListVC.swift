@@ -9,10 +9,10 @@
 import UIKit
 
 class LabListVC: UIViewController {
-    @IBOutlet var labSearchBar: UISearchBar!
-    @IBOutlet var labTV: UITableView!
+    @IBOutlet private var labSearchBar: UISearchBar!
+    @IBOutlet private var labTV: UITableView!
     
-    var viewModel = LabListVM()
+    private var viewModel = LabListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,10 @@ class LabListVC: UIViewController {
         labTV.delegate = self
         labTV.dataSource = self
         labSearchBar.delegate = self
+        
+        // register lab cells
+        let nib = UINib(nibName: "LabTVCell", bundle: nil)
+        labTV.register(nib, forCellReuseIdentifier: LabTVCell.reuseId)
         
         loadLabData()
     }
@@ -44,7 +48,7 @@ extension LabListVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get the table cell
-        let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
+        let cell = labTV.dequeueReusableCell(withIdentifier: LabTVCell.reuseId) as! LabTVCell
         
         cell.viewModel = viewModel.displayingLabVMs?[indexPath.row]
         

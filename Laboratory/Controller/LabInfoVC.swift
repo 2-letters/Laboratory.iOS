@@ -10,17 +10,17 @@ import UIKit
 
 class LabInfoVC: UIViewController {
 
-    @IBOutlet var labInfoView: LabInfoView!
-    @IBOutlet var saveBtn: UIBarButtonItem!
+    @IBOutlet private var labInfoView: LabInfoView!
+    @IBOutlet private var saveBtn: UIBarButtonItem!
     
-    var labEquipmentTableView: UITableView!
+    private var labEquipmentTableView: UITableView!
     
     var labName: String! {
         didSet {
             viewModel = LabInfoVM(name: labName)
         }
     }
-    var viewModel: LabInfoVM?
+    private var viewModel: LabInfoVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class LabInfoVC: UIViewController {
         
         // register table cells
         let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
-        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseID)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
     }
     
     func loadLabEquipments() {
@@ -109,7 +109,7 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseID) as! LabEquipmentTVCell
+        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId) as! LabEquipmentTVCell
         
         cell.viewModel = viewModel?.equipmentVMs[indexPath.row]
         return cell
