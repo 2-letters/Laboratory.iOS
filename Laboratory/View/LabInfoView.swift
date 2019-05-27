@@ -11,13 +11,9 @@ import UIKit
 class LabInfoView: UIView {
 
     @IBOutlet var contentView: UIView!
-    
     @IBOutlet var nameTextField: UITextField!
-    
     @IBOutlet var descriptionTextField: UITextField!
-    
     @IBOutlet var addEquipmentsBtn: UIButton!
-    
     @IBOutlet var labEquipmentTV: UITableView!
     
     override init(frame: CGRect) {
@@ -35,7 +31,6 @@ class LabInfoView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
     }
 
 }

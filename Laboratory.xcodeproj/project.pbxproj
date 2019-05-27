@@ -220,7 +220,6 @@
 			children = (
 				DE59D05A229B58A700E7FDF1 /* ViewVM */,
 				DE59D059229B587F00E7FDF1 /* ViewControllerVM */,
-				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -258,6 +257,7 @@
 				C34438802282094A0021168B /* LabListVM.swift */,
 				DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */,
 				C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */,
+				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
 			);
 			path = ViewControllerVM;
 			sourceTree = "<group>";

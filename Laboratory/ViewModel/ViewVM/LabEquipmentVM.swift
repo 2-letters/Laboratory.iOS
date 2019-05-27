@@ -22,22 +22,4 @@ struct LabEquipmentVM {
     var quantity: Int {
         return labEquipment.quantity
     }
-    
-    
-    
-//    func loadLabEquipments() {
-//        guard let labName = labVM?.labName else {
-//            return
-//        }
-//        LabSvc.fetchLabEquipment(byName: labName) { [unowned self] (labEquipmentResult) in
-//            switch labEquipmentResult {
-//            case let .failure(errorStr):
-//                print(errorStr)
-//            case let .success(viewModel):
-//                self.labEquipmentVMs = viewModels
-//                // successfully fetch lab equipments data, reload the table view
-//                self.labEquipmentTableView?.reloadData()
-//            }
-//        }
-//    }
 }

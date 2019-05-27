@@ -10,5 +10,4 @@ import Foundation
 
 struct Lab {
     var name: String
-//    var description: String
 }

@@ -14,12 +14,4 @@ struct FullEquipment: NamedItem {
     var description: String
     var location: String
     var pictureUrl: String
-//    
-//    init(name: String, available: Int, description: String, location: String, pictureUrl: String) { 
-//        self.available = quantity
-//        self.description = description
-//        self.location = location
-//        self.pictureUrl = pictureUrl
-//        super.init(name: name)
-//    }
 }

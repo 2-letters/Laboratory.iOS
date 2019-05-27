@@ -11,15 +11,10 @@ import UIKit
 class EquipmentInfoView: UIView {
 
     @IBOutlet var availableLabel: UILabel!
-    
     @IBOutlet var contentView: UIView!
-    
     @IBOutlet var nameLabel: UILabel!
-    
     @IBOutlet var locationTextView: UITextView!
-    
     @IBOutlet var descriptionTextView: UITextView!
-    
     @IBOutlet var equipmentImageView: UIImageView!
     
     override init(frame: CGRect) {
@@ -38,5 +33,4 @@ class EquipmentInfoView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-    
 }

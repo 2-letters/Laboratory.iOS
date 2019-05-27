@@ -11,9 +11,4 @@ import Foundation
 struct LabEquipment: NamedItem {
     var name: String
     var quantity: Int
-//    
-//    init(name: String, quantity: Int) {
-//        self.quantity = quantity
-//        super.init(name: name)
-//    }
 }

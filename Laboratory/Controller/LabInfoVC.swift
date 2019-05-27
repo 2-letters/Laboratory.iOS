@@ -35,8 +35,6 @@ class LabInfoVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
-        //
-        
         // get the Table View
         labEquipmentTableView = labInfoView.labEquipmentTV
         
@@ -54,23 +52,20 @@ class LabInfoVC: UIViewController {
     
     func loadLabEquipments() {
         // start fetching Lab Equipments
-        let fetchLabEquipmentHandler: FetchLabEquipmentHandler = { [unowned self] (labEquipmentResult) in
-            switch labEquipmentResult {
+        viewModel?.fetchLabEquipment(byName: labName, completion: { (fetchResult) in
+            switch fetchResult {
+            case .success:
+                self.updateUI()
+                DispatchQueue.main.async {
+                    self.labEquipmentTableView?.reloadData()
+                }
             case let .failure(errorStr):
                 print(errorStr)
-            case let .success(labInfo):
-                self.viewModel? = LabInfoVM(labInfo: labInfo)
-                // successfully fetch lab equipments data, load the labels
-                self.loadLabels()
-                // and reload the table view
-                self.labEquipmentTableView?.reloadData()
             }
-        }
-        
-        viewModel?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
+        })
     }
     
-    func loadLabels() {
+    func updateUI() {
         // setup the Lab info views
         labInfoView.nameTextField.text = viewModel?.labName
         labInfoView.descriptionTextField.text = viewModel?.description
@@ -88,7 +83,6 @@ class LabInfoVC: UIViewController {
         }
     }
 }
-
 
 // MARK: - User Interaction
 extension LabInfoVC {
@@ -111,13 +105,13 @@ extension LabInfoVC {
 
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.equipmentVMs?.count ?? 0
+        return viewModel?.equipmentVMs.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
         
-        cell.viewModel = viewModel?.equipmentVMs![indexPath.row]
+        cell.viewModel = viewModel?.equipmentVMs[indexPath.row]
         return cell
     }
 }

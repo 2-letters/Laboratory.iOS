@@ -54,13 +54,15 @@ class LabEquipmentEditVC: UIViewController {
         usingQuantityTextField.text = String(editingQuantity)
         if editingQuantity == 0 {
             decreaseBtn.isEnabled = false
+            removeBtn.isEnabled = false
         } else if editingQuantity == equipmentInfoVM.available {
             increaseBtn.isEnabled = false
+            removeBtn.isEnabled = true
         } else {
             decreaseBtn.isEnabled = true
             increaseBtn.isEnabled = true
+            removeBtn.isEnabled = true
         }
-        
         // "Save" button is only enable when there's change in quantity
         saveBtn.isEnabled = editingQuantity != usingQuantity
     }
@@ -95,7 +97,6 @@ class LabEquipmentEditVC: UIViewController {
         catch{
             print(error)
         }
-        //        mainView.equipmentImageView.image = UIImage(
     }
     
     // MARK: User Interaction
@@ -105,7 +106,7 @@ class LabEquipmentEditVC: UIViewController {
     }
     
     @objc func saveChange() {
-        
+        // TODO
     }
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {
