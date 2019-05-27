@@ -12,8 +12,10 @@ class SimpleEquipmentTVCell: UITableViewCell {
 
     @IBOutlet var equipmentNameLabel: UILabel!
     
-    func setup(viewModel: SimpleEquipmentVM?) {
-        equipmentNameLabel.text = viewModel?.equipmentName
+    var viewModel: SimpleEquipmentVM? {
+        didSet {
+            equipmentNameLabel.text = viewModel?.equipmentName
+        }
     }
     
     override func prepareForReuse() {

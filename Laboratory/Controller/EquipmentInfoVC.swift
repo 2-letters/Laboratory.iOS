@@ -13,7 +13,7 @@ class EquipmentInfoVC: UIViewController {
     @IBOutlet var mainView: EquipmentInfoView!
 
     var equipmentName: String?
-    var equipmentInfoVM = EquipmentInfoVM()
+    var viewModel = EquipmentInfoVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +23,14 @@ class EquipmentInfoVC: UIViewController {
     
 
     func loadEquipmentInfo() {
-        equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+        viewModel.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
                     self.updateUI()
                 }
-            case .failure:
+            case let .failure(errorStr):
+                print(errorStr)
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
@@ -39,14 +40,14 @@ class EquipmentInfoVC: UIViewController {
     }
     
     private func updateUI() {
-        mainView.availableLabel.text = equipmentInfoVM.availableString
-        mainView.nameLabel.text = equipmentInfoVM.equipmentName
-        mainView.locationTextView.text = equipmentInfoVM.location
+        mainView.availableLabel.text = viewModel.availableString
+        mainView.nameLabel.text = viewModel.equipmentName
+        mainView.locationTextView.text = viewModel.location
         LayoutHelper.adjustUITextViewHeight(arg: mainView.locationTextView)
-        mainView.descriptionTextView.text = equipmentInfoVM.description
+        mainView.descriptionTextView.text = viewModel.description
         LayoutHelper.adjustUITextViewHeight(arg: mainView.descriptionTextView)
         do {
-            let url = URL(string: equipmentInfoVM.pictureUrl)!
+            let url = URL(string: viewModel.pictureUrl)!
             let data = try Data(contentsOf: url)
             mainView.equipmentImageView.image = UIImage(data: data)
         }

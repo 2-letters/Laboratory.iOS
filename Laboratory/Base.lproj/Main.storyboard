@@ -359,7 +359,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gPu-kW-eM4"/>
                     <connections>
-                        <outlet property="equipmentTableView" destination="AGQ-aK-lpY" id="XJa-4B-jw8"/>
+                        <outlet property="equipmentTV" destination="AGQ-aK-lpY" id="XJa-4B-jw8"/>
                         <outlet property="searchBar" destination="zWT-2d-Z7Z" id="lK9-kq-1g0"/>
                         <segue destination="g91-L7-Nax" kind="show" identifier="showEquipmentInfo" id="fAj-fS-x2V"/>
                     </connections>

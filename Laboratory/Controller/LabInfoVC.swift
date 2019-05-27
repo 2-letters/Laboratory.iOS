@@ -17,11 +17,10 @@ class LabInfoVC: UIViewController {
     
     var labName: String! {
         didSet {
-            labInfoVM = LabInfoVM(name: labName)
+            viewModel = LabInfoVM(name: labName)
         }
     }
-    var labInfoVM: LabInfoVM?
-    var fetchLabEquipmentHandler: FetchLabEquipmentHandler?
+    var viewModel: LabInfoVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +54,12 @@ class LabInfoVC: UIViewController {
     
     func loadLabEquipments() {
         // start fetching Lab Equipments
-        fetchLabEquipmentHandler = { [unowned self] (labEquipmentResult) in
+        let fetchLabEquipmentHandler: FetchLabEquipmentHandler = { [unowned self] (labEquipmentResult) in
             switch labEquipmentResult {
             case let .failure(errorStr):
                 print(errorStr)
             case let .success(labInfo):
-                self.labInfoVM? = LabInfoVM(labInfo: labInfo)
+                self.viewModel? = LabInfoVM(labInfo: labInfo)
                 // successfully fetch lab equipments data, load the labels
                 self.loadLabels()
                 // and reload the table view
@@ -68,13 +67,13 @@ class LabInfoVC: UIViewController {
             }
         }
         
-        labInfoVM?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
+        viewModel?.fetchLabEquipment(byName: labName, completion: fetchLabEquipmentHandler!)
     }
     
     func loadLabels() {
         // setup the Lab info views
-        labInfoView.nameTextField.text = labInfoVM?.labName
-        labInfoView.descriptionTextField.text = labInfoVM?.description
+        labInfoView.nameTextField.text = viewModel?.labName
+        labInfoView.descriptionTextField.text = viewModel?.description
     }
     
     // MARK: segue
@@ -94,15 +93,11 @@ class LabInfoVC: UIViewController {
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-        guard let equipmentVMs = labInfoVM?.equipmentVMs else {
+        guard let equipmentVMs = viewModel?.equipmentVMs else {
             return
         }
         
         performSegue(withIdentifier: SegueId.editEquipments, sender: equipmentVMs)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let labEquipmentSelectionVC = storyboard.instantiateViewController(withIdentifier: "labEquipmentSelectionVC")
-//        let navController = UINavigationController(rootViewController: labEquipmentSelectionVC)
-//        present(navController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -116,13 +111,13 @@ extension LabInfoVC {
 
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labInfoVM?.equipmentVMs?.count ?? 0
+        return viewModel?.equipmentVMs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
-        let vm = labInfoVM?.equipmentVMs![indexPath.row]
-        cell.setup(viewModel: vm!)
+        
+        cell.viewModel = viewModel?.equipmentVMs![indexPath.row]
         return cell
     }
 }

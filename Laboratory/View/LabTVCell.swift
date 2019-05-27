@@ -11,10 +11,10 @@ import UIKit
 class LabTVCell: UITableViewCell {
 
     @IBOutlet var labNameLbl: UILabel!
-    
-    var labVM: LabVM! {
+
+    var viewModel: LabVM? {
         didSet {
-            labNameLbl.text = labVM.labName
+            labNameLbl.text = viewModel?.labName
         }
     }
 }

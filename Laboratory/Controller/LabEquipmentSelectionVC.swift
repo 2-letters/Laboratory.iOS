@@ -102,20 +102,21 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
-            cell.setup(viewModel: viewModel.displayingAddedEquipmentVMs?[indexPath.row])
+            
+            cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
+            
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
             let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
-            cell.setup(viewModel: viewModel.displayingAvailableEquipmentVMs?[indexPath.row])
+            cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
+            
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell1 = tableView.cellForRow(at: indexPath)
-//        let cell2 = labEquipmentTV.cellForRow(at: indexPath)
-        
         if indexPath.section == 0 {
             let vm = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
             performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
@@ -123,11 +124,6 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
             let vm = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
             performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
         }
-        
-//        let backgroundView = UIView()
-//        backgroundView.backgroundColor = UIColor.cyan
-     
-//        cell?.selectedBackgroundView = backgroundView
     }
 }
 
