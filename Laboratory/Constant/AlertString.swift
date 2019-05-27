@@ -12,8 +12,9 @@ struct AlertString {
     static let okay = "Okay"
     
     // Titles
-    static let failToLoadTitle = "Oops"
+    static let oopsTitle = "Oops"
     
     // Messages
-    static let tryAgainMessage = "Some error has occurred. Please try again"
+    static let tryAgainMessage = "Some errors have occurred. Please try again later"
+    static let failToAddLabMessage = "Please make sure your lab has both name and description"
 }

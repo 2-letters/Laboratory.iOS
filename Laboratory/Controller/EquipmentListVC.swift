@@ -36,7 +36,7 @@ class EquipmentListVC: UIViewController {
     // MARK: Layout
     func setupUI() {
         let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.simpleEquipmentCell)
+        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseID)
     }
     
     func loadEquipmentData() {
@@ -78,7 +78,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
+        let cell = equipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseID) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         

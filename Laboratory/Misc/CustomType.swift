@@ -1,5 +1,5 @@
 //
-//  Enum.swift
+//  CustomType.swift
 //  Laboratory
 //
 //  Created by Developers on 5/23/19.

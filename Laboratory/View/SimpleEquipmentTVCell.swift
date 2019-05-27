@@ -9,7 +9,8 @@
 import UIKit
 
 class SimpleEquipmentTVCell: UITableViewCell {
-
+    static let reuseID = "SimpleEquipmentCell"
+    
     @IBOutlet var equipmentNameLabel: UILabel!
     
     var viewModel: SimpleEquipmentVM? {

@@ -47,7 +47,7 @@ class LabInfoVC: UIViewController {
         
         // register table cells
         let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
-        labEquipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.labEquipmentCell)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseID)
     }
     
     func loadLabEquipments() {
@@ -109,7 +109,7 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: ReuseId.labEquipmentCell) as! LabEquipmentTVCell
+        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseID) as! LabEquipmentTVCell
         
         cell.viewModel = viewModel?.equipmentVMs[indexPath.row]
         return cell

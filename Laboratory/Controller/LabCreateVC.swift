@@ -12,6 +12,8 @@ class LabCreateVC: UIViewController {
 
     @IBOutlet var labCreateView: LabInfoView!
     
+    var viewModel = LabCreateVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,11 +39,21 @@ extension LabCreateVC {
         let newLabDescription = labCreateView.descriptionTextField.text ?? ""
         
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
-            let ac = UIAlertController(title: "Oops!", message: "Please make sure your lab has a name.", preferredStyle: .alert)
+            let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToAddLabMessage, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(ac, animated: true, completion: nil)
         } else {
-            LabSvc.createLab(withName: newLabName, description: newLabDescription)
+            // create a new lab on FireStore
+            viewModel.createLab(withName: newLabName, description: newLabDescription) { (createResult) in
+                switch createResult {
+                case .success:
+                    print("Successfully add a new lab: \(newLabName)")
+                    // TODO make alert congrats on success
+                case let .failure(errorStr):
+                    print(errorStr)
+                    // TODO make alert oops on fail
+                }
+            }
             dismiss(animated: true, completion: nil)
         }
     }

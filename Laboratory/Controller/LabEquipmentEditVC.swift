@@ -75,7 +75,7 @@ class LabEquipmentEditVC: UIViewController {
                 }
             case .failure:
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.failToLoadTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
                 self.present(ac, animated: true, completion: nil)
             }
