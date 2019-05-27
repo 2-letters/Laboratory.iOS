@@ -12,7 +12,7 @@ class LabListVC: UIViewController {
     @IBOutlet var labSearchBar: UISearchBar!
     @IBOutlet var labTV: UITableView!
     
-    var labVM = LabVM()
+    var viewModel = LabListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,21 +39,21 @@ class LabListVC: UIViewController {
 // MARK: - Table View
 extension LabListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labVM.displayingLabs?.count ?? 0
+        return viewModel.displayingLabVMs?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get the table cell
         let cell = Bundle.main.loadNibNamed("LabTVCell", owner: self, options: nil)?.first as! LabTVCell
-        // TODO this may be off, cell should not talk to view model
-        cell.labVM = labVM
+        
+        cell.viewModel = viewModel.displayingLabVMs?[indexPath.row]
         
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLabName = labVM.getName(at: indexPath.row)
+        let selectedLabName = viewModel.getName(at: indexPath.row)
         // show LabInfo View and send labVM to it
         performSegue(withIdentifier: SegueId.showLabInfo, sender: selectedLabName)
     }
@@ -63,7 +63,7 @@ extension LabListVC: UITableViewDataSource, UITableViewDelegate {
 extension LabListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
-            labVM.search(by: searchText)
+            viewModel.search(by: searchText)
         }
         labTV.reloadData()
     }
@@ -78,7 +78,7 @@ extension LabListVC: UISearchBarDelegate {
 // MARK: - Additional helpers
 extension LabListVC {
     func loadLabData() {
-        labVM.fetchLabData() { [unowned self] (fetchResult) in
+        viewModel.fetchLabData() { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {

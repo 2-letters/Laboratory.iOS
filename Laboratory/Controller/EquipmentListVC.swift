@@ -11,7 +11,7 @@ import UIKit
 class EquipmentListVC: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var equipmentTableView: UITableView!
+    @IBOutlet var equipmentTV: UITableView!
     
     var viewModel = EquipmentListVM()
     
@@ -19,8 +19,8 @@ class EquipmentListVC: UIViewController {
         super.viewDidLoad()
 
         searchBar.delegate = self
-        equipmentTableView.delegate = self
-        equipmentTableView.dataSource = self
+        equipmentTV.delegate = self
+        equipmentTV.dataSource = self
         
         setupUI()
         loadEquipmentData()
@@ -36,7 +36,7 @@ class EquipmentListVC: UIViewController {
     // MARK: Layout
     func setupUI() {
         let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
-        equipmentTableView.register(nib, forCellReuseIdentifier: ReuseId.simpleEquipmentCell)
+        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.simpleEquipmentCell)
     }
     
     func loadEquipmentData() {
@@ -46,8 +46,9 @@ class EquipmentListVC: UIViewController {
                 print(error)
             case .success:
                 DispatchQueue.main.async {
-                    self.equipmentTableView.reloadData()
+                    self.equipmentTV.reloadData()
                 }
+                // TODO save to cache
             }
         }
     }
@@ -59,12 +60,12 @@ extension EquipmentListVC: UISearchBarDelegate {
         if searchText != "" {
             viewModel.search(by: searchText)
         }
-        equipmentTableView.reloadData()
+        equipmentTV.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        equipmentTableView.reloadData()
+        equipmentTV.reloadData()
     }
 }
 
@@ -77,9 +78,11 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTableView.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
+        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.simpleEquipmentCell) as! SimpleEquipmentTVCell
         
-        cell.setup(viewModel: viewModel.displayingEquipmentVMs?[indexPath.row])
+        cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
+        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
