@@ -49,6 +49,8 @@
 		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
 		DE7AF431229A094F0008181E /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* LayoutHelper.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
+		DEA16B35229C858E00F72122 /* LabEquipmentEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA16B34229C858E00F72122 /* LabEquipmentEditVM.swift */; };
+		DEA16B37229CB1A600F72122 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA16B36229CB1A600F72122 /* FirestoreService.swift */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
 		DE7AF430229A094F0008181E /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
+		DEA16B34229C858E00F72122 /* LabEquipmentEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVM.swift; sourceTree = "<group>"; };
+		DEA16B36229CB1A600F72122 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +242,7 @@
 				C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */,
 				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
 				DE59D05D229B94E400E7FDF1 /* LabCreateVM.swift */,
+				DEA16B34229C858E00F72122 /* LabEquipmentEditVM.swift */,
 			);
 			path = ViewControllerVM;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				C900357F2296E96500471EE7 /* CustomType.swift */,
 				DE7AF430229A094F0008181E /* LayoutHelper.swift */,
 				DE59D05F229C420700E7FDF1 /* SpinnerPresenter.swift */,
+				DEA16B36229CB1A600F72122 /* FirestoreService.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
+				DEA16B37229CB1A600F72122 /* FirestoreService.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C90035802296E96500471EE7 /* CustomType.swift in Sources */,
 				DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */,
@@ -437,6 +444,7 @@
 				C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */,
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
+				DEA16B35229C858E00F72122 /* LabEquipmentEditVM.swift in Sources */,
 				C34438812282094A0021168B /* LabListVM.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,
 				C90035832296EEEC00471EE7 /* AlertString.swift in Sources */,

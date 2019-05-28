@@ -28,7 +28,7 @@ class LabInfoVM {
         labInfo = LabInfo(name: name)
     }
     
-    func fetchLabEquipment(byName labName: String?, completion: @escaping FetchHandler) {
+    func fetchLabInfo(byName labName: String?, completion: @escaping FetchHandler) {
         guard let name = labName else {
             completion(.failure("ERR could not load Lab Name"))
             return

@@ -9,13 +9,12 @@
 import UIKit
 
 class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
+    var labName: String!  // for receiving data from Lab Info/Create
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
     
-    var spinnerVC = SpinnerViewController()
-    
-    var addedEquipmentVMs: [LabEquipmentVM]!  // for receiving data from Lab Info/Create
+    internal var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentSelectionVM()
     
     override func viewDidLoad() {
@@ -42,7 +41,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         let simpleEquipmentNib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
         
-        viewModel.fetchEquipments(addedEquipmentVMs: addedEquipmentVMs) { [unowned self] (fetchResult) in
+        viewModel.fetchEquipments(byLabName: labName) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {

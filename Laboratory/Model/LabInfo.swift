@@ -18,7 +18,6 @@ struct LabInfo {
         description = dictionary["description"] as? String ?? ""
         
         for (key, value) in dictionary["equipments"] as! [String: Any] {
-            print("vox key: \(key) value: \(value)")
             equipments.append(LabEquipment(name: key, quantity: Int(value as! String)!))
         }
     }

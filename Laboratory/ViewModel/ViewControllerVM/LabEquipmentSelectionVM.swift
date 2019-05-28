@@ -22,11 +22,27 @@ class LabEquipmentSelectionVM {
     var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
+    func fetchEquipments(byLabName labName: String, completion: @escaping FetchHandler) { Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labName)
+            .getDocument { [unowned self] (document, error) in
+                if error != nil { completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
+                } else {
+                    if let addedEquipments = document!.data()!["equipments"] as? [String: Any] {
+                       var addedEquipmentVMs = [LabEquipmentVM]()
+                        for (name, quantity) in addedEquipments { addedEquipmentVMs.append(LabEquipmentVM(equipment: LabEquipment(name: name, quantity: Int(quantity as! String)!)))
+                        }
+                        self.fetchAllEquipments(addedEquipmentVMs: addedEquipmentVMs, completion: { completion($0)
+                            })
+                    } else {
+                        completion(.failure("ERR converting Lab Equipments data"))
+                    }
+                }
+        }
+    }
+    
     // TODO: maybe i can reuse fetchAllEquipments from EquipmentListVM instead of this?
-    func fetchEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping FetchHandler) {
+    func fetchAllEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping FetchHandler) {
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { [unowned self] (snapshot, error) in
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
+            if error != nil { completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
             } else {
                 var equipmentVMs = [SimpleEquipmentVM]()
                 for document in (snapshot!.documents) {

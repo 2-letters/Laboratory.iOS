@@ -17,9 +17,9 @@ class EquipmentInfoVM {
     var availableString: String {
         return "Available:  \(equipment!.available) (items)"
     }
-    var available: Int {
-        return equipment?.available ?? 0
-    }
+//    var available: Int {
+//        return equipment?.available ?? 0
+//    }
     var description: String {
         return equipment!.description
     }

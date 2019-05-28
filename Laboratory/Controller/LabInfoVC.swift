@@ -52,7 +52,7 @@ class LabInfoVC: UIViewController {
     
     func loadLabEquipments() {
         // start fetching Lab Equipments
-        viewModel?.fetchLabEquipment(byName: labName, completion: { (fetchResult) in
+        viewModel?.fetchLabInfo(byName: labName, completion: { (fetchResult) in
             switch fetchResult {
             case .success:
                 self.updateUI()
@@ -76,10 +76,7 @@ class LabInfoVC: UIViewController {
         if segue.identifier == SegueId.editEquipments {
             let navC = segue.destination as! UINavigationController
             let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
-            guard let addedEquipmentVMs = sender as? [LabEquipmentVM] else {
-                return
-            }
-            labEquipmentSelectionVC.addedEquipmentVMs = addedEquipmentVMs
+            labEquipmentSelectionVC.labName = labName
         }
     }
 }
@@ -87,11 +84,11 @@ class LabInfoVC: UIViewController {
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-        guard let equipmentVMs = viewModel?.equipmentVMs else {
-            return
-        }
+//        guard let equipmentVMs = viewModel?.equipmentVMs else {
+//            return
+//        }
         
-        performSegue(withIdentifier: SegueId.editEquipments, sender: equipmentVMs)
+        performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

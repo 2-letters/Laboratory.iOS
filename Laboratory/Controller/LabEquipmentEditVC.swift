@@ -19,7 +19,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     @IBOutlet private var equipmentInfoView: EquipmentInfoView!
     var spinnerVC = SpinnerViewController()
     
-    private var equipmentInfoVM = EquipmentInfoVM()
+    private var viewModel = LabEquipmentEditVM()
+    
     var equipmentName: String?
     // the original using quantiy
     var usingQuantity: Int = 0
@@ -60,7 +61,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         if editingQuantity == 0 {
             decreaseBtn.isEnabled = false
             removeBtn.isEnabled = false
-        } else if editingQuantity == equipmentInfoVM.available {
+        } else if editingQuantity == viewModel.available {
             increaseBtn.isEnabled = false
             removeBtn.isEnabled = true
         } else {
@@ -72,7 +73,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         saveBtn.isEnabled = editingQuantity != usingQuantity
     }
     
-    func loadEquipmentInfo() { equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+    func loadEquipmentInfo() { viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
@@ -88,6 +89,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     }
     
     private func updateEquipmentInfoLayout() {
+        let equipmentInfoVM = viewModel.equipmentInfoVM
         equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
         equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
         equipmentInfoView.locationTextView.text = equipmentInfoVM.location
@@ -116,7 +118,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     }
     
     @objc func saveChange() {
-        // TODO
+        viewModel.updateQuantity(forEquipment: equipmentName!)
     }
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {
@@ -135,3 +137,23 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         updateUI()
     }
 }
+
+//extension LabEquipmentEditVC: UITextFieldDelegate {
+////    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+////        let currentUsingQuantity = Int(textField.text ?? "0")!
+////
+////        let availableQuantity = viewModel.available
+////        if currentUsingQuantity > availableQuantity {
+////            usingQuantityTextField.text = String(availableQuantity)
+////        }
+////        return true
+////    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        let currentUsingQuantity = Int(textField.text ?? "0")!
+//        let availableQuantity = viewModel.available
+//        if currentUsingQuantity > availableQuantity {
+//            textField.text = String(availableQuantity)
+//        }
+//    }
+//}
