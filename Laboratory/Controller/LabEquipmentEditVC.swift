@@ -9,6 +9,12 @@
 import UIKit
 
 class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
+    // to receive data from LabEquipmentSelectionVC
+    var labName: String!
+    var equipmentName: String?
+    // the original using quantiy
+    var usingQuantity: Int = 0
+    // the quantity being edited
 
     @IBOutlet var mainView: UIView!
     @IBOutlet private var usingQuantityTextField: UITextField!
@@ -17,17 +23,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     @IBOutlet private var removeBtn: UIButton!
     @IBOutlet private var separatingLine: UIView!
     @IBOutlet private var equipmentInfoView: EquipmentInfoView!
-    var spinnerVC = SpinnerViewController()
     
+    internal var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentEditVM()
-    
-    var equipmentName: String?
-    // the original using quantiy
-    var usingQuantity: Int = 0
-    // the quantity being edited
+
     private var editingQuantity: Int = 0
     private var saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +119,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     }
     
     @objc func saveChange() {
-        viewModel.updateQuantity(forEquipment: equipmentName!)
+        viewModel.updateEquipmentQuantity(forLab: labName)
     }
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {

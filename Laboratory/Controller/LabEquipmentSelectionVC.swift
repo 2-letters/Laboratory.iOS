@@ -63,6 +63,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentEdit {
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
+            labEquipmentEditVC?.labName = labName
             if let addedEquipmentVM = sender as? LabEquipmentVM {
                 labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
                 labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
