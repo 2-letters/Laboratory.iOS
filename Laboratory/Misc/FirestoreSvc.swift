@@ -17,9 +17,9 @@ enum FetchLabEquipmentResult {
 }
 
 struct FirestoreSvc {
-    static func fetchLabEquipments(byLabName labName: String, completion: @escaping FetchLabEquipmentHandler) {
+    static func fetchLabEquipments(byLabId labId: String, completion: @escaping FetchLabEquipmentHandler) {
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
-            .collection("labs").document(labName).collection("equipments")
+            .collection("labs").document(labId).collection("equipments")
             .getDocuments { (snapshot, error) in
                 if error != nil {
                     completion(.failure(error?.localizedDescription

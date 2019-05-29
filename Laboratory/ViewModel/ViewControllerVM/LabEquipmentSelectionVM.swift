@@ -22,8 +22,8 @@ class LabEquipmentSelectionVM {
     var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
-    func fetchEquipments(byLabName labName: String, completion: @escaping FetchHandler) {
-        FirestoreSvc.fetchLabEquipments(byLabName: labName) { [unowned self] (fetchLabEquipmentResult) in
+    func fetchEquipments(byLabId labId: String, completion: @escaping FetchHandler) {
+        FirestoreSvc.fetchLabEquipments(byLabId: labId) { [unowned self] (fetchLabEquipmentResult) in
             switch fetchLabEquipmentResult {
             case let .success(addedEquipments):
                 let addedEquipmentVMs = addedEquipments.map({ LabEquipmentVM(equipment: $0) })

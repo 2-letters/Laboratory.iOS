@@ -14,4 +14,7 @@ struct LabVM {
     var labName: String {
         return lab!.name
     }
+    var labId: String {
+        return lab!.id
+    }
 }

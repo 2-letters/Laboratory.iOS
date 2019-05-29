@@ -13,33 +13,25 @@ import FirebaseFirestore
 class LabInfoVM {
     var labInfo: LabInfo?
     
-//    init(labInfo: LabInfo) {
-//        self.labInfo = labInfo
-//    }
-    
     var labName: String { return labInfo!.name }
     var description: String { return labInfo!.description }
     var equipmentVMs: [LabEquipmentVM]? {
         return labInfo?.equipments.map({ LabEquipmentVM(equipment: $0) })
     }
     
-//    init(name: String) {
-//        labInfo = LabInfo(name: name)
-//    }
-    
-    func fetchLabInfo(byName labName: String?, completion: @escaping FetchHandler) {
-        guard let name = labName else {
-            completion(.failure("ERR could not load Lab Name"))
+    func fetchLabInfo(byId labId: String?, completion: @escaping FetchHandler) {
+        guard let labId = labId else {
+            completion(.failure("ERR could not load Lab Id"))
             return
         }
-    Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(name)
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId)
         .getDocument { [unowned self] (document, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Info"))
             } else {
                 if let labName = document!.data()!["labName"] as? String,
                 let description = document!.data()!["description"] as? String {
-                    FirestoreSvc.fetchLabEquipments(byLabName: labName, completion: { (fetchLabEquipmentResult) in
+                    FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
                         switch fetchLabEquipmentResult {
                         case let .success(labEquipments):
                             self.labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
@@ -62,6 +54,22 @@ class LabInfoVM {
 //            } else {
 //                completion(.failure("ERR Lab Info does not exist"))
 //            }
+        }
+    }
+    
+    // TODO get Lab ID
+    func updateLabInfo(byId labId: String, withNewName newName: String, newDescription: String, completion: @escaping FetchHandler) {
+        // update lab's name and description
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).setData([
+            "labName": newName,
+            "description": newDescription
+        ]) { err in
+            if let err = err {
+                completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))
+            } else {
+                print("Successfully update Equipment using!")
+                completion(.success)
+            }
         }
     }
 }

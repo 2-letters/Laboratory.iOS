@@ -95,9 +95,11 @@
                         <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
                         <outlet property="saveBtn" destination="OHP-th-Rog" id="qUu-ZS-GfX"/>
                         <segue destination="WGb-WK-Rvf" kind="presentation" identifier="editEquipments" id="Fo1-G5-M6g"/>
+                        <segue destination="rBs-g7-BSh" kind="unwind" identifier="unwindFromLabInfo" unwindAction="unwindFromLabInfoWithSegue:" id="LbF-yB-9hh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBY-t3-Ihl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rBs-g7-BSh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2929" y="-672"/>
         </scene>

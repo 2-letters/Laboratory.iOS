@@ -10,7 +10,7 @@ import UIKit
 
 class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     // to receive data from LabEquipmentSelectionVC
-    var labName: String!
+    var labId: String!
     var equipmentName: String?
     // the original using quantiy
     var usingQuantity: Int = 0
@@ -34,11 +34,16 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        usingQuantityTextField.delegate = self
+        
         // hide view until loading is done
         mainView.isHidden = true
         showSpinner()
         setupUI()
         loadEquipmentInfo()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        mainView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     
@@ -55,7 +60,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     
     
     // MARK: Layout
-    func setupUI() {
+    private func setupUI() {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
         navigationItem.rightBarButtonItem = saveBtn
         saveBtn.isEnabled = false
@@ -68,7 +73,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         separatingLine.backgroundColor = Color.separatingLine
     }
     
-    func loadEquipmentInfo() {
+    private func loadEquipmentInfo() {
         viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
@@ -90,8 +95,10 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
         equipmentInfoView.locationTextView.text = equipmentInfoVM.location
         LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
+        equipmentInfoView.locationTextView.isEditable = false
         equipmentInfoView.descriptionTextView.text = equipmentInfoVM.description
         LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
+        equipmentInfoView.descriptionTextView.isEditable = false
         do {
             let url = URL(string: equipmentInfoVM.pictureUrl)!
             let data = try Data(contentsOf: url)
@@ -101,22 +108,24 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
             print(error)
         }
         
-        updateButtons()
+        updateUI()
         // show the view
         mainView.isHidden = false
         // hide spinner
         hideSpinner()
     }
     
-    func updateButtons() {
+    private func updateUI() {
         // Quantity Layout
         usingQuantityTextField.text = String(editingQuantity)
-        if editingQuantity == 0 {
-            decreaseBtn.isEnabled = false
-            removeBtn.isEnabled = false
-        } else if editingQuantity == viewModel.available {
+        if editingQuantity == viewModel.available {
+            decreaseBtn.isEnabled = true
             increaseBtn.isEnabled = false
             removeBtn.isEnabled = true
+        } else if editingQuantity == 0 {
+            decreaseBtn.isEnabled = false
+            increaseBtn.isEnabled = true
+            removeBtn.isEnabled = false
         } else {
             decreaseBtn.isEnabled = true
             increaseBtn.isEnabled = true
@@ -130,7 +139,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     // MARK: - User Interaction
     // MARK: Buttons
     @objc func saveChange() {
-        viewModel.updateEquipmentUsing(forLab: labName, equipmentName: equipmentName!, newUsing: editingQuantity) { [unowned self] (updateFirestoreResult) in
+        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!, newUsing: editingQuantity) { [unowned self] (updateFirestoreResult) in
             switch updateFirestoreResult {
             case let .failure(errorStr):
                 print(errorStr)
@@ -151,37 +160,33 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {
         editingQuantity -= 1
-        updateButtons()
+        updateUI()
     }
     
     @IBAction func increaseEquipment(_ sender: UIButton) {
         editingQuantity += 1
-        updateButtons()
+        updateUI()
     }
     
     @IBAction func removeEquipment(_ sender: UIButton) {
         // set quantity to 0
         editingQuantity = 0
-        updateButtons()
+        updateUI()
+    }
+    
+    @objc private func dismissKeyboard() {
+        mainView.endEditing(true)
     }
 }
 
-//extension LabEquipmentEditVC: UITextFieldDelegate {
-////    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-////        let currentUsingQuantity = Int(textField.text ?? "0")!
-////
-////        let availableQuantity = viewModel.available
-////        if currentUsingQuantity > availableQuantity {
-////            usingQuantityTextField.text = String(availableQuantity)
-////        }
-////        return true
-////    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        let currentUsingQuantity = Int(textField.text ?? "0")!
-//        let availableQuantity = viewModel.available
-//        if currentUsingQuantity > availableQuantity {
-//            textField.text = String(availableQuantity)
-//        }
-//    }
-//}
+extension LabEquipmentEditVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        var inputedQuantity = Int(textField.text ?? "0") ?? 0
+        let availableQuantity = viewModel.available
+        if inputedQuantity > availableQuantity {
+            inputedQuantity = availableQuantity
+        }
+        editingQuantity = inputedQuantity
+        updateUI()
+    }
+}

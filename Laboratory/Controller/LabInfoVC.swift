@@ -9,13 +9,13 @@
 import UIKit
 
 class LabInfoVC: UIViewController {
+    var labId: String!
 
     @IBOutlet private var labInfoView: LabInfoView!
     @IBOutlet private var saveBtn: UIBarButtonItem!
     
     private var labEquipmentTableView: UITableView!
     
-    var labName: String!
     private var viewModel = LabInfoVM()
     
     override func viewDidLoad() {
@@ -28,16 +28,19 @@ class LabInfoVC: UIViewController {
         labInfoView.descriptionTextField.delegate = self
         
         setupUI()
-        loadLabEquipments()      
+        loadLabEquipments()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     
-    // MARK: Navigation
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.editEquipments {
             let navC = segue.destination as! UINavigationController
             let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
-            labEquipmentSelectionVC.labName = labName
+            labEquipmentSelectionVC.labId = labId
         }
     }
     
@@ -67,7 +70,7 @@ class LabInfoVC: UIViewController {
     
     func loadLabEquipments() {
         // start fetching Lab Equipments
-        viewModel.fetchLabInfo(byName: labName, completion: { (fetchResult) in
+        viewModel.fetchLabInfo(byId: labId, completion: { (fetchResult) in
             switch fetchResult {
             case .success:
                 self.updateUI()
@@ -99,7 +102,20 @@ extension LabInfoVC {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        // TODO save the changes
+        let newLabName = labInfoView.nameTextField.text!
+        let newDescription = labInfoView.descriptionTextField.text!
+        viewModel.updateLabInfo(byId: labId, withNewName: newLabName, newDescription: newDescription) { [unowned self] (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                print(errorStr)
+            case .success:
+                self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+            }
+        }
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -121,7 +137,7 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: Text Field
 extension LabInfoVC: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         // there's some change, enable save Button
         saveBtn.isEnabled = true
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
-    var labName: String!  // for receiving data from Lab Info/Create
+    var labId: String!  // for receiving data from Lab Info/Create
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
@@ -38,7 +38,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentEdit {
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
-            labEquipmentEditVC?.labName = labName
+            labEquipmentEditVC?.labId = labId
             if let addedEquipmentVM = sender as? LabEquipmentVM {
                 labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
                 labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
@@ -57,13 +57,14 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         // if the equipments have been changed, perform unwind segue to tell Lab Info to update
         if hasChange {
             performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
     }
     
     
     // MARK: Layout
-    func setupUI() {
+    private func setupUI() {
         // load LabItems TableView
         let labEquipmentNib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
         labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
@@ -72,8 +73,8 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
     }
     
-    func loadEquipments() {
-        viewModel.fetchEquipments(byLabName: labName) { [unowned self] (fetchResult) in
+    private func loadEquipments() {
+        viewModel.fetchEquipments(byLabId: labId) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
@@ -96,7 +97,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
 
 // MARK: - User Interaction
 extension LabEquipmentSelectionVC {
-    func goBack(alert: UIAlertAction!) {
+    private func goBack(alert: UIAlertAction!) {
         dismiss(animated: true, completion: nil)
     }
 }

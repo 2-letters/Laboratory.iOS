@@ -18,6 +18,7 @@ struct SegueId {
     static let editEquipments = "editEquipments"
     
     // unwind Segues
-    static let unwindFromEquipmentEdit = "unwindFromEquipmentEdit"
+    static let unwindFromLabInfo = "unwindFromLabInfo"
     static let unwindFromEquipmentSelection = "unwindFromEquipmentSelection"
+    static let unwindFromEquipmentEdit = "unwindFromEquipmentEdit"
 }

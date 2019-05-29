@@ -16,9 +16,9 @@ struct LabEquipmentEditVM {
         return equipmentInfoVM.equipment?.available ?? 0
     }
     
-    func updateEquipmentUsing(forLab labName: String, equipmentName: String, newUsing: Int, completion: @escaping UpdateFirestoreHandler) {
+    func updateEquipmentUsing(forLabId labId: String, equipmentName: String, newUsing: Int, completion: @escaping UpdateFirestoreHandler) {
         // Add a new document in collection "cities"
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labName).collection("equipments").document(equipmentName).setData([
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).collection("equipments").document(equipmentName).setData([
             "equipmentName": equipmentName,
             "using": newUsing
         ]) { err in

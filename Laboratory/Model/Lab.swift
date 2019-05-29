@@ -9,5 +9,6 @@
 import Foundation
 
 struct Lab {
+    var id: String
     var name: String
 }

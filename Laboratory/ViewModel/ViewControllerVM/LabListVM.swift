@@ -14,8 +14,8 @@ class LabListVM {
     var allLabVMs: [LabVM]?
     var displayingLabVMs: [LabVM]?
     
-    func getName(at index: Int) -> String {
-        return displayingLabVMs![index].labName
+    func getLabId(at index: Int) -> String {
+        return displayingLabVMs![index].labId
     }
     
     func fetchLabData(completion: @escaping FetchHandler) {
@@ -26,7 +26,7 @@ class LabListVM {
                 var labVMs = [LabVM]()
                 for document in (snapshot!.documents) {
                     if let labName = document.data()["labName"] as? String {
-                        labVMs.append(LabVM(lab: Lab(name: labName)))
+                        labVMs.append(LabVM(lab: Lab(id: document.documentID, name: labName)))
                     }
                 }
                 self.allLabVMs = labVMs

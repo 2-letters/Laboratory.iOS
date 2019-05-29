@@ -28,17 +28,41 @@ class LabListVC: UIViewController {
         loadLabData()
     }
     
+    
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showLabInfo {
             let labInfoVC = segue.destination as! LabInfoVC
             // send info to LabInfo View Controller
-            guard let labName = sender as? String else {
+            guard let labId = sender as? String else {
                 return
             }
-            labInfoVC.labName = labName
+            labInfoVC.labId = labId
+        }
+    }
+    
+    @IBAction func unwindFromLabInfo(segue: UIStoryboardSegue) {
+        // there's some change, reload table view and enable save Button
+        loadLabData()
+    }
+    
+    
+    // MARK: Layout
+    func loadLabData() {
+        viewModel.fetchLabData() { [unowned self] (fetchResult) in
+            switch fetchResult {
+            case .success:
+                DispatchQueue.main.async {
+                    self.labTV.reloadData()
+                }
+            // TODO: save to cache (look at Trvlr)
+            case let .failure(error):
+                print(error)
+            }
         }
     }
 }
+
 
 // MARK: - Table View
 extension LabListVC: UITableViewDataSource, UITableViewDelegate {
@@ -57,11 +81,12 @@ extension LabListVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLabName = viewModel.getName(at: indexPath.row)
+        let selectedLabId = viewModel.getLabId(at: indexPath.row)
         // show LabInfo View and send labVM to it
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: selectedLabName)
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: selectedLabId)
     }
 }
+
 
 // MARK: - Search bar
 extension LabListVC: UISearchBarDelegate {
@@ -74,22 +99,5 @@ extension LabListVC: UISearchBarDelegate {
         // cancel searching
         searchBar.text = ""
         labTV.reloadData()
-    }
-}
-
-// MARK: - Additional helpers
-extension LabListVC {
-    func loadLabData() {
-        viewModel.fetchLabData() { [unowned self] (fetchResult) in
-            switch fetchResult {
-            case .success:
-                DispatchQueue.main.async {
-                    self.labTV.reloadData()
-                }
-                // TODO: save to cache (look at Trvlr)
-            case let .failure(error):
-                print(error)
-            }
-        }
     }
 }
