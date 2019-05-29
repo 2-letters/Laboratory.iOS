@@ -8,8 +8,10 @@
 
 import UIKit
 
+// for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
-    var labId: String!
+    var isAddingNewLab: Bool!
+    var labId: String?
 
     @IBOutlet private var labInfoView: LabInfoView!
     @IBOutlet private var saveBtn: UIBarButtonItem!
@@ -53,12 +55,18 @@ class LabInfoVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
+        
         // get the Table View
         labEquipmentTableView = labInfoView.labEquipmentTV
         
         // change button title to "Edit Equipments..."
-        labInfoView.addEquipmentsBtn.setTitle("Edit Equipments...", for: .normal)
-        labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
+        if isAddingNewLab {
+            labInfoView.addEquipmentsBtn.setTitle("Add Equipments...", for: .normal)
+            labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
+        } else {
+            labInfoView.addEquipmentsBtn.setTitle("Edit Equipments...", for: .normal)
+            labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
+        }
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
@@ -97,20 +105,48 @@ extension LabInfoVC {
         performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
     }
     
+    @objc func addEquipments() {
+        performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
+    }
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        let newLabName = labInfoView.nameTextField.text!
-        let newDescription = labInfoView.descriptionTextField.text!
-        viewModel.updateLabInfo(byId: labId, withNewName: newLabName, newDescription: newDescription) { [unowned self] (fetchResult) in
-            switch fetchResult {
-            case let .failure(errorStr):
-                print(errorStr)
-            case .success:
-                self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+        let newLabName = labInfoView.nameTextField.text ?? ""
+        let newLabDescription = labInfoView.descriptionTextField.text ?? ""
+        
+        if (newLabName.isEmpty || newLabDescription.isEmpty) {
+            let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(ac, animated: true, completion: nil)
+        } else {
+            if isAddingNewLab {
+                // create a new lab on FireStore
+                viewModel.createLab(withName: newLabName, description: newLabDescription) { (createResult) in
+                    switch createResult {
+                    case let .failure(errorStr):
+                        print(errorStr)
+                        // TODO make alert oops on fail
+                    case .success:
+                        print("Successfully add a new lab: \(newLabName)")
+                    // TODO make alert congrats on success
+                    }
+                }
+                dismiss(animated: true, completion: nil)
+            } else {
+                // update already existed Lab
+                viewModel.updateLabInfo(byId: labId!, withNewName: newLabName, newDescription: newLabDescription) { [unowned self] (fetchResult) in
+                    switch fetchResult {
+                    case let .failure(errorStr):
+                        print(errorStr)
+                    case .success:
+                        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+                    }
+                }
             }
+            
         }
     }
     

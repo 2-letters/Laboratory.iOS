@@ -57,7 +57,6 @@ class LabInfoVM {
         }
     }
     
-    // TODO get Lab ID
     func updateLabInfo(byId labId: String, withNewName newName: String, newDescription: String, completion: @escaping FetchHandler) {
         // update lab's name and description
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).setData([
@@ -65,11 +64,26 @@ class LabInfoVM {
             "description": newDescription
         ]) { err in
             if let err = err {
-                completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))
+                completion(.failure(err.localizedDescription + "ERR fail to update Lab Info"))
             } else {
                 print("Successfully update Equipment using!")
                 completion(.success)
             }
         }
+    }
+    
+    func createLab(withName labName: String, description: String, completion: @escaping FetchHandler) {
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
+            .collection("labs").addDocument(data: [
+                "labName" : labName,
+                "description": description
+            ]) { err in
+                if let err = err {
+                    completion(.failure("ERR creating a new Lab \(err)"))
+                } else {
+                    completion(.success)
+                }
+        }
+    }
     }
 }

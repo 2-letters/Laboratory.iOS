@@ -29,7 +29,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     private var viewModel = LabEquipmentEditVM()
 
     private var editingQuantity: Int = 0
-    private var hasChange: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,18 +43,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         mainView.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    
-    // MARK: Navigation
-    func goBack(alert: UIAlertAction!) {
-        // go back to Equipment Selection
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func goBackAndReload(alert: UIAlertAction!) {
-        // go back to Equipment Selection
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
     }
     
     
@@ -148,12 +135,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
                 self.present(ac, animated: true, completion: nil)
             case .success:
-                // update this variable for unwind segue to determine when to reload data for Equipment Selection Table View
-                self.hasChange = true
-                
-                let ac = UIAlertController(title: AlertString.successTitle, message: AlertString.succeedToSaveLabEquipmentMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBackAndReload))
-                self.present(ac, animated: true, completion: nil)
+                self.goBackAndReload()
             }
         }
     }
@@ -172,6 +154,16 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         // set quantity to 0
         editingQuantity = 0
         updateUI()
+    }
+    
+    func goBack(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func goBackAndReload() {
+        // go back to Equipment Selection
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
     }
     
     @objc private func dismissKeyboard() {

@@ -39,7 +39,7 @@ extension LabCreateVC {
         let newLabDescription = labCreateView.descriptionTextField.text ?? ""
         
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
-            let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToAddLabMessage, preferredStyle: .alert)
+            let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(ac, animated: true, completion: nil)
         } else {

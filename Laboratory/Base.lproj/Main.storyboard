@@ -39,14 +39,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jyS-6k-HYS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7f5-gW-Z8Y">
-                            <connections>
-                                <action selector="createLab:" destination="BYZ-38-t0r" id="WfR-7F-m6O"/>
-                                <segue destination="NgE-BO-VB2" kind="presentation" id="DPU-VF-ErZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="jyS-6k-HYS"/>
                     <connections>
                         <outlet property="labSearchBar" destination="0k8-FF-Fs3" id="qyK-fC-ePZ"/>
                         <outlet property="labTV" destination="gVH-JR-fJh" id="452-b7-Q1Y"/>

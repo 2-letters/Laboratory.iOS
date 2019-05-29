@@ -56,7 +56,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     @IBAction func done(_ sender: UIBarButtonItem) {
         // if the equipments have been changed, perform unwind segue to tell Lab Info to update
         if hasChange {
-            performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
+            let ac = UIAlertController(title: AlertString.successTitle, message: AlertString.succeedToSaveLabEquipmentMessage, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBackAndReload))
+            self.present(ac, animated: true, completion: nil)
         } else {
             dismiss(animated: true, completion: nil)
         }
@@ -99,6 +101,10 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
 extension LabEquipmentSelectionVC {
     private func goBack(alert: UIAlertAction!) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func goBackAndReload(alert: UIAlertAction!) {
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
     }
 }
 

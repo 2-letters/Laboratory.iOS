@@ -25,6 +25,7 @@ class LabListVC: UIViewController {
         let nib = UINib(nibName: "LabTVCell", bundle: nil)
         labTV.register(nib, forCellReuseIdentifier: LabTVCell.reuseId)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewLab))
         loadLabData()
     }
     
@@ -34,10 +35,15 @@ class LabListVC: UIViewController {
         if segue.identifier == SegueId.showLabInfo {
             let labInfoVC = segue.destination as! LabInfoVC
             // send info to LabInfo View Controller
-            guard let labId = sender as? String else {
+            guard let sender = sender as? String else {
                 return
             }
-            labInfoVC.labId = labId
+            if sender == "addingNewLab" {
+                labInfoVC.isAddingNewLab = true
+            } else {
+                labInfoVC.isAddingNewLab = false
+                labInfoVC.labId = sender
+            }
         }
     }
     
@@ -60,6 +66,12 @@ class LabListVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    
+    // MARK: User Interaction
+    @objc private func addNewLab() {
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: "addingNewLab")
     }
 }
 
