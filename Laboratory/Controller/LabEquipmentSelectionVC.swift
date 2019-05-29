@@ -24,12 +24,12 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         labEquipmentTV.delegate = self
         labEquipmentTV.dataSource = self
         
-        
         // hide the view until loading is done
         labEquipmentTV.isHidden = true
         // hide spinner
         showSpinner()
         setupUI()
+        loadEquipments()
     }
     
     
@@ -48,7 +48,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
     
     @IBAction func unwindFromEquipmentEdit(segue: UIStoryboardSegue) {
-        print("a")
+        loadEquipments()
     }
     
     
@@ -60,7 +60,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         
         let simpleEquipmentNib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
-        
+    }
+    
+    func loadEquipments() {
         viewModel.fetchEquipments(byLabName: labName) { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
@@ -74,7 +76,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
                 self.present(ac, animated: true, completion: nil)
             }
         }
@@ -85,9 +87,10 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
 }
 
+
 // MARK: - User Interaction
 extension LabEquipmentSelectionVC {
-    func tryAgain(alert: UIAlertAction!) {
+    func goBack(alert: UIAlertAction!) {
         dismiss(animated: true, completion: nil)
     }
 }

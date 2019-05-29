@@ -10,10 +10,10 @@ import Foundation
 import FirebaseFirestore
 
 struct LabEquipmentEditVM {
-    var equipmentInfoVM: EquipmentInfoVM?
+    var equipmentInfoVM = EquipmentInfoVM()
     
     var available: Int {
-        return equipmentInfoVM?.equipment?.available ?? 0
+        return equipmentInfoVM.equipment?.available ?? 0
     }
     
     func updateEquipmentUsing(forLab labName: String, equipmentName: String, newUsing: Int, completion: @escaping UpdateFirestoreHandler) {

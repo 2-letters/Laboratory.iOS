@@ -29,7 +29,9 @@ struct FirestoreSvc {
                     for document in (snapshot!.documents) {
                         if let equipmentName = document.data()["equipmentName"] as? String,
                             let using = document.data()["using"] as? Int {
-                            addedEquipments.append(LabEquipment(name: equipmentName, using: using))
+                            if using != 0 {
+                                addedEquipments.append(LabEquipment(name: equipmentName, using: using))
+                            }
                         }
                     }
                     completion(.success(addedEquipments))

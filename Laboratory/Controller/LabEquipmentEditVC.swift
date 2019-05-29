@@ -38,6 +38,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         mainView.isHidden = true
         showSpinner()
         setupUI()
+        loadEquipmentInfo()
     }
     
     // MARK: Layout
@@ -52,14 +53,49 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         editingQuantity = usingQuantity
         
         separatingLine.backgroundColor = Color.separatingLine
-        
-        updateUI()
-        
-        loadEquipmentInfo()
     }
     
-    func updateUI() {
+    func loadEquipmentInfo() {
+        viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+            switch fetchResult {
+            case .success:
+                DispatchQueue.main.async {
+                    self.updateEquipmentInfoLayout()
+                }
+            case .failure:
+                // show an alert and return to the previous page
+                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
+                self.present(ac, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func updateEquipmentInfoLayout() {
+        let equipmentInfoVM = viewModel.equipmentInfoVM
+        equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
+        equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
+        equipmentInfoView.locationTextView.text = equipmentInfoVM.location
+        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
+        equipmentInfoView.descriptionTextView.text = equipmentInfoVM.description
+        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
+        do {
+            let url = URL(string: equipmentInfoVM.pictureUrl)!
+            let data = try Data(contentsOf: url)
+            equipmentInfoView.equipmentImageView.image = UIImage(data: data)
+        }
+        catch{
+            print(error)
+        }
         
+        updateButtons()
+        // show the view
+        mainView.isHidden = false
+        // hide spinner
+        hideSpinner()
+    }
+    
+    func updateButtons() {
         // Quantity Layout
         usingQuantityTextField.text = String(editingQuantity)
         if editingQuantity == 0 {
@@ -77,44 +113,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         saveBtn.isEnabled = editingQuantity != usingQuantity
     }
     
-    func loadEquipmentInfo() {
-        viewModel.equipmentInfoVM?.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
-            switch fetchResult {
-            case .success:
-                DispatchQueue.main.async {
-                    self.updateEquipmentInfoLayout()
-                }
-            case .failure:
-                // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
-                self.present(ac, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    private func updateEquipmentInfoLayout() {
-        let equipmentInfoVM = viewModel.equipmentInfoVM!
-        equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
-        equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
-        equipmentInfoView.locationTextView.text = equipmentInfoVM.location
-        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
-        equipmentInfoView.descriptionTextView.text = equipmentInfoVM.description
-        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
-        do {
-            let url = URL(string: equipmentInfoVM.pictureUrl)!
-            let data = try Data(contentsOf: url)
-            equipmentInfoView.equipmentImageView.image = UIImage(data: data)
-        }
-        catch{
-            print(error)
-        }
-        
-        // show the view
-        mainView.isHidden = false
-        // hide spinner
-        hideSpinner()
-    }
     
     // MARK: - User Interaction
     // MARK: Buttons
@@ -140,18 +138,18 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {
         editingQuantity -= 1
-        updateUI()
+        updateButtons()
     }
     
     @IBAction func increaseEquipment(_ sender: UIButton) {
         editingQuantity += 1
-        updateUI()
+        updateButtons()
     }
     
     @IBAction func removeEquipment(_ sender: UIButton) {
         // set quantity to 0
         editingQuantity = 0
-        updateUI()
+        updateButtons()
     }
     
     // MARK: Extra handlers

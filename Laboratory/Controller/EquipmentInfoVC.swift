@@ -36,7 +36,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresenter {
                 print(errorStr)
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
                 self.present(ac, animated: true, completion: nil)
             }
         }
@@ -64,7 +64,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresenter {
         hideSpinner()
     }
     
-    func tryAgain(alert: UIAlertAction!) {
+    func goBack(alert: UIAlertAction!) {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
     }
