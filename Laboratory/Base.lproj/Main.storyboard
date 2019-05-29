@@ -183,9 +183,11 @@
                         <outlet property="labEquipmentTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
                         <outlet property="searchBar" destination="wNM-zi-urh" id="OG1-mX-58M"/>
                         <segue destination="cly-ig-uLQ" kind="show" identifier="showEquipmentEdit" id="sx8-EH-ggk"/>
+                        <segue destination="Rts-C0-Goj" kind="unwind" identifier="unwindFromEquipmentSelection" unwindAction="unwindFromEquipmentSelectionWithSegue:" id="fok-5t-80f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Rts-C0-Goj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4690.3999999999996" y="-398.27586206896552"/>
         </scene>

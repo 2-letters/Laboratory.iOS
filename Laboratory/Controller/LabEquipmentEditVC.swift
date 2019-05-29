@@ -41,6 +41,19 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         loadEquipmentInfo()
     }
     
+    
+    // MARK: Navigation
+    func goBack(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func goBackAndReload(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
+    }
+    
+    
     // MARK: Layout
     func setupUI() {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
@@ -150,17 +163,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         // set quantity to 0
         editingQuantity = 0
         updateButtons()
-    }
-    
-    // MARK: Extra handlers
-    func goBack(alert: UIAlertAction!) {
-        // go back to Equipment Selection
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func goBackAndReload(alert: UIAlertAction!) {
-        // go back to Equipment Selection
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
     }
 }
 

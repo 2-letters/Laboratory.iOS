@@ -16,6 +16,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     
     internal var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentSelectionVM()
+    private var hasChange = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
     
     
-    // MARK: Segues
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentEdit {
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
@@ -48,7 +49,16 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
     
     @IBAction func unwindFromEquipmentEdit(segue: UIStoryboardSegue) {
+        hasChange = true
         loadEquipments()
+    }
+    
+    @IBAction func done(_ sender: UIBarButtonItem) {
+        // if the equipments have been changed, perform unwind segue to tell Lab Info to update
+        if hasChange {
+            performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -80,10 +90,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
                 self.present(ac, animated: true, completion: nil)
             }
         }
-    }
-    
-    @IBAction func done(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -24,10 +24,29 @@ class LabInfoVC: UIViewController {
         labEquipmentTableView = labInfoView.labEquipmentTV
         labEquipmentTableView.delegate = self
         labEquipmentTableView.dataSource = self
+        labInfoView.nameTextField.delegate = self
+        labInfoView.descriptionTextField.delegate = self
         
         setupUI()
         loadLabEquipments()      
     }
+    
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.editEquipments {
+            let navC = segue.destination as! UINavigationController
+            let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
+            labEquipmentSelectionVC.labName = labName
+        }
+    }
+    
+    @IBAction func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
+        // there's some change, reload table view and enable save Button
+        loadLabEquipments()
+        saveBtn.isEnabled = true
+    }
+    
     
     // MARK: Layout
     func setupUI() {
@@ -66,24 +85,12 @@ class LabInfoVC: UIViewController {
         labInfoView.nameTextField.text = viewModel.labName
         labInfoView.descriptionTextField.text = viewModel.description
     }
-    
-    // MARK: segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.editEquipments {
-            let navC = segue.destination as! UINavigationController
-            let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
-            labEquipmentSelectionVC.labName = labName
-        }
-    }
 }
+
 
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-//        guard let equipmentVMs = viewModel?.equipmentVMs else {
-//            return
-//        }
-        
         performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
     }
     
@@ -96,6 +103,8 @@ extension LabInfoVC {
     }
 }
 
+
+// MARK: - Table View
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.equipmentVMs?.count ?? 0
@@ -106,5 +115,14 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.viewModel = viewModel.equipmentVMs?[indexPath.row]
         return cell
+    }
+}
+
+
+// MARK: Text Field
+extension LabInfoVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // there's some change, enable save Button
+        saveBtn.isEnabled = true
     }
 }
