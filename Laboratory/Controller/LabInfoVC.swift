@@ -15,12 +15,8 @@ class LabInfoVC: UIViewController {
     
     private var labEquipmentTableView: UITableView!
     
-    var labName: String! {
-        didSet {
-            viewModel = LabInfoVM(name: labName)
-        }
-    }
-    private var viewModel: LabInfoVM?
+    var labName: String!
+    private var viewModel = LabInfoVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +48,7 @@ class LabInfoVC: UIViewController {
     
     func loadLabEquipments() {
         // start fetching Lab Equipments
-        viewModel?.fetchLabInfo(byName: labName, completion: { (fetchResult) in
+        viewModel.fetchLabInfo(byName: labName, completion: { (fetchResult) in
             switch fetchResult {
             case .success:
                 self.updateUI()
@@ -67,8 +63,8 @@ class LabInfoVC: UIViewController {
     
     func updateUI() {
         // setup the Lab info views
-        labInfoView.nameTextField.text = viewModel?.labName
-        labInfoView.descriptionTextField.text = viewModel?.description
+        labInfoView.nameTextField.text = viewModel.labName
+        labInfoView.descriptionTextField.text = viewModel.description
     }
     
     // MARK: segue
@@ -102,13 +98,13 @@ extension LabInfoVC {
 
 extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.equipmentVMs.count ?? 0
+        return viewModel.equipmentVMs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId) as! LabEquipmentTVCell
         
-        cell.viewModel = viewModel?.equipmentVMs[indexPath.row]
+        cell.viewModel = viewModel.equipmentVMs?[indexPath.row]
         return cell
     }
 }

@@ -10,5 +10,5 @@ import Foundation
 
 struct LabEquipment: NamedItem {
     var name: String
-    var quantity: Int
+    var using: Int
 }

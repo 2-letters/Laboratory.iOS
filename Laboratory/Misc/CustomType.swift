@@ -14,3 +14,10 @@ enum FetchResult {
     case success
     case failure(String)
 }
+
+typealias UpdateFirestoreHandler = (UpdateFirestoreResult) -> Void
+
+enum UpdateFirestoreResult {
+    case success
+    case failure(String)
+}

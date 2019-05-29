@@ -17,9 +17,9 @@ struct LabEquipmentVM {
     
     var equipmentName: String { return labEquipment.name }
     var quantityString: String {
-        return "Using: \(labEquipment.quantity)"
+        return "Using: \(labEquipment.using)"
     }
     var quantity: Int {
-        return labEquipment.quantity
+        return labEquipment.using
     }
 }

@@ -24,11 +24,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     @IBOutlet private var separatingLine: UIView!
     @IBOutlet private var equipmentInfoView: EquipmentInfoView!
     
+    private var saveBtn: UIBarButtonItem!
     internal var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentEditVM()
 
     private var editingQuantity: Int = 0
-    private var saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
+    private var hasChange: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     
     // MARK: Layout
     func setupUI() {
+        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
         navigationItem.rightBarButtonItem = saveBtn
         saveBtn.isEnabled = false
         
@@ -57,6 +59,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     }
     
     func updateUI() {
+        
         // Quantity Layout
         usingQuantityTextField.text = String(editingQuantity)
         if editingQuantity == 0 {
@@ -74,7 +77,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         saveBtn.isEnabled = editingQuantity != usingQuantity
     }
     
-    func loadEquipmentInfo() { viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+    func loadEquipmentInfo() {
+        viewModel.equipmentInfoVM?.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
@@ -83,14 +87,14 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
             case .failure:
                 // show an alert and return to the previous page
                 let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
                 self.present(ac, animated: true, completion: nil)
             }
         }
     }
     
     private func updateEquipmentInfoLayout() {
-        let equipmentInfoVM = viewModel.equipmentInfoVM
+        let equipmentInfoVM = viewModel.equipmentInfoVM!
         equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
         equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
         equipmentInfoView.locationTextView.text = equipmentInfoVM.location
@@ -112,14 +116,26 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         hideSpinner()
     }
     
-    // MARK: User Interaction
-    func tryAgain(alert: UIAlertAction!) {
-        // go back to Equipment Selection
-        navigationController?.popViewController(animated: true)
-    }
-    
+    // MARK: - User Interaction
+    // MARK: Buttons
     @objc func saveChange() {
-        viewModel.updateEquipmentQuantity(forLab: labName)
+        viewModel.updateEquipmentUsing(forLab: labName, equipmentName: equipmentName!, newUsing: editingQuantity) { [unowned self] (updateFirestoreResult) in
+            switch updateFirestoreResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                // show an alert and return to the previous page
+                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabEquipmentMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
+                self.present(ac, animated: true, completion: nil)
+            case .success:
+                // update this variable for unwind segue to determine when to reload data for Equipment Selection Table View
+                self.hasChange = true
+                
+                let ac = UIAlertController(title: AlertString.successTitle, message: AlertString.succeedToSaveLabEquipmentMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBackAndReload))
+                self.present(ac, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func decreaseEquipment(_ sender: UIButton) {
@@ -136,6 +152,17 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         // set quantity to 0
         editingQuantity = 0
         updateUI()
+    }
+    
+    // MARK: Extra handlers
+    func goBack(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func goBackAndReload(alert: UIAlertAction!) {
+        // go back to Equipment Selection
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
     }
 }
 

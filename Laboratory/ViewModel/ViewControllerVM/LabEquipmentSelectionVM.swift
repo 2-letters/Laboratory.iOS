@@ -22,21 +22,32 @@ class LabEquipmentSelectionVM {
     var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
-    func fetchEquipments(byLabName labName: String, completion: @escaping FetchHandler) { Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labName)
-            .getDocument { [unowned self] (document, error) in
-                if error != nil { completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
-                } else {
-                    if let addedEquipments = document!.data()!["equipments"] as? [String: Any] {
-                       var addedEquipmentVMs = [LabEquipmentVM]()
-                        for (name, quantity) in addedEquipments { addedEquipmentVMs.append(LabEquipmentVM(equipment: LabEquipment(name: name, quantity: Int(quantity as! String)!)))
-                        }
-                        self.fetchAllEquipments(addedEquipmentVMs: addedEquipmentVMs, completion: { completion($0)
-                            })
-                    } else {
-                        completion(.failure("ERR converting Lab Equipments data"))
-                    }
-                }
+    func fetchEquipments(byLabName labName: String, completion: @escaping FetchHandler) {
+        FirestoreSvc.fetchLabEquipments(byLabName: labName) { [unowned self] (fetchLabEquipmentResult) in
+            switch fetchLabEquipmentResult {
+            case let .success(addedEquipments):
+                let addedEquipmentVMs = addedEquipments.map({ LabEquipmentVM(equipment: $0) })
+                self.fetchAllEquipments(addedEquipmentVMs: addedEquipmentVMs,
+                                        completion: { completion($0) })
+            case let .failure(errorStr):
+                completion(.failure(errorStr))
+            }
         }
+//        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
+//            .collection("labs").document(labName).collection("equipments").getDocuments { [unowned self] (snapshot, error) in
+//                if error != nil { completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Equipments data"))
+//                } else {
+//                    var addedEquipmentVMs = [LabEquipmentVM]()
+//                    for document in (snapshot!.documents) {
+//                        if let equipmentName = document.data()["equipmentName"] as? String,
+//                            let using = document.data()["using"] as? Int {
+//                            addedEquipmentVMs.append(LabEquipmentVM(equipment: LabEquipment(name: equipmentName, using: using)))
+//                        }
+//                    }
+//                    self.fetchAllEquipments(addedEquipmentVMs: addedEquipmentVMs, completion: { completion($0)
+//                    })
+//                }
+//        }
     }
     
     // TODO: maybe i can reuse fetchAllEquipments from EquipmentListVM instead of this?

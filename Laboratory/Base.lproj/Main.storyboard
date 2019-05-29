@@ -304,9 +304,11 @@
                         <outlet property="removeBtn" destination="EoN-vV-ZN5" id="7GG-ZX-URg"/>
                         <outlet property="separatingLine" destination="2oE-TH-1m4" id="hDl-8B-NHO"/>
                         <outlet property="usingQuantityTextField" destination="0Hb-sC-Ovu" id="iqc-Gm-3zr"/>
+                        <segue destination="olc-za-gWK" kind="unwind" identifier="unwindFromEquipmentEdit" unwindAction="unwindFromEquipmentEditWithSegue:" id="dE8-yR-9bk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7M2-8R-0Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="olc-za-gWK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5492" y="-398"/>
         </scene>

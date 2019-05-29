@@ -32,6 +32,26 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         setupUI()
     }
     
+    
+    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showEquipmentEdit {
+            let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
+            labEquipmentEditVC?.labName = labName
+            if let addedEquipmentVM = sender as? LabEquipmentVM {
+                labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
+                labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
+            } else if let availableEquipmentVM = sender as? SimpleEquipmentVM {
+                labEquipmentEditVC?.equipmentName = availableEquipmentVM.equipmentName
+            }
+        }
+    }
+    
+    @IBAction func unwindFromEquipmentEdit(segue: UIStoryboardSegue) {
+        print("a")
+    }
+    
+    
     // MARK: Layout
     func setupUI() {
         // load LabItems TableView
@@ -56,19 +76,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
                 let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.tryAgain))
                 self.present(ac, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showEquipmentEdit {
-            let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
-            labEquipmentEditVC?.labName = labName
-            if let addedEquipmentVM = sender as? LabEquipmentVM {
-                labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
-                labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
-            } else if let availableEquipmentVM = sender as? SimpleEquipmentVM {
-                labEquipmentEditVC?.equipmentName = availableEquipmentVM.equipmentName
             }
         }
     }
