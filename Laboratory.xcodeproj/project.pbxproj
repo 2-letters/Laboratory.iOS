@@ -156,6 +156,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C9A429D022A05F16001C98FB /* Resources */,
 				C90035812296EE6F00471EE7 /* Constant */,
 				DEC45BE92291004D00F164BD /* Misc */,
 				C344387F228206A80021168B /* ViewModel */,
@@ -232,6 +233,13 @@
 				DE59D055229AFD7300E7FDF1 /* Color.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		C9A429D022A05F16001C98FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DE59D059229B587F00E7FDF1 /* ViewControllerVM */ = {
@@ -597,7 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H63XNGVZ25;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Laboratory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -619,7 +627,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H63XNGVZ25;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Laboratory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

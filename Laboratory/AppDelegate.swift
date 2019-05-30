@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        // change Status Bar color
+        if application.responds(to: Selector(("statusBar"))),
+        let statusBar = application.value(forKey: "statusBar") as? UIView,
+            statusBar.responds(to: #selector(getter: CATextLayer.foregroundColor)) {
+            statusBar.setValue(UIColor.white, forKey: "foregroundColor")
+        }
+        
+        // change Navigation Bar Background Color
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.56, green:0.51, blue:0.73, alpha:1.0)
+        // change Back button title & icon color
+        UINavigationBar.appearance().tintColor = UIColor.white
+        // To change Navigation Bar Title Color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        
         return true
     }
 

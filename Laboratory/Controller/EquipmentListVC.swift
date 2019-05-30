@@ -14,9 +14,12 @@ class EquipmentListVC: UIViewController {
     @IBOutlet private var equipmentTV: UITableView!
     
     private var viewModel = EquipmentListVM()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Equipments"
 
         searchBar.delegate = self
         equipmentTV.delegate = self
@@ -26,15 +29,28 @@ class EquipmentListVC: UIViewController {
         let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
         equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
         
+        // add Refresh Control
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
+//        refreshControl.tintColor = UIColor(red:0.64, green:0.64, blue:0.75, alpha:1.0)  // #a3a4be
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            equipmentTV.refreshControl = refreshControl
+        } else {
+            equipmentTV.addSubview(refreshControl)
+        }
+        
         loadEquipmentData()
     }
     
+    
+    // MARK: segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
             equipmentInfoVC.equipmentName = sender as? String
         }
     }
+    
     
     // MARK: Layout
     func loadEquipmentData() {
@@ -45,10 +61,17 @@ class EquipmentListVC: UIViewController {
             case .success:
                 DispatchQueue.main.async {
                     self.equipmentTV.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
                 // TODO save to cache
             }
         }
+    }
+    
+    
+    // MARK: User interaction
+    @objc private func refreshData(sender: Any) {
+        loadEquipmentData()
     }
 }
 

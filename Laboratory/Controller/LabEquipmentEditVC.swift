@@ -69,7 +69,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
                 }
             case .failure:
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
                 self.present(ac, animated: true, completion: nil)
             }
@@ -131,7 +131,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabEquipmentMessage, preferredStyle: .alert)
+                let ac = UIAlertController(title: AlertString.failToSaveEditTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
                 self.present(ac, animated: true, completion: nil)
             case .success:

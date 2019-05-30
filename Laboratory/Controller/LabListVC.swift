@@ -13,9 +13,12 @@ class LabListVC: UIViewController {
     @IBOutlet private var labTV: UITableView!
     
     private var viewModel = LabListVM()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Labs"
 
         labTV.delegate = self
         labTV.dataSource = self
@@ -24,6 +27,15 @@ class LabListVC: UIViewController {
         // register lab cells
         let nib = UINib(nibName: "LabTVCell", bundle: nil)
         labTV.register(nib, forCellReuseIdentifier: LabTVCell.reuseId)
+        
+        // add refresh control
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            labTV.refreshControl = refreshControl
+        } else {
+            labTV.addSubview(refreshControl)
+        }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewLab))
         loadLabData()
@@ -72,6 +84,10 @@ class LabListVC: UIViewController {
     // MARK: User Interaction
     @objc private func addNewLab() {
         performSegue(withIdentifier: SegueId.showLabInfo, sender: "addingNewLab")
+    }
+    
+    @objc private func refreshData() {
+        loadLabData()
     }
 }
 

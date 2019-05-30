@@ -11,6 +11,7 @@ import UIKit
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
     var isAddingNewLab: Bool!
+    var isLabCreated: Bool = false
     var labId: String?
 
     @IBOutlet private var labInfoView: LabInfoView!
@@ -19,6 +20,15 @@ class LabInfoVC: UIViewController {
     private var labEquipmentTableView: UITableView!
     
     private var viewModel = LabInfoVM()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isAddingNewLab {
+            navigationItem.title = "Create a Lab"
+        } else {
+            navigationItem.title = "Edit Lab"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,14 +111,18 @@ class LabInfoVC: UIViewController {
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+        goToEquipmentsSelect()
     }
     
     @objc func addEquipments() {
-        let ac = UIAlertController(title: AlertString.createLabTitle, message: AlertString.attemptToAddLabEquipmentsMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: createLabToAddEquipments))
-        ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
-        present(ac, animated: true, completion: nil)
+        if isLabCreated {
+            goToEquipmentsSelect()
+        } else {
+            let ac = UIAlertController(title: AlertString.createLabRequiredTitle, message: AlertString.attemptToAddLabEquipmentsMessage, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: createLabToAddEquipments))
+            ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -163,11 +177,20 @@ extension LabInfoVC {
                     print(errorStr)
                     self.alertFailToSaveLab()
                 case let .success(labId):
+                    self.isLabCreated = true
                     self.labId = labId
-                    self.performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+                    self.goToEquipmentsSelect()
                 }
             }
         }
+    }
+    
+    private func goBackAndReload(alert: UIAlertAction!) {
+        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+    }
+    
+    private func goToEquipmentsSelect() {
+        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
     }
     
     @objc private func dismissKeyboard() {
@@ -209,11 +232,15 @@ extension LabInfoVC {
     }
     
     private func alertFailToSaveLab() {
-        // todo
+        let ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(ac, animated: true, completion: nil)
     }
     
     private func alertSucceedToSaveLab() {
-        // todo
+        let ac = UIAlertController(title: AlertString.succeedToSaveLabTitle, message: AlertString.succeedToSaveLabMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: goBackAndReload))
+        self.present(ac, animated: true, completion: nil)
         // call this on handler self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
     }
 }

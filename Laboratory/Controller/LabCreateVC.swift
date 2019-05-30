@@ -16,7 +16,7 @@ class LabCreateVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         labCreateView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
     }
 }

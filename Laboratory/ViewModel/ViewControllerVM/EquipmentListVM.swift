@@ -26,6 +26,7 @@ class EquipmentListVM {
             case let .success(equipmentVMs):
                 self.allEquipmentVMs = equipmentVMs
                 self.displayingEquipmentVMs = equipmentVMs
+                completion(.success)
             }
         }
     }

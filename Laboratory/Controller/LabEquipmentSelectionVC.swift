@@ -20,6 +20,8 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Edit Equipments"
 
         searchBar.delegate = self
         labEquipmentTV.delegate = self
@@ -56,9 +58,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     @IBAction func done(_ sender: UIBarButtonItem) {
         // if the equipments have been changed, perform unwind segue to tell Lab Info to update
         if hasChange {
-            let ac = UIAlertController(title: AlertString.successTitle, message: AlertString.succeedToSaveLabEquipmentMessage, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBackAndReload))
-            self.present(ac, animated: true, completion: nil)
+            goBackAndReload()
         } else {
             dismiss(animated: true, completion: nil)
         }
@@ -88,7 +88,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
                 self.hideSpinner()
             case .failure:
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.tryAgainMessage, preferredStyle: .alert)
+                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
                 self.present(ac, animated: true, completion: nil)
             }
@@ -103,7 +103,7 @@ extension LabEquipmentSelectionVC {
         dismiss(animated: true, completion: nil)
     }
     
-    private func goBackAndReload(alert: UIAlertAction!) {
+    private func goBackAndReload() {
         performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
     }
 }

@@ -309,11 +309,13 @@
             </objects>
             <point key="canvasLocation" x="5492" y="-398"/>
         </scene>
-        <!--Lab-->
+        <!--Navigation Controller-->
         <scene sceneID="GVG-qi-G2A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NHD-oG-205" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lab" id="H0K-hg-FJe"/>
+                    <tabBarItem key="tabBarItem" title="" image="labIcon" id="H0K-hg-FJe">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftx-OS-Jzq">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -425,6 +427,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.53732180595397949" green="0.70830649137496948" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.53732180595397949" green="0.70830649137496948" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="NHD-oG-205" kind="relationship" relationship="viewControllers" id="mb9-eB-q7G"/>
@@ -435,11 +443,13 @@
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="-671.51424287856082"/>
         </scene>
-        <!--Equipment-->
+        <!--Navigation Controller-->
         <scene sceneID="6Us-yb-pVh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H2N-Y6-GTf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Equipment" id="bhP-2z-uXt"/>
+                    <tabBarItem key="tabBarItem" title="" image="equipmentIcon" id="bhP-2z-uXt">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VKI-X4-SvA">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -473,4 +483,8 @@
             <point key="canvasLocation" x="3748" y="-398.27586206896552"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="equipmentIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="labIcon" width="33.333332061767578" height="33.333332061767578"/>
+    </resources>
 </document>
