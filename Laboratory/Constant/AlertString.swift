@@ -14,6 +14,7 @@ struct AlertString {
     // Titles
     static let oopsTitle = "Oops"
     static let successTitle = "Success"
+    static let createLabTitle = "Create a Lab"
     
     // Messages
     static let tryAgainMessage = "Some errors have occurred. Please try again later"
@@ -21,4 +22,5 @@ struct AlertString {
     
     static let failToSaveLabEquipmentMessage = "Some errors have occurred. Cannot save changes for this equipment at the moment. Please try again later"
     static let succeedToSaveLabEquipmentMessage = "Successfully save for this equipment"
+    static let attemptToAddLabEquipmentsMessage = "In order to add equipments, you must create a Lab first. Would you like to create this Lab with the given name?"
 }

@@ -30,7 +30,9 @@ class LabInfoVC: UIViewController {
         labInfoView.descriptionTextField.delegate = self
         
         setupUI()
-        loadLabEquipments()
+        if !isAddingNewLab {
+            loadLabEquipments()
+        }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -39,7 +41,7 @@ class LabInfoVC: UIViewController {
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.editEquipments {
+        if segue.identifier == SegueId.presentEquipmentSelection {
             let navC = segue.destination as! UINavigationController
             let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
             labEquipmentSelectionVC.labId = labId
@@ -48,6 +50,7 @@ class LabInfoVC: UIViewController {
     
     @IBAction func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
         // there's some change, reload table view and enable save Button
+        isAddingNewLab = false
         loadLabEquipments()
         saveBtn.isEnabled = true
     }
@@ -55,10 +58,6 @@ class LabInfoVC: UIViewController {
     
     // MARK: Layout
     func setupUI() {
-        
-        // get the Table View
-        labEquipmentTableView = labInfoView.labEquipmentTV
-        
         // change button title to "Edit Equipments..."
         if isAddingNewLab {
             labInfoView.addEquipmentsBtn.setTitle("Add Equipments...", for: .normal)
@@ -102,11 +101,14 @@ class LabInfoVC: UIViewController {
 // MARK: - User Interaction
 extension LabInfoVC {
     @objc func editEquipments() {
-        performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
+        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
     }
     
     @objc func addEquipments() {
-        performSegue(withIdentifier: SegueId.editEquipments, sender: nil)
+        let ac = UIAlertController(title: AlertString.createLabTitle, message: AlertString.attemptToAddLabEquipmentsMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: createLabToAddEquipments))
+        ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        present(ac, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -118,20 +120,18 @@ extension LabInfoVC {
         let newLabDescription = labInfoView.descriptionTextField.text ?? ""
         
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
-            let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-            self.present(ac, animated: true, completion: nil)
+            warnInvalidInputs()
         } else {
             if isAddingNewLab {
                 // create a new lab on FireStore
-                viewModel.createLab(withName: newLabName, description: newLabDescription) { (createResult) in
+                viewModel.createLab(withName: newLabName, description: newLabDescription) { [unowned self] (createResult) in
                     switch createResult {
                     case let .failure(errorStr):
                         print(errorStr)
-                        // TODO make alert oops on fail
+                        self.alertFailToSaveLab()
                     case .success:
                         print("Successfully add a new lab: \(newLabName)")
-                    // TODO make alert congrats on success
+                        self.alertSucceedToSaveLab()
                     }
                 }
                 dismiss(animated: true, completion: nil)
@@ -142,11 +142,31 @@ extension LabInfoVC {
                     case let .failure(errorStr):
                         print(errorStr)
                     case .success:
-                        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+                        self.alertSucceedToSaveLab()
                     }
                 }
             }
             
+        }
+    }
+    
+    private func createLabToAddEquipments(alert: UIAlertAction!) {
+        let newLabName = labInfoView.nameTextField.text ?? ""
+        let newLabDescription = labInfoView.descriptionTextField.text ?? ""
+        
+        if (newLabName.isEmpty || newLabDescription.isEmpty) {
+            warnInvalidInputs()
+        } else {
+            viewModel.createLab(withName: newLabName, description: newLabDescription) { [unowned self] (createResult) in
+                switch createResult {
+                case let .failure(errorStr):
+                    print(errorStr)
+                    self.alertFailToSaveLab()
+                case let .success(labId):
+                    self.labId = labId
+                    self.performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+                }
+            }
         }
     }
     
@@ -171,10 +191,29 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-// MARK: Text Field
+// MARK: - Text Field
 extension LabInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // there's some change, enable save Button
         saveBtn.isEnabled = true
+    }
+}
+
+
+// MARK: - Helpers
+extension LabInfoVC {
+    private func warnInvalidInputs() {
+        let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(ac, animated: true, completion: nil)
+    }
+    
+    private func alertFailToSaveLab() {
+        // todo
+    }
+    
+    private func alertSucceedToSaveLab() {
+        // todo
+        // call this on handler self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
     }
 }

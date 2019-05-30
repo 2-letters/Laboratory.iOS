@@ -18,7 +18,7 @@ class LabListVM {
         return displayingLabVMs![index].labId
     }
     
-    func fetchLabData(completion: @escaping FetchHandler) {
+    func fetchLabData(completion: @escaping FetchFirestoreHandler) {
          Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { [unowned self ](snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))

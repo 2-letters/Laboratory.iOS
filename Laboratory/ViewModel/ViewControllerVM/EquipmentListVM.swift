@@ -18,7 +18,7 @@ class EquipmentListVM {
         return displayingEquipmentVMs![index].equipmentName
     }
     
-    func fetchAllEquipments(completion: @escaping FetchHandler) {
+    func fetchAllEquipments(completion: @escaping FetchFirestoreHandler) {
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { [unowned self] (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))

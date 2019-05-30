@@ -22,7 +22,7 @@ class LabEquipmentSelectionVM {
     var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
-    func fetchEquipments(byLabId labId: String, completion: @escaping FetchHandler) {
+    func fetchEquipments(byLabId labId: String, completion: @escaping FetchFirestoreHandler) {
         FirestoreSvc.fetchLabEquipments(byLabId: labId) { [unowned self] (fetchLabEquipmentResult) in
             switch fetchLabEquipmentResult {
             case let .success(addedEquipments):
@@ -51,7 +51,7 @@ class LabEquipmentSelectionVM {
     }
     
     // TODO: maybe i can reuse fetchAllEquipments from EquipmentListVM instead of this?
-    func fetchAllEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping FetchHandler) {
+    func fetchAllEquipments(addedEquipmentVMs: [LabEquipmentVM], completion: @escaping FetchFirestoreHandler) {
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { [unowned self] (snapshot, error) in
             if error != nil { completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
             } else {

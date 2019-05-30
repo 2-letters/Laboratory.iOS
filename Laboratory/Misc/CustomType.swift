@@ -8,7 +8,14 @@
 
 import Foundation
 
-typealias FetchHandler = (FetchResult) -> Void
+typealias CreateFirestoreHandler = (CreateResult) -> Void
+
+enum CreateResult {
+    case success(String)
+    case failure(String)
+}
+
+typealias FetchFirestoreHandler = (FetchResult) -> Void
 
 enum FetchResult {
     case success

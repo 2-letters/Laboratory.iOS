@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 struct LabCreateVM {
-    func createLab(withName name: String, description: String, completion: @escaping FetchHandler) {
+    func createLab(withName name: String, description: String, completion: @escaping FetchFirestoreHandler) {
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
             .collection("labs").addDocument(data: [
                 "labName" : name,

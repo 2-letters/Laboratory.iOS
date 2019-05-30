@@ -87,7 +87,7 @@
                     <connections>
                         <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
                         <outlet property="saveBtn" destination="OHP-th-Rog" id="qUu-ZS-GfX"/>
-                        <segue destination="WGb-WK-Rvf" kind="presentation" identifier="editEquipments" id="Fo1-G5-M6g"/>
+                        <segue destination="WGb-WK-Rvf" kind="presentation" identifier="presentEquipmentSelection" id="Fo1-G5-M6g"/>
                         <segue destination="rBs-g7-BSh" kind="unwind" identifier="unwindFromLabInfo" unwindAction="unwindFromLabInfoWithSegue:" id="LbF-yB-9hh"/>
                     </connections>
                 </viewController>

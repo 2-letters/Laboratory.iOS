@@ -19,7 +19,7 @@ class LabInfoVM {
         return labInfo?.equipments.map({ LabEquipmentVM(equipment: $0) })
     }
     
-    func fetchLabInfo(byId labId: String?, completion: @escaping FetchHandler) {
+    func fetchLabInfo(byId labId: String?, completion: @escaping FetchFirestoreHandler) {
         guard let labId = labId else {
             completion(.failure("ERR could not load Lab Id"))
             return
@@ -57,7 +57,7 @@ class LabInfoVM {
         }
     }
     
-    func updateLabInfo(byId labId: String, withNewName newName: String, newDescription: String, completion: @escaping FetchHandler) {
+    func updateLabInfo(byId labId: String, withNewName newName: String, newDescription: String, completion: @escaping FetchFirestoreHandler) {
         // update lab's name and description
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).setData([
             "labName": newName,
@@ -72,18 +72,30 @@ class LabInfoVM {
         }
     }
     
-    func createLab(withName labName: String, description: String, completion: @escaping FetchHandler) {
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
-            .collection("labs").addDocument(data: [
-                "labName" : labName,
-                "description": description
-            ]) { err in
-                if let err = err {
-                    completion(.failure("ERR creating a new Lab \(err)"))
-                } else {
-                    completion(.success)
-                }
+    func createLab(withName labName: String, description: String, completion: @escaping CreateFirestoreHandler) {
+        let newLab = Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
+            .collection("labs").document()
+        newLab.setData([
+            "labName": labName,
+            "description": description
+        ]) { err in
+            if let err = err {
+                completion(.failure("ERR creating a new Lab \(err)"))
+            } else {
+                completion(.success(newLab.documentID))
+            }
         }
-    }
+//         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
+//            .collection("labs").addDocument(data: [
+//                "labName" : labName,
+//                "description": description
+//            ]) { err in
+//                if let err = err {
+//                    completion(.failure("ERR creating a new Lab \(err)"))
+//                } else {
+//                    completion(.success)
+//                }
+//        }
+//    }
     }
 }

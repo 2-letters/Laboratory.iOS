@@ -30,7 +30,7 @@ class EquipmentInfoVM {
         return equipment!.pictureUrl
     }
     
-    func fetchEquipmentInfo(byName name: String, completion: @escaping FetchHandler) {
+    func fetchEquipmentInfo(byName name: String, completion: @escaping FetchFirestoreHandler) {
         // TODO: get department and instituion from Cache?
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").whereField("name", isEqualTo: name).getDocuments { [unowned self] (snapshot, error) in
             if error != nil {
