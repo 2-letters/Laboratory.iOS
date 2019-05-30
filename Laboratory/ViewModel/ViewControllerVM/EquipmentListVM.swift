@@ -19,19 +19,13 @@ class EquipmentListVM {
     }
     
     func fetchAllEquipments(completion: @escaping FetchFirestoreHandler) {
-        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { [unowned self] (snapshot, error) in
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
-            } else {
-                var equipmentVMs = [SimpleEquipmentVM]()
-                for document in (snapshot!.documents) {
-                    if let equipmentName = document.data()["name"] as? String
-                    { equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
-                    }
-                }
+        FirestoreSvc.fetchAllEquipments { [unowned self] (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                completion(.failure(errorStr))
+            case let .success(equipmentVMs):
                 self.allEquipmentVMs = equipmentVMs
                 self.displayingEquipmentVMs = equipmentVMs
-                completion(.success)
             }
         }
     }
