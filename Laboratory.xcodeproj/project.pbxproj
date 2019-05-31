@@ -50,6 +50,8 @@
 		DE7AF431229A094F0008181E /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* LayoutHelper.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
+		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
+		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		DE7AF430229A094F0008181E /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
+		DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 				DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */,
 				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
 				C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */,
+				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
+				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			files = (
 				DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */,
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
+				DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */,
 				C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */,
 				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
@@ -438,6 +445,7 @@
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
 				C34438812282094A0021168B /* LabListVM.swift in Sources */,
+				DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,
 				C90035832296EEEC00471EE7 /* AlertString.swift in Sources */,
 				C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */,

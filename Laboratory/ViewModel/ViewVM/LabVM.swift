@@ -11,10 +11,16 @@ import Foundation
 // For Lab TVCell
 struct LabVM {
     var lab: Lab?
+    
+    var labId: String {
+        return lab!.id
+    }
+    
     var labName: String {
         return lab!.name
     }
-    var labId: String {
-        return lab!.id
+    
+    var description: String {
+        return lab!.description
     }
 }
