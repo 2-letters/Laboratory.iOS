@@ -25,8 +25,9 @@ class LabListVM {
             } else {
                 var labVMs = [LabVM]()
                 for document in (snapshot!.documents) {
-                    if let labName = document.data()["labName"] as? String {
-                        labVMs.append(LabVM(lab: Lab(id: document.documentID, name: labName)))
+                    if let labName = document.data()["labName"] as? String,
+                    let description = document.data()["description"] as? String {
+                        labVMs.append(LabVM(lab: Lab(id: document.documentID, name: labName, description: description)))
                     }
                 }
                 self.allLabVMs = labVMs

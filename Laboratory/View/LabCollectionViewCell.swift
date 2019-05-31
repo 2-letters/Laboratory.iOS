@@ -10,6 +10,7 @@ import UIKit
 
 class LabCollectionViewCell: UICollectionViewCell {
 
+    static let nibId = "LabCollectionViewCell"
     static let reuseId = "LabCell"
     
     @IBOutlet var labNameLabel: UILabel!
@@ -19,6 +20,13 @@ class LabCollectionViewCell: UICollectionViewCell {
         didSet {
             labNameLabel.text = viewModel?.labName
             labDescriptionLabel.text = viewModel?.description
+            self.layer.shadowOffset = CGSize(width: 0, height: 2)
+            self.layer.shadowColor = UIColor.lightGray.cgColor
+            self.layer.shadowRadius = 2
+            self.layer.shadowOpacity = 0.25
+            self.clipsToBounds = false
+            self.layer.masksToBounds = false
+            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
         }
     }
     

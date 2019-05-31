@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV5-jV-4kY">
-                        <rect key="frame" x="10" y="8" width="302" height="21"/>
+                        <rect key="frame" x="12" y="12" width="298" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qe-Vb-FeH">
-                        <rect key="frame" x="10" y="37" width="302" height="21"/>
+                        <rect key="frame" x="12" y="45" width="298" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,12 +34,12 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="fV5-jV-4kY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="2ED-ky-qTt"/>
-                <constraint firstAttribute="trailing" secondItem="fV5-jV-4kY" secondAttribute="trailing" constant="10" id="L33-SG-WBY"/>
-                <constraint firstItem="0qe-Vb-FeH" firstAttribute="top" secondItem="fV5-jV-4kY" secondAttribute="bottom" constant="8" id="TCi-RL-ItC"/>
-                <constraint firstItem="0qe-Vb-FeH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Ved-0z-n2X"/>
-                <constraint firstItem="fV5-jV-4kY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="asR-aj-2yw"/>
-                <constraint firstAttribute="trailing" secondItem="0qe-Vb-FeH" secondAttribute="trailing" constant="10" id="eFf-Q2-avg"/>
+                <constraint firstItem="fV5-jV-4kY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="2ED-ky-qTt"/>
+                <constraint firstAttribute="trailing" secondItem="fV5-jV-4kY" secondAttribute="trailing" constant="12" id="L33-SG-WBY"/>
+                <constraint firstItem="0qe-Vb-FeH" firstAttribute="top" secondItem="fV5-jV-4kY" secondAttribute="bottom" constant="12" id="TCi-RL-ItC"/>
+                <constraint firstItem="0qe-Vb-FeH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="Ved-0z-n2X"/>
+                <constraint firstItem="fV5-jV-4kY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="asR-aj-2yw"/>
+                <constraint firstAttribute="trailing" secondItem="0qe-Vb-FeH" secondAttribute="trailing" constant="12" id="eFf-Q2-avg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="322" height="78"/>
