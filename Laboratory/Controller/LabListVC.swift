@@ -21,6 +21,8 @@ class LabListVC: UIViewController {
         
         navigationItem.title = "Labs"
         labCollectionView.backgroundColor = Color.lightGrayBackground
+        
+        labSearchBar.backgroundImage = UIImage()
 
         labCollectionView.delegate = self
         labCollectionView.dataSource = self

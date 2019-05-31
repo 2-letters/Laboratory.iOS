@@ -20,6 +20,8 @@ class EquipmentListVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Equipments"
+        
+        searchBar.backgroundImage = UIImage()
 
         searchBar.delegate = self
         equipmentTV.delegate = self

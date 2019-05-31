@@ -22,6 +22,8 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         super.viewDidLoad()
         
         navigationItem.title = "Edit Equipments"
+        
+        searchBar.backgroundImage = UIImage()
 
         searchBar.delegate = self
         labEquipmentTV.delegate = self
