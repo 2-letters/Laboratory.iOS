@@ -26,7 +26,6 @@ class LabCollectionViewCell: UICollectionViewCell {
             self.layer.shadowOpacity = 0.25
             self.clipsToBounds = false
             self.layer.masksToBounds = false
-            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
         }
     }
     
