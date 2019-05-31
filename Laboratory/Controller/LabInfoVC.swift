@@ -10,7 +10,7 @@ import UIKit
 
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
-    var isAddingNewLab: Bool!
+    var isCreatingNewLab: Bool!
     var isLabCreated: Bool = false
     var labId: String?
 
@@ -23,7 +23,7 @@ class LabInfoVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isAddingNewLab {
+        if isCreatingNewLab {
             navigationItem.title = "Create a Lab"
         } else {
             navigationItem.title = "Edit Lab"
@@ -40,7 +40,7 @@ class LabInfoVC: UIViewController {
         labInfoView.descriptionTextField.delegate = self
         
         setupUI()
-        if !isAddingNewLab {
+        if !isCreatingNewLab {
             loadLabEquipments()
         }
         
@@ -60,7 +60,7 @@ class LabInfoVC: UIViewController {
     
     @IBAction func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
         // there's some change, reload table view and enable save Button
-        isAddingNewLab = false
+        isCreatingNewLab = false
         loadLabEquipments()
         saveBtn.isEnabled = true
     }
@@ -69,7 +69,7 @@ class LabInfoVC: UIViewController {
     // MARK: Layout
     func setupUI() {
         // change button title to "Edit Equipments..."
-        if isAddingNewLab {
+        if isCreatingNewLab {
             labInfoView.addEquipmentsBtn.setTitle("Add Equipments...", for: .normal)
             labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
         } else {
@@ -136,7 +136,7 @@ extension LabInfoVC {
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
             warnInvalidInputs()
         } else {
-            if isAddingNewLab {
+            if isCreatingNewLab {
                 // create a new lab on FireStore
                 viewModel.createLab(withName: newLabName, description: newLabDescription) { [unowned self] (createResult) in
                     switch createResult {

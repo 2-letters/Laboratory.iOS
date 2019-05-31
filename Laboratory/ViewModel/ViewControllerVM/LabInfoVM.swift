@@ -59,7 +59,7 @@ class LabInfoVM {
     
     func updateLabInfo(byId labId: String, withNewName newName: String, newDescription: String, completion: @escaping FetchFirestoreHandler) {
         // update lab's name and description
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).setData([
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).updateData([
             "labName": newName,
             "description": newDescription
         ]) { err in

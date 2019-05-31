@@ -39,6 +39,7 @@ class EquipmentListVC: UIViewController {
             equipmentTV.addSubview(refreshControl)
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
         loadEquipmentData()
     }
     
@@ -70,6 +71,10 @@ class EquipmentListVC: UIViewController {
     
     
     // MARK: User interaction
+    @objc private func createNewEquipment() {
+        // TODO implement
+    }
+    
     @objc private func refreshData(sender: Any) {
         loadEquipmentData()
     }

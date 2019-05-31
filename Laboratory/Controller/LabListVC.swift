@@ -37,7 +37,8 @@ class LabListVC: UIViewController {
             labTV.addSubview(refreshControl)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewLab))
+        // "Create Lab" button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
         loadLabData()
     }
     
@@ -50,10 +51,10 @@ class LabListVC: UIViewController {
             guard let sender = sender as? String else {
                 return
             }
-            if sender == "addingNewLab" {
-                labInfoVC.isAddingNewLab = true
+            if sender == "creatingNewLab" {
+                labInfoVC.isCreatingNewLab = true
             } else {
-                labInfoVC.isAddingNewLab = false
+                labInfoVC.isCreatingNewLab = false
                 labInfoVC.labId = sender
             }
         }
@@ -72,6 +73,7 @@ class LabListVC: UIViewController {
             case .success:
                 DispatchQueue.main.async {
                     self.labTV.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
             // TODO: save to cache (look at Trvlr)
             case let .failure(error):
@@ -82,8 +84,8 @@ class LabListVC: UIViewController {
     
     
     // MARK: User Interaction
-    @objc private func addNewLab() {
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: "addingNewLab")
+    @objc private func createNewLab() {
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: "creatingNewLab")
     }
     
     @objc private func refreshData() {
