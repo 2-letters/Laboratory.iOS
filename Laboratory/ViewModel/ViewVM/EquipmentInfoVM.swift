@@ -32,7 +32,8 @@ class EquipmentInfoVM {
     
     func fetchEquipmentInfo(byName name: String, completion: @escaping FetchFirestoreHandler) {
         // TODO: get department and instituion from Cache?
-        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").whereField("name", isEqualTo: name).getDocuments { [unowned self] (snapshot, error) in
+        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").whereField("name", isEqualTo: name).getDocuments { [weak self] (snapshot, error) in
+            guard let self = self else { return }
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))
             } else {

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +18,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+            
+        NSSetUncaughtExceptionHandler { exception in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGABRT) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGILL) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGSEGV) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGFPE) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGBUS) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        signal(SIGPIPE) { _ in
+            print(Thread.callStackSymbols)
+        }
+        
+        
         FirebaseApp.configure()
         
         // change Status Bar color
