@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
-                    <rect key="frame" x="20" y="52" width="374" height="163"/>
+                    <rect key="frame" x="20" y="52" width="374" height="169"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
                             <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -52,8 +52,11 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-bB-Eni">
-                            <rect key="frame" x="0.0" y="133" width="374" height="30"/>
-                            <state key="normal" title="Add Equipments..."/>
+                            <rect key="frame" x="0.0" y="133" width="374" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="Xd6-tA-RiU"/>
+                            </constraints>
+                            <state key="normal" title="Add Equipments ..."/>
                         </button>
                     </subviews>
                     <constraints>
@@ -66,7 +69,7 @@
                     </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7i-yQ-Tle">
-                    <rect key="frame" x="0.0" y="215" width="414" height="647"/>
+                    <rect key="frame" x="0.0" y="221" width="414" height="641"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>

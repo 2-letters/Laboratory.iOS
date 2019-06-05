@@ -8,6 +8,8 @@
 
 import Foundation
 
+let globalFont = "GillSans-SemiBold"
+
 typealias CreateFirestoreHandler = (CreateResult) -> Void
 
 enum CreateResult {

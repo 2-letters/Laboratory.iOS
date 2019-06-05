@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: globalFont))
+        
         // change Status Bar color
         if application.responds(to: Selector(("statusBar"))),
         let statusBar = application.value(forKey: "statusBar") as? UIView,
@@ -32,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         // To change Navigation Bar Title Color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+//        UINavigationBar.shadow
         
         return true
     }

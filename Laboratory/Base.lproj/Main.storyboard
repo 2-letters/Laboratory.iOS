@@ -387,7 +387,7 @@
                         <color key="selectedImageTintColor" red="0.53732180595397949" green="0.70830649137496948" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.53732180595397949" green="0.70830649137496948" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.69019607843137254" green="0.73333333333333328" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>

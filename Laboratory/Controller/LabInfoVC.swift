@@ -8,6 +8,30 @@
 
 import UIKit
 
+//protocol TapRecognizable {
+//    var tapGestureRecognizer: UITapGestureRecognizer { get set }
+//    func setupTapGestureRecognizer(view: UIView)
+//    @objc func dismissKeyboard()
+//}
+//
+//extension TapRecognizable where Self:UIViewController {
+//    func setupTapGestureRecognizer(view: UIView) {
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//    }
+//}
+
+class TapRecognizableVC: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
     var isCreatingNewLab: Bool!
@@ -70,12 +94,14 @@ class LabInfoVC: UIViewController {
     func setupUI() {
         // change button title to "Edit Equipments..."
         if isCreatingNewLab {
-            labInfoView.addEquipmentsBtn.setTitle("Add Equipments...", for: .normal)
+            labInfoView.addEquipmentsBtn.setTitle("Add Equipments ...", for: .normal)
             labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
         } else {
-            labInfoView.addEquipmentsBtn.setTitle("Edit Equipments...", for: .normal)
+            labInfoView.addEquipmentsBtn.setTitle("Edit Equipments ...", for: .normal)
             labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
+        labInfoView.addEquipmentsBtn.backgroundColor = Color.lightGreen
+        labInfoView.addEquipmentsBtn.setTitleColor(UIColor.white, for: .normal)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false

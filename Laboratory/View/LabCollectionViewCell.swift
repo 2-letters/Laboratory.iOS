@@ -20,7 +20,7 @@ class LabCollectionViewCell: UICollectionViewCell {
         didSet {
             labNameLabel.text = viewModel?.labName
             labDescriptionLabel.text = viewModel?.description
-            self.layer.shadowOffset = CGSize(width: 0, height: 2)
+            self.layer.shadowOffset = CGSize(width: 0, height: 0.5)
             self.layer.shadowColor = UIColor.lightGray.cgColor
             self.layer.shadowRadius = 2
             self.layer.shadowOpacity = 0.25
