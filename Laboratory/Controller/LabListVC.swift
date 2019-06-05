@@ -21,7 +21,6 @@ class LabListVC: UIViewController {
     @IBOutlet private var labSearchBar: UISearchBar!
     @IBOutlet var labCollectionView: UICollectionView!
     
-    
     private var viewModel = LabListVM()
     private let refreshControl = UIRefreshControl()
     
