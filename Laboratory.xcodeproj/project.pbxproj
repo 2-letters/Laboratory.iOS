@@ -28,6 +28,8 @@
 		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
+		C973004022A85D940043E2A9 /* LaboratoryUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */; };
+		C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */; };
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
 		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
 		C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11482294A57400E90B46 /* LabInfoVM.swift */; };
@@ -53,6 +55,16 @@
 		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
 		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C973004222A85D940043E2A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C34438572281DDFA0021168B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C344385E2281DDFA0021168B;
+			remoteInfo = Laboratory;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laboratory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +93,10 @@
 		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
+		C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboratoryUnitTests.swift; sourceTree = "<group>"; };
+		C973004122A85D940043E2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LabListViewControllerTest.swift; path = ViewControllerTests/LabListViewControllerTest.swift; sourceTree = "<group>"; };
 		C97B114422949B5C00E90B46 /* FullEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEquipment.swift; sourceTree = "<group>"; };
 		C97B11462294A4EB00E90B46 /* LabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfo.swift; sourceTree = "<group>"; };
 		C97B11482294A57400E90B46 /* LabInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVM.swift; sourceTree = "<group>"; };
@@ -117,6 +133,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C973003A22A85D940043E2A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -141,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				C34438612281DDFA0021168B /* Laboratory */,
+				C973003E22A85D940043E2A9 /* LaboratoryUnitTests */,
 				C34438602281DDFA0021168B /* Products */,
 				17650FFA73020AE298122108 /* Pods */,
 				47C19EBEBC9CCBED164DA046 /* Frameworks */,
@@ -151,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				C344385F2281DDFA0021168B /* Laboratory.app */,
+				C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,12 +183,12 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
-				C90035812296EE6F00471EE7 /* Constant */,
-				DEC45BE92291004D00F164BD /* Misc */,
-				C344387F228206A80021168B /* ViewModel */,
-				C344387C228202AA0021168B /* Model */,
-				C34438742281F6F10021168B /* View */,
-				C34438792281FC370021168B /* Controller */,
+				C90035812296EE6F00471EE7 /* Constants */,
+				DEC45BE92291004D00F164BD /* Miscs */,
+				C344387F228206A80021168B /* ViewModels */,
+				C344387C228202AA0021168B /* Models */,
+				C34438742281F6F10021168B /* Views */,
+				C34438792281FC370021168B /* ViewControllers */,
 				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
 				C34438622281DDFA0021168B /* AppDelegate.swift */,
 				C34438662281DDFA0021168B /* Main.storyboard */,
@@ -174,7 +199,7 @@
 			path = Laboratory;
 			sourceTree = "<group>";
 		};
-		C34438742281F6F10021168B /* View */ = {
+		C34438742281F6F10021168B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				C34438752281F7970021168B /* LabTVCell.swift */,
@@ -190,10 +215,10 @@
 				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
 				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		C34438792281FC370021168B /* Controller */ = {
+		C34438792281FC370021168B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C344387A2281FC9E0021168B /* LabListVC.swift */,
@@ -203,10 +228,10 @@
 				C9F43E73228F2B740049C68D /* LabInfoVC.swift */,
 				C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */,
 			);
-			path = Controller;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		C344387C228202AA0021168B /* Model */ = {
+		C344387C228202AA0021168B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C344387D2282041F0021168B /* Lab.swift */,
@@ -215,26 +240,36 @@
 				C97B114422949B5C00E90B46 /* FullEquipment.swift */,
 				C97B11462294A4EB00E90B46 /* LabInfo.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		C344387F228206A80021168B /* ViewModel */ = {
+		C344387F228206A80021168B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				DE59D05A229B58A700E7FDF1 /* ViewVM */,
 				DE59D059229B587F00E7FDF1 /* ViewControllerVM */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		C90035812296EE6F00471EE7 /* Constant */ = {
+		C90035812296EE6F00471EE7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				DEC45BEA2291006200F164BD /* SegueId.swift */,
 				C90035822296EEEC00471EE7 /* AlertString.swift */,
 				DE59D055229AFD7300E7FDF1 /* Color.swift */,
 			);
-			path = Constant;
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C973003E22A85D940043E2A9 /* LaboratoryUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */,
+				C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */,
+				C973004122A85D940043E2A9 /* Info.plist */,
+			);
+			path = LaboratoryUnitTests;
 			sourceTree = "<group>";
 		};
 		DE59D059229B587F00E7FDF1 /* ViewControllerVM */ = {
@@ -260,7 +295,7 @@
 			path = ViewVM;
 			sourceTree = "<group>";
 		};
-		DEC45BE92291004D00F164BD /* Misc */ = {
+		DEC45BE92291004D00F164BD /* Miscs */ = {
 			isa = PBXGroup;
 			children = (
 				C900357F2296E96500471EE7 /* CustomType.swift */,
@@ -268,7 +303,7 @@
 				DE59D05F229C420700E7FDF1 /* SpinnerPresenter.swift */,
 				C9EED950229D9707006314A8 /* FirestoreSvc.swift */,
 			);
-			path = Misc;
+			path = Miscs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,19 +328,41 @@
 			productReference = C344385F2281DDFA0021168B /* Laboratory.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C973003C22A85D940043E2A9 /* LaboratoryUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C973004422A85D940043E2A9 /* Build configuration list for PBXNativeTarget "LaboratoryUnitTests" */;
+			buildPhases = (
+				C973003922A85D940043E2A9 /* Sources */,
+				C973003A22A85D940043E2A9 /* Frameworks */,
+				C973003B22A85D940043E2A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C973004322A85D940043E2A9 /* PBXTargetDependency */,
+			);
+			name = LaboratoryUnitTests;
+			productName = LaboratoryUnitTests;
+			productReference = C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C34438572281DDFA0021168B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = 2Letters;
 				TargetAttributes = {
 					C344385E2281DDFA0021168B = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+					};
+					C973003C22A85D940043E2A9 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = C344385E2281DDFA0021168B;
 					};
 				};
 			};
@@ -324,6 +381,7 @@
 			projectRoot = "";
 			targets = (
 				C344385E2281DDFA0021168B /* Laboratory */,
+				C973003C22A85D940043E2A9 /* LaboratoryUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -343,6 +401,13 @@
 				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
 				C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */,
 				C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C973003B22A85D940043E2A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +520,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C973003922A85D940043E2A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */,
+				C973004022A85D940043E2A9 /* LaboratoryUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C973004322A85D940043E2A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C344385E2281DDFA0021168B /* Laboratory */;
+			targetProxy = C973004222A85D940043E2A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C34438662281DDFA0021168B /* Main.storyboard */ = {
@@ -604,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,7 +708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -638,6 +720,48 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C973004522A85D940043E2A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				INFOPLIST_FILE = LaboratoryUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laboratory.app/Laboratory";
+			};
+			name = Debug;
+		};
+		C973004622A85D940043E2A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				INFOPLIST_FILE = LaboratoryUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laboratory.app/Laboratory";
 			};
 			name = Release;
 		};
@@ -658,6 +782,15 @@
 			buildConfigurations = (
 				C34438722281DDFC0021168B /* Debug */,
 				C34438732281DDFC0021168B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C973004422A85D940043E2A9 /* Build configuration list for PBXNativeTarget "LaboratoryUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C973004522A85D940043E2A9 /* Debug */,
+				C973004622A85D940043E2A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
