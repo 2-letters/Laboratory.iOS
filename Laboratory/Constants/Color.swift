@@ -11,7 +11,7 @@ import UIKit
 struct Color {
     static let separatingLine = UIColor.init(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     
-    static let lightGrayBackground = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+    static let lightGray = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
     
     static let lightGreen = UIColor(red:0.69, green:0.73, blue:0.51, alpha:1.0)
     

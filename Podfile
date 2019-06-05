@@ -2,12 +2,17 @@
 # platform :ios, '9.0'
 
 target 'Laboratory' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+  	use_frameworks!
 
-  # Pods for Laboratory
+  	# Pods for Laboratory
 	pod 'Firebase/Core'
   	pod 'Firebase/Firestore'
-	pod 'RxSwift', '~> 5'
-    	pod 'RxCocoa', '~> 5'
+
+	
+	
+end
+
+target 'LaboratoryUnitTests' do
+	inherit! :search_paths
+	pod 'Firebase'
 end

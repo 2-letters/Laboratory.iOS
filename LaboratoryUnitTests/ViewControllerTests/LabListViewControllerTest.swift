@@ -7,20 +7,56 @@
 //
 
 import XCTest
+@testable import Laboratory
 
 class LabListViewControllerTest: XCTestCase {
 
+    var sut: LabListVC!
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        
+        sut = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: StoryboardId.labListVC) as? LabListVC
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        
+        super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInitialLayouts() {
+        XCTAssertNil(sut.labSearchBar)
+        XCTAssertNil(sut.labCollectionView)
+    }
+    
+    func testViewDidLoad() {
+        // Create the view
+        let _ = sut.view
+        
+        XCTAssertEqual(sut.navigationItem.title, "Labs")
+        XCTAssertTrue(sut.labCollectionView.backgroundColor!.isEqual(Color.lightGray))
+
+        XCTAssertTrue(sut.labCollectionView.delegate!.isEqual(sut))
+        XCTAssertTrue(sut.labCollectionView.dataSource!.isEqual(sut))
+        XCTAssertTrue(sut.labSearchBar.delegate!.isEqual(sut))
+        
+        let cell = sut.labCollectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseId, for: IndexPath(row: 0, section: 0))
+        XCTAssertNotNil(cell)
+        
+        sut.re
+//        // add refresh control
+//        refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")
+//        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+//        if #available(iOS 10.0, *) {
+//            labCollectionView.refreshControl = refreshControl
+//        } else {
+//            labCollectionView.addSubview(refreshControl)
+//        }
+//
+//        // "Create Lab" button
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
+//        loadLabData()
     }
 
     func testPerformanceExample() {

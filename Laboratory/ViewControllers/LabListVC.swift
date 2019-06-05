@@ -18,7 +18,7 @@ import UIKit
 //}
 
 class LabListVC: UIViewController {
-    @IBOutlet private var labSearchBar: UISearchBar!
+    @IBOutlet var labSearchBar: UISearchBar!
     @IBOutlet var labCollectionView: UICollectionView!
     
     private var viewModel = LabListVM()
@@ -28,7 +28,7 @@ class LabListVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Labs"
-        labCollectionView.backgroundColor = Color.lightGrayBackground
+        labCollectionView.backgroundColor = Color.lightGray
         
         labSearchBar.backgroundImage = UIImage()
 
