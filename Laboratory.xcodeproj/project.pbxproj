@@ -26,6 +26,7 @@
 		C90035802296E96500471EE7 /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900357F2296E96500471EE7 /* CustomType.swift */; };
 		C90035832296EEEC00471EE7 /* AlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90035822296EEEC00471EE7 /* AlertString.swift */; };
 		C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */; };
+		C95076F522A9B65F009F7B47 /* CustomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95076F422A9B65F009F7B47 /* CustomString.swift */; };
 		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
@@ -95,6 +96,7 @@
 		C900357F2296E96500471EE7 /* CustomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
 		C90035822296EEEC00471EE7 /* AlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertString.swift; sourceTree = "<group>"; };
 		C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVC.swift; sourceTree = "<group>"; };
+		C95076F422A9B65F009F7B47 /* CustomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomString.swift; sourceTree = "<group>"; };
 		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C90035822296EEEC00471EE7 /* AlertString.swift */,
 				DE59D055229AFD7300E7FDF1 /* Color.swift */,
 				C973004922A867250043E2A9 /* StoryboardId.swift */,
+				C95076F422A9B65F009F7B47 /* CustomString.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				DE59D060229C420700E7FDF1 /* SpinnerPresenter.swift in Sources */,
 				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
+				C95076F522A9B65F009F7B47 /* CustomString.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				DE59D056229AFD7300E7FDF1 /* Color.swift in Sources */,

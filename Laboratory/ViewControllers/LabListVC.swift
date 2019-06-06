@@ -18,8 +18,8 @@ import UIKit
 //}
 
 class LabListVC: UIViewController {
-    @IBOutlet var labSearchBar: UISearchBar!
-    @IBOutlet var labCollectionView: UICollectionView!
+    @IBOutlet private var labSearchBar: UISearchBar!
+    @IBOutlet private var labCollectionView: UICollectionView!
     
     private var viewModel = LabListVM()
     private let refreshControl = UIRefreshControl()
@@ -28,14 +28,15 @@ class LabListVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Labs"
-        labCollectionView.backgroundColor = Color.lightGray
+        // "Create Lab" button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
         
+        labSearchBar.delegate = self
         labSearchBar.backgroundImage = UIImage()
-
+        
         labCollectionView.delegate = self
         labCollectionView.dataSource = self
-        labSearchBar.delegate = self
-        
+        labCollectionView.backgroundColor = Color.lightGray
         // register lab cells
         let nib = UINib(nibName: LabCollectionViewCell.nibId, bundle: nil)
         labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
@@ -49,8 +50,6 @@ class LabListVC: UIViewController {
             labCollectionView.addSubview(refreshControl)
         }
         
-        // "Create Lab" button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
         loadLabData()
     }
     
@@ -63,7 +62,7 @@ class LabListVC: UIViewController {
             guard let sender = sender as? String else {
                 return
             }
-            if sender == "creatingNewLab" {
+            if sender == CustomString.creatingNewInstanceFlag {
                 labInfoVC.isCreatingNewLab = true
             } else {
                 labInfoVC.isCreatingNewLab = false
@@ -72,14 +71,14 @@ class LabListVC: UIViewController {
         }
     }
     
-    @IBAction func unwindFromLabInfo(segue: UIStoryboardSegue) {
+    @IBAction private func unwindFromLabInfo(segue: UIStoryboardSegue) {
         // there's some change, reload table view and enable save Button
         loadLabData()
     }
     
     
     // MARK: Layout
-    func loadLabData() {
+    private func loadLabData() {
         viewModel.fetchLabData() { [unowned self] (fetchResult) in
             switch fetchResult {
             case .success:
@@ -97,7 +96,7 @@ class LabListVC: UIViewController {
     
     // MARK: User Interaction
     @objc private func createNewLab() {
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: "creatingNewLab")
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: CustomString.creatingNewInstanceFlag)
     }
     
     @objc private func refreshData() {
