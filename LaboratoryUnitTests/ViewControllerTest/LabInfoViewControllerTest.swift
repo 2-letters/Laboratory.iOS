@@ -20,8 +20,8 @@ class LabInfoViewControllerTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoryboardId.labInfoVC) as? LabInfoVC
-        labEquipmentSelectionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoryboardId.labEquipmentSelectionVC) as? LabEquipmentSelectionVC
+        sut = MyViewController.LabInfo.instance as? LabInfoVC
+        labEquipmentSelectionVC = MyViewController.LabEquipmentSelection.instance as? LabEquipmentSelectionVC
         let _ = sut.view
     }
 

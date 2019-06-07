@@ -14,8 +14,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
     var sut: LabEquipmentSelectionVC!
     override func setUp() {
         super.setUp()
-        let storyBoard = UIStoryboard(name: "Main", bundle: <#T##Bundle?#>)
-        sut = LabEquipmentSelectionVC
+        sut = MyViewController.LabEquipmentSelection.instance as? LabEquipmentSelectionVC
     }
 
     override func tearDown() {

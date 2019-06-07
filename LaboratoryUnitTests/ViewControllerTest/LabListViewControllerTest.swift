@@ -21,10 +21,8 @@ class LabListViewControllerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: StoryboardId.labListVC) as? LabListVC
-        labInfoVC = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: StoryboardId.labInfoVC) as? LabInfoVC
+        sut = MyViewController.LabList.instance as? LabListVC
+        labInfoVC = MyViewController.LabInfo.instance as? LabInfoVC
         
         // Create the view
         let _ = sut.view
