@@ -35,7 +35,7 @@ extension SpinnerPresenter where Self: UIViewController {
 }
 
 class SpinnerViewController: UIViewController {
-    var spinner = UIActivityIndicatorView(style: .whiteLarge)
+    private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     override func loadView() {
         view = UIView()

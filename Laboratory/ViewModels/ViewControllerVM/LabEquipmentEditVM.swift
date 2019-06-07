@@ -26,7 +26,7 @@ struct LabEquipmentEditVM {
                 completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))
             } else {
                 print("Successfully update Equipment using!")
-                completion(.success)
+                completion(.success(nil))
             }
         }
     }

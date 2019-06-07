@@ -10,28 +10,22 @@ import UIKit
 
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
-    var isCreatingNewLab: Bool!
+    var isCreatingNewLab: Bool = false
     private var isLabCreated: Bool = false
     var labId: String?
 
     @IBOutlet private var labInfoView: LabInfoView!
-    @IBOutlet private var saveBtn: UIBarButtonItem!
+    private var saveBtn: UIBarButtonItem!
     
     private var labEquipmentTableView: UITableView!
     private var viewModel = LabInfoVM()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if isCreatingNewLab {
-            navigationItem.title = "Create a Lab"
-        } else {
-            navigationItem.title = "Edit Lab"
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
+        navigationItem.rightBarButtonItem = saveBtn
+        
         labEquipmentTableView = labInfoView.labEquipmentTV
         labEquipmentTableView.delegate = self
         labEquipmentTableView.dataSource = self
@@ -45,6 +39,15 @@ class LabInfoVC: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isCreatingNewLab {
+            navigationItem.title = "Create a Lab"
+        } else {
+            navigationItem.title = "Edit Lab"
+        }
     }
     
     // MARK: Segues
@@ -123,11 +126,27 @@ extension LabInfoVC {
         }
     }
     
-    @IBAction private func cancel(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    @objc private func saveBtnPressed() {
+        tryToSaveLab(toAddEquipments: false)
     }
     
-    func tryToSaveLab(toAddEquipments: Bool) {
+    private func createLabToAddEquipments(alert: UIAlertAction!) {
+        tryToSaveLab(toAddEquipments: true)
+    }
+    
+    private func goBackAndReload(alert: UIAlertAction!) {
+        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+    }
+    
+    private func goToEquipmentsSelect() {
+        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    private func tryToSaveLab(toAddEquipments: Bool) {
         let newLabName = labInfoView.nameTextField.text ?? ""
         let newLabDescription = labInfoView.descriptionTextField.text ?? ""
         
@@ -156,26 +175,6 @@ extension LabInfoVC {
             }
         }
     }
-    
-    @IBAction private func save(_ sender: UIBarButtonItem) {
-        tryToSaveLab(toAddEquipments: false)
-    }
-    
-    private func createLabToAddEquipments(alert: UIAlertAction!) {
-        tryToSaveLab(toAddEquipments: true)
-    }
-    
-    private func goBackAndReload(alert: UIAlertAction!) {
-        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
-    }
-    
-    private func goToEquipmentsSelect() {
-        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
-    }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }
 
 
@@ -193,8 +192,6 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
-// MARK: - Text Field
 extension LabInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // there's some change, enable save Button

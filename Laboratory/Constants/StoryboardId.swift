@@ -11,4 +11,5 @@ import Foundation
 struct StoryboardId {
     static let labListVC = "LabListVC"
     static let labInfoVC = "LabInfoVC"
+    static let labEquipmentSelectionVC = "LabEquipmentSelectionVC"
 }

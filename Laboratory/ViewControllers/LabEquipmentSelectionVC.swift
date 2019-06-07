@@ -9,12 +9,12 @@
 import UIKit
 
 class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
-    var labId: String!  // for receiving data from Lab Info/Create
+    var labId: String?  // for receiving data from Lab Info/Create
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
     
-    internal var spinnerVC = SpinnerViewController()
+    var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentSelectionVM()
     private var hasChange = false
     
@@ -24,14 +24,14 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         navigationItem.title = "Edit Equipments"
         
         searchBar.backgroundImage = UIImage()
-
         searchBar.delegate = self
+        
         labEquipmentTV.delegate = self
         labEquipmentTV.dataSource = self
-        
         // hide the view until loading is done
         labEquipmentTV.isHidden = true
-        // hide spinner
+        
+        // show spinner
         showSpinner()
         setupUI()
         loadEquipments()
@@ -52,12 +52,12 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
         }
     }
     
-    @IBAction func unwindFromEquipmentEdit(segue: UIStoryboardSegue) {
+    @IBAction private func unwindFromEquipmentEdit(segue: UIStoryboardSegue) {
         hasChange = true
         loadEquipments()
     }
     
-    @IBAction func done(_ sender: UIBarButtonItem) {
+    @IBAction private func done(_ sender: UIBarButtonItem) {
         // if the equipments have been changed, perform unwind segue to tell Lab Info to update
         if hasChange {
             goBackAndReload()
@@ -78,6 +78,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
     
     private func loadEquipments() {
+        guard let labId = labId else { return }
         viewModel.fetchEquipments(byLabId: labId) { [weak self]
             (fetchResult) in
             guard let self = self else { return }

@@ -88,21 +88,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="34Q-Mw-go4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VJm-KE-ACh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Nwa-xr-w6F">
-                            <connections>
-                                <action selector="cancel:" destination="0cc-Dk-jsw" id="GCD-f3-29m"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="OHP-th-Rog">
-                            <connections>
-                                <action selector="save:" destination="0cc-Dk-jsw" id="HZU-8K-imf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
-                        <outlet property="saveBtn" destination="OHP-th-Rog" id="qUu-ZS-GfX"/>
                         <segue destination="WGb-WK-Rvf" kind="presentation" identifier="presentEquipmentSelection" id="Fo1-G5-M6g"/>
                         <segue destination="rBs-g7-BSh" kind="unwind" identifier="unwindFromLabInfo" unwindAction="unwindFromLabInfoWithSegue:" id="LbF-yB-9hh"/>
                     </connections>
@@ -115,7 +102,7 @@
         <!--Lab Equipment SelectionVC-->
         <scene sceneID="ogX-mx-b3j">
             <objects>
-                <viewController storyboardIdentifier="labEquipmentSelectionVC" id="D6r-hq-vP7" customClass="LabEquipmentSelectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabEquipmentSelectionVC" id="D6r-hq-vP7" customClass="LabEquipmentSelectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niC-BV-X9V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +150,7 @@
         <!--Lab Equipment EditVC-->
         <scene sceneID="8c5-Q3-bQ6">
             <objects>
-                <viewController id="cly-ig-uLQ" customClass="LabEquipmentEditVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabEquipmentEditVC" id="cly-ig-uLQ" customClass="LabEquipmentEditVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BVV-oX-ftt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -307,7 +294,7 @@
         <!--Equipment ListVC-->
         <scene sceneID="IeG-eC-dYu">
             <objects>
-                <viewController id="m8J-3U-eDS" customClass="EquipmentListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EquipmentListVC" id="m8J-3U-eDS" customClass="EquipmentListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CL1-D0-Vi2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

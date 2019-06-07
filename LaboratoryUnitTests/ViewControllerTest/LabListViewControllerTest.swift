@@ -18,8 +18,6 @@ class LabListViewControllerTest: XCTestCase {
     var sut: LabListVC!
     var labInfoVC: LabInfoVC!
     
-    let fakeLabId = "lab123"
-    
     override func setUp() {
         super.setUp()
         
@@ -48,7 +46,6 @@ class LabListViewControllerTest: XCTestCase {
         XCTAssertEqual(navItem.title, "Labs")
         
         XCTAssertNotNil(navItem.rightBarButtonItem)
-        XCTAssertNotNil(navItem.rightBarButtonItem?.target)
         XCTAssert(navItem.rightBarButtonItem?.target === sut)
         XCTAssertTrue(navItem.rightBarButtonItem?.action?.description == "createNewLab")
     }
@@ -71,9 +68,9 @@ class LabListViewControllerTest: XCTestCase {
     }
     
     // MARK: Segues
-    func testSegueCount() {
+    func testSegueInfos() {
         // GIVEN
-        let identifiers = segues(ofViewController: sut)
+        let identifiers = ViewControllerTestUtil.segues(ofViewController: sut)
         
         // THEN
         XCTAssertEqual(identifiers.count, 1)
@@ -94,10 +91,10 @@ class LabListViewControllerTest: XCTestCase {
     
     func testPassingDataToLabInfo() {
         // GIVEN
-        let showLabCreateSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
+        let showLabInfoSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
         
         // WHEN
-        sut.prepare(for: showLabCreateSegue, sender: fakeLabId)
+        sut.prepare(for: showLabInfoSegue, sender: FakeData.labId)
         
         // THEN
         XCTAssertFalse(labInfoVC.isCreatingNewLab)
@@ -113,12 +110,5 @@ class LabListViewControllerTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(mockSearchBar.text, "")
-    }
-    
-    // MARK: - Helpers
-    func segues(ofViewController viewController: UIViewController) -> [String] {
-        let identifiers = (viewController.value(forKey: "storyboardSegueTemplates") as? [AnyObject])?
-                            .compactMap({ $0.value(forKey: "identifier") as? String }) ?? []
-        return identifiers
     }
 }
