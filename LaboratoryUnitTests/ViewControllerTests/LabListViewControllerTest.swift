@@ -9,10 +9,16 @@
 import XCTest
 @testable import Laboratory
 
+private class MockSearchBar: UISearchBar {
+    
+}
+
 class LabListViewControllerTest: XCTestCase {
 
     var sut: LabListVC!
     var labInfoVC: LabInfoVC!
+    
+    let fakeLabId = "lab123"
     
     override func setUp() {
         super.setUp()
@@ -74,27 +80,6 @@ class LabListViewControllerTest: XCTestCase {
         XCTAssertTrue(identifiers.contains(SegueId.showLabInfo))
     }
     
-    func testShowLabCreateSegue() {
-        // GIVEN
-        class MockLabListVC: LabListVC {
-            var segueIdentifierAndSender: (identifier: String, sender: String)?
-            
-            override func performSegue(withIdentifier identifier: String, sender: Any?) {
-                segueIdentifierAndSender = (identifier, sender as! String)
-            }
-        }
-        
-        let mockLabListVC = MockLabListVC()
-        
-        // WHEN
-        mockLabListVC.performSegue(withIdentifier: SegueId.showLabInfo, sender: CustomString.creatingNewInstanceFlag)
-        
-        // THEN
-        // test identifier and sender
-        XCTAssertEqual(mockLabListVC.segueIdentifierAndSender?.identifier, SegueId.showLabInfo)
-        XCTAssertEqual(mockLabListVC.segueIdentifierAndSender?.sender, CustomString.creatingNewInstanceFlag)
-    }
-    
     func testPassingDataToLabCreate() {
         // GIVEN
         let showLabCreateSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
@@ -107,8 +92,27 @@ class LabListViewControllerTest: XCTestCase {
         XCTAssertNil(labInfoVC.labId)
     }
     
-    func testSearching() {
+    func testPassingDataToLabInfo() {
+        // GIVEN
+        let showLabCreateSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
         
+        // WHEN
+        sut.prepare(for: showLabCreateSegue, sender: fakeLabId)
+        
+        // THEN
+        XCTAssertFalse(labInfoVC.isCreatingNewLab)
+        XCTAssertNotNil(labInfoVC.labId)
+    }
+    
+    func testSearching() {
+        // GIVEN
+        let mockSearchBar = MockSearchBar()
+        
+        // WHEN
+        sut.searchBarCancelButtonClicked(mockSearchBar)
+        
+        // THEN
+        XCTAssertEqual(mockSearchBar.text, "")
     }
 
     func testPerformanceExample() {
@@ -124,8 +128,4 @@ class LabListViewControllerTest: XCTestCase {
                             .compactMap({ $0.value(forKey: "identifier") as? String }) ?? []
         return identifiers
     }
-}
-
-class SearchBarDouble: UISearchBar {
-    
 }
