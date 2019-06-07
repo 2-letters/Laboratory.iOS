@@ -78,7 +78,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
     }
     
     private func loadEquipments() {
-        viewModel.fetchEquipments(byLabId: labId) { [unowned self] (fetchResult) in
+        viewModel.fetchEquipments(byLabId: labId) { [weak self]
+            (fetchResult) in
+            guard let self = self else { return }
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {

@@ -79,7 +79,8 @@ class LabListVC: UIViewController {
     
     // MARK: Layout
     private func loadLabData() {
-        viewModel.fetchLabData() { [unowned self] (fetchResult) in
+        viewModel.fetchLabData() { [weak self] (fetchResult) in
+            guard let self = self else { return }
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {

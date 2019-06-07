@@ -25,7 +25,8 @@ class LabInfoVM {
             return
         }
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId)
-        .getDocument { [unowned self] (document, error) in
+        .getDocument { [weak self] (document, error) in
+            guard let self = self else { return }
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Info"))
             } else {

@@ -126,7 +126,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     // MARK: - User Interaction
     // MARK: Buttons
     @objc func saveChange() {
-        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!, newUsing: editingQuantity) { [unowned self] (updateFirestoreResult) in
+        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!, newUsing: editingQuantity) { [weak self] (updateFirestoreResult) in
+            guard let self = self else { return }
             switch updateFirestoreResult {
             case let .failure(errorStr):
                 print(errorStr)

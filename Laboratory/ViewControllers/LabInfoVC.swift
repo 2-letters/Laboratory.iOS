@@ -164,7 +164,8 @@ extension LabInfoVC {
         } else {
             if isCreatingNewLab {
                 // create a new lab on FireStore
-                viewModel.createLab(withName: newLabName, description: newLabDescription) { [unowned self] (createResult) in
+                viewModel.createLab(withName: newLabName, description: newLabDescription) { [weak self] (createResult) in
+                    guard let self = self else { return }
                     switch createResult {
                     case let .failure(errorStr):
                         print(errorStr)
@@ -177,7 +178,8 @@ extension LabInfoVC {
                 dismiss(animated: true, completion: nil)
             } else {
                 // update already existed Lab
-                viewModel.updateLabInfo(byId: labId!, withNewName: newLabName, newDescription: newLabDescription) { [unowned self] (fetchResult) in
+                viewModel.updateLabInfo(byId: labId!, withNewName: newLabName, newDescription: newLabDescription) { [weak self] (fetchResult) in
+                    guard let self = self else { return }
                     switch fetchResult {
                     case let .failure(errorStr):
                         print(errorStr)
@@ -197,7 +199,8 @@ extension LabInfoVC {
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
             warnInvalidInputs()
         } else {
-            viewModel.createLab(withName: newLabName, description: newLabDescription) { [unowned self] (createResult) in
+            viewModel.createLab(withName: newLabName, description: newLabDescription) { [weak self] (createResult) in
+                guard let self = self else { return }
                 switch createResult {
                 case let .failure(errorStr):
                     print(errorStr)

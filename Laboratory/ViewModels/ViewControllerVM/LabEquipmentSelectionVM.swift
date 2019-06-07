@@ -23,7 +23,8 @@ class LabEquipmentSelectionVM {
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
     func fetchEquipments(byLabId labId: String, completion: @escaping FetchFirestoreHandler) {
-        FirestoreSvc.fetchLabEquipments(byLabId: labId) { [unowned self] (fetchLabEquipmentResult) in
+        FirestoreSvc.fetchLabEquipments(byLabId: labId) { [weak self] (fetchLabEquipmentResult) in
+            guard let self = self else { return }
             switch fetchLabEquipmentResult {
                 
             case let .failure(errorStr):

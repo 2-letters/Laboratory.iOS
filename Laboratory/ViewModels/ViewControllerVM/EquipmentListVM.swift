@@ -19,7 +19,8 @@ class EquipmentListVM {
     }
     
     func fetchAllEquipments(completion: @escaping FetchFirestoreHandler) {
-        FirestoreSvc.fetchAllEquipments { [unowned self] (fetchResult) in
+        FirestoreSvc.fetchAllEquipments { [weak self] (fetchResult) in
+            guard let self = self else { return }
             switch fetchResult {
             case let .failure(errorStr):
                 completion(.failure(errorStr))

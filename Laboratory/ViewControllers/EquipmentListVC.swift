@@ -57,7 +57,8 @@ class EquipmentListVC: UIViewController {
     
     // MARK: Layout
     func loadEquipmentData() {
-        viewModel.fetchAllEquipments() { [unowned self] (itemResult) in
+        viewModel.fetchAllEquipments() { [weak self] (itemResult) in
+            guard let self = self else { return }
             switch itemResult {
             case let .failure(error):
                 print(error)
