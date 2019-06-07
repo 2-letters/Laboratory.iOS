@@ -52,6 +52,7 @@
 		DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */; };
 		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
+		DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */; };
 		DE7AF431229A094F0008181E /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* LayoutHelper.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
@@ -123,6 +124,7 @@
 		DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEquipmentTVCell.xib; sourceTree = "<group>"; };
 		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
+		DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerTest.swift; sourceTree = "<group>"; };
 		DE7AF430229A094F0008181E /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		C973003E22A85D940043E2A9 /* LaboratoryUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */,
 				C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */,
 				C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */,
 				C973004122A85D940043E2A9 /* Info.plist */,
@@ -559,6 +562,7 @@
 			files = (
 				C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */,
 				C973004022A85D940043E2A9 /* LaboratoryUnitTests.swift in Sources */,
+				DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

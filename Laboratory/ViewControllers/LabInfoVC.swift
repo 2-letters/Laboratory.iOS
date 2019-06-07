@@ -20,22 +20,22 @@ import UIKit
 //    }
 //}
 
-class TapRecognizableVC: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
+//class TapRecognizableVC: UIViewController {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tapGestureRecognizer)
+//    }
+//
+//    @objc private func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}
 
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
     var isCreatingNewLab: Bool!
-    var isLabCreated: Bool = false
+    private var isLabCreated: Bool = false
     var labId: String?
 
     @IBOutlet private var labInfoView: LabInfoView!
@@ -82,7 +82,7 @@ class LabInfoVC: UIViewController {
         }
     }
     
-    @IBAction func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
+    @IBAction private func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
         // there's some change, reload table view and enable save Button
         isCreatingNewLab = false
         loadLabEquipments()
@@ -91,7 +91,7 @@ class LabInfoVC: UIViewController {
     
     
     // MARK: Layout
-    func setupUI() {
+    private func setupUI() {
         // change button title to "Edit Equipments..."
         if isCreatingNewLab {
             labInfoView.addEquipmentsBtn.setTitle("Add Equipments ...", for: .normal)
@@ -111,7 +111,7 @@ class LabInfoVC: UIViewController {
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
     }
     
-    func loadLabEquipments() {
+    private func loadLabEquipments() {
         // start fetching Lab Equipments
         viewModel.fetchLabInfo(byId: labId, completion: { (fetchResult) in
             switch fetchResult {
@@ -126,7 +126,7 @@ class LabInfoVC: UIViewController {
         })
     }
     
-    func updateUI() {
+    private func updateUI() {
         // setup the Lab info views
         labInfoView.nameTextField.text = viewModel.labName
         labInfoView.descriptionTextField.text = viewModel.description
@@ -136,11 +136,11 @@ class LabInfoVC: UIViewController {
 
 // MARK: - User Interaction
 extension LabInfoVC {
-    @objc func editEquipments() {
+    @objc private func editEquipments() {
         goToEquipmentsSelect()
     }
     
-    @objc func addEquipments() {
+    @objc private func addEquipments() {
         if isLabCreated {
             goToEquipmentsSelect()
         } else {
@@ -151,11 +151,12 @@ extension LabInfoVC {
         }
     }
     
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    @IBAction private func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func save(_ sender: UIBarButtonItem) {
+    // TODO reduce this
+    @IBAction private func save(_ sender: UIBarButtonItem) {
         let newLabName = labInfoView.nameTextField.text ?? ""
         let newLabDescription = labInfoView.descriptionTextField.text ?? ""
         
@@ -253,6 +254,7 @@ extension LabInfoVC: UITextFieldDelegate {
 
 
 // MARK: - Helpers
+// TODO maybe also reduce this
 extension LabInfoVC {
     private func warnInvalidInputs() {
         let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
