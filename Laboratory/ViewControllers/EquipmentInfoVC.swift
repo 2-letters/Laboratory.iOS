@@ -25,7 +25,8 @@ class EquipmentInfoVC: UIViewController, SpinnerPresenter {
     }
 
     func loadEquipmentInfo() {
-        viewModel.fetchEquipmentInfo(byName: equipmentName!) { (fetchResult) in
+        viewModel.fetchEquipmentInfo(byName: equipmentName!) { [weak self] (fetchResult) in
+            guard let self = self else { return }
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
@@ -35,9 +36,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresenter {
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
-                self.present(ac, animated: true, completion: nil)
+                self.presentAlert(forCase: .failToLoadEquipmentInfo, handler: self.goBack)
             }
         }
     }

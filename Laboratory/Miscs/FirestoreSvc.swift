@@ -9,20 +9,6 @@
 import Foundation
 import FirebaseFirestore
 
-typealias FetchAllEquipmentHandler = (FetchAllEquipmentResult) -> Void
-
-enum FetchAllEquipmentResult {
-    case success([SimpleEquipmentVM])
-    case failure(String)
-}
-
-typealias FetchLabEquipmentHandler = (FetchLabEquipmentResult) -> Void
-
-enum FetchLabEquipmentResult {
-    case success([LabEquipment])
-    case failure(String)
-}
-
 struct FirestoreSvc {
     static func fetchAllEquipments(completion: @escaping FetchAllEquipmentHandler) {
         Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").order(by: "name", descending: false).getDocuments { (snapshot, error) in

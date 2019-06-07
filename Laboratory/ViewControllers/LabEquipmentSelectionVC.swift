@@ -92,9 +92,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
                 self.hideSpinner()
             case .failure:
                 // show an alert and return to the previous page
-                let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: self.goBack))
-                self.present(ac, animated: true, completion: nil)
+                self.presentAlert(forCase: .failToLoadEquipments, handler: self.goBack)
             }
         }
     }

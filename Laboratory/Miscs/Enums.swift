@@ -8,14 +8,13 @@
 
 import Foundation
 
-let globalFont = "GillSans-SemiBold"
-
 typealias CreateFirestoreHandler = (CreateResult) -> Void
 
 enum CreateResult {
     case success(String)
     case failure(String)
 }
+
 
 typealias FetchFirestoreHandler = (FetchResult) -> Void
 
@@ -24,9 +23,26 @@ enum FetchResult {
     case failure(String)
 }
 
+
 typealias UpdateFirestoreHandler = (UpdateFirestoreResult) -> Void
 
 enum UpdateFirestoreResult {
-    case success
+    case success(String?)
+    case failure(String)
+}
+
+
+typealias FetchAllEquipmentHandler = (FetchAllEquipmentResult) -> Void
+
+enum FetchAllEquipmentResult {
+    case success([SimpleEquipmentVM])
+    case failure(String)
+}
+
+
+typealias FetchLabEquipmentHandler = (FetchLabEquipmentResult) -> Void
+
+enum FetchLabEquipmentResult {
+    case success([LabEquipment])
     case failure(String)
 }

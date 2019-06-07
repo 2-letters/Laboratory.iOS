@@ -8,30 +8,6 @@
 
 import UIKit
 
-//protocol TapRecognizable {
-//    var tapGestureRecognizer: UITapGestureRecognizer { get set }
-//    func setupTapGestureRecognizer(view: UIView)
-//    @objc func dismissKeyboard()
-//}
-//
-//extension TapRecognizable where Self:UIViewController {
-//    func setupTapGestureRecognizer(view: UIView) {
-//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//    }
-//}
-
-//class TapRecognizableVC: UIViewController {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//        view.addGestureRecognizer(tapGestureRecognizer)
-//    }
-//
-//    @objc private func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-//}
-
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController {
     var isCreatingNewLab: Bool!
@@ -42,7 +18,6 @@ class LabInfoVC: UIViewController {
     @IBOutlet private var saveBtn: UIBarButtonItem!
     
     private var labEquipmentTableView: UITableView!
-    
     private var viewModel = LabInfoVM()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +47,6 @@ class LabInfoVC: UIViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.presentEquipmentSelection {
@@ -88,7 +62,6 @@ class LabInfoVC: UIViewController {
         loadLabEquipments()
         saveBtn.isEnabled = true
     }
-    
     
     // MARK: Layout
     private func setupUI() {
@@ -113,7 +86,8 @@ class LabInfoVC: UIViewController {
     
     private func loadLabEquipments() {
         // start fetching Lab Equipments
-        viewModel.fetchLabInfo(byId: labId, completion: { (fetchResult) in
+        viewModel.fetchLabInfo(byId: labId, completion: { [weak self] (fetchResult) in
+            guard let self = self else { return }
             switch fetchResult {
             case .success:
                 self.updateUI()
@@ -122,6 +96,7 @@ class LabInfoVC: UIViewController {
                 }
             case let .failure(errorStr):
                 print(errorStr)
+                self.presentAlert(forCase: .failToLoadLabEquipments, handler: self.goBackAndReload)
             }
         })
     }
@@ -144,10 +119,7 @@ extension LabInfoVC {
         if isLabCreated {
             goToEquipmentsSelect()
         } else {
-            let ac = UIAlertController(title: AlertString.createLabRequiredTitle, message: AlertString.attemptToAddLabEquipmentsMessage, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: createLabToAddEquipments))
-            ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
-            present(ac, animated: true, completion: nil)
+            presentAlert(forCase: .createLabToAddEquipments, handler: createLabToAddEquipments)
         }
     }
     
@@ -155,64 +127,42 @@ extension LabInfoVC {
         navigationController?.popViewController(animated: true)
     }
     
-    // TODO reduce this
-    @IBAction private func save(_ sender: UIBarButtonItem) {
+    func tryToSaveLab(toAddEquipments: Bool) {
         let newLabName = labInfoView.nameTextField.text ?? ""
         let newLabDescription = labInfoView.descriptionTextField.text ?? ""
         
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
-            warnInvalidInputs()
+            presentAlert(forCase: .invalidLabInfoInput)
         } else {
-            if isCreatingNewLab {
-                // create a new lab on FireStore
-                viewModel.createLab(withName: newLabName, description: newLabDescription) { [weak self] (createResult) in
-                    guard let self = self else { return }
-                    switch createResult {
-                    case let .failure(errorStr):
-                        print(errorStr)
-                        self.alertFailToSaveLab()
-                    case .success:
-                        print("Successfully add a new lab: \(newLabName)")
-                        self.alertSucceedToSaveLab()
-                    }
-                }
-                dismiss(animated: true, completion: nil)
-            } else {
-                // update already existed Lab
-                viewModel.updateLabInfo(byId: labId!, withNewName: newLabName, newDescription: newLabDescription) { [weak self] (fetchResult) in
-                    guard let self = self else { return }
-                    switch fetchResult {
-                    case let .failure(errorStr):
-                        print(errorStr)
-                    case .success:
-                        self.alertSucceedToSaveLab()
+            if isCreatingNewLab || toAddEquipments {
+                // make sure lab Id is empty before creating
+                labId = nil
+            }
+            viewModel.saveLab(withNewName: newLabName, newDescription: newLabDescription, labId: labId) { [weak self] (updateResult) in
+                guard let self = self else { return }
+                switch updateResult {
+                case let .failure(errorStr):
+                    print(errorStr)
+                    self.presentAlert(forCase: .failToSaveLab)
+                case let .success(newLabId):
+                    if toAddEquipments {
+                        self.isLabCreated = true
+                        self.labId = newLabId
+                        self.goToEquipmentsSelect()
+                    } else {
+                        self.presentAlert(forCase: .succeedToSaveLab, handler: self.goBackAndReload)
                     }
                 }
             }
-            
         }
     }
     
+    @IBAction private func save(_ sender: UIBarButtonItem) {
+        tryToSaveLab(toAddEquipments: false)
+    }
+    
     private func createLabToAddEquipments(alert: UIAlertAction!) {
-        let newLabName = labInfoView.nameTextField.text ?? ""
-        let newLabDescription = labInfoView.descriptionTextField.text ?? ""
-        
-        if (newLabName.isEmpty || newLabDescription.isEmpty) {
-            warnInvalidInputs()
-        } else {
-            viewModel.createLab(withName: newLabName, description: newLabDescription) { [weak self] (createResult) in
-                guard let self = self else { return }
-                switch createResult {
-                case let .failure(errorStr):
-                    print(errorStr)
-                    self.alertFailToSaveLab()
-                case let .success(labId):
-                    self.isLabCreated = true
-                    self.labId = labId
-                    self.goToEquipmentsSelect()
-                }
-            }
-        }
+        tryToSaveLab(toAddEquipments: true)
     }
     
     private func goBackAndReload(alert: UIAlertAction!) {
@@ -249,29 +199,5 @@ extension LabInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // there's some change, enable save Button
         saveBtn.isEnabled = true
-    }
-}
-
-
-// MARK: - Helpers
-// TODO maybe also reduce this
-extension LabInfoVC {
-    private func warnInvalidInputs() {
-        let ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.failToSaveLabInfoMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        self.present(ac, animated: true, completion: nil)
-    }
-    
-    private func alertFailToSaveLab() {
-        let ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        self.present(ac, animated: true, completion: nil)
-    }
-    
-    private func alertSucceedToSaveLab() {
-        let ac = UIAlertController(title: AlertString.succeedToSaveLabTitle, message: AlertString.succeedToSaveLabMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: goBackAndReload))
-        self.present(ac, animated: true, completion: nil)
-        // call this on handler self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
     }
 }
