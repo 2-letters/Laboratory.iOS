@@ -66,7 +66,7 @@ class LabInfoViewControllerTest: XCTestCase {
     
     func testSegueInfos() {
         // GIVEN
-        let identifiers = ViewControllerTestUtil.segues(ofViewController: sut)
+        let identifiers = TestUtil.segues(ofViewController: sut)
         
         // WHEN
         UIApplication.shared.keyWindow?.rootViewController = sut

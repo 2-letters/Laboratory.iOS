@@ -20,15 +20,18 @@ extension SpinnerPresentable where Self: UIViewController {
         addChild(spinnerVC)
         spinnerVC.view.frame = view.frame
         view.addSubview(spinnerVC.view)
+        // notify the child spinnerVC that it was moved to a parent
         spinnerVC.didMove(toParent: self)
         
     }
     
     func hideSpinner() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // then remove the spinner view controller
+            // First, notify the child that it’s about to be removed
             self.spinnerVC.willMove(toParent: nil)
+            // Then, remove the child from its parent
             self.spinnerVC.view.removeFromSuperview()
+            // Finally, remove the child’s view from the parent’s
             self.spinnerVC.removeFromParent()
         }
     }

@@ -35,7 +35,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
     
     func testSegueInfo() {
         // GIVEN
-        let identifiers = ViewControllerTestUtil.segues(ofViewController: sut)
+        let identifiers = TestUtil.segues(ofViewController: sut)
         
         // THEN
         XCTAssertEqual(identifiers.count, 2)

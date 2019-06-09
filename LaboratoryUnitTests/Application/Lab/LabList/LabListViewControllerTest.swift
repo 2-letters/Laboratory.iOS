@@ -64,7 +64,7 @@ class LabListViewControllerTest: XCTestCase {
     // MARK: Segues
     func testSegueInfos() {
         // GIVEN
-        let identifiers = ViewControllerTestUtil.segues(ofViewController: sut)
+        let identifiers = TestUtil.segues(ofViewController: sut)
         
         // THEN
         XCTAssertEqual(identifiers.count, 1)
