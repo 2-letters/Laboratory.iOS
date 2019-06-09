@@ -16,7 +16,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var usingQuantity: Int = 0
     // the quantity being edited
 
-    @IBOutlet var mainView: UIView!
+    @IBOutlet private var mainView: UIView!
     @IBOutlet private var usingQuantityTextField: UITextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
@@ -25,15 +25,15 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     @IBOutlet private var equipmentInfoView: EquipmentInfoView!
     
     private var saveBtn: UIBarButtonItem!
-    internal var spinnerVC = SpinnerViewController()
+    var spinnerVC = SpinnerViewController()
     private var viewModel = LabEquipmentEditVM()
-
-    private var editingQuantity: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         usingQuantityTextField.delegate = self
+        
+        viewModel.usingQuantity = usingQuantity
         
         // hide view until loading is done
         mainView.isHidden = true
@@ -42,7 +42,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         loadEquipmentInfo()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        mainView.addGestureRecognizer(tapGestureRecognizer)
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     
@@ -55,13 +55,16 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         // quantity only accept numbers
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
-        editingQuantity = usingQuantity
         
         separatingLine.backgroundColor = Color.separatingLine
     }
     
     private func loadEquipmentInfo() {
-        viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName!) { [weak self] (fetchResult) in
+        guard let equipmentName = equipmentName else {
+            presentAlert(forCase: .failToLoadEquipmentInfo, handler: goBack(alert:))
+            return
+        }
+        viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName) { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
             case .success:
@@ -103,29 +106,20 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private func updateUI() {
         // Quantity Layout
-        usingQuantityTextField.text = String(editingQuantity)
-        if editingQuantity == viewModel.available {
-            decreaseBtn.isEnabled = true
-            increaseBtn.isEnabled = false
-            removeBtn.isEnabled = true
-        } else if editingQuantity == 0 {
-            decreaseBtn.isEnabled = false
-            increaseBtn.isEnabled = true
-            removeBtn.isEnabled = false
-        } else {
-            decreaseBtn.isEnabled = true
-            increaseBtn.isEnabled = true
-            removeBtn.isEnabled = true
-        }
-        // "Save" button is only enable when there's change in quantity
-        saveBtn.isEnabled = editingQuantity != usingQuantity
+        usingQuantityTextField.text = String(viewModel.editingQuantity)
+        
+        decreaseBtn.isEnabled = viewModel.isDecreaseBtnEnabled
+        increaseBtn.isEnabled = viewModel.isIncreaseBtnEnabled
+        removeBtn.isEnabled = viewModel.isRemoveBtnEnabled
+        
+        saveBtn.isEnabled = viewModel.isSaveBtnEnabled 
     }
     
     
     // MARK: - User Interaction
     // MARK: Buttons
-    @objc func saveChange() {
-        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!, newUsing: editingQuantity) { [weak self] (updateFirestoreResult) in
+    @objc private func saveChange() {
+        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!) { [weak self] (updateFirestoreResult) in
             guard let self = self else { return }
             switch updateFirestoreResult {
             case let .failure(errorStr):
@@ -138,28 +132,28 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         }
     }
     
-    @IBAction func decreaseEquipment(_ sender: UIButton) {
-        editingQuantity -= 1
+    @IBAction private func decreaseEquipment(_ sender: UIButton) {
+        viewModel.editingQuantity -= 1
         updateUI()
     }
     
-    @IBAction func increaseEquipment(_ sender: UIButton) {
-        editingQuantity += 1
+    @IBAction private func increaseEquipment(_ sender: UIButton) {
+        viewModel.editingQuantity += 1
         updateUI()
     }
     
-    @IBAction func removeEquipment(_ sender: UIButton) {
+    @IBAction private func removeEquipment(_ sender: UIButton) {
         // set quantity to 0
-        editingQuantity = 0
+        viewModel.editingQuantity = 0
         updateUI()
     }
     
-    func goBack(alert: UIAlertAction!) {
+    private func goBack(alert: UIAlertAction!) {
         // go back to Equipment Selection
         navigationController?.popViewController(animated: true)
     }
     
-    func goBackAndReload() {
+    private func goBackAndReload() {
         // go back to Equipment Selection
         performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: nil)
     }
@@ -171,12 +165,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
 
 extension LabEquipmentEditVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var inputedQuantity = Int(textField.text ?? "0") ?? 0
-        let availableQuantity = viewModel.available
-        if inputedQuantity > availableQuantity {
-            inputedQuantity = availableQuantity
-        }
-        editingQuantity = inputedQuantity
+        viewModel.updateQuantityTextField(withText: textField.text)
         updateUI()
     }
 }

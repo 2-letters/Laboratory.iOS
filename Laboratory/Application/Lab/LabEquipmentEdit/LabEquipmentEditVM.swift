@@ -11,16 +11,36 @@ import FirebaseFirestore
 
 struct LabEquipmentEditVM {
     var equipmentInfoVM = EquipmentInfoVM()
+    var usingQuantity = 0 {
+        didSet {
+            editingQuantity = usingQuantity
+        }
+    }
+    var editingQuantity = 0
     
     var available: Int {
         return equipmentInfoVM.equipment?.available ?? 0
     }
+    var isDecreaseBtnEnabled: Bool {
+        return editingQuantity != 0
+    }
+    var isIncreaseBtnEnabled: Bool {
+        return editingQuantity != available
+    }
+    var isRemoveBtnEnabled: Bool {
+        return editingQuantity != 0
+    }
+    // "Save" button is only enable when there's change in quantity
+    var isSaveBtnEnabled: Bool {
+        return editingQuantity != usingQuantity
+    }
     
-    func updateEquipmentUsing(forLabId labId: String, equipmentName: String, newUsing: Int, completion: @escaping UpdateFirestoreHandler) {
+    
+    func updateEquipmentUsing(forLabId labId: String, equipmentName: String, completion: @escaping UpdateFirestoreHandler) {
         // Add a new document in collection "cities"
         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).collection("equipments").document(equipmentName).setData([
             "equipmentName": equipmentName,
-            "using": newUsing
+            "using": usingQuantity
         ]) { err in
             if let err = err {
                 completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))
@@ -29,5 +49,13 @@ struct LabEquipmentEditVM {
                 completion(.success(nil))
             }
         }
+    }
+    
+    mutating func updateQuantityTextField(withText text: String?) {
+        var inputedQuantity = Int(text ?? "0") ?? 0
+        if inputedQuantity > available {
+            inputedQuantity = available
+        }
+        editingQuantity = inputedQuantity
     }
 }

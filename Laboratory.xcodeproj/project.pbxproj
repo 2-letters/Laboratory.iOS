@@ -36,7 +36,6 @@
 		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
-		C973004022A85D940043E2A9 /* LaboratoryUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */; };
 		C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */; };
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
 		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
@@ -59,6 +58,7 @@
 		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
 		DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */; };
 		DE6B4D8522AD507F006CE211 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D8422AD507F006CE211 /* Mocks.swift */; };
+		DE6B4D9322AD5A51006CE211 /* LabEquipmentEditVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */; };
 		DE7AF431229A094F0008181E /* LayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* LayoutUtil.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
@@ -114,7 +114,6 @@
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
 		C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboratoryUnitTests.swift; sourceTree = "<group>"; };
 		C973004122A85D940043E2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabListViewControllerTest.swift; sourceTree = "<group>"; };
 		C97B114422949B5C00E90B46 /* FullEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEquipment.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
 		DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerTest.swift; sourceTree = "<group>"; };
 		DE6B4D8422AD507F006CE211 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVCTest.swift; sourceTree = "<group>"; };
 		DE7AF430229A094F0008181E /* LayoutUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutUtil.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
@@ -277,6 +277,7 @@
 		C940B96622AAC1050025E5AC /* ViewControllerTest */ = {
 			isa = PBXGroup;
 			children = (
+				DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */,
 				C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */,
 				DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */,
 				C973004722A85E0E0043E2A9 /* LabListViewControllerTest.swift */,
@@ -289,7 +290,6 @@
 			children = (
 				C940B96622AAC1050025E5AC /* ViewControllerTest */,
 				C940B96322AAC0890025E5AC /* Utilities */,
-				C973003F22A85D940043E2A9 /* LaboratoryUnitTests.swift */,
 				C973004122A85D940043E2A9 /* Info.plist */,
 			);
 			path = LaboratoryUnitTests;
@@ -719,8 +719,8 @@
 				C940B96522AAC0FF0025E5AC /* ViewControllerTestUtil.swift in Sources */,
 				C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */,
 				C903D5AD22AAEFA900D1A79B /* FakeData.swift in Sources */,
-				C973004022A85D940043E2A9 /* LaboratoryUnitTests.swift in Sources */,
 				DE6B4D8522AD507F006CE211 /* Mocks.swift in Sources */,
+				DE6B4D9322AD5A51006CE211 /* LabEquipmentEditVCTest.swift in Sources */,
 				C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */,
 				DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */,
 			);
