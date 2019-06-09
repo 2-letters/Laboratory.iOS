@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
+class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable {
     // to receive data from LabEquipmentSelectionVC
     var labId: String!
     var equipmentName: String?
@@ -80,10 +80,10 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
         equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
         equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
         equipmentInfoView.locationTextView.text = equipmentInfoVM.location
-        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
+        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
         equipmentInfoView.locationTextView.isEditable = false
         equipmentInfoView.descriptionTextView.text = equipmentInfoVM.description
-        LayoutHelper.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
+        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
         equipmentInfoView.descriptionTextView.isEditable = false
         do {
             let url = URL(string: equipmentInfoVM.pictureUrl)!
@@ -161,7 +161,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresenter {
     
     func goBackAndReload() {
         // go back to Equipment Selection
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: self)
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: nil)
     }
     
     @objc private func dismissKeyboard() {

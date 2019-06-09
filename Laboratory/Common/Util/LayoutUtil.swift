@@ -1,5 +1,5 @@
 //
-//  LayoutHelper.swift
+//  LayoutUtil.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/25/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct LayoutHelper {
+struct LayoutUtil {
     static func adjustUITextViewHeight(arg : UITextView)
     {
         arg.translatesAutoresizingMaskIntoConstraints = true

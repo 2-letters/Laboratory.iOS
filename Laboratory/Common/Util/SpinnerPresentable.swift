@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol SpinnerPresenter {
+protocol SpinnerPresentable {
     var spinnerVC: SpinnerViewController { get }
     func showSpinner()
     func hideSpinner()
 }
 
-extension SpinnerPresenter where Self: UIViewController {
+extension SpinnerPresentable where Self: UIViewController {
     func showSpinner() {
         // add the spinner view controller
         addChild(spinnerVC)

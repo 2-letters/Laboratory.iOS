@@ -7,7 +7,14 @@
 //
 
 import Foundation
+@testable import Laboratory
 
 struct FakeData {
-    static let labId = "lab123"
+    static let labId = "fakeLab"
+    static var simpleEquipmentVM: SimpleEquipmentVM {
+        return SimpleEquipmentVM(equipment: Equipment(name: "fakeName"))
+    }
+    static var labEquipmentVM: LabEquipmentVM {
+        return LabEquipmentVM(equipment: LabEquipment(name: "fakeEquipment", using: 2))
+    }
 }

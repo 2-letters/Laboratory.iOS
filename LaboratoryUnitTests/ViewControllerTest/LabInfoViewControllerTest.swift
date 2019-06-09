@@ -81,6 +81,19 @@ class LabInfoViewControllerTest: XCTestCase {
         XCTAssert((sut.presentedViewController as! UINavigationController).viewControllers[0] is LabEquipmentSelectionVC)
     }
     
+    func testPassingDataToEquipmentSelection() {
+        // GIVEN
+        sut.labId = FakeData.labId
+        let navVC = UINavigationController(rootViewController: labEquipmentSelectionVC)
+        let showLabEquipmentSelection = UIStoryboardSegue(identifier: SegueId.presentEquipmentSelection, source: sut, destination: navVC)
+        
+        // WHEN
+        sut.prepare(for: showLabEquipmentSelection, sender: nil)
+        
+        // THEN
+        XCTAssertEqual(labEquipmentSelectionVC.labId!, FakeData.labId)
+    }
+    
     func testSaveBtnPressed() {
         // GIVEN
         UIApplication.shared.keyWindow?.rootViewController = sut
@@ -98,20 +111,7 @@ class LabInfoViewControllerTest: XCTestCase {
         XCTAssertEqual(ac.actions[0].title, AlertString.okay)
     }
     
-    func testPassingDataToEquipmentSelection() {
-        // GIVEN
-        sut.labId = FakeData.labId
-        let navVC = UINavigationController(rootViewController: labEquipmentSelectionVC)
-        let showLabEquipmentSelection = UIStoryboardSegue(identifier: SegueId.presentEquipmentSelection, source: sut, destination: navVC)
-        
-        // WHEN
-        sut.prepare(for: showLabEquipmentSelection, sender: nil)
-        
-        // THEN
-        XCTAssertEqual(labEquipmentSelectionVC.labId!, FakeData.labId)
-    }
-    
-    func testLabEquipmentTableView() {
+    func testTableView() {
         // conformation
         XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
         XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))

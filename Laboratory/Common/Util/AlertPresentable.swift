@@ -46,8 +46,8 @@ struct AlertString {
     static let succeedToSaveLabMessage = "Your lab has been successfully saved"
 }
 
-extension UIViewController {
-    
+protocol AlertPresentable {}
+extension AlertPresentable {
     func presentAlert(forCase alertCase: AlertCase, handler: ((UIAlertAction) -> Void)? = nil) {
         let ac: UIAlertController
         
@@ -63,7 +63,7 @@ extension UIViewController {
             ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         case .failToLoadLabEquipments:
             ac = UIAlertController(title: AlertString.failToLoadLabEquipmentsTitle, message: AlertString.failToLoadLabEquipmentsMessage, preferredStyle: .alert)
-        
+            
         case .failToSaveLab:
             ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         case .succeedToSaveLab:
@@ -75,7 +75,7 @@ extension UIViewController {
         // add Actions
         switch alertCase {
         case .invalidLabInfoInput, .failToSaveLab, .succeedToSaveLab,
-            .failToLoadEquipments, .failToLoadLabEquipments, .failToLoadEquipmentInfo:
+             .failToLoadEquipments, .failToLoadLabEquipments, .failToLoadEquipmentInfo:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))
         case .createLabToAddEquipments:
             ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: handler))
@@ -84,6 +84,48 @@ extension UIViewController {
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
         }
         // present
-        self.present(ac, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController?.present(ac, animated: true, completion: nil)
     }
 }
+
+//extension UIViewController {
+//
+//    func presentAlert(forCase alertCase: AlertCase, handler: ((UIAlertAction) -> Void)? = nil) {
+//        let ac: UIAlertController
+//
+//        // add title and message
+//        switch alertCase {
+//        case .invalidLabInfoInput:
+//            ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.invalidLabInfoMessage, preferredStyle: .alert)
+//
+//        case .createLabToAddEquipments:
+//            ac = UIAlertController(title: AlertString.createLabRequiredTitle, message: AlertString.attemptToCreateLabToEquipmentsMessage, preferredStyle: .alert)
+//
+//        case .failToLoadEquipments, .failToLoadEquipmentInfo:
+//            ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
+//        case .failToLoadLabEquipments:
+//            ac = UIAlertController(title: AlertString.failToLoadLabEquipmentsTitle, message: AlertString.failToLoadLabEquipmentsMessage, preferredStyle: .alert)
+//
+//        case .failToSaveLab:
+//            ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
+//        case .succeedToSaveLab:
+//            ac = UIAlertController(title: AlertString.succeedToSaveLabTitle, message: AlertString.succeedToSaveLabTitle, preferredStyle: .alert)
+//        case .failToSaveEquipmentEdit:
+//            ac = UIAlertController(title: AlertString.failToSaveEditTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
+//        }
+//
+//        // add Actions
+//        switch alertCase {
+//        case .invalidLabInfoInput, .failToSaveLab, .succeedToSaveLab,
+//            .failToLoadEquipments, .failToLoadLabEquipments, .failToLoadEquipmentInfo:
+//            ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))
+//        case .createLabToAddEquipments:
+//            ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: handler))
+//            ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+//        case .failToSaveEquipmentEdit:
+//            ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
+//        }
+//        // present
+//        self.present(ac, animated: true, completion: nil)
+//    }
+//}

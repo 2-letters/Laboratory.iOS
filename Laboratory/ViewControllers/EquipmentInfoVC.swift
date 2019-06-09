@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentInfoVC: UIViewController, SpinnerPresenter {
+class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     
     @IBOutlet private var mainView: EquipmentInfoView!
     let spinnerVC = SpinnerViewController()
@@ -45,9 +45,9 @@ class EquipmentInfoVC: UIViewController, SpinnerPresenter {
         mainView.availableLabel.text = viewModel.availableString
         mainView.nameLabel.text = viewModel.equipmentName
         mainView.locationTextView.text = viewModel.location
-        LayoutHelper.adjustUITextViewHeight(arg: mainView.locationTextView)
+        LayoutUtil.adjustUITextViewHeight(arg: mainView.locationTextView)
         mainView.descriptionTextView.text = viewModel.description
-        LayoutHelper.adjustUITextViewHeight(arg: mainView.descriptionTextView)
+        LayoutUtil.adjustUITextViewHeight(arg: mainView.descriptionTextView)
         do {
             let url = URL(string: viewModel.pictureUrl)!
             let data = try Data(contentsOf: url)

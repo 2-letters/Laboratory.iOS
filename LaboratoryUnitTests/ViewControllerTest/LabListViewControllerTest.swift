@@ -9,10 +9,6 @@
 import XCTest
 @testable import Laboratory
 
-private class MockSearchBar: UISearchBar {
-    
-}
-
 class LabListViewControllerTest: XCTestCase {
 
     var sut: LabListVC!
@@ -48,7 +44,7 @@ class LabListViewControllerTest: XCTestCase {
         XCTAssertTrue(navItem.rightBarButtonItem?.action?.description == "createNewLab")
     }
     
-    func testSearchBar() {
+    func testSearchBarDelegate() {
         XCTAssertTrue(sut.conforms(to: UISearchBarDelegate.self))
         XCTAssertTrue(sut.responds(to: #selector(sut.searchBar(_:textDidChange:))))
         XCTAssertTrue(sut.responds(to: #selector(sut.searchBarCancelButtonClicked(_:))))

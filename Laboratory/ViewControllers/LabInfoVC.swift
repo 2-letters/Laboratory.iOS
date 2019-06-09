@@ -9,7 +9,7 @@
 import UIKit
 
 // for both LabInfoVC and LabCreateVC
-class LabInfoVC: UIViewController {
+class LabInfoVC: UIViewController, AlertPresentable {
     var isCreatingNewLab: Bool = false
     private var isLabCreated: Bool = false
     var labId: String?

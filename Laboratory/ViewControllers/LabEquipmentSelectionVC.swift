@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabEquipmentSelectionVC: UIViewController, SpinnerPresenter {
+class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var labId: String?  // for receiving data from Lab Info/Create
 
     @IBOutlet private var searchBar: UISearchBar!
@@ -107,7 +107,7 @@ extension LabEquipmentSelectionVC {
     }
     
     private func goBackAndReload() {
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: self)
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: nil)
     }
 }
 
