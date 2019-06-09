@@ -210,11 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				DE6B4D8222ACC28C006CE211 /* Common */,
-				DE6B4D7F22ACC146006CE211 /* Application */,
-				C344387F228206A80021168B /* ViewModels */,
 				C344387C228202AA0021168B /* Models */,
 				C34438742281F6F10021168B /* Views */,
-				C34438792281FC370021168B /* ViewControllers */,
+				DE6B4D7F22ACC146006CE211 /* Application */,
 				DE6B4D8122ACC23A006CE211 /* Storyboards */,
 				DE6B4D8322ACC2FE006CE211 /* Resources */,
 			);
@@ -224,33 +222,16 @@
 		C34438742281F6F10021168B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C34438752281F7970021168B /* LabTVCell.swift */,
-				C34438762281F7970021168B /* LabTVCell.xib */,
-				C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */,
-				C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */,
+				DE6B4D8B22AD576E006CE211 /* EquipmentInfo */,
+				DE6B4D8822AD56B3006CE211 /* LabCell */,
+				DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */,
+				DE6B4D8A22AD571E006CE211 /* LabEquipmentCell */,
 				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
 				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
-				DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */,
-				DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */,
-				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
-				C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */,
 				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
 				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		C34438792281FC370021168B /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				C344387A2281FC9E0021168B /* LabListVC.swift */,
-				C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */,
-				DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */,
-				C96785C5228DB921005A523A /* EquipmentInfoVC.swift */,
-				C9F43E73228F2B740049C68D /* LabInfoVC.swift */,
-				C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C344387C228202AA0021168B /* Models */ = {
@@ -263,15 +244,6 @@
 				C97B11462294A4EB00E90B46 /* LabInfo.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C344387F228206A80021168B /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DE59D05A229B58A700E7FDF1 /* ViewVM */,
-				DE59D059229B587F00E7FDF1 /* ViewControllerVM */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		C90035812296EE6F00471EE7 /* Constants */ = {
@@ -323,29 +295,6 @@
 			path = LaboratoryUnitTests;
 			sourceTree = "<group>";
 		};
-		DE59D059229B587F00E7FDF1 /* ViewControllerVM */ = {
-			isa = PBXGroup;
-			children = (
-				C34438802282094A0021168B /* LabListVM.swift */,
-				DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */,
-				C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */,
-				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
-				C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */,
-			);
-			path = ViewControllerVM;
-			sourceTree = "<group>";
-		};
-		DE59D05A229B58A700E7FDF1 /* ViewVM */ = {
-			isa = PBXGroup;
-			children = (
-				DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */,
-				C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */,
-				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
-				DE59D05B229B5C0700E7FDF1 /* LabVM.swift */,
-			);
-			path = ViewVM;
-			sourceTree = "<group>";
-		};
 		DE6B4D7E22ACBDBF006CE211 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				DE6B4D8022ACC14E006CE211 /* Main */,
+				DE6B4D8F22AD588A006CE211 /* Lab */,
+				DE6B4D9022AD5907006CE211 /* Equipment */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -400,6 +351,119 @@
 				C344386E2281DDFC0021168B /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DE6B4D8622AD55BA006CE211 /* LabList */ = {
+			isa = PBXGroup;
+			children = (
+				C344387A2281FC9E0021168B /* LabListVC.swift */,
+				C34438802282094A0021168B /* LabListVM.swift */,
+			);
+			path = LabList;
+			sourceTree = "<group>";
+		};
+		DE6B4D8722AD55D1006CE211 /* EquipmentList */ = {
+			isa = PBXGroup;
+			children = (
+				DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */,
+				DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */,
+			);
+			path = EquipmentList;
+			sourceTree = "<group>";
+		};
+		DE6B4D8822AD56B3006CE211 /* LabCell */ = {
+			isa = PBXGroup;
+			children = (
+				C34438752281F7970021168B /* LabTVCell.swift */,
+				C34438762281F7970021168B /* LabTVCell.xib */,
+				DE59D05B229B5C0700E7FDF1 /* LabVM.swift */,
+			);
+			path = LabCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */,
+				DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */,
+				DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */,
+			);
+			path = SimpleEquipmentCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8A22AD571E006CE211 /* LabEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */,
+				C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */,
+				C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */,
+			);
+			path = LabEquipmentCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8B22AD576E006CE211 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
+				C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */,
+				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4D8C22AD5819006CE211 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9F43E73228F2B740049C68D /* LabInfoVC.swift */,
+				C97B11482294A57400E90B46 /* LabInfoVM.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4D8D22AD5850006CE211 /* LabEquipmentSelection */ = {
+			isa = PBXGroup;
+			children = (
+				C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */,
+				C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */,
+			);
+			path = LabEquipmentSelection;
+			sourceTree = "<group>";
+		};
+		DE6B4D8E22AD5872006CE211 /* LabEquipmentEdit */ = {
+			isa = PBXGroup;
+			children = (
+				C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */,
+				C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */,
+			);
+			path = LabEquipmentEdit;
+			sourceTree = "<group>";
+		};
+		DE6B4D8F22AD588A006CE211 /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D8622AD55BA006CE211 /* LabList */,
+				DE6B4D8C22AD5819006CE211 /* LabInfo */,
+				DE6B4D8D22AD5850006CE211 /* LabEquipmentSelection */,
+				DE6B4D8E22AD5872006CE211 /* LabEquipmentEdit */,
+			);
+			path = Lab;
+			sourceTree = "<group>";
+		};
+		DE6B4D9022AD5907006CE211 /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D8722AD55D1006CE211 /* EquipmentList */,
+				DE6B4D9122AD5927006CE211 /* EquipmentInfo */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		DE6B4D9122AD5927006CE211 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C96785C5228DB921005A523A /* EquipmentInfoVC.swift */,
+			);
+			path = EquipmentInfo;
 			sourceTree = "<group>";
 		};
 		DEC45BE92291004D00F164BD /* Miscs */ = {
