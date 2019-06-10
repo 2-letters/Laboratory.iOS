@@ -12,9 +12,12 @@ import Foundation
 struct FakeData {
     static let labId = "fakeLab"
     static var simpleEquipmentVM: SimpleEquipmentVM {
-        return SimpleEquipmentVM(equipment: Equipment(name: "fakeName"))
+        return SimpleEquipmentVM(equipment: Equipment(name: "fake Equipment Name"))
     }
     static var labEquipmentVM: LabEquipmentVM {
-        return LabEquipmentVM(equipment: LabEquipment(name: "fakeEquipment", using: 2))
+        return LabEquipmentVM(equipment: LabEquipment(name: "fake Equipment Name", using: 2))
+    }
+    static var labCellVM: LabCellVM {
+        return LabCellVM(lab: Lab(id: "fakeLab", name: "fake Lab Name", description: "fake Description"))
     }
 }

@@ -11,13 +11,13 @@ import XCTest
 
 class LabListViewControllerTest: XCTestCase {
 
-    var sut: LabListVC!
+    var sut: LabCollectionVC!
     var labInfoVC: LabInfoVC!
     
     override func setUp() {
         super.setUp()
         
-        sut = MyViewController.LabList.instance as? LabListVC
+        sut = MyViewController.LabCollection.instance as? LabCollectionVC
         labInfoVC = MyViewController.LabInfo.instance as? LabInfoVC
         
         // Create the view

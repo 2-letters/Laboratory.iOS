@@ -19,12 +19,16 @@ class EquipmentInfoViewTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testContainAView() {
-        let bundle = Bundle(for: EquipmentInfoView.self)
-        XCTAssertTrue(bundle.loadNibNamed(EquipmentInfoView.nibName, owner: nil)?.first is UIView)
-//        guard let _ = bundle.loadNibNamed(EquipmentInfoView.nibName, owner: nil)?.first as? UIView else {
-//            return XCTFail("CustomView nib did not contain a UIView")
-//        }
+    func testEquipmentInfoView() {    
+        let frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        let areSubViewsEmpty = EquipmentInfoView(frame: frame).subviews.isEmpty
+        XCTAssertTrue(areSubViewsEmpty)
+        
+        let sut = EquipmentInfoView.instantiate()
+        sut.subviews.forEach { $0.removeFromSuperview() }
+        
+        XCTAssertEqual(sut.subviews, [],
+                       "CustomView should have all subviews removed")
     }
 
 }

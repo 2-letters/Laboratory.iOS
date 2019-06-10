@@ -28,7 +28,7 @@ class EquipmentListVC: UIViewController {
         equipmentTV.dataSource = self
         
         // register table cells
-        let nib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
+        let nib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
         equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
         
         // add Refresh Control

@@ -70,10 +70,10 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     // MARK: Layout
     private func setupUI() {
         // load LabItems TableView
-        let labEquipmentNib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
+        let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
-        let simpleEquipmentNib = UINib(nibName: "SimpleEquipmentTVCell", bundle: nil)
+        let simpleEquipmentNib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
     }
     

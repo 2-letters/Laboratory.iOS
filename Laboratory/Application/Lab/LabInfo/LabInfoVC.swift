@@ -80,7 +80,7 @@ class LabInfoVC: UIViewController, AlertPresentable {
     
     private func setupUI() {
         // register table cells
-        let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
+        let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
         if isCreatingNewLab {
