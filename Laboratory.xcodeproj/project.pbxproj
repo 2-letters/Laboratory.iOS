@@ -29,6 +29,9 @@
 		C903D5B322AB0EF600D1A79B /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B222AB0EF600D1A79B /* MyViewController.swift */; };
 		C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF322AE970B0035A9FA /* LabCellVM.swift */; };
 		C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */; };
+		C93B0FFD22AEE7880035A9FA /* LabEquipmentTVCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */; };
+		C93B100022AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */; };
+		C93B100222AEEBAD0035A9FA /* LabCollectionVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */; };
 		C940B96022AA98380025E5AC /* MyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B95F22AA98380025E5AC /* MyFont.swift */; };
 		C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
 		C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96422AAC0FF0025E5AC /* TestUtil.swift */; };
@@ -118,6 +121,9 @@
 		C903D5B222AB0EF600D1A79B /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		C93B0FF322AE970B0035A9FA /* LabCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabCellVM.swift; sourceTree = "<group>"; };
 		C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionCellTest.swift; sourceTree = "<group>"; };
+		C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCellTest.swift; sourceTree = "<group>"; };
+		C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCellTest.swift; sourceTree = "<group>"; };
+		C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVMTest.swift; sourceTree = "<group>"; };
 		C940B95F22AA98380025E5AC /* MyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFont.swift; sourceTree = "<group>"; };
 		C940B96122AA98990025E5AC /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
@@ -295,8 +301,25 @@
 			isa = PBXGroup;
 			children = (
 				C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */,
+				C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */,
 			);
 			path = LabCollectionCell;
+			sourceTree = "<group>";
+		};
+		C93B0FFB22AEE75D0035A9FA /* LabEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */,
+			);
+			path = LabEquipmentCell;
+			sourceTree = "<group>";
+		};
+		C93B0FFE22AEE84F0035A9FA /* SimpleEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */,
+			);
+			path = SimpleEquipmentCell;
 			sourceTree = "<group>";
 		};
 		C940B95E22AA97230025E5AC /* Extensions */ = {
@@ -598,6 +621,8 @@
 			isa = PBXGroup;
 			children = (
 				C93B0FF822AEB6940035A9FA /* LabCollectionCell */,
+				C93B0FFB22AEE75D0035A9FA /* LabEquipmentCell */,
+				C93B0FFE22AEE84F0035A9FA /* SimpleEquipmentCell */,
 				DE6B4DB522ADA73C006CE211 /* EquipmentInfo */,
 			);
 			path = Views;
@@ -890,13 +915,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93B100222AEEBAD0035A9FA /* LabCollectionVMTest.swift in Sources */,
 				C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */,
 				C973004822A85E0E0043E2A9 /* LabListViewControllerTest.swift in Sources */,
 				DE6B4DB022AD9DB5006CE211 /* AlertPresentableTest.swift in Sources */,
 				C903D5AD22AAEFA900D1A79B /* FakeData.swift in Sources */,
 				DE6B4DA022AD8BEC006CE211 /* SpinnerPresentableTest.swift in Sources */,
+				C93B0FFD22AEE7880035A9FA /* LabEquipmentTVCellTest.swift in Sources */,
 				DE6B4D9E22AD6E37006CE211 /* LayoutUtilTest.swift in Sources */,
 				DE6B4D8522AD507F006CE211 /* Mocks.swift in Sources */,
+				C93B100022AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift in Sources */,
 				DE6B4D9322AD5A51006CE211 /* LabEquipmentEditVCTest.swift in Sources */,
 				DE6B4DBC22ADA8D5006CE211 /* EquipmentInfoViewTest.swift in Sources */,
 				C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */,
