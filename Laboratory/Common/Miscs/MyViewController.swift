@@ -13,6 +13,8 @@ enum MyViewController: String {
     case LabInfo = "LabInfoVC"
     case LabEquipmentSelection = "LabEquipmentSelectionVC"
     case LabEquipmentEdit = "LabEquipmentEditVC"
+    case EquipmentList = "EquipmentListVC"
+    case EquipmentInfo = "EquipmentInfoVC"
     var instance: UIViewController {
         return MyStoryboard.Main.instance.instantiateViewController(withIdentifier: self.rawValue)
     }

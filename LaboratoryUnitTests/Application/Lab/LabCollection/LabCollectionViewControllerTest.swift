@@ -1,5 +1,5 @@
 //
-//  LabListViewControllerTest.swift
+//  LabCollectionViewControllerTest.swift
 //  LaboratoryUnitTests
 //
 //  Created by Developers on 6/5/19.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Laboratory
 
-class LabListViewControllerTest: XCTestCase {
+class LabCollectionViewControllerTest: XCTestCase {
 
     var sut: LabCollectionVC!
     var labInfoVC: LabInfoVC!

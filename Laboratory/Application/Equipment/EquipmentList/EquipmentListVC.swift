@@ -50,13 +50,15 @@ class EquipmentListVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
+            equipmentInfoVC.equipmentId = sender as? String
+            // todo delete this
             equipmentInfoVC.equipmentName = sender as? String
         }
     }
     
     
     // MARK: Layout
-    func loadEquipmentData() {
+    private func loadEquipmentData() {
         viewModel.fetchAllEquipments() { [weak self] (itemResult) in
             guard let self = self else { return }
             switch itemResult {
@@ -115,6 +117,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]
+        // todo should send equipment id instead
         performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: equipmentVM.equipmentName)
     }
 }

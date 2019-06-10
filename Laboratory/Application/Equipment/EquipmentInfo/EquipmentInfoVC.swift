@@ -15,6 +15,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     
     let spinnerVC = SpinnerViewController()
 
+    var equipmentId: String?
     var equipmentName: String?
     private var viewModel = EquipmentInfoVM()
     
