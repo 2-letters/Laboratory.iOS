@@ -10,18 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
-            <connections>
-                <outlet property="availableLabel" destination="rS8-1g-o88" id="bha-z4-3ej"/>
-                <outlet property="contentView" destination="c5y-RN-dVf" id="iP2-Pm-ror"/>
-                <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="GNc-Sp-sPB"/>
-                <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="Egl-US-a85"/>
-                <outlet property="locationTextView" destination="kRb-gL-WFs" id="PyO-Cb-kEk"/>
-                <outlet property="nameLabel" destination="O5B-nS-CIn" id="7IN-EM-EnH"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="c5y-RN-dVf">
+        <view contentMode="scaleToFill" id="c5y-RN-dVf" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -89,6 +80,13 @@
                 <constraint firstItem="RMK-SQ-knl" firstAttribute="leading" secondItem="SxJ-5z-LwO" secondAttribute="leading" id="wit-zC-IJ3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SxJ-5z-LwO"/>
+            <connections>
+                <outlet property="availableLabel" destination="rS8-1g-o88" id="1jF-hZ-xeo"/>
+                <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="Dss-rN-tIJ"/>
+                <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="k2R-Hc-fnJ"/>
+                <outlet property="locationTextView" destination="kRb-gL-WFs" id="yw1-yk-JTv"/>
+                <outlet property="nameLabel" destination="O5B-nS-CIn" id="rQE-UB-X1O"/>
+            </connections>
             <point key="canvasLocation" x="926.08695652173924" y="170.75892857142856"/>
         </view>
     </objects>

@@ -10,6 +10,7 @@ import UIKit
 
 class EquipmentInfoView: UIView {
 
+    static let nibName = "EquipmentInfoView"
     @IBOutlet var availableLabel: UILabel!
     @IBOutlet var contentView: UIView!
     @IBOutlet var nameLabel: UILabel!
@@ -17,20 +18,25 @@ class EquipmentInfoView: UIView {
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var equipmentImageView: UIImageView!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+    static func instantiate() -> EquipmentInfoView {
+        let view: EquipmentInfoView = initFromNib()
+        return view
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    func commonInit() {
-        Bundle.main.loadNibNamed("EquipmentInfoView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        commonInit()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        commonInit()
+//    }
+//
+//    func commonInit() {
+//        Bundle.main.loadNibNamed(EquipmentInfoView.nibName, owner: self, options: nil)
+//        addSubview(contentView)
+//        contentView.frame = self.bounds
+//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//    }
 }

@@ -10,7 +10,9 @@ import UIKit
 
 class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     
-    @IBOutlet private var mainView: EquipmentInfoView!
+    @IBOutlet private var mainView: UIView!
+    private var equipmentInfoView: EquipmentInfoView!
+    
     let spinnerVC = SpinnerViewController()
 
     var equipmentName: String?
@@ -19,12 +21,21 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadEquipmentInfoXib()
+        
         mainView.isHidden = true
         showSpinner()
         loadEquipmentInfo()
     }
+    
+    private func loadEquipmentInfoXib() {
+        equipmentInfoView = EquipmentInfoView.instantiate()
+        mainView.addSubview(equipmentInfoView)
+        equipmentInfoView.frame = mainView.bounds
+        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
 
-    func loadEquipmentInfo() {
+    private func loadEquipmentInfo() {
         viewModel.fetchEquipmentInfo(byName: equipmentName!) { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
@@ -32,7 +43,6 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
                 DispatchQueue.main.async {
                     self.updateUI()
                 }
-//                self.hideActivityIndicator()
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
@@ -42,16 +52,16 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func updateUI() {
-        mainView.availableLabel.text = viewModel.availableString
-        mainView.nameLabel.text = viewModel.equipmentName
-        mainView.locationTextView.text = viewModel.location
-        LayoutUtil.adjustUITextViewHeight(arg: mainView.locationTextView)
-        mainView.descriptionTextView.text = viewModel.description
-        LayoutUtil.adjustUITextViewHeight(arg: mainView.descriptionTextView)
+        equipmentInfoView.availableLabel.text = viewModel.availableString
+        equipmentInfoView.nameLabel.text = viewModel.equipmentName
+        equipmentInfoView.locationTextView.text = viewModel.location
+        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
+        equipmentInfoView.descriptionTextView.text = viewModel.description
+        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
         do {
             let url = URL(string: viewModel.pictureUrl)!
             let data = try Data(contentsOf: url)
-            mainView.equipmentImageView.image = UIImage(data: data)
+            equipmentInfoView.equipmentImageView.image = UIImage(data: data)
         }
         catch{
             print(error)
