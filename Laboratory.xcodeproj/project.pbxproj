@@ -13,11 +13,9 @@
 		C34438682281DDFA0021168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34438662281DDFA0021168B /* Main.storyboard */; };
 		C344386A2281DDFC0021168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34438692281DDFC0021168B /* Assets.xcassets */; };
 		C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C344386B2281DDFC0021168B /* LaunchScreen.storyboard */; };
-		C34438772281F7970021168B /* LabTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabTVCell.swift */; };
-		C34438782281F7970021168B /* LabTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabTVCell.xib */; };
-		C344387B2281FC9E0021168B /* LabListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabListVC.swift */; };
+		C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabCollectionVC.swift */; };
 		C344387E2282041F0021168B /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* Lab.swift */; };
-		C34438812282094A0021168B /* LabListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabListVM.swift */; };
+		C34438812282094A0021168B /* LabCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabCollectionVM.swift */; };
 		C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */; };
 		C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */; };
 		C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */; };
@@ -29,6 +27,7 @@
 		C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */; };
 		C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */; };
 		C903D5B322AB0EF600D1A79B /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B222AB0EF600D1A79B /* MyViewController.swift */; };
+		C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF322AE970B0035A9FA /* LabCellVM.swift */; };
 		C940B96022AA98380025E5AC /* MyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B95F22AA98380025E5AC /* MyFont.swift */; };
 		C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
 		C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96422AAC0FF0025E5AC /* TestUtil.swift */; };
@@ -51,7 +50,6 @@
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
 		DE59D056229AFD7300E7FDF1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* Color.swift */; };
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
-		DE59D05C229B5C0700E7FDF1 /* LabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05B229B5C0700E7FDF1 /* LabVM.swift */; };
 		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
 		DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */; };
 		DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */; };
@@ -103,11 +101,9 @@
 		C34438692281DDFC0021168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C344386C2281DDFC0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C344386E2281DDFC0021168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C34438752281F7970021168B /* LabTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTVCell.swift; sourceTree = "<group>"; };
-		C34438762281F7970021168B /* LabTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabTVCell.xib; sourceTree = "<group>"; };
-		C344387A2281FC9E0021168B /* LabListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabListVC.swift; sourceTree = "<group>"; };
+		C344387A2281FC9E0021168B /* LabCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVC.swift; sourceTree = "<group>"; };
 		C344387D2282041F0021168B /* Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
-		C34438802282094A0021168B /* LabListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabListVM.swift; sourceTree = "<group>"; };
+		C34438802282094A0021168B /* LabCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVM.swift; sourceTree = "<group>"; };
 		C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCell.swift; sourceTree = "<group>"; };
 		C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabEquipmentTVCell.xib; sourceTree = "<group>"; };
 		C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentVM.swift; sourceTree = "<group>"; };
@@ -120,6 +116,7 @@
 		C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVCTest.swift; sourceTree = "<group>"; };
 		C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoryboard.swift; sourceTree = "<group>"; };
 		C903D5B222AB0EF600D1A79B /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		C93B0FF322AE970B0035A9FA /* LabCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabCellVM.swift; sourceTree = "<group>"; };
 		C940B95F22AA98380025E5AC /* MyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFont.swift; sourceTree = "<group>"; };
 		C940B96122AA98990025E5AC /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
@@ -143,7 +140,6 @@
 		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		DE59D055229AFD7300E7FDF1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
-		DE59D05B229B5C0700E7FDF1 /* LabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVM.swift; sourceTree = "<group>"; };
 		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
 		DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCell.swift; sourceTree = "<group>"; };
 		DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEquipmentTVCell.xib; sourceTree = "<group>"; };
@@ -254,14 +250,11 @@
 		C34438742281F6F10021168B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DE6B4D8B22AD576E006CE211 /* EquipmentInfo */,
-				DE6B4D8822AD56B3006CE211 /* LabCell */,
-				DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */,
+				DE6B4D8822AD56B3006CE211 /* LabCollectionCell */,
+				C93B0FF222AE954A0035A9FA /* LabInfo */,
 				DE6B4D8A22AD571E006CE211 /* LabEquipmentCell */,
-				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
-				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
-				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
-				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
+				DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */,
+				DE6B4D8B22AD576E006CE211 /* EquipmentInfo */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -287,6 +280,15 @@
 				C940B95F22AA98380025E5AC /* MyFont.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C93B0FF222AE954A0035A9FA /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
+				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
+			);
+			path = LabInfo;
 			sourceTree = "<group>";
 		};
 		C940B95E22AA97230025E5AC /* Extensions */ = {
@@ -377,13 +379,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DE6B4D8622AD55BA006CE211 /* LabList */ = {
+		DE6B4D8622AD55BA006CE211 /* LabCollection */ = {
 			isa = PBXGroup;
 			children = (
-				C344387A2281FC9E0021168B /* LabListVC.swift */,
-				C34438802282094A0021168B /* LabListVM.swift */,
+				C344387A2281FC9E0021168B /* LabCollectionVC.swift */,
+				C34438802282094A0021168B /* LabCollectionVM.swift */,
 			);
-			path = LabList;
+			path = LabCollection;
 			sourceTree = "<group>";
 		};
 		DE6B4D8722AD55D1006CE211 /* EquipmentList */ = {
@@ -395,14 +397,14 @@
 			path = EquipmentList;
 			sourceTree = "<group>";
 		};
-		DE6B4D8822AD56B3006CE211 /* LabCell */ = {
+		DE6B4D8822AD56B3006CE211 /* LabCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
-				C34438752281F7970021168B /* LabTVCell.swift */,
-				C34438762281F7970021168B /* LabTVCell.xib */,
-				DE59D05B229B5C0700E7FDF1 /* LabVM.swift */,
+				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
+				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
+				C93B0FF322AE970B0035A9FA /* LabCellVM.swift */,
 			);
-			path = LabCell;
+			path = LabCollectionCell;
 			sourceTree = "<group>";
 		};
 		DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */ = {
@@ -430,7 +432,6 @@
 			children = (
 				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
 				C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */,
-				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
 			);
 			path = EquipmentInfo;
 			sourceTree = "<group>";
@@ -465,7 +466,7 @@
 		DE6B4D8F22AD588A006CE211 /* Lab */ = {
 			isa = PBXGroup;
 			children = (
-				DE6B4D8622AD55BA006CE211 /* LabList */,
+				DE6B4D8622AD55BA006CE211 /* LabCollection */,
 				DE6B4D8C22AD5819006CE211 /* LabInfo */,
 				DE6B4D8D22AD5850006CE211 /* LabEquipmentSelection */,
 				DE6B4D8E22AD5872006CE211 /* LabEquipmentEdit */,
@@ -486,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				C96785C5228DB921005A523A /* EquipmentInfoVC.swift */,
+				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
 			);
 			path = EquipmentInfo;
 			sourceTree = "<group>";
@@ -736,7 +738,6 @@
 				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
-				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
 				C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */,
 				C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */,
 			);
@@ -844,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */,
 				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
 				DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */,
 				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
@@ -859,12 +861,10 @@
 				C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */,
 				DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */,
 				C9C6D3262295D75500D12D87 /* LabEquipmentSelectionVM.swift in Sources */,
-				DE59D05C229B5C0700E7FDF1 /* LabVM.swift in Sources */,
 				DE7AF431229A094F0008181E /* LayoutUtil.swift in Sources */,
 				C9F43E74228F2B740049C68D /* LabInfoVC.swift in Sources */,
-				C344387B2281FC9E0021168B /* LabListVC.swift in Sources */,
+				C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */,
 				C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */,
-				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
 				C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */,
@@ -878,7 +878,7 @@
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
-				C34438812282094A0021168B /* LabListVM.swift in Sources */,
+				C34438812282094A0021168B /* LabCollectionVM.swift in Sources */,
 				C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */,
 				DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,

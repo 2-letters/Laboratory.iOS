@@ -1,5 +1,5 @@
 //
-//  LabListVC.swift
+//  LabCollectionVC.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/7/19.
@@ -17,11 +17,11 @@ import UIKit
 //    }
 //}
 
-class LabListVC: UIViewController {
+class LabCollectionVC: UIViewController {
     @IBOutlet private var labSearchBar: UISearchBar!
     @IBOutlet private var labCollectionView: UICollectionView!
     
-    private var viewModel = LabListVM()
+    private var viewModel = LabCollectionVM()
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -107,7 +107,7 @@ class LabListVC: UIViewController {
 
 
 // MARK: - Table View
-extension LabListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.displayingLabVMs?.count ?? 0
     }
@@ -144,7 +144,7 @@ extension LabListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 
 
 // MARK: - Search bar
-extension LabListVC: UISearchBarDelegate {
+extension LabCollectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(by: searchText)
         labCollectionView.reloadData()

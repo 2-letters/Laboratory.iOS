@@ -1,5 +1,5 @@
 //
-//  LabVM.swift
+//  LabCellVM.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 5/26/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-// For Lab TVCell
-struct LabVM {
+// For Lab Collection Cell
+struct LabCellVM {
     var lab: Lab?
     
     var labId: String {

@@ -21,14 +21,14 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadEquipmentInfoXib()
-        
+        // hide view until loading is done
         mainView.isHidden = true
+        setupUI()
         showSpinner()
         loadEquipmentInfo()
     }
     
-    private func loadEquipmentInfoXib() {
+    private func setupUI() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         mainView.addSubview(equipmentInfoView)
         equipmentInfoView.frame = mainView.bounds

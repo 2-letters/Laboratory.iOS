@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lab ListVC-->
+        <!--Lab CollectionVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LabListVC" id="BYZ-38-t0r" customClass="LabListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabListVC" id="BYZ-38-t0r" customClass="LabCollectionVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-0L-dq6" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-0L-dq6">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -89,7 +89,7 @@
                         <viewLayoutGuide key="safeArea" id="34Q-Mw-go4"/>
                     </view>
                     <connections>
-                        <outlet property="labInfoView" destination="Ppx-0L-dq6" id="MRY-gb-WrF"/>
+                        <outlet property="mainView" destination="Ppx-0L-dq6" id="Ghx-4g-Qy4"/>
                         <segue destination="WGb-WK-Rvf" kind="presentation" identifier="presentEquipmentSelection" id="Fo1-G5-M6g"/>
                         <segue destination="rBs-g7-BSh" kind="unwind" identifier="unwindFromLabInfo" unwindAction="unwindFromLabInfoWithSegue:" id="LbF-yB-9hh"/>
                     </connections>
@@ -207,7 +207,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="9Cy-ZO-0kN"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTz-LL-nxc" customClass="EquipmentInfoView" customModule="Laboratory" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTz-LL-nxc">
                                                 <rect key="frame" x="0.0" y="49.666666666666686" width="375" height="828.33333333333326"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -256,7 +256,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="decreaseBtn" destination="fU8-2c-DPk" id="qse-Nq-cGC"/>
-                        <outlet property="equipmentInfoView" destination="LTz-LL-nxc" id="M32-dm-cgL"/>
+                        <outlet property="equipmentInfoViewContainer" destination="LTz-LL-nxc" id="7Y3-j0-Vl2"/>
                         <outlet property="increaseBtn" destination="RYc-pN-93o" id="7F0-Ah-MEP"/>
                         <outlet property="mainView" destination="Exs-K7-43T" id="6IK-Vd-2uy"/>
                         <outlet property="removeBtn" destination="EoN-vV-ZN5" id="7GG-ZX-URg"/>

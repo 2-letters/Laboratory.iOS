@@ -22,7 +22,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     @IBOutlet private var increaseBtn: UIButton!
     @IBOutlet private var removeBtn: UIButton!
     @IBOutlet private var separatingLine: UIView!
-    @IBOutlet private var equipmentInfoView: EquipmentInfoView!
+    @IBOutlet private var equipmentInfoViewContainer: UIView!
+    private var equipmentInfoView: EquipmentInfoView!
     
     private var saveBtn: UIBarButtonItem!
     var spinnerVC = SpinnerViewController()
@@ -33,16 +34,16 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
 
         usingQuantityTextField.delegate = self
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
         viewModel.usingQuantity = usingQuantity
         
         // hide view until loading is done
         mainView.isHidden = true
-        showSpinner()
         setupUI()
+        showSpinner()
         loadEquipmentInfo()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     
@@ -57,6 +58,18 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         usingQuantityTextField.textAlignment = .center
         
         separatingLine.backgroundColor = Color.separatingLine
+        
+        equipmentInfoView = EquipmentInfoView.instantiate()
+        equipmentInfoViewContainer.addSubview(equipmentInfoView)
+        equipmentInfoView.frame = equipmentInfoViewContainer.bounds
+        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    private func setupMainView() {
+        equipmentInfoView = EquipmentInfoView.instantiate()
+        mainView.addSubview(equipmentInfoView)
+        equipmentInfoView.frame = mainView.bounds
+        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     private func loadEquipmentInfo() {

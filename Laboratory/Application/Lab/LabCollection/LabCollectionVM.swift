@@ -1,5 +1,5 @@
 //
-//  LabListVM.swift
+//  LabCollectionVM.swift
 //  Laboratory
 //
 //  Created by Administrator on 5/7/19.
@@ -10,9 +10,9 @@ import Foundation
 import FirebaseFirestore
 
 // For Lab List ViewController
-class LabListVM {
-    var allLabVMs: [LabVM]?
-    var displayingLabVMs: [LabVM]?
+class LabCollectionVM {
+    var allLabVMs: [LabCellVM]?
+    var displayingLabVMs: [LabCellVM]?
     
     func getLabId(at index: Int) -> String {
         return displayingLabVMs![index].labId
@@ -24,11 +24,11 @@ class LabListVM {
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
-                var labVMs = [LabVM]()
+                var labVMs = [LabCellVM]()
                 for document in (snapshot!.documents) {
                     if let labName = document.data()["labName"] as? String,
                     let description = document.data()["description"] as? String {
-                        labVMs.append(LabVM(lab: Lab(id: document.documentID, name: labName, description: description)))
+                        labVMs.append(LabCellVM(lab: Lab(id: document.documentID, name: labName, description: description)))
                     }
                 }
                 self.allLabVMs = labVMs

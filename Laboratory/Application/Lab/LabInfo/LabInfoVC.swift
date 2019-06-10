@@ -14,7 +14,8 @@ class LabInfoVC: UIViewController, AlertPresentable {
     private var isLabCreated: Bool = false
     var labId: String?
 
-    @IBOutlet private var labInfoView: LabInfoView!
+    @IBOutlet private var mainView: UIView!
+    private var labInfoView: LabInfoView!
     private var saveBtn: UIBarButtonItem!
     
     private var labEquipmentTableView: UITableView!
@@ -26,6 +27,8 @@ class LabInfoVC: UIViewController, AlertPresentable {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
         
+        setupMainView()
+        // delegates
         labEquipmentTableView = labInfoView.labEquipmentTV
         labEquipmentTableView.delegate = self
         labEquipmentTableView.dataSource = self
@@ -33,6 +36,7 @@ class LabInfoVC: UIViewController, AlertPresentable {
         labInfoView.descriptionTextField.delegate = self
         
         setupUI()
+        
         if !isCreatingNewLab {
             loadLabEquipments()
         }
@@ -67,8 +71,18 @@ class LabInfoVC: UIViewController, AlertPresentable {
     }
     
     // MARK: Layout
+    private func setupMainView() {
+        labInfoView = LabInfoView.instantiate()
+        mainView.addSubview(labInfoView)
+        labInfoView.frame = mainView.bounds
+        labInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
     private func setupUI() {
-        // change button title to "Edit Equipments..."
+        // register table cells
+        let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+        
         if isCreatingNewLab {
             labInfoView.addEquipmentsBtn.setTitle("Add Equipments ...", for: .normal)
             labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
@@ -76,15 +90,12 @@ class LabInfoVC: UIViewController, AlertPresentable {
             labInfoView.addEquipmentsBtn.setTitle("Edit Equipments ...", for: .normal)
             labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
+        
         labInfoView.addEquipmentsBtn.backgroundColor = Color.lightGreen
         labInfoView.addEquipmentsBtn.setTitleColor(UIColor.white, for: .normal)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
-        
-        // register table cells
-        let nib = UINib(nibName: "LabEquipmentTVCell", bundle: nil)
-        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
     }
     
     private func loadLabEquipments() {

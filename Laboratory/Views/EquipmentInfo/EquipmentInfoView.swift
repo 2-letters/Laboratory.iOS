@@ -10,9 +10,9 @@ import UIKit
 
 class EquipmentInfoView: UIView {
 
-    static let nibName = "EquipmentInfoView"
+//    static let nibName = "EquipmentInfoView"
     @IBOutlet var availableLabel: UILabel!
-    @IBOutlet var contentView: UIView!
+//    @IBOutlet var contentView: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationTextView: UITextView!
     @IBOutlet var descriptionTextView: UITextView!

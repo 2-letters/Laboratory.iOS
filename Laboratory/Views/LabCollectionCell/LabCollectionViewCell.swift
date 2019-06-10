@@ -16,7 +16,7 @@ class LabCollectionViewCell: UICollectionViewCell {
     @IBOutlet var labNameLabel: UILabel!
     @IBOutlet var labDescriptionLabel: UILabel!
     
-    var viewModel: LabVM? {
+    var viewModel: LabCellVM? {
         didSet {
             labNameLabel.text = viewModel?.labName
             labDescriptionLabel.text = viewModel?.description

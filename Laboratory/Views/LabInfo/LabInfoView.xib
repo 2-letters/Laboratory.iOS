@@ -10,17 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
-            <connections>
-                <outlet property="addEquipmentsBtn" destination="gSt-bB-Eni" id="dWS-hW-uG1"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="tZf-xW-nu8"/>
-                <outlet property="descriptionTextField" destination="OCt-80-gVw" id="dOD-97-d8d"/>
-                <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="Be7-Oi-bJ0"/>
-                <outlet property="nameTextField" destination="KyW-6i-9gj" id="ktC-q4-Uwl"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -84,6 +76,12 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="e7i-yQ-Tle" secondAttribute="bottom" id="uVk-hE-SpD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addEquipmentsBtn" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
+                <outlet property="descriptionTextField" destination="OCt-80-gVw" id="b68-dq-cZn"/>
+                <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
+                <outlet property="nameTextField" destination="KyW-6i-9gj" id="i3K-VI-hEe"/>
+            </connections>
         </view>
     </objects>
 </document>
