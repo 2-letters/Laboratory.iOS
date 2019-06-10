@@ -581,7 +581,6 @@
 		DE6B4D9722AD6DA1006CE211 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DE6B4DB122AD9F12006CE211 /* Miscs */,
 				DE6B4D9822AD6DA8006CE211 /* Util */,
 			);
 			path = Common;
@@ -639,13 +638,6 @@
 				DE6B4DA922AD8C00006CE211 /* Info.plist */,
 			);
 			path = LaboratoryUITests;
-			sourceTree = "<group>";
-		};
-		DE6B4DB122AD9F12006CE211 /* Miscs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Miscs;
 			sourceTree = "<group>";
 		};
 		DE6B4DB422ADA6E5006CE211 /* Views */ = {
