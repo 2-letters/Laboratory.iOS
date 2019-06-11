@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CA886A44E19B45F212DC683 /* Pods_LaboratoryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCD8E555441D52223E811FD /* Pods_LaboratoryUITests.framework */; };
 		7DF1FE084A18D50106B8DB4F /* libPods-LaboratoryUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FEAE805BC2DAA594ABF578 /* libPods-LaboratoryUnitTests.a */; };
 		7FE385219D7705C87E4DF40D /* Pods_Laboratory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */; };
 		C34438632281DDFA0021168B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438622281DDFA0021168B /* AppDelegate.swift */; };
@@ -48,11 +49,11 @@
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
 		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
 		C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11482294A57400E90B46 /* LabInfoVM.swift */; };
+		C99AA70B22B007AF0063337B /* LabCollectionViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA70A22B007AF0063337B /* LabCollectionViewControllerUITest.swift */; };
 		C9C6D3262295D75500D12D87 /* LabEquipmentSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */; };
 		C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */; };
 		C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED950229D9707006314A8 /* FirestoreSvc.swift */; };
 		C9F43E74228F2B740049C68D /* LabInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F43E73228F2B740049C68D /* LabInfoVC.swift */; };
-		D440F016BDA2D35113B083FF /* libPods-LaboratoryUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D505538D3EBC0CA9ADAE8E /* libPods-LaboratoryUITests.a */; };
 		DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */; };
 		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
 		DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */; };
@@ -106,7 +107,6 @@
 		2E3C36CA2D9177ED204DD2B0 /* Pods-LaboratoryUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaboratoryUnitTests.debug.xcconfig"; path = "Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D55C0349926580CE6C8BD26 /* Pods-LaboratoryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaboratoryUITests.release.xcconfig"; path = "Target Support Files/Pods-LaboratoryUITests/Pods-LaboratoryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A5FEAE805BC2DAA594ABF578 /* libPods-LaboratoryUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaboratoryUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7D505538D3EBC0CA9ADAE8E /* libPods-LaboratoryUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaboratoryUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C344385F2281DDFA0021168B /* Laboratory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laboratory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34438622281DDFA0021168B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C34438672281DDFA0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 		C97B114422949B5C00E90B46 /* FullEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEquipment.swift; sourceTree = "<group>"; };
 		C97B11462294A4EB00E90B46 /* LabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfo.swift; sourceTree = "<group>"; };
 		C97B11482294A57400E90B46 /* LabInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVM.swift; sourceTree = "<group>"; };
+		C99AA70A22B007AF0063337B /* LabCollectionViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LabCollectionViewControllerUITest.swift; path = LaboratoryUITests/Application/Lab/LabCollection/LabCollectionViewControllerUITest.swift; sourceTree = SOURCE_ROOT; };
 		C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVM.swift; sourceTree = "<group>"; };
 		C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVM.swift; sourceTree = "<group>"; };
 		C9EED950229D9707006314A8 /* FirestoreSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSvc.swift; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
 		DED9152322A2DEC2008139E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		DED9152422A2DF32008139E9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		EDCD8E555441D52223E811FD /* Pods_LaboratoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaboratoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D440F016BDA2D35113B083FF /* libPods-LaboratoryUITests.a in Frameworks */,
+				2CA886A44E19B45F212DC683 /* Pods_LaboratoryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +233,7 @@
 			children = (
 				0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */,
 				A5FEAE805BC2DAA594ABF578 /* libPods-LaboratoryUnitTests.a */,
-				B7D505538D3EBC0CA9ADAE8E /* libPods-LaboratoryUITests.a */,
+				EDCD8E555441D52223E811FD /* Pods_LaboratoryUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -393,6 +395,31 @@
 				C973004122A85D940043E2A9 /* Info.plist */,
 			);
 			path = LaboratoryUnitTests;
+			sourceTree = "<group>";
+		};
+		C99AA70722B007200063337B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C99AA70822B0072C0063337B /* Lab */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C99AA70822B0072C0063337B /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				C99AA70922B007320063337B /* LabCollection */,
+			);
+			name = Lab;
+			path = "../New Group/New Group";
+			sourceTree = "<group>";
+		};
+		C99AA70922B007320063337B /* LabCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C99AA70A22B007AF0063337B /* LabCollectionViewControllerUITest.swift */,
+			);
+			name = LabCollection;
 			sourceTree = "<group>";
 		};
 		DE6B4D7E22ACBDBF006CE211 /* Util */ = {
@@ -642,6 +669,7 @@
 		DE6B4DA622AD8C00006CE211 /* LaboratoryUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C99AA70722B007200063337B /* Application */,
 				DE6B4DA722AD8C00006CE211 /* LaboratoryUITests.swift */,
 				DE6B4DA922AD8C00006CE211 /* Info.plist */,
 			);
@@ -727,6 +755,7 @@
 				DE6B4DA122AD8C00006CE211 /* Sources */,
 				DE6B4DA222AD8C00006CE211 /* Frameworks */,
 				DE6B4DA322AD8C00006CE211 /* Resources */,
+				58EE25159DD7377B852EB5AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -859,6 +888,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58EE25159DD7377B852EB5AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUITests/Pods-LaboratoryUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUITests/Pods-LaboratoryUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		927AF46283049FFE6F9C6AE2 /* [CP] Check Pods Manifest.lock */ = {
@@ -996,6 +1047,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99AA70B22B007AF0063337B /* LabCollectionViewControllerUITest.swift in Sources */,
 				DE6B4DA822AD8C00006CE211 /* LaboratoryUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,5 +18,6 @@ target 'LaboratoryUnitTests' do
 end
 
 target 'LaboratoryUITests' do
-  pod 'SnapshotTesting', '~> 1.5'
+  use_frameworks!
+  pod 'iOSSnapshotTestCase'
 end
