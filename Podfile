@@ -16,3 +16,7 @@ target 'LaboratoryUnitTests' do
 	inherit! :search_paths
 	pod 'Firebase'
 end
+
+target 'LaboratoryUITests' do
+  pod 'SnapshotTesting', '~> 1.5'
+end
