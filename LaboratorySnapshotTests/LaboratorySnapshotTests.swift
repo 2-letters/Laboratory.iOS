@@ -1,14 +1,15 @@
 //
-//  LaboratoryUITests.swift
-//  LaboratoryUITests
+//  LaboratorySnapshotTests.swift
+//  LaboratorySnapshotTests
 //
-//  Created by Huy Vo on 6/9/19.
+//  Created by Developers on 6/11/19.
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
 import XCTest
+import SnapshotTesting
 
-class LaboratoryUITests: XCTestCase {
+class LaboratorySnapshotTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
