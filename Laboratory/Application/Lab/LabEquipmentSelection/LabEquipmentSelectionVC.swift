@@ -28,8 +28,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         
         labEquipmentTV.delegate = self
         labEquipmentTV.dataSource = self
-        // hide the view until loading is done
-        labEquipmentTV.isHidden = true
         
         // show spinner
         showSpinner()
@@ -87,8 +85,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
                 DispatchQueue.main.async {
                     self.labEquipmentTV.reloadData()
                 }
-                // show the view
-                self.labEquipmentTV.isHidden = false
                 // hide spinner
                 self.hideSpinner()
             case .failure:

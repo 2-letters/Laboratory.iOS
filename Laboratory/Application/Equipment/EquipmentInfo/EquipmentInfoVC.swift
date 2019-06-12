@@ -22,8 +22,6 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // hide view until loading is done
-        mainView.isHidden = true
         setupUI()
         showSpinner()
         loadEquipmentInfo()
@@ -68,8 +66,6 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
             print(error)
         }
         
-        // show the view
-        mainView.isHidden = false
         // hide spinner
         hideSpinner()
     }

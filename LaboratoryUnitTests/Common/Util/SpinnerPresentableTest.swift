@@ -58,6 +58,7 @@ class SpinnerPresentableTest: XCTestCase {
         let delayExpectation = expectation(description: "wait for 2 seconds")
         
         // WHEN
+        sut.showSpinner()
         sut.hideSpinner()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             delayExpectation.fulfill()

@@ -64,16 +64,6 @@
                ReferencedContainer = "container:Laboratory.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C96425CF22B04EA500B627F1"
-               BuildableName = "LaboratorySnapshotTests.xctest"
-               BlueprintName = "LaboratorySnapshotTests"
-               ReferencedContainer = "container:Laboratory.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -110,12 +100,12 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "FB_REFERENCE_IMAGE_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages"
+            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)UnitTests/ReferenceImages"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "IMAGE_DIFF_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/FailureDiffs"
+            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)UnitTests/FailureDiffs"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

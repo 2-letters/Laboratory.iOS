@@ -9,16 +9,18 @@
 import UIKit
 
 // for both LabInfoVC and LabCreateVC
-class LabInfoVC: UIViewController, AlertPresentable {
+class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var isCreatingNewLab: Bool = false
     private var isLabCreated: Bool = false
     var labId: String?
 
     @IBOutlet private var mainView: UIView!
+    
+    var spinnerVC = SpinnerViewController()
     private var labInfoView: LabInfoView!
     private var saveBtn: UIBarButtonItem!
-    
     private var labEquipmentTableView: UITableView!
+    
     private var viewModel = LabInfoVM()
     
     override func viewDidLoad() {
@@ -27,7 +29,7 @@ class LabInfoVC: UIViewController, AlertPresentable {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
         
-        setupMainView()
+        addMainView()
         // delegates
         labEquipmentTableView = labInfoView.labEquipmentTV
         labEquipmentTableView.delegate = self
@@ -38,6 +40,7 @@ class LabInfoVC: UIViewController, AlertPresentable {
         setupUI()
         
         if !isCreatingNewLab {
+            showSpinner()
             loadLabEquipments()
         }
         
@@ -71,7 +74,7 @@ class LabInfoVC: UIViewController, AlertPresentable {
     }
     
     // MARK: Layout
-    private func setupMainView() {
+    private func addMainView() {
         labInfoView = LabInfoView.instantiate()
         mainView.addSubview(labInfoView)
         labInfoView.frame = mainView.bounds
@@ -104,10 +107,11 @@ class LabInfoVC: UIViewController, AlertPresentable {
             guard let self = self else { return }
             switch fetchResult {
             case .success:
-                self.updateUI()
                 DispatchQueue.main.async {
+                    self.updateUI()
                     self.labEquipmentTableView?.reloadData()
                 }
+                self.hideSpinner()
             case let .failure(errorStr):
                 print(errorStr)
                 self.presentAlert(forCase: .failToLoadLabEquipments, handler: self.goBackAndReload)

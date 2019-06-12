@@ -39,8 +39,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         
         viewModel.usingQuantity = usingQuantity
         
-        // hide view until loading is done
-        mainView.isHidden = true
         setupUI()
         showSpinner()
         loadEquipmentInfo()
@@ -111,8 +109,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         }
         
         updateUI()
-        // show the view
-        mainView.isHidden = false
         // hide spinner
         hideSpinner()
     }

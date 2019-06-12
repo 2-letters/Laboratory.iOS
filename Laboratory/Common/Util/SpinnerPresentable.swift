@@ -26,13 +26,15 @@ extension SpinnerPresentable where Self: UIViewController {
     }
     
     func hideSpinner() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // First, notify the child that it’s about to be removed
-            self.spinnerVC.willMove(toParent: nil)
-            // Then, remove the child from its parent
-            self.spinnerVC.view.removeFromSuperview()
-            // Finally, remove the child’s view from the parent’s
-            self.spinnerVC.removeFromParent()
+        if spinnerVC.parent != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // First, notify the child that it’s about to be removed
+                self.spinnerVC.willMove(toParent: nil)
+                // Then, remove the child from its parent
+                self.spinnerVC.view.removeFromSuperview()
+                // Finally, remove the child’s view from the parent’s
+                self.spinnerVC.removeFromParent()
+            }
         }
     }
 }
