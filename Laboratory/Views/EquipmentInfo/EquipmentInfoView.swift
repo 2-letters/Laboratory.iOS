@@ -8,8 +8,13 @@
 
 import UIKit
 
-class EquipmentInfoView: UIView {
+//protocol ViewInstantiatable {
+//    func instantiate<T: UIView>() -> T
+//}
+//
+//typealias MyView = UIView & ViewInstantiatable
 
+class EquipmentInfoView: UIView {
 //    static let nibName = "EquipmentInfoView"
     @IBOutlet var availableLabel: UILabel!
 //    @IBOutlet var contentView: UIView!
@@ -17,6 +22,11 @@ class EquipmentInfoView: UIView {
     @IBOutlet var locationTextView: UITextView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var equipmentImageView: UIImageView!
+    
+//    func instantiate<EquipmentInfoView>() -> EquipmentInfoView where EquipmentInfoView : UIView {
+//        let view: EquipmentInfoView = .initFromNib()
+//        return view
+//    }
     
     static func instantiate() -> EquipmentInfoView {
         let view: EquipmentInfoView = initFromNib()

@@ -17,13 +17,11 @@ class LabCollectionCellSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        // Get main screen bounds
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let labCollectionCell = LabCollectionViewCell(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 110))
         
         let bundle = Bundle(for: LabCollectionViewCell.self)
         let nib = bundle.loadNibNamed(LabCollectionViewCell.nibId, owner: nil, options: nil)
         let labCollectionCell = nib?.first as! LabCollectionViewCell
+        labCollectionCell.viewModel = FakeData.labCellVM
         
         FBSnapshotVerifyView(labCollectionCell)
         FBSnapshotVerifyLayer(labCollectionCell.layer)

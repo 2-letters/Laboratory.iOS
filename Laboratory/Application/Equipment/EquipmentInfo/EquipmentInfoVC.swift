@@ -22,12 +22,12 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
+        addMainView()
         showSpinner()
         loadEquipmentInfo()
     }
     
-    private func setupUI() {
+    private func addMainView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         mainView.addSubview(equipmentInfoView)
         equipmentInfoView.frame = mainView.bounds

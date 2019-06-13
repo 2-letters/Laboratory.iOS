@@ -45,6 +45,10 @@
 		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
 		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
 		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
+		C9700C8822B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */; };
+		C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */; };
+		C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */; };
+		C9700C9122B29852004B6B71 /* LaboratoryUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9022B29852004B6B71 /* LaboratoryUITest.swift */; };
 		C973004822A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */; };
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
 		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
@@ -151,6 +155,10 @@
 		C96425DE22B0513200B627F1 /* LaboratoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96425E222B0513200B627F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
+		C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentCellSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C9022B29852004B6B71 /* LaboratoryUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboratoryUITest.swift; sourceTree = "<group>"; };
 		C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C973004122A85D940043E2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewControllerTest.swift; sourceTree = "<group>"; };
@@ -345,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */,
+				C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */,
 			);
 			path = SimpleEquipmentCell;
 			sourceTree = "<group>";
@@ -422,10 +431,19 @@
 		C96425DF22B0513200B627F1 /* LaboratoryUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C9700C9022B29852004B6B71 /* LaboratoryUITest.swift */,
 				C95F724422B1474E0005F31C /* Application */,
 				C96425E222B0513200B627F1 /* Info.plist */,
 			);
 			path = LaboratoryUITests;
+			sourceTree = "<group>";
+		};
+		C9700C8D22B28FF7004B6B71 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */,
+			);
+			path = LabInfo;
 			sourceTree = "<group>";
 		};
 		C973003E22A85D940043E2A9 /* LaboratoryUnitTests */ = {
@@ -691,6 +709,7 @@
 		DE6B4DB422ADA6E5006CE211 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9700C8D22B28FF7004B6B71 /* LabInfo */,
 				C93B0FF822AEB6940035A9FA /* LabCollectionCell */,
 				C93B0FFB22AEE75D0035A9FA /* LabEquipmentCell */,
 				C93B0FFE22AEE84F0035A9FA /* SimpleEquipmentCell */,
@@ -703,6 +722,7 @@
 			isa = PBXGroup;
 			children = (
 				DE6B4DBB22ADA8D5006CE211 /* EquipmentInfoViewTest.swift */,
+				C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */,
 			);
 			path = EquipmentInfo;
 			sourceTree = "<group>";
@@ -988,6 +1008,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9700C9122B29852004B6B71 /* LaboratoryUITest.swift in Sources */,
 				C95F724822B1476F0005F31C /* LabCollectionVCTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1019,9 +1040,12 @@
 				C93B100622AEF8730035A9FA /* LabEquipmentEditVMTest.swift in Sources */,
 				C9EE235322B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift in Sources */,
 				DE6B4DBC22ADA8D5006CE211 /* EquipmentInfoViewTest.swift in Sources */,
+				C9700C8822B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift in Sources */,
 				C9EE235122B19211004AB9BB /* EquipmentListVCSnapshotTest.swift in Sources */,
 				C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */,
 				C9EE234922B18731004AB9BB /* LabCollectionVCSnapshotTest.swift in Sources */,
+				C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */,
+				C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */,
 				C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */,
 				DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */,
 			);

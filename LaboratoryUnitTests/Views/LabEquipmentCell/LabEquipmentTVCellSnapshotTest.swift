@@ -20,6 +20,7 @@ class LabEquipmentCellSnapshotTest: FBSnapshotTestCase {
         let bundle = Bundle(for: LabEquipmentTVCell.self)
         let nib = bundle.loadNibNamed(LabEquipmentTVCell.nibId, owner: nil, options: nil)
         let labEquipmentCell = nib?.first as! LabEquipmentTVCell
+        labEquipmentCell.viewModel = FakeData.labEquipmentVM
         
         FBSnapshotVerifyView(labEquipmentCell)
         FBSnapshotVerifyLayer(labEquipmentCell.layer)
