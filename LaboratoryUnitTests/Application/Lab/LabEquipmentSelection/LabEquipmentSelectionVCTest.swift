@@ -29,7 +29,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
     
     func testViewDidLoad() {
         // THEN
-        XCTAssertEqual(sut.navigationItem.title, "Edit Equipments")
+        XCTAssertEqual(sut.navigationItem.title, MyString.labEquipmentCollectionTitle)
         XCTAssertNotNil(sut.spinnerVC.view)
     }
     

@@ -28,17 +28,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         addTapRecognizer()
         
-        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
-        navigationItem.rightBarButtonItem = saveBtn
-        
         addMainView()
-        // delegates
-        labEquipmentTableView = labInfoView.labEquipmentTV
-        labEquipmentTableView.delegate = self
-        labEquipmentTableView.dataSource = self
-        labInfoView.nameTextField.delegate = self
-        labInfoView.descriptionTextField.delegate = self
-        
         setupUI()
         
         if !isCreatingNewLab {
@@ -50,9 +40,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isCreatingNewLab {
-            navigationItem.title = "Create a Lab"
+            navigationItem.title = MyString.labCreateTitle
         } else {
-            navigationItem.title = "Edit Lab"
+            navigationItem.title = MyString.labEditTitle
         }
     }
     
@@ -81,9 +71,14 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func setupUI() {
+        addDelegates()
+        
+        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
+        navigationItem.rightBarButtonItem = saveBtn
         // register table cells
         let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+        
         
         if isCreatingNewLab {
             labInfoView.addEquipmentsBtn.setTitle("Add Equipments ...", for: .normal)
@@ -98,6 +93,15 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
+    }
+    
+    private func addDelegates() {
+        labEquipmentTableView = labInfoView.labEquipmentTV
+        labEquipmentTableView.delegate = self
+        labEquipmentTableView.dataSource = self
+        labEquipmentTableView.keyboardDismissMode = .onDrag
+        labInfoView.nameTextField.delegate = self
+        labInfoView.descriptionTextField.delegate = self
     }
     
     private func loadLabEquipments() {

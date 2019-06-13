@@ -16,7 +16,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var usingQuantity: Int = 0
     // the quantity being edited
 
-    @IBOutlet private var mainView: UIView!
+    @IBOutlet private var mainView: UIScrollView!
     @IBOutlet private var usingQuantityTextField: UITextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
@@ -33,8 +33,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         super.viewDidLoad()
 
         addTapRecognizer()
-        
-        usingQuantityTextField.delegate = self
+        addMainView()
         
         viewModel.usingQuantity = usingQuantity
         
@@ -45,7 +44,17 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     
     // MARK: Layout
+    private func addMainView() {
+        equipmentInfoView = EquipmentInfoView.instantiate()
+        mainView.addSubview(equipmentInfoView)
+        equipmentInfoView.frame = mainView.bounds
+        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        mainView.keyboardDismissMode = .onDrag
+    }
+    
     private func setupUI() {
+        usingQuantityTextField.delegate = self
+        
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
         navigationItem.rightBarButtonItem = saveBtn
         saveBtn.isEnabled = false
@@ -59,13 +68,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         equipmentInfoView = EquipmentInfoView.instantiate()
         equipmentInfoViewContainer.addSubview(equipmentInfoView)
         equipmentInfoView.frame = equipmentInfoViewContainer.bounds
-        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    private func setupMainView() {
-        equipmentInfoView = EquipmentInfoView.instantiate()
-        mainView.addSubview(equipmentInfoView)
-        equipmentInfoView.frame = mainView.bounds
         equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     

@@ -46,7 +46,7 @@ class LabCollectionVC: UIViewController {
             guard let sender = sender as? String else {
                 return
             }
-            if sender == CustomString.creatingNewInstanceFlag {
+            if sender == MyString.creatingNewInstanceFlag {
                 labInfoVC.isCreatingNewLab = true
             } else {
                 labInfoVC.isCreatingNewLab = false
@@ -66,7 +66,7 @@ class LabCollectionVC: UIViewController {
         addDelegates()
         addIdentifiers()
         
-        navigationItem.title = "Labs"
+        navigationItem.title = MyString.labCollectionTitle
         // "Create Lab" button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
         
@@ -88,6 +88,7 @@ class LabCollectionVC: UIViewController {
     
         labCollectionView.delegate = self
         labCollectionView.dataSource = self
+        labCollectionView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {
@@ -115,7 +116,7 @@ class LabCollectionVC: UIViewController {
     
     // MARK: User Interaction
     @objc private func createNewLab() {
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: CustomString.creatingNewInstanceFlag)
+        performSegue(withIdentifier: SegueId.showLabInfo, sender: MyString.creatingNewInstanceFlag)
     }
     
     @objc private func refreshData() {
@@ -166,6 +167,10 @@ extension LabCollectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(by: searchText)
         labCollectionView.reloadData()
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

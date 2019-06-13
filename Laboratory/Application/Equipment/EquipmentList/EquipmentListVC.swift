@@ -21,28 +21,7 @@ class EquipmentListVC: UIViewController {
         
         addTapRecognizer()
         
-        navigationItem.title = "Equipments"
-        
-        searchBar.backgroundImage = UIImage()
-
-        searchBar.delegate = self
-        equipmentTV.delegate = self
-        equipmentTV.dataSource = self
-        
-        // register table cells
-        let nib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
-        
-        // add Refresh Control
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            equipmentTV.refreshControl = refreshControl
-        } else {
-            equipmentTV.addSubview(refreshControl)
-        }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+        setupUI()
         loadEquipmentData()
     }
     
@@ -59,6 +38,35 @@ class EquipmentListVC: UIViewController {
     
     
     // MARK: Layout
+    private func setupUI() {
+        addDelegates()
+        navigationItem.title = MyString.equipmentListTitle
+        
+        searchBar.backgroundImage = UIImage()
+        
+        // register table cells
+        let nib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
+        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
+        
+        // add Refresh Control
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            equipmentTV.refreshControl = refreshControl
+        } else {
+            equipmentTV.addSubview(refreshControl)
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+    }
+    
+    private func addDelegates() {
+        searchBar.delegate = self
+        equipmentTV.delegate = self
+        equipmentTV.dataSource = self
+        equipmentTV.keyboardDismissMode = .onDrag
+    }
+    
     private func loadEquipmentData() {
         viewModel.fetchAllEquipments() { [weak self] (itemResult) in
             guard let self = self else { return }

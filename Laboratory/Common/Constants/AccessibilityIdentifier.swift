@@ -10,7 +10,7 @@ import Foundation
 
 struct AccessibilityIdentifier {
     // Lab Collection View
-    static let labCollectionNavBar = "labCollecionNavigationBar"
+    static let labCollectionNavBar = "labCollectionNavigationBar"
     static let labCollectionSearchBar = "labCollectionSearchBar"
     static let labCollectionView = "labCollectionSearchBar"
     

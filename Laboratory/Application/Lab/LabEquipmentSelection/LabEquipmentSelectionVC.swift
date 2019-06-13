@@ -23,14 +23,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         
         addTapRecognizer()
         
-        navigationItem.title = "Edit Equipments"
-        
-        searchBar.backgroundImage = UIImage()
-        searchBar.delegate = self
-        
-        labEquipmentTV.delegate = self
-        labEquipmentTV.dataSource = self
-        
         // show spinner
         showSpinner()
         setupUI()
@@ -69,12 +61,25 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     // MARK: Layout
     private func setupUI() {
+        addDelegates()
+        
+        navigationItem.title = MyString.labEquipmentCollectionTitle
+        
+        searchBar.backgroundImage = UIImage()
+        
         // load LabItems TableView
         let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
         let simpleEquipmentNib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
+    }
+    
+    private func addDelegates() {
+        searchBar.delegate = self
+        labEquipmentTV.delegate = self
+        labEquipmentTV.dataSource = self
+        labEquipmentTV.keyboardDismissMode = .onDrag
     }
     
     private func loadEquipments() {

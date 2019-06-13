@@ -76,7 +76,7 @@ class LabCollectionViewControllerTest: XCTestCase {
         let showLabCreateSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
         
         // WHEN
-        sut.prepare(for: showLabCreateSegue, sender: CustomString.creatingNewInstanceFlag)
+        sut.prepare(for: showLabCreateSegue, sender: MyString.creatingNewInstanceFlag)
         
         // THEN
         XCTAssertTrue(labInfoVC.isCreatingNewLab)

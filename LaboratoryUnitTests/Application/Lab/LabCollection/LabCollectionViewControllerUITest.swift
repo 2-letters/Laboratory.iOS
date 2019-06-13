@@ -1,14 +1,15 @@
 //
-//  LabCollectionVCTest.swift
-//  LaboratoryUITests
+//  LabCollectionViewControllerUITest.swift
+//  LaboratoryUnitTests
 //
-//  Created by Developers on 6/12/19.
+//  Created by Developers on 6/13/19.
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
 import XCTest
+@testable import Laboratory
 
-class LabCollectionVCTest: XCTestCase {
+class LabCollectionViewControllerUITest: XCTestCase {
 
     var app: XCUIApplication!
     override func setUp() {
