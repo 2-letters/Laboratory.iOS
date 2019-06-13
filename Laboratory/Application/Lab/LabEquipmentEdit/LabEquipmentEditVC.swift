@@ -32,10 +32,9 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        usingQuantityTextField.delegate = self
+        addTapRecognizer()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
+        usingQuantityTextField.delegate = self
         
         viewModel.usingQuantity = usingQuantity
         
@@ -165,10 +164,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     private func goBackAndReload() {
         // go back to Equipment Selection
         performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: nil)
-    }
-    
-    @objc private func dismissKeyboard() {
-        mainView.endEditing(true)
     }
 }
 

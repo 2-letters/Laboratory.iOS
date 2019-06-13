@@ -21,6 +21,8 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTapRecognizer()
+        
         navigationItem.title = "Edit Equipments"
         
         searchBar.backgroundImage = UIImage()

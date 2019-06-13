@@ -27,28 +27,12 @@ class LabCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Labs"
-        // "Create Lab" button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
+        addTapRecognizer()
+        setupUI()
         
-        labSearchBar.delegate = self
-        labSearchBar.backgroundImage = UIImage()
-        
-        labCollectionView.delegate = self
-        labCollectionView.dataSource = self
-        labCollectionView.backgroundColor = Color.lightGray
         // register lab cells
         let nib = UINib(nibName: LabCollectionViewCell.nibId, bundle: nil)
         labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
-        
-        // add refresh control
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            labCollectionView.refreshControl = refreshControl
-        } else {
-            labCollectionView.addSubview(refreshControl)
-        }
         
         loadLabData()
     }
@@ -78,6 +62,40 @@ class LabCollectionVC: UIViewController {
     
     
     // MARK: Layout
+    private func setupUI() {
+        addDelegates()
+        addIdentifiers()
+        
+        navigationItem.title = "Labs"
+        // "Create Lab" button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
+        
+        labSearchBar.backgroundImage = UIImage()
+        labCollectionView.backgroundColor = Color.lightGray
+        
+        // add refresh control
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            labCollectionView.refreshControl = refreshControl
+        } else {
+            labCollectionView.addSubview(refreshControl)
+        }
+    }
+    
+    private func addDelegates() {
+        labSearchBar.delegate = self
+    
+        labCollectionView.delegate = self
+        labCollectionView.dataSource = self
+    }
+    
+    private func addIdentifiers() {
+        navigationController?.navigationBar.accessibilityIdentifier = AccessibilityIdentifier.labCollectionNavBar
+        labSearchBar.accessibilityIdentifier = AccessibilityIdentifier.labCollectionSearchBar
+        labCollectionView.accessibilityIdentifier = AccessibilityIdentifier.labCollectionView
+    }
+    
     private func loadLabData() {
         viewModel.fetchLabData() { [weak self] (fetchResult) in
             guard let self = self else { return }

@@ -26,6 +26,8 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTapRecognizer()
+        
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
         
@@ -43,9 +45,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
             showSpinner()
             loadLabEquipments()
         }
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,10 +154,6 @@ extension LabInfoVC {
     
     private func goToEquipmentsSelect() {
         performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
-    }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     private func tryToSaveLab(toAddEquipments: Bool) {

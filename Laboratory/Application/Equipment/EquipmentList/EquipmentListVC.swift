@@ -19,6 +19,8 @@ class EquipmentListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTapRecognizer()
+        
         navigationItem.title = "Equipments"
         
         searchBar.backgroundImage = UIImage()
@@ -33,7 +35,6 @@ class EquipmentListVC: UIViewController {
         
         // add Refresh Control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
-//        refreshControl.tintColor = UIColor(red:0.64, green:0.64, blue:0.75, alpha:1.0)  // #a3a4be
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         if #available(iOS 10.0, *) {
             equipmentTV.refreshControl = refreshControl

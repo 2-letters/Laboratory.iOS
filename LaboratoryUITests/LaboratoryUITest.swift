@@ -35,6 +35,19 @@ class LaboratoryUITest: XCTestCase {
         
         let collectionView = element.children(matching: .collectionView).element
         collectionView.tap()
+        
+        let clearTextSearchField = app.searchFields.containing(.button, identifier:"Clear text").element
+        
+        let hKey = app/*@START_MENU_TOKEN@*/.keyboards.keys["h"]/*[[".keyboards.keys[\"h\"]",".keys[\"h\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        hKey.tap()
+        let searchBar = app.searchFields.
+        XCTAssertEqual(clearTextSearchField., <#T##expression2: Equatable##Equatable#>)
+        
+        let lKey = app2/*@START_MENU_TOKEN@*/.keys["l"]/*[[".keyboards.keys[\"l\"]",".keys[\"l\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        lKey.tap()
+        lKey.tap()
+        collectionView.tap()
+        clearTextSearchField.tap()
         app.searchFields.buttons["Clear text"].tap()
         collectionView.tap()
         

@@ -49,6 +49,8 @@
 		C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */; };
 		C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */; };
 		C9700C9122B29852004B6B71 /* LaboratoryUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9022B29852004B6B71 /* LaboratoryUITest.swift */; };
+		C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */; };
+		C9700C9522B2AA9B004B6B71 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */; };
 		C973004822A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */; };
 		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
 		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
@@ -159,6 +161,8 @@
 		C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
 		C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
 		C9700C9022B29852004B6B71 /* LaboratoryUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboratoryUITest.swift; sourceTree = "<group>"; };
+		C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addTapRecognizer.swift"; sourceTree = "<group>"; };
+		C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
 		C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C973004122A85D940043E2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewControllerTest.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				DE59D055229AFD7300E7FDF1 /* Color.swift */,
 				C95076F422A9B65F009F7B47 /* CustomString.swift */,
 				C940B95F22AA98380025E5AC /* MyFont.swift */,
+				C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */,
+				C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -972,6 +978,7 @@
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */,
+				C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */,
 				DE59D056229AFD7300E7FDF1 /* Color.swift in Sources */,
 				DEC45BEB2291006200F164BD /* SegueId.swift in Sources */,
 				C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */,
@@ -989,6 +996,7 @@
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C940B96022AA98380025E5AC /* MyFont.swift in Sources */,
 				C90035802296E96500471EE7 /* Enums.swift in Sources */,
+				C9700C9522B2AA9B004B6B71 /* AccessibilityIdentifier.swift in Sources */,
 				DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */,
 				DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */,
 				C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */,
