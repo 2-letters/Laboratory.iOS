@@ -19,7 +19,7 @@ class EquipmentListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTapRecognizer()
+//        addTapRecognizer()
         
         setupUI()
         loadEquipmentData()

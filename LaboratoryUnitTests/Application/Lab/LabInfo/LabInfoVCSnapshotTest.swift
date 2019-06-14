@@ -17,7 +17,7 @@ class LabInfoVCSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let labInfoVC = MyViewController.LabInfo.instance as! LabInfoVC
+        let labInfoVC = MyViewController.labInfo.instance as! LabInfoVC
         labInfoVC.labId = FakeData.labId
         
         FBSnapshotVerifyView(labInfoVC.view)

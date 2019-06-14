@@ -24,9 +24,9 @@ class LabCollectionVCTest: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
-    func testNavigationBar() {
-        app.launch()
-        let navBar = app.navigationBars[AccessibilityIdentifier.labCollectionNavBar]
-        XCTAssertEqual(navBar.title, MyString.labCollectionTitle)
-    }
+//    func testNavigationBar() {
+//        app.launch()
+//        let navBar = app.navigationBars[AccessibilityIdentifier.labCollectionNavBar]
+//        XCTAssertEqual(navBar.title, MyString.labCollectionTitle)
+//    }
 }

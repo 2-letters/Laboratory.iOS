@@ -17,7 +17,7 @@ class EquipmentListVCSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let equipmentListVC = MyViewController.EquipmentList.instance as! EquipmentListVC
+        let equipmentListVC = MyViewController.equipmentList.instance as! EquipmentListVC
         
         FBSnapshotVerifyView(equipmentListVC.view)
         FBSnapshotVerifyLayer(equipmentListVC.view.layer)

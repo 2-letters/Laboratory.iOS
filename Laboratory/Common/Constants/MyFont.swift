@@ -8,7 +8,8 @@
 
 import Foundation
 
-let globalFont = "GillSans-SemiBold"
+let primaryFont = "GillSans-SemiBold"
+let secondaryFont = "GillSans"
 
 struct MyFont {
     

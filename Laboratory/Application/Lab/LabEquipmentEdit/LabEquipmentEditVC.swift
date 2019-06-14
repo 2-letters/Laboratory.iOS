@@ -32,7 +32,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addTapRecognizer()
+//        addTapRecognizer()
         addMainView()
         
         viewModel.usingQuantity = usingQuantity

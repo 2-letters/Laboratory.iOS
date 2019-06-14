@@ -16,8 +16,8 @@ class LabEquipmentSelectionVCTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = MyViewController.LabEquipmentSelection.instance as? LabEquipmentSelectionVC
-        labEquipmentEditVC = MyViewController.LabEquipmentEdit.instance as? LabEquipmentEditVC
+        sut = MyViewController.labEquipmentSelection.instance as? LabEquipmentSelectionVC
+        labEquipmentEditVC = MyViewController.labEquipmentEdit.instance as? LabEquipmentEditVC
         let _ = sut.view
     }
 

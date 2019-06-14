@@ -52,6 +52,9 @@
                <Test
                   Identifier = "FirestoreSvcTest">
                </Test>
+               <Test
+                  Identifier = "LabCollectionViewControllerUITest">
+               </Test>
             </SkippedTests>
          </TestableReference>
          <TestableReference

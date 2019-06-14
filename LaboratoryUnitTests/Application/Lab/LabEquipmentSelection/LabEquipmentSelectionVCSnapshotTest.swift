@@ -17,7 +17,7 @@ class LabEquipmentSelectionSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let labEquipmentSelectionVC = MyViewController.LabEquipmentSelection.instance as! LabEquipmentSelectionVC
+        let labEquipmentSelectionVC = MyViewController.labEquipmentSelection.instance as! LabEquipmentSelectionVC
        labEquipmentSelectionVC.labId = FakeData.labId
         FBSnapshotVerifyView(labEquipmentSelectionVC.view)
         FBSnapshotVerifyLayer(labEquipmentSelectionVC.view.layer)

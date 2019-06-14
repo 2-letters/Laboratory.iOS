@@ -17,7 +17,7 @@ class LabCollectionVCSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let labCollectionVC = MyViewController.LabCollection.instance as! LabCollectionVC
+        let labCollectionVC = MyViewController.labCollection.instance as! LabCollectionVC
         
         FBSnapshotVerifyView(labCollectionVC.view)
         FBSnapshotVerifyLayer(labCollectionVC.view.layer)

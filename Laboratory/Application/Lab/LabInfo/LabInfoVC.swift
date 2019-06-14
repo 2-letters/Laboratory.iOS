@@ -26,7 +26,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTapRecognizer()
+//        addTapRecognizer()
         
         addMainView()
         setupUI()

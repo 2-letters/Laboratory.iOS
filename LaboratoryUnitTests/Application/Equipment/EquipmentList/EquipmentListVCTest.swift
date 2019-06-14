@@ -15,8 +15,8 @@ class EquipmentListVCTest: XCTestCase {
     var equipmentInfoVC: EquipmentInfoVC!
     override func setUp() {
         super.setUp()
-        sut = MyViewController.EquipmentList.instance as? EquipmentListVC
-        equipmentInfoVC = MyViewController.EquipmentInfo.instance as? EquipmentInfoVC
+        sut = MyViewController.equipmentList.instance as? EquipmentListVC
+        equipmentInfoVC = MyViewController.equipmentInfo.instance as? EquipmentInfoVC
         
         // Create the view
         let _ = sut.view

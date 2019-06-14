@@ -17,8 +17,8 @@ class LabCollectionViewControllerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = MyViewController.LabCollection.instance as? LabCollectionVC
-        labInfoVC = MyViewController.LabInfo.instance as? LabInfoVC
+        sut = MyViewController.labCollection.instance as? LabCollectionVC
+        labInfoVC = MyViewController.labInfo.instance as? LabInfoVC
         
         // Create the view
         let _ = sut.view

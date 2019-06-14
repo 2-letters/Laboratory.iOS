@@ -17,7 +17,7 @@ class EquipmentInfoVCSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let equipmentInfoVC = MyViewController.EquipmentInfo.instance as! EquipmentInfoVC
+        let equipmentInfoVC = MyViewController.equipmentInfo.instance as! EquipmentInfoVC
         // TODO change this to id
         equipmentInfoVC.equipmentName = FakeData.equipmentName
         

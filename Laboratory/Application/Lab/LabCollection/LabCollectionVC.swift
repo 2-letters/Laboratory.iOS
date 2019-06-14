@@ -27,7 +27,8 @@ class LabCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTapRecognizer()
+//        addTapRecognizer(toView: labCollectionView)
+        
         setupUI()
         
         // register lab cells
@@ -35,6 +36,13 @@ class LabCollectionVC: UIViewController {
         labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
         
         loadLabData()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     
@@ -135,13 +143,12 @@ extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseId, for: indexPath) as! LabCollectionViewCell
     
         cell.viewModel = viewModel.displayingLabVMs?[indexPath.row]
-        cell.labNameLabel.font = UIFont(name: "GillSans-SemiBold", size: 17)
-        cell.labDescriptionLabel.font = UIFont(name: "GillSans", size: 15)
+        cell.labNameLabel.font = UIFont(name: primaryFont, size: 17)
+        cell.labDescriptionLabel.font = UIFont(name: secondaryFont, size: 15)
         cell.labDescriptionLabel.textColor = UIColor.lightGray
     
         cell.backgroundColor = UIColor.white
-//            cell.accessibilityContainerType = .
-            return cell
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

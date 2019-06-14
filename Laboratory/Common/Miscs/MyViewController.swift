@@ -9,13 +9,13 @@
 import UIKit
 
 enum MyViewController: String {
-    case LabCollection = "LabCollectionVC"
-    case LabInfo = "LabInfoVC"
-    case LabEquipmentSelection = "LabEquipmentSelectionVC"
-    case LabEquipmentEdit = "LabEquipmentEditVC"
-    case EquipmentList = "EquipmentListVC"
-    case EquipmentInfo = "EquipmentInfoVC"
+    case labCollection = "LabCollectionVC"
+    case labInfo = "LabInfoVC"
+    case labEquipmentSelection = "LabEquipmentSelectionVC"
+    case labEquipmentEdit = "LabEquipmentEditVC"
+    case equipmentList = "EquipmentListVC"
+    case equipmentInfo = "EquipmentInfoVC"
     var instance: UIViewController {
-        return MyStoryboard.Main.instance.instantiateViewController(withIdentifier: self.rawValue)
+        return MyStoryboard.main.instance.instantiateViewController(withIdentifier: self.rawValue)
     }
 }

@@ -21,7 +21,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTapRecognizer()
+//        addTapRecognizer()
         
         // show spinner
         showSpinner()

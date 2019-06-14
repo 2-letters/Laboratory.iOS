@@ -9,7 +9,7 @@
 import UIKit
 
 enum MyStoryboard: String {
-    case Main = "Main"
+    case main = "Main"
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)
     }

@@ -17,7 +17,7 @@ class LabEquipmentEditVCSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let labEquipmentEditVC = MyViewController.LabEquipmentEdit.instance as! LabEquipmentEditVC
+        let labEquipmentEditVC = MyViewController.labEquipmentEdit.instance as! LabEquipmentEditVC
         labEquipmentEditVC.labId = FakeData.labId
         labEquipmentEditVC.equipmentName = FakeData.equipmentName
         
