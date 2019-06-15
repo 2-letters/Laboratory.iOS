@@ -22,7 +22,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addTapRecognizer()
+        addTapRecognizer()
         addMainView()
         showSpinner()
         loadEquipmentInfo()

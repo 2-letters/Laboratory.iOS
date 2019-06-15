@@ -32,8 +32,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        addTapRecognizer()
-        addMainView()
+        addTapRecognizer()
+        addEquipmentInfoView()
         
         viewModel.usingQuantity = usingQuantity
         
@@ -44,17 +44,14 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     
     // MARK: Layout
-    private func addMainView() {
+    private func addEquipmentInfoView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
-        mainView.addSubview(equipmentInfoView)
-        equipmentInfoView.frame = mainView.bounds
+        equipmentInfoViewContainer.addSubview(equipmentInfoView)
+        equipmentInfoView.frame = equipmentInfoViewContainer.bounds
         equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        mainView.keyboardDismissMode = .onDrag
     }
     
     private func setupUI() {
-        usingQuantityTextField.delegate = self
-        
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChange))
         navigationItem.rightBarButtonItem = saveBtn
         saveBtn.isEnabled = false
@@ -65,10 +62,18 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         
         separatingLine.backgroundColor = Color.separatingLine
         
-        equipmentInfoView = EquipmentInfoView.instantiate()
-        equipmentInfoViewContainer.addSubview(equipmentInfoView)
-        equipmentInfoView.frame = equipmentInfoViewContainer.bounds
-        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        usingQuantityTextField.delegate = self
+        mainView.keyboardDismissMode = .onDrag
+        addIdentifiers()
+    }
+    
+    private func addIdentifiers() {
+        saveBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditSaveButton.value
+        usingQuantityTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditUsingQuantityTextField.value
+        decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.value
+        increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.value
+        removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.value
+        equipmentInfoView.nameLabel.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameLabel.value
     }
     
     private func loadEquipmentInfo() {

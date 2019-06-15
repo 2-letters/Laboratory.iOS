@@ -12,6 +12,7 @@ class EquipmentListVC: UIViewController {
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var equipmentTV: UITableView!
+    private var addButton: UIBarButtonItem!
     
     private var viewModel = EquipmentListVM()
     private let refreshControl = UIRefreshControl()
@@ -19,7 +20,7 @@ class EquipmentListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addTapRecognizer()
+        addTapRecognizer()
         
         setupUI()
         loadEquipmentData()
@@ -39,7 +40,6 @@ class EquipmentListVC: UIViewController {
     
     // MARK: Layout
     private func setupUI() {
-        addDelegates()
         navigationItem.title = MyString.equipmentListTitle
         
         searchBar.backgroundImage = UIImage()
@@ -57,7 +57,11 @@ class EquipmentListVC: UIViewController {
             equipmentTV.addSubview(refreshControl)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+        navigationItem.rightBarButtonItem = addButton
+        
+        addDelegates()
+        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -65,6 +69,12 @@ class EquipmentListVC: UIViewController {
         equipmentTV.delegate = self
         equipmentTV.dataSource = self
         equipmentTV.keyboardDismissMode = .onDrag
+    }
+    
+    private func addIdentifiers() {
+        addButton.accessibilityIdentifier = AccessibilityId.equipmentListAddButton.value
+        searchBar.accessibilityIdentifier = AccessibilityId.equipmentListSearchBar.value
+        equipmentTV.accessibilityIdentifier = AccessibilityId.equipmentListTableView.value
     }
     
     private func loadEquipmentData() {

@@ -18,9 +18,11 @@ class LabInfoViewControllerUITest: MyUITest {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app = XCUIApplication()
         app.launch()
+        // go to LabInfoView
         goToFirstTab()
         tapFirstCell(inVC: .labCollection)
     }
     
+//    func test
     
 }

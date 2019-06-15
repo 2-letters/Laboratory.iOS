@@ -136,6 +136,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="RjR-TO-nQJ" id="4tX-lD-DaX"/>
                         <outlet property="labEquipmentTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
                         <outlet property="searchBar" destination="wNM-zi-urh" id="OG1-mX-58M"/>
                         <segue destination="cly-ig-uLQ" kind="show" identifier="showEquipmentEdit" id="sx8-EH-ggk"/>

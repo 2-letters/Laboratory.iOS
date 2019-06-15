@@ -26,7 +26,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addTapRecognizer()
+        addTapRecognizer()
         
         addMainView()
         setupUI()
@@ -71,8 +71,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func setupUI() {
-        addDelegates()
-        
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
         // register table cells
@@ -93,6 +91,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
+        
+        addDelegates()
+        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -102,6 +103,14 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         labEquipmentTableView.keyboardDismissMode = .onDrag
         labInfoView.nameTextField.delegate = self
         labInfoView.descriptionTextField.delegate = self
+    }
+    
+    private func addIdentifiers() {
+        saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.value
+        labInfoView.nameTextField.accessibilityIdentifier = AccessibilityId.labInfoNameTextField.value
+        labInfoView.descriptionTextField.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextField.value
+        labInfoView.addEquipmentsBtn.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.value
+        labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.value
     }
     
     private func loadLabEquipments() {

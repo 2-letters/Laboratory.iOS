@@ -20,6 +20,7 @@ import UIKit
 class LabCollectionVC: UIViewController {
     @IBOutlet private var labSearchBar: UISearchBar!
     @IBOutlet private var labCollectionView: UICollectionView!
+    private var addButton: UIBarButtonItem!
     
     private var viewModel = LabCollectionVM()
     private let refreshControl = UIRefreshControl()
@@ -27,8 +28,7 @@ class LabCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addTapRecognizer(toView: labCollectionView)
-        
+        addTapRecognizer()
         setupUI()
         
         // register lab cells
@@ -36,9 +36,6 @@ class LabCollectionVC: UIViewController {
         labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
         
         loadLabData()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @objc private func dismissKeyboard() {
@@ -71,12 +68,10 @@ class LabCollectionVC: UIViewController {
     
     // MARK: Layout
     private func setupUI() {
-        addDelegates()
-        addIdentifiers()
-        
         navigationItem.title = MyString.labCollectionTitle
         // "Create Lab" button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
+        navigationItem.rightBarButtonItem = addButton
         
         labSearchBar.backgroundImage = UIImage()
         labCollectionView.backgroundColor = Color.lightGray
@@ -89,6 +84,9 @@ class LabCollectionVC: UIViewController {
         } else {
             labCollectionView.addSubview(refreshControl)
         }
+        
+        addDelegates()
+        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -100,9 +98,9 @@ class LabCollectionVC: UIViewController {
     }
     
     private func addIdentifiers() {
-        navigationController?.navigationBar.accessibilityIdentifier = AccessibilityIdentifier.labCollectionNavBar
-        labSearchBar.accessibilityIdentifier = AccessibilityIdentifier.labCollectionSearchBar
-        labCollectionView.accessibilityIdentifier = AccessibilityIdentifier.labCollectionView
+        addButton.accessibilityIdentifier = AccessibilityId.labCollectionAddButton.value
+        labSearchBar.accessibilityIdentifier = AccessibilityId.labCollectionSearchBar.value
+        labCollectionView.accessibilityIdentifier = AccessibilityId.labCollectionView.value
     }
     
     private func loadLabData() {

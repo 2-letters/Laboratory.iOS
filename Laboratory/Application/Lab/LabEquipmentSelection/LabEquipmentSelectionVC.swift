@@ -11,6 +11,7 @@ import UIKit
 class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var labId: String?  // for receiving data from Lab Info/Create
 
+    @IBOutlet private var doneButton: UIBarButtonItem!
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var labEquipmentTV: UITableView!
     
@@ -21,7 +22,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addTapRecognizer()
+        addTapRecognizer()
         
         // show spinner
         showSpinner()
@@ -61,8 +62,6 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     // MARK: Layout
     private func setupUI() {
-        addDelegates()
-        
         navigationItem.title = MyString.labEquipmentCollectionTitle
         
         searchBar.backgroundImage = UIImage()
@@ -73,6 +72,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         
         let simpleEquipmentNib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
+        
+        addDelegates()
+        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -80,6 +82,12 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         labEquipmentTV.delegate = self
         labEquipmentTV.dataSource = self
         labEquipmentTV.keyboardDismissMode = .onDrag
+    }
+    
+    private func addIdentifiers() {
+        doneButton.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionDoneButton.value
+        searchBar.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionSearchBar.value
+        labEquipmentTV.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionTableView.value
     }
     
     private func loadEquipments() {
