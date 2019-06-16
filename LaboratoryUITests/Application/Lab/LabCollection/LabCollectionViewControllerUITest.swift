@@ -39,7 +39,7 @@ class LabCollectionViewControllerUITest: MyUITest {
     }
     
     func testFirstCellHittable() {
-        let firstCell = app.collectionViews[AccessibilityIdentifier.labCollectionView].cells.element(boundBy: 0)
+        let firstCell = app.collectionViews[AccessibilityId.labCollectionView.value].cells.element(boundBy: 0)
         XCTAssertTrue(firstCell.isHittable)
     }
 }

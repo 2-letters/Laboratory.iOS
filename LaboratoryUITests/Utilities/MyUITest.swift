@@ -28,11 +28,52 @@ extension UITestable where Self: XCTestCase {
         tabBarButtons.element(boundBy: 1).tap()
     }
     
+    func tapOutside() {
+        //        let view: XCUIElement
+        let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let coordinate = normalized.withOffset(CGVector(dx: 1, dy: 1))
+        coordinate.tap()
+        //        switch viewController {
+        //        case .labCollection:
+        //            view = app.collectionViews[AccessibilityId.labCollectionView.value]
+        //        case .labInfo:
+        //            view = app.tables[AccessibilityId.labInfoTableView.value]
+        //        case .labEquipmentSelection:
+        //            view = app.tables[AccessibilityId.labEquipmentSelectionTableView.value]
+        //        case .labEquipmentEdit:
+        //            view = app.tables[AccessibilityId.]
+        //        case .equipmentList:
+        //            view = app.tables[AccessibilityId.equipmentListTableView.value]
+        //        case .equipmentInfo:
+        ////            view = app.
+        //        }
+        //        view.tap()
+    }
+    
+    func swipeView(inVC viewController: MyViewController) {
+        let view: XCUIElement
+        switch viewController {
+        case .labCollection:
+            view = app.collectionViews[AccessibilityId.labCollectionView.value]
+        case .labInfo:
+            <#code#>
+        case .labEquipmentSelection:
+            <#code#>
+        case .labEquipmentEdit:
+            <#code#>
+        case .equipmentList:
+            <#code#>
+        case .equipmentInfo:
+            <#code#>
+        }
+        view.swipeUp()
+    }
+    
     func tapSearchBar(inVC viewController: MyViewController) {
         let searchBar: XCUIElement?
         switch viewController {
         case .labCollection:
-            searchBar = app.otherElements[AccessibilityIdentifier.labCollectionSearchBar]
+            searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.value]
         default:
             searchBar = nil
         }
@@ -43,7 +84,7 @@ extension UITestable where Self: XCTestCase {
         let searchBar: XCUIElement?
         switch viewController {
         case .labCollection:
-            searchBar = app.otherElements[AccessibilityIdentifier.labCollectionSearchBar]
+            searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.value]
         default:
             searchBar = nil
         }
@@ -58,22 +99,6 @@ extension UITestable where Self: XCTestCase {
         cancelSearchBtn!.tap()
     }
     
-    func tapOutside() {
-        let collectionView = app.collectionViews[AccessibilityIdentifier.labCollectionView]
-        collectionView.tap()
-    }
-    
-    func swipeView(inVC viewController: MyViewController) {
-        let view: XCUIElement?
-        switch viewController {
-        case .labCollection:
-            view = app.collectionViews[AccessibilityIdentifier.labCollectionView]
-        default:
-            view = nil
-        }
-        view?.swipeUp()
-    }
-    
     func tapFirstCell(inVC viewController: MyViewController) {
         let firstCell: XCUIElement?
         switch viewController {
@@ -83,6 +108,11 @@ extension UITestable where Self: XCTestCase {
             firstCell = nil
         }
         firstCell?.tap()
+    }
+    
+    func proceedAlertButton(ofAlert alert: XCUIElement) {
+        let alertButton = app.buttons[alert.accessibilityValue!]
+        alertButton.tap()
     }
 }
 

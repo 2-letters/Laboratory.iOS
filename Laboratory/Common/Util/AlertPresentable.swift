@@ -23,10 +23,15 @@ enum AlertCase {
     case succeedToSaveLab
     case failToSaveEquipmentEdit
     
+    var description: String {
+        return String(describing: self)
+    }
 }
 
 struct AlertString {
     static let okay = "Okay"
+    static let yes = "Yes"
+    static let no = "No"
     
     // Titles
     static let oopsTitle = "Oops!"
@@ -55,7 +60,6 @@ extension AlertPresentable where Self: UIViewController {
         switch alertCase {
         case .invalidLabInfoInput:
             ac = UIAlertController(title: AlertString.oopsTitle, message: AlertString.invalidLabInfoMessage, preferredStyle: .alert)
-            
         case .createLabToAddEquipments:
             ac = UIAlertController(title: AlertString.createLabRequiredTitle, message: AlertString.attemptToCreateLabToEquipmentsMessage, preferredStyle: .alert)
             
@@ -71,17 +75,22 @@ extension AlertPresentable where Self: UIViewController {
         case .failToSaveEquipmentEdit:
             ac = UIAlertController(title: AlertString.failToSaveEditTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         }
+        // add Accessibility Identifier
+        ac.view.accessibilityIdentifier = alertCase.description
         
         // add Actions
         switch alertCase {
         case .invalidLabInfoInput, .failToSaveLab, .succeedToSaveLab,
              .failToLoadEquipments, .failToLoadLabEquipments, .failToLoadEquipmentInfo:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))
+            ac.view.accessibilityValue = AlertString.okay
         case .createLabToAddEquipments:
-            ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: handler))
-            ac.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+            ac.addAction(UIAlertAction(title: AlertString.yes, style: .default, handler: handler))
+            ac.addAction(UIAlertAction(title: AlertString.no, style: .destructive, handler: nil))
+            ac.view.accessibilityValue = AlertString.yes
         case .failToSaveEquipmentEdit:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
+            ac.view.accessibilityValue = AlertString.okay
         }
         // present
         self.present(ac, animated: true, completion: nil)

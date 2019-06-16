@@ -90,6 +90,8 @@
 		DE6B4DB022AD9DB5006CE211 /* AlertPresentableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4DAF22AD9DB5006CE211 /* AlertPresentableTest.swift */; };
 		DE6B4DBC22ADA8D5006CE211 /* EquipmentInfoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4DBB22ADA8D5006CE211 /* EquipmentInfoViewTest.swift */; };
 		DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */; };
+		DE75CF5522B5C026006A0780 /* XCUIElement+clearText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */; };
+		DE75CF5622B5DCC4006A0780 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
 		DE7AF431229A094F0008181E /* LayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* LayoutUtil.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
@@ -206,6 +208,7 @@
 		DE6B4DAF22AD9DB5006CE211 /* AlertPresentableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentableTest.swift; sourceTree = "<group>"; };
 		DE6B4DBB22ADA8D5006CE211 /* EquipmentInfoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoViewTest.swift; sourceTree = "<group>"; };
 		DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+initFromNib.swift"; sourceTree = "<group>"; };
+		DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+clearText.swift"; sourceTree = "<group>"; };
 		DE7AF430229A094F0008181E /* LayoutUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutUtil.swift; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
@@ -339,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				C94F58E122B402AB007DEF03 /* MyUITest.swift */,
+				DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1068,7 +1072,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE75CF5522B5C026006A0780 /* XCUIElement+clearText.swift in Sources */,
 				C94F58E022B3F625007DEF03 /* MyStoryboard.swift in Sources */,
+				DE75CF5622B5DCC4006A0780 /* AlertPresentable.swift in Sources */,
 				C9700C9122B29852004B6B71 /* LabCollectionViewControllerUITest.swift in Sources */,
 				C910FDC122B2E14100DBF442 /* AccessibilityIdentifier.swift in Sources */,
 				C910FDC222B2E1FE00DBF442 /* MyString.swift in Sources */,

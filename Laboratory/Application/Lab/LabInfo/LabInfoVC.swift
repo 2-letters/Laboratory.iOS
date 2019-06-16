@@ -73,7 +73,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func setupUI() {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
+        
         // register table cells
+        labEquipmentTableView = labInfoView.labEquipmentTV
         let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
@@ -97,7 +99,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func addDelegates() {
-        labEquipmentTableView = labInfoView.labEquipmentTV
         labEquipmentTableView.delegate = self
         labEquipmentTableView.dataSource = self
         labEquipmentTableView.keyboardDismissMode = .onDrag
