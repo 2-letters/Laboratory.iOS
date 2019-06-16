@@ -13,6 +13,11 @@ extension XCUIElement {
         self.typeText("la")
     }
     
+    // TODO: is this really working?
+    func typeSomeNumber() {
+        self.typeText("5")
+    }
+    
     func clearText() {
         guard let stringValue = self.value as? String else { return }
         // if the textfield is empty, value and placeholderValue are equal

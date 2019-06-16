@@ -40,6 +40,17 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         super.tearDown()
     }
     
+    func testViewsExist() {
+        let saveBtn = app.buttons[AccessibilityId.labInfoSaveButton.value]
+        let addEquipmentsBtn = app.buttons[AccessibilityId.labInfoAddEquipmentButton.value]
+        let tableView = app.tables[AccessibilityId.labInfoTableView.value]
+        XCTAssertTrue(saveBtn.exists)
+        XCTAssertTrue(addEquipmentsBtn.exists)
+        XCTAssertTrue(tableView.exists)
+        XCTAssertTrue(nameTextField.exists)
+        XCTAssertTrue(descriptionTextField.exists)
+    }
+    
     func testDismissKeyboard() {
         // THEN
         // Test name text field

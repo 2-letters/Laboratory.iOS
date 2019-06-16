@@ -11,6 +11,7 @@ import XCTest
 class LabCollectionViewControllerUITest: MyUITestDelegate {
     var app: XCUIApplication!
     var thisViewController: MyViewController!
+    
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -26,6 +27,16 @@ class LabCollectionViewControllerUITest: MyUITestDelegate {
         app = nil
         thisViewController = nil
         super.tearDown()
+    }
+    
+    func testViewsExist() {
+        let addButton = app.buttons[AccessibilityId.labCollectionAddButton.value]
+        let labSearchBar = app.searchFields[AccessibilityId.labCollectionSearchBar.value]
+        let labCollectionView = app.collectionViews[AccessibilityId.labCollectionView.value]
+        
+        XCTAssertTrue(addButton.exists)
+        XCTAssertTrue(labSearchBar.exists)
+        XCTAssertTrue(labCollectionView.exists)
     }
     
     func testDismissKeyboard() {
@@ -46,8 +57,8 @@ class LabCollectionViewControllerUITest: MyUITestDelegate {
         XCTAssertEqual(app.keyboards.count, 0)
     }
     
-    func testFirstCellHittable(inVC viewController: MyViewController) {
-        let firstCell = getFirstCell(inVC: viewController)!
+    func testFirstCellHittable() {
+        let firstCell = getFirstCell(inVC: thisViewController)!
         XCTAssertTrue(firstCell.isHittable)
     }
 }

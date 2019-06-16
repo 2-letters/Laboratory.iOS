@@ -75,6 +75,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.value
         removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.value
         equipmentInfoView.nameLabel.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameLabel.value
+        equipmentInfoView.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.value
     }
     
     private func loadEquipmentInfo() {
