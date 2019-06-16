@@ -16,7 +16,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var usingQuantity: Int = 0
     // the quantity being edited
 
-    @IBOutlet private var mainView: UIScrollView!
+    @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var usingQuantityTextField: UITextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
@@ -63,11 +63,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         separatingLine.backgroundColor = Color.separatingLine
         
         usingQuantityTextField.delegate = self
-        mainView.keyboardDismissMode = .onDrag
+        scrollView.keyboardDismissMode = .onDrag
         addIdentifiers()
     }
     
     private func addIdentifiers() {
+        scrollView.accessibilityIdentifier = AccessibilityId.labEquipmentEditScrollView.value
         saveBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditSaveButton.value
         usingQuantityTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditUsingQuantityTextField.value
         decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.value

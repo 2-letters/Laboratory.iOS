@@ -27,6 +27,7 @@ enum AccessibilityId {
     case labEquipmentSelectionTableView
     
     // Lab Equipment Edit VC
+    case labEquipmentEditScrollView
     case labEquipmentEditSaveButton
     case labEquipmentEditUsingQuantityTextField
     case labEquipmentEditDecreaseButton
@@ -38,6 +39,10 @@ enum AccessibilityId {
     case equipmentListAddButton
     case equipmentListSearchBar
     case equipmentListTableView
+    
+    // Equipment Info VC
+    // todo: this is made up, make it real
+    case equipmentInfoScrollView
     
     var value: String {
         return String(describing: self)

@@ -8,9 +8,10 @@
 
 import XCTest
 
-class LabInfoViewControllerUITest: MyUITest {
+class LabInfoViewControllerUITest: MyUITestDelegate {
 
     var app: XCUIApplication!
+    var thisViewController: MyViewController!
     var nameTextField: XCUIElement!
     var descriptionTextField: XCUIElement!
     var nameText: String!
@@ -22,9 +23,10 @@ class LabInfoViewControllerUITest: MyUITest {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app = XCUIApplication()
         app.launch()
-        // go to LabInfoView
-        goToFirstTab()
-        tapFirstCell(inVC: .labCollection)
+        thisViewController = .labInfo
+        
+        goToLabInfoViewController()
+        
         nameTextField = app.textFields[AccessibilityId.labInfoNameTextField.value]
         descriptionTextField = app.textFields[AccessibilityId.labInfoDescriptionTextField.value]
         nameText = nameTextField.value as? String
@@ -43,7 +45,7 @@ class LabInfoViewControllerUITest: MyUITest {
         // Test name text field
         nameTextField.tap()
         XCTAssert(app.keyboards.count > 0)
-        nameTextField.typeText("la")
+        nameTextField.typeSomeText()
         
         tapOutside()
         XCTAssertEqual(app.keyboards.count, 0)
@@ -51,7 +53,7 @@ class LabInfoViewControllerUITest: MyUITest {
         nameTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: .labInfo)
+        swipeView(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         // Test description text field
@@ -65,7 +67,7 @@ class LabInfoViewControllerUITest: MyUITest {
         descriptionTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: .labInfo)
+        swipeView(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
     }
     

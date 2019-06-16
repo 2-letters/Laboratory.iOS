@@ -9,6 +9,10 @@
 import XCTest
 
 extension XCUIElement {
+    func typeSomeText() {
+        self.typeText("la")
+    }
+    
     func clearText() {
         guard let stringValue = self.value as? String else { return }
         // if the textfield is empty, value and placeholderValue are equal
@@ -16,7 +20,14 @@ extension XCUIElement {
             return
         }
         
-        var deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)
+    }
+    
+    func cancelTyping() {
+        let canceBtn: XCUIElement?
+        canceBtn = self.buttons["Clear text"]
+        XCTAssertNotNil(canceBtn)
+        canceBtn!.tap()
     }
 }
