@@ -11,6 +11,11 @@ import Foundation
 // For SimpleEquipmentCell
 struct SimpleEquipmentVM: Equatable {
     var equipment: Equipment
+    
+    var equipmentId: String {
+        return equipment.id
+    }
+    
     var equipmentName: String {
         return equipment.name
     }

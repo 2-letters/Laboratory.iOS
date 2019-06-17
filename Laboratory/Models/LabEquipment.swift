@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct LabEquipment: NamedItem {
+struct LabEquipment {
+    var id: String
     var name: String
     var using: Int
 }

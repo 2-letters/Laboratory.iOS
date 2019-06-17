@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FullEquipment: NamedItem {
+struct FullEquipment {
     var name: String
     var available: Int
     var description: String

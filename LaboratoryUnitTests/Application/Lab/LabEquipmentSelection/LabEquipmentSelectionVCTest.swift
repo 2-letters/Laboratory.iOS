@@ -56,7 +56,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(labEquipmentEditVC.labId, FakeData.labId)
-        XCTAssertEqual(labEquipmentEditVC.equipmentName, fakeSimpleEquipmentVM.equipmentName)
+        XCTAssertEqual(labEquipmentEditVC.equipmentId, fakeSimpleEquipmentVM.equipmentId)
         XCTAssertEqual(labEquipmentEditVC.usingQuantity, 0)
         
         /// For currently using equipments
@@ -65,7 +65,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(labEquipmentEditVC.labId, FakeData.labId)
-        XCTAssertEqual(labEquipmentEditVC.equipmentName, fakeLabEquipmentVM.equipmentName)
+        XCTAssertEqual(labEquipmentEditVC.equipmentId, fakeLabEquipmentVM.equipmentId)
         XCTAssertEqual(labEquipmentEditVC.usingQuantity, fakeLabEquipmentVM.quantity)
     }
     

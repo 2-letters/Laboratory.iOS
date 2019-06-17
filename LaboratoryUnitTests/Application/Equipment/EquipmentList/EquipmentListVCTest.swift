@@ -13,6 +13,7 @@ class EquipmentListVCTest: XCTestCase {
 
     var sut: EquipmentListVC!
     var equipmentInfoVC: EquipmentInfoVC!
+    
     override func setUp() {
         super.setUp()
         sut = MyViewController.equipmentList.instance as? EquipmentListVC
@@ -52,8 +53,6 @@ class EquipmentListVCTest: XCTestCase {
         // GIVEN
         let fakeEquipmentId = FakeData.equipmentId
         let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentInfo, source: sut, destination: equipmentInfoVC)
-//        let fakeSimpleEquipmentVM = FakeData.simpleEquipmentVM
-//        let fakeLabEquipmentVM = FakeData.labEquipmentVM
         
         /// For not using equipments
         // WHEN

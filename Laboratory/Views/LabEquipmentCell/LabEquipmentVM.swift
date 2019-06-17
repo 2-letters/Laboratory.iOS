@@ -15,6 +15,7 @@ struct LabEquipmentVM {
         self.labEquipment = equipment
     }
     
+    var equipmentId: String { return labEquipment.id }
     var equipmentName: String { return labEquipment.name }
     var quantityString: String {
         return "Using: \(labEquipment.using)"

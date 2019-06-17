@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol NamedItem {
-    var name: String { get }
-}
-struct Equipment: NamedItem {
+//protocol NamedItem {
+//    var name: String { get }
+//}
+struct Equipment {
+    var id: String
     var name: String
 }

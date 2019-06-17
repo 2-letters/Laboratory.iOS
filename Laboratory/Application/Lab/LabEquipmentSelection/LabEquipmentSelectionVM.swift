@@ -45,7 +45,7 @@ class LabEquipmentSelectionVM {
                         
                         // convert addedEquipmentVMs to addedSimpleEquipmentVMs to do the subtraction
                         let addedSimpleEquipmentVMs = addedEquipmentVMs.map({
-                            SimpleEquipmentVM(equipment: Equipment(name: $0.equipmentName))
+                            SimpleEquipmentVM(equipment: Equipment(id: $0.equipmentId, name: $0.equipmentName))
                         })
                         
                         // available = all - added

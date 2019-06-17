@@ -16,7 +16,6 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     let spinnerVC = SpinnerViewController()
 
     var equipmentId: String?
-    var equipmentName: String?
     private var viewModel = EquipmentInfoVM()
     
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
 
     private func loadEquipmentInfo() {
-        viewModel.fetchEquipmentInfo(byName: equipmentName!) { [weak self] (fetchResult) in
+        viewModel.fetchEquipmentInfo(byId: equipmentId!) { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
             case .success:

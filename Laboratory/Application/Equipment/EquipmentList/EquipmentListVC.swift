@@ -32,8 +32,6 @@ class EquipmentListVC: UIViewController {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
             equipmentInfoVC.equipmentId = sender as? String
-            // todo delete this
-            equipmentInfoVC.equipmentName = sender as? String
         }
     }
     
@@ -137,6 +135,6 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]
         // todo should send equipment id instead
-        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: equipmentVM.equipmentName)
+        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: equipmentVM.equipmentId)
     }
 }

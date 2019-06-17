@@ -11,7 +11,7 @@ import UIKit
 class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable {
     // to receive data from LabEquipmentSelectionVC
     var labId: String!
-    var equipmentName: String?
+    var equipmentId: String!
     // the original using quantiy
     var usingQuantity: Int = 0
     // the quantity being edited
@@ -79,11 +79,11 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     private func loadEquipmentInfo() {
-        guard let equipmentName = equipmentName else {
+        guard let equipmentId = equipmentId else {
             presentAlert(forCase: .failToLoadEquipmentInfo, handler: goBack(alert:))
             return
         }
-        viewModel.equipmentInfoVM.fetchEquipmentInfo(byName: equipmentName) { [weak self] (fetchResult) in
+        viewModel.equipmentInfoVM.fetchEquipmentInfo(byId: equipmentId) { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
             case .success:
@@ -136,7 +136,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     // MARK: - User Interaction
     // MARK: Buttons
     @objc private func saveChange() {
-        viewModel.updateEquipmentUsing(forLabId: labId, equipmentName: equipmentName!) { [weak self] (updateFirestoreResult) in
+        viewModel.updateEquipmentUsing(forLabId: labId, equipmentId: equipmentId) { [weak self] (updateFirestoreResult) in
             guard let self = self else { return }
             switch updateFirestoreResult {
             case let .failure(errorStr):

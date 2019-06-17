@@ -11,29 +11,29 @@ import Foundation
 
 struct FakeData {
     static let labId = "fakeLab"
-    static let equipmentId = "fakeEquipment"
+    static let equipmentId = "fakeEquipmentId"
     static let equipmentName = "fake Equipment Name"
     
     static var simpleEquipmentVM: SimpleEquipmentVM {
-        return SimpleEquipmentVM(equipment: Equipment(name: "fake Equipment Name"))
+        return SimpleEquipmentVM(equipment: Equipment(id: "fakeEquipmentId", name: "fake Equipment Name"))
     }
     static var simpleEquipmentVMs: [SimpleEquipmentVM] {
-        return [SimpleEquipmentVM(equipment: Equipment(name: "fake fake Equipment")),
-                SimpleEquipmentVM(equipment: Equipment(name: "super real Equipment")),
-                SimpleEquipmentVM(equipment: Equipment(name: "real fake Equipment"))]
+        return [SimpleEquipmentVM(equipment: Equipment(id: "fakeEquipmentId", name: "fake fake Equipment")),
+                SimpleEquipmentVM(equipment: Equipment(id: "fakeEquipmentId", name: "super real Equipment")),
+                SimpleEquipmentVM(equipment: Equipment(id: "fakeEquipmentId", name: "real fake Equipment"))]
     }
     
     static var labEquipmentVM: LabEquipmentVM {
-        return LabEquipmentVM(equipment: LabEquipment(name: "fake Equipment Name", using: 2))
+        return LabEquipmentVM(equipment: LabEquipment(id: "fakeEquipmentId", name: "fake Equipment Name", using: 2))
     }
     static var labEquipmentVMs: [LabEquipmentVM] {
-        return [LabEquipmentVM(equipment: LabEquipment(name: "fake fake Equipment", using: 2)),
-                LabEquipmentVM(equipment: LabEquipment(name: "super real Equipment", using: 3)),
-                LabEquipmentVM(equipment: LabEquipment(name: "real fake Equipment", using: 4))]
+        return [LabEquipmentVM(equipment: LabEquipment(id: "fakeEquipmentId", name: "fake fake Equipment", using: 2)),
+                LabEquipmentVM(equipment: LabEquipment(id: "fakeEquipmentId", name: "super real Equipment", using: 3)),
+                LabEquipmentVM(equipment: LabEquipment(id: "fakeEquipmentId", name: "real fake Equipment", using: 4))]
     }
     
     static var labCellVM: LabCellVM {
-        return LabCellVM(lab: Lab(id: "fakeLab", name: "fake Lab Name", description: "fake Description"))
+        return LabCellVM(lab: Lab(id: "fakeLabId", name: "fake Lab Name", description: "fake Description"))
     }
     static var LabCellVMs: [LabCellVM] {
         return [LabCellVM(lab: Lab(id: "fakeLab1", name: "fake fake Name", description: "fake Description 1")),

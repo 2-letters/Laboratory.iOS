@@ -18,7 +18,7 @@ struct FirestoreSvc {
                 var equipmentVMs = [SimpleEquipmentVM]()
                 for document in (snapshot!.documents) {
                     if let equipmentName = document.data()["name"] as? String
-                    { equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(name: equipmentName)))
+                    { equipmentVMs.append(SimpleEquipmentVM(equipment: Equipment(id: document.documentID, name: equipmentName)))
                     }
                 }
                 completion(.success(equipmentVMs))
@@ -39,7 +39,7 @@ struct FirestoreSvc {
                         if let equipmentName = document.data()["equipmentName"] as? String,
                             let using = document.data()["using"] as? Int {
                             if using != 0 {
-                                addedEquipments.append(LabEquipment(name: equipmentName, using: using))
+                                addedEquipments.append(LabEquipment(id: document.documentID, name: equipmentName, using: using))
                             }
                         }
                     }

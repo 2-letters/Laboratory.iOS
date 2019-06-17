@@ -30,25 +30,25 @@ class EquipmentInfoVM {
         return equipment!.pictureUrl
     }
     
-    func fetchEquipmentInfo(byName name: String, completion: @escaping FetchFirestoreHandler) {
+    func fetchEquipmentInfo(byId equipmentId: String?, completion: @escaping FetchFirestoreHandler) {
         // TODO: get department and instituion from Cache?
-        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").whereField("name", isEqualTo: name).getDocuments { [weak self] (snapshot, error) in
+        guard let equipmentId = equipmentId else {
+            completion(.failure("ERR could not load Lab Id"))
+            return
+        }
+        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").document(equipmentId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))
-            } else {
-                let document = snapshot!.documents.first!
-                if let equipmentName = document.data()["name"] as? String,
-                    let quantity = document.data()["available"] as? Int,
-                    let description = document.data()["description"] as? String,
-                    let location = document.data()["location"] as? String,
-                    let pictureUrl = document.data()["pictureUrl"] as? String
-                {
-                    self.equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl)
+            if let document = document, document.exists {
+                let docData = document.data()!
+                let equipmentName = docData["name"] as! String
+                let quantity = docData["available"] as! Int
+                let description = docData["description"] as! String
+                let location = docData["location"] as! String
+                let pictureUrl = docData["pictureUrl"] as! String
+                self.equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl)
                     completion(.success)
-                } else {
-                    completion(.failure(error?.localizedDescription ?? "ERR converting Equipment Info into Equipment class"))
-                }
+            } else {
+                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))
             }
         }
     }

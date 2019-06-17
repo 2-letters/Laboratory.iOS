@@ -18,8 +18,8 @@ class EquipmentInfoVCSnapshotTest: FBSnapshotTestCase {
     
     func test() {
         let equipmentInfoVC = MyViewController.equipmentInfo.instance as! EquipmentInfoVC
-        // TODO change this to id
-        equipmentInfoVC.equipmentName = FakeData.equipmentName
+        
+        equipmentInfoVC.equipmentId = FakeData.equipmentId
         
         FBSnapshotVerifyView(equipmentInfoVC.view)
         FBSnapshotVerifyLayer(equipmentInfoVC.view.layer)

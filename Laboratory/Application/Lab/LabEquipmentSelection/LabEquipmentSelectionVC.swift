@@ -37,10 +37,10 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
             labEquipmentEditVC?.labId = labId
             if let addedEquipmentVM = sender as? LabEquipmentVM {
-                labEquipmentEditVC?.equipmentName = addedEquipmentVM.equipmentName
+                labEquipmentEditVC?.equipmentId = addedEquipmentVM.equipmentId
                 labEquipmentEditVC?.usingQuantity = addedEquipmentVM.quantity
             } else if let availableEquipmentVM = sender as? SimpleEquipmentVM {
-                labEquipmentEditVC?.equipmentName = availableEquipmentVM.equipmentName
+                labEquipmentEditVC?.equipmentId = availableEquipmentVM.equipmentId
             }
         }
     }
