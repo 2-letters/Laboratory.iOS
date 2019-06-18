@@ -19,6 +19,7 @@ class EquipmentListViewControllerUITest: MyUITestDelegate {
         app = XCUIApplication()
         app.launch()
         thisViewController = .equipmentList
+        goToEquipmentListViewController()
     }
     
     override func tearDown() {
@@ -45,14 +46,11 @@ class EquipmentListViewControllerUITest: MyUITestDelegate {
         searchBar.typeSomeText()
         searchBar.cancelTyping()
         
-        tapOutside()
+        swipeView(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         searchBar.tap()
         XCTAssert(app.keyboards.count > 0)
-        
-        swipeView(inVC: thisViewController)
-        XCTAssertEqual(app.keyboards.count, 0)
     }
     
     func testFirstCellHittable() {

@@ -36,14 +36,12 @@ class LabInfoViewControllerTest: XCTestCase {
         // GIVEN
         let navItem = sut.navigationItem
         let gestureRecognizers = sut.view.gestureRecognizers
-        let tapGestureRecognizer = gestureRecognizers?.first
         
         // THEN
         XCTAssertNotNil(navItem.rightBarButtonItem)
         XCTAssert(navItem.rightBarButtonItem?.target === sut)
         XCTAssertTrue(navItem.rightBarButtonItem?.action?.description == "saveBtnPressed")
         XCTAssertEqual(gestureRecognizers?.count, 1)
-        XCTAssertNotNil(tapGestureRecognizer)
     }
     
     func testViewWillAppear() {

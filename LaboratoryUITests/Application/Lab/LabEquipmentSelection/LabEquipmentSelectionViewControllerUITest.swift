@@ -32,7 +32,7 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
     
     func testViewsExist() {
         let doneButton = app.buttons[AccessibilityId.labEquipmentSelectionDoneButton.value]
-        let searchBar = app.searchFields[AccessibilityId.labEquipmentSelectionSearchBar.value]
+        let searchBar = getSearchBar(inVC: thisViewController)!
         let labEquipmentTV = app.tables[AccessibilityId.labEquipmentSelectionTableView.value]
         
         XCTAssertTrue(doneButton.exists)
@@ -48,15 +48,11 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
         searchBar.typeSomeText()
         searchBar.cancelTyping()
         
-        
-        tapOutside()
+        swipeView(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         searchBar.tap()
         XCTAssert(app.keyboards.count > 0)
-        
-        swipeView(inVC: thisViewController)
-        XCTAssertEqual(app.keyboards.count, 0)
     }
     
     func testFirstCellHittable() {

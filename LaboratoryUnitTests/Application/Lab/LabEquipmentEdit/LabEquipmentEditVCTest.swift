@@ -27,11 +27,9 @@ class LabEquipmentEditVCTest: XCTestCase {
     func testViewDidLoad() {
         // GIVEN
         let gestureRecognizers = sut.view.gestureRecognizers
-        let tapGestureRecognizer = gestureRecognizers?.first
         
         // THEN
         XCTAssertEqual(gestureRecognizers?.count, 1)
-        XCTAssertNotNil(tapGestureRecognizer)
         
         XCTAssertNotNil(sut.spinnerVC.view)
     }

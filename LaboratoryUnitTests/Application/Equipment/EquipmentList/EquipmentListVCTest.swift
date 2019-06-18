@@ -31,9 +31,11 @@ class EquipmentListVCTest: XCTestCase {
     
     func testViewDidLoad() {
         // GIVEN
+        let gestureRecognizers = sut.view.gestureRecognizers
         let navItem = sut.navigationItem
         
         // THEN
+        XCTAssertEqual(gestureRecognizers?.count, 1)
         XCTAssertEqual(navItem.title, "Equipments")
         XCTAssertNotNil(navItem.rightBarButtonItem)
         XCTAssert(navItem.rightBarButtonItem?.target === sut)

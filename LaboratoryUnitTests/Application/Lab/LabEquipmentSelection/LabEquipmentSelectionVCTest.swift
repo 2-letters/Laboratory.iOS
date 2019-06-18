@@ -28,7 +28,11 @@ class LabEquipmentSelectionVCTest: XCTestCase {
     }
     
     func testViewDidLoad() {
+        // GIVEN
+        let gestureRecognizers = sut.view.gestureRecognizers
+        
         // THEN
+        XCTAssertEqual(gestureRecognizers?.count, 1)
         XCTAssertEqual(sut.navigationItem.title, MyString.labEquipmentCollectionTitle)
         XCTAssertNotNil(sut.spinnerVC.view)
     }

@@ -33,9 +33,12 @@ class LabCollectionViewControllerTest: XCTestCase {
     
     func testViewDidLoad() {
         // GIVEN
+        let gestureRecognizers = sut.view.gestureRecognizers
+        
         let navItem = sut.navigationItem
         
         // THEN
+        XCTAssertEqual(gestureRecognizers?.count, 1)
         // test navigation bar
         XCTAssertEqual(navItem.title, "Labs")
         

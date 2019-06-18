@@ -120,6 +120,10 @@ extension UITestable where Self: XCTestCase {
         switch viewController {
         case .labCollection:
             searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.value]
+        case .labEquipmentSelection:
+            searchBar = app.otherElements[AccessibilityId.labEquipmentSelectionSearchBar.value]
+        case .equipmentList:
+            searchBar = app.otherElements[AccessibilityId.equipmentListSearchBar.value]
         default:
             return nil
         }
@@ -148,7 +152,7 @@ extension UITestable where Self: XCTestCase {
     func getFirstCell(inVC viewController: MyViewController) -> XCUIElement? {
         switch viewController {
         case .labCollection:
-            return app.collectionViews["labCollectionSearchBar"].cells.element(boundBy: 0)
+            return app.collectionViews[AccessibilityId.labCollectionView.value].cells.element(boundBy: 0)
         case .labEquipmentSelection:
             return app.tables[AccessibilityId.labEquipmentSelectionTableView.value].cells.element(boundBy: 0)
         case .equipmentList:
