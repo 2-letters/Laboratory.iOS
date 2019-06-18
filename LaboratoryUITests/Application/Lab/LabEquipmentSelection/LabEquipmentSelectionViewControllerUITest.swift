@@ -49,6 +49,7 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
         searchBar.cancelTyping()
         
         swipeView(inVC: thisViewController)
+        // todo: fail
         XCTAssertEqual(app.keyboards.count, 0)
         
         searchBar.tap()
@@ -57,6 +58,7 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
     
     func testFirstCellHittable() {
         let firstCell = getFirstCell(inVC: thisViewController)!
+        // todo: fail
         XCTAssertTrue(firstCell.isHittable)
     }
 }

@@ -44,6 +44,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         XCTAssertTrue(decreaseBtn.exists)
         XCTAssertTrue(increaseBtn.exists)
         XCTAssertTrue(removeBtn.exists)
+        // todo: fail
         XCTAssertTrue(equipmentInfoView.exists)
         XCTAssertTrue(usingQuantityTextField.exists)
         XCTAssertTrue(equipmentImageView.exists)
@@ -55,6 +56,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         usingQuantityTextField.typeSomeText()
         
         tapOutside()
+        // todo: fail
         XCTAssertEqual(app.keyboards.count, 0)
         
         usingQuantityTextField.tap()

@@ -77,21 +77,6 @@ extension UITestable where Self: XCTestCase {
         let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         let coordinate = normalized.withOffset(CGVector(dx: 1, dy: 1))
         coordinate.tap()
-        //        switch viewController {
-        //        case .labCollection:
-        //            view = app.collectionViews[AccessibilityId.labCollectionView.value]
-        //        case .labInfo:
-        //            view = app.tables[AccessibilityId.labInfoTableView.value]
-        //        case .labEquipmentSelection:
-        //            view = app.tables[AccessibilityId.labEquipmentSelectionTableView.value]
-        //        case .labEquipmentEdit:
-        //            view = app.tables[AccessibilityId.]
-        //        case .equipmentList:
-        //            view = app.tables[AccessibilityId.equipmentListTableView.value]
-        //        case .equipmentInfo:
-        ////            view = app.
-        //        }
-        //        view.tap()
     }
     
     func swipeView(inVC viewController: MyViewController) {

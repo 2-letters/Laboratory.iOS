@@ -59,6 +59,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         nameTextField.typeSomeText()
         
         tapOutside()
+        // todo: fail
         XCTAssertEqual(app.keyboards.count, 0)
         
         nameTextField.tap()
@@ -84,6 +85,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     
     func testAddEquipmentButtonHittable()  {
         let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.value]
+        // todo: fail
         XCTAssertTrue(addEquipmentButton.isHittable)
     }
     
@@ -91,6 +93,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         nameTextField.clearText()
         descriptionTextField.clearText()
         let alert = app.alerts[AlertCase.invalidLabInfoInput.description]
+        // todo: fail
         XCTAssertTrue(alert.exists)
         // close the alert
         proceedAlertButton(ofAlert: alert)
@@ -102,6 +105,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     
     func testSucceedAlertShowed() {
         let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.value]
+        // todo: fail
         XCTAssertTrue(saveButton.isEnabled)
         
         saveButton.tap()
