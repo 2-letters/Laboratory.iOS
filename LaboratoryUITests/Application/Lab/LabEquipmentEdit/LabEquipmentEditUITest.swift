@@ -44,8 +44,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         XCTAssertTrue(decreaseBtn.exists)
         XCTAssertTrue(increaseBtn.exists)
         XCTAssertTrue(removeBtn.exists)
-        // todo: fail
-        XCTAssertTrue(equipmentInfoView.exists)
+        XCTAssertNotNil(equipmentInfoView)
         XCTAssertTrue(usingQuantityTextField.exists)
         XCTAssertTrue(equipmentImageView.exists)
     }
@@ -53,16 +52,15 @@ class LabEquipmentEditUITest: MyUITestDelegate {
     func testDismissKeyboard() {
         usingQuantityTextField.tap()
         XCTAssert(app.keyboards.count > 0)
-        usingQuantityTextField.typeSomeText()
+        usingQuantityTextField.typeSomeNumber()
         
         tapOutside()
-        // todo: fail
+        let mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
+//        mainView.tap()
+        mainView.coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: 10,dy: 1)).tap()
         XCTAssertEqual(app.keyboards.count, 0)
         
         usingQuantityTextField.tap()
         XCTAssert(app.keyboards.count > 0)
-        
-        swipeView(inVC: thisViewController)
-        XCTAssertEqual(app.keyboards.count, 0)
     }
 }

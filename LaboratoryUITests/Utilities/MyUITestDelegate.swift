@@ -73,13 +73,12 @@ extension UITestable where Self: XCTestCase {
     
     // MARK: - Interactions
     func tapOutside() {
-        //        let view: XCUIElement
         let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
-        let coordinate = normalized.withOffset(CGVector(dx: 1, dy: 1))
+        let coordinate = normalized.withOffset(CGVector(dx: 10, dy: 1))
         coordinate.tap()
     }
     
-    func swipeView(inVC viewController: MyViewController) {
+    func swipeView(inVC viewController: MyViewController, toView view: XCUIElement? = nil) {
         let view: XCUIElement
         switch viewController {
         case .labCollection:
@@ -89,7 +88,7 @@ extension UITestable where Self: XCTestCase {
         case .labEquipmentSelection:
             view = app.tables[AccessibilityId.labEquipmentSelectionTableView.value]
         case .labEquipmentEdit:
-            view = app.otherElements[AccessibilityId.labEquipmentEditScrollView.value]
+            view = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
         case .equipmentList:
             view = app.tables[AccessibilityId.equipmentListTableView.value
             ]
@@ -97,7 +96,9 @@ extension UITestable where Self: XCTestCase {
             // todo fix this case, this is made up
             view = app.otherElements[AccessibilityId.equipmentInfoScrollView.value]
         }
-        view.swipeUp()
+//        let searchBar = getSearchBar(inVC: viewController)!
+        view.cells.element(boundBy: 2).press(forDuration: 1, thenDragTo: view)
+//        view.swipeUp()
     }
     
     func getSearchBar(inVC viewController: MyViewController) -> XCUIElement? {

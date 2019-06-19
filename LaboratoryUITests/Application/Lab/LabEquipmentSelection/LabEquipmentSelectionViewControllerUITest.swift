@@ -43,12 +43,13 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
     func testDismissKeyboard() {
         // test keyboard is shown
         let searchBar = getSearchBar(inVC: thisViewController)!
+        
         searchBar.tap()
         XCTAssert(app.keyboards.count > 0)
         searchBar.typeSomeText()
         searchBar.cancelTyping()
         
-        swipeView(inVC: thisViewController)
+        swipeView(inVC: thisViewController, toView: searchBar)
         // todo: fail
         XCTAssertEqual(app.keyboards.count, 0)
         
