@@ -13,7 +13,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     var app: XCUIApplication!
     var thisViewController: MyViewController!
     var nameTextField: XCUIElement!
-    var descriptionTextField: XCUIElement!
+    var descriptionTextView: XCUIElement!
 //    var nameText: String!
 //    var descriptionText: String!
     override func setUp() {
@@ -28,7 +28,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         goToLabInfoViewController()
         
         nameTextField = app.textFields[AccessibilityId.labInfoNameTextField.value]
-        descriptionTextField = app.textFields[AccessibilityId.labInfoDescriptionTextField.value]
+        descriptionTextView = app.textFields[AccessibilityId.labInfoDescriptionTextView.value]
 //        nameText = nameTextField.value as? String
 //        descriptionText = descriptionTextField.value as? String
     }
@@ -36,7 +36,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     override func tearDown() {
         app = nil
         nameTextField = nil
-        descriptionTextField = nil
+        descriptionTextView = nil
         super.tearDown()
     }
     
@@ -55,7 +55,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(addEquipmentsBtn.exists)
         XCTAssertTrue(tableView.exists)
         XCTAssertTrue(nameTextField.exists)
-        XCTAssertTrue(descriptionTextField.exists)
+        XCTAssertTrue(descriptionTextView.exists)
     }
     
     func testDismissKeyboard() {
@@ -72,23 +72,23 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         nameTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: thisViewController, toView: descriptionTextField)
+        swipeView(inVC: thisViewController, toView: descriptionTextView)
         sleep(2)
         XCTAssertEqual(app.keyboards.count, 0)
         
         // Test description text field
-        descriptionTextField.tap()
+        descriptionTextView.tap()
         XCTAssert(app.keyboards.count > 0)
-        descriptionTextField.typeText("la")
-        descriptionTextField.clearText()
+        descriptionTextView.typeText("la")
+        descriptionTextView.clearText()
         
         tapOutside(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
-        descriptionTextField.tap()
+        descriptionTextView.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: thisViewController, toView: descriptionTextField)
+        swipeView(inVC: thisViewController, toView: descriptionTextView)
         XCTAssertEqual(app.keyboards.count, 0)
     }
     
@@ -104,8 +104,8 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         // clear all inputs
         nameTextField.tap()
         nameTextField.deleteAllText()
-        descriptionTextField.tap()
-        descriptionTextField.deleteAllText()
+        descriptionTextView.tap()
+        descriptionTextView.deleteAllText()
         
         let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.value]
         saveButton.tap()

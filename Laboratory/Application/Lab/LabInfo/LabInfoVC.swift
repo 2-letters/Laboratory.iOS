@@ -77,7 +77,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         labInfoView.nameTextField.clearButtonMode = .whileEditing
         labInfoView.descriptionTextView.isEditable = true
-        labInfoView.descriptionTextView.clearButtonMode = .whileEditing
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
