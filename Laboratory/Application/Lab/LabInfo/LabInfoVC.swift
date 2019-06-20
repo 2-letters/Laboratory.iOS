@@ -65,6 +65,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     // MARK: Layout
     private func addMainView() {
         labInfoView = LabInfoView.instantiate()
+        labInfoView.removeFromSuperview()
         mainView.addSubview(labInfoView)
         labInfoView.frame = mainView.bounds
         labInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -73,6 +74,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func setupUI() {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
         navigationItem.rightBarButtonItem = saveBtn
+        
+        labInfoView.nameTextField.clearButtonMode = .whileEditing
+        labInfoView.descriptionTextField.clearButtonMode = .whileEditing
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
@@ -107,6 +111,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func addIdentifiers() {
+        mainView.accessibilityIdentifier = AccessibilityId.labInfoMainView.value
         saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.value
         labInfoView.nameTextField.accessibilityIdentifier = AccessibilityId.labInfoNameTextField.value
         labInfoView.descriptionTextField.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextField.value

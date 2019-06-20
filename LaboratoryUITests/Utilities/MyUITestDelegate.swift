@@ -23,11 +23,11 @@ protocol UITestable {
     func goToEquipmentInfoViewController()
     
     // Interactions
-    func tapOutside()
-    func swipeView(inVC viewController: MyViewController)
+    func tapOutside(inVC viewController: MyViewController)
+    func swipeView(inVC viewController: MyViewController, toView destinationView: XCUIElement?)
     func getSearchBar(inVC viewController: MyViewController) -> XCUIElement?
     func getFirstCell(inVC viewController: MyViewController) -> XCUIElement?
-    func proceedAlertButton(ofAlert alert: XCUIElement)
+    func proceedAlertButton(ofCase alertCase: AlertCase)
 }
 
 extension UITestable where Self: XCTestCase {
@@ -72,13 +72,22 @@ extension UITestable where Self: XCTestCase {
     
     
     // MARK: - Interactions
-    func tapOutside() {
-        let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
-        let coordinate = normalized.withOffset(CGVector(dx: 10, dy: 1))
+    func tapOutside(inVC viewController: MyViewController) {
+        let mainView: XCUIElement
+        switch viewController {
+        case .labInfo:
+            mainView = app.otherElements[AccessibilityId.labInfoMainView.value]
+        case .labEquipmentEdit:
+            mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
+        default:
+            return
+        }
+        
+        let coordinate = mainView.coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: 10,dy: 1))
         coordinate.tap()
     }
     
-    func swipeView(inVC viewController: MyViewController, toView view: XCUIElement? = nil) {
+    func swipeView(inVC viewController: MyViewController, toView destinationView: XCUIElement? = nil) {
         let view: XCUIElement
         switch viewController {
         case .labCollection:
@@ -97,8 +106,11 @@ extension UITestable where Self: XCTestCase {
             view = app.otherElements[AccessibilityId.equipmentInfoScrollView.value]
         }
 //        let searchBar = getSearchBar(inVC: viewController)!
-        view.cells.element(boundBy: 2).press(forDuration: 1, thenDragTo: view)
-//        view.swipeUp()
+        if let destinationView = destinationView {
+            view.cells.element(boundBy: 0).press(forDuration: 1, thenDragTo: destinationView)
+        } else {
+            view.swipeUp()
+        }
     }
     
     func getSearchBar(inVC viewController: MyViewController) -> XCUIElement? {
@@ -148,8 +160,24 @@ extension UITestable where Self: XCTestCase {
         }
     }
     
-    func proceedAlertButton(ofAlert alert: XCUIElement) {
-        let alertButton = app.buttons[alert.accessibilityValue!]
+    func proceedAlertButton(ofCase alertCase: AlertCase) {
+        let buttonText: String
+        
+        switch alertCase {
+        case .invalidLabInfoInput,
+             .failToSaveLab,
+             .succeedToSaveLab,
+             .failToLoadEquipments,
+             .failToLoadLabEquipments,
+             .failToLoadEquipmentInfo,
+             .failToSaveEquipmentEdit:
+            buttonText = AlertString.okay
+            
+        case .createLabToAddEquipments:
+            buttonText = AlertString.yes
+        }
+        
+        let alertButton = app.buttons[buttonText]
         alertButton.tap()
     }
 }

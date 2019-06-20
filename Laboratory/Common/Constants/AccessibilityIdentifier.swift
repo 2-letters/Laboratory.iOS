@@ -15,6 +15,7 @@ enum AccessibilityId {
     case labCollectionView
     
     // Lab Info VC
+    case labInfoMainView
     case labInfoSaveButton
     case labInfoNameTextField
     case labInfoDescriptionTextField
@@ -27,6 +28,7 @@ enum AccessibilityId {
     case labEquipmentSelectionTableView
     
     // Lab Equipment Edit VC
+    case labEquipmentEditBackButton
     case labEquipmentEditScrollView
     case labEquipmentEditSaveButton
     case labEquipmentEditUsingQuantityTextField

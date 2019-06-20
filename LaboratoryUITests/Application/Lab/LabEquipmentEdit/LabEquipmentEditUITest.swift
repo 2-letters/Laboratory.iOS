@@ -32,6 +32,13 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         super.tearDown()
     }
     
+    func testBackButton() {
+        let backButton = app.navigationBars.buttons.element(boundBy: 0)
+        
+        XCTAssertTrue(backButton.exists)
+        backButton.tap()
+    }
+    
     func testViewsExist() {
         let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.value]
         let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.value]
@@ -54,13 +61,34 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         XCTAssert(app.keyboards.count > 0)
         usingQuantityTextField.typeSomeNumber()
         
-        tapOutside()
-        let mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
-//        mainView.tap()
-        mainView.coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: 10,dy: 1)).tap()
+        tapOutside(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         usingQuantityTextField.tap()
         XCTAssert(app.keyboards.count > 0)
+    }
+    
+    func testChangingQuantity() {
+        // GIVEN
+        sleep(2)
+        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.value]
+        let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.value]
+        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.value]
+        let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.value]
+        let usingQuantity = usingQuantityTextField.value as! String
+        
+        // WHEN
+        decreaseBtn.tap()
+        increaseBtn.tap()
+        decreaseBtn.tap()
+        increaseBtn.tap()
+        removeBtn.tap()
+        
+        usingQuantityTextField.tap()
+        usingQuantityTextField.deleteAllText()
+        usingQuantityTextField.typeText(usingQuantity)
+        tapOutside(inVC: thisViewController)
+        
+        XCTAssertFalse(saveBtn.isEnabled)
     }
 }

@@ -14,8 +14,8 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     var thisViewController: MyViewController!
     var nameTextField: XCUIElement!
     var descriptionTextField: XCUIElement!
-    var nameText: String!
-    var descriptionText: String!
+//    var nameText: String!
+//    var descriptionText: String!
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -29,8 +29,8 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         
         nameTextField = app.textFields[AccessibilityId.labInfoNameTextField.value]
         descriptionTextField = app.textFields[AccessibilityId.labInfoDescriptionTextField.value]
-        nameText = nameTextField.value as? String
-        descriptionText = descriptionTextField.value as? String
+//        nameText = nameTextField.value as? String
+//        descriptionText = descriptionTextField.value as? String
     }
     
     override func tearDown() {
@@ -38,6 +38,13 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         nameTextField = nil
         descriptionTextField = nil
         super.tearDown()
+    }
+    
+    func testBackButton() {
+        let backButton = app.navigationBars.buttons.element(boundBy: 0)
+        
+        XCTAssertTrue(backButton.exists)
+        backButton.tap()
     }
     
     func testViewsExist() {
@@ -57,60 +64,74 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         nameTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         nameTextField.typeSomeText()
+        nameTextField.clearText()
         
-        tapOutside()
-        // todo: fail
+        tapOutside(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         nameTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: thisViewController)
+        swipeView(inVC: thisViewController, toView: descriptionTextField)
+        sleep(2)
         XCTAssertEqual(app.keyboards.count, 0)
         
         // Test description text field
         descriptionTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         descriptionTextField.typeText("la")
+        descriptionTextField.clearText()
         
-        tapOutside()
+        tapOutside(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)
         
         descriptionTextField.tap()
         XCTAssert(app.keyboards.count > 0)
         
-        swipeView(inVC: thisViewController)
+        swipeView(inVC: thisViewController, toView: descriptionTextField)
         XCTAssertEqual(app.keyboards.count, 0)
     }
     
+    
     func testAddEquipmentButtonHittable()  {
         let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.value]
-        // todo: fail
+        sleep(2)
         XCTAssertTrue(addEquipmentButton.isHittable)
     }
     
     func testInvalidInput() {
-        nameTextField.clearText()
-        descriptionTextField.clearText()
+        sleep(2)
+        // clear all inputs
+        nameTextField.tap()
+        nameTextField.deleteAllText()
+        descriptionTextField.tap()
+        descriptionTextField.deleteAllText()
+        
+        let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.value]
+        saveButton.tap()
+        
         let alert = app.alerts[AlertCase.invalidLabInfoInput.description]
-        // todo: fail
         XCTAssertTrue(alert.exists)
         // close the alert
-        proceedAlertButton(ofAlert: alert)
-        
-        // redo the text
-        nameTextField.typeText(nameText)
-        descriptionTextField.typeText(descriptionText)
+        proceedAlertButton(ofCase: .invalidLabInfoInput)
     }
     
     func testSucceedAlertShowed() {
         let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.value]
-        // todo: fail
+        
+        // do some text change to enable saveButton
+        sleep(2)
+        let nameText = nameTextField.value as! String
+        nameTextField.tap()
+        nameTextField.deleteAllText()
+        nameTextField.typeText(nameText)
         XCTAssertTrue(saveButton.isEnabled)
         
+        
         saveButton.tap()
+        // tap on alert button
         let alert = app.alerts[AlertCase.succeedToSaveLab.description]
         XCTAssertTrue(alert.exists)
-        proceedAlertButton(ofAlert: alert)
+        proceedAlertButton(ofCase: .succeedToSaveLab)
     }
 }

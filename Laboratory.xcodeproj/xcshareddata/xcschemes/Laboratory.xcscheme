@@ -48,14 +48,6 @@
                BlueprintName = "LaboratoryUnitTests"
                ReferencedContainer = "container:Laboratory.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "FirestoreSvcTest">
-               </Test>
-               <Test
-                  Identifier = "LabCollectionViewControllerUITest">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

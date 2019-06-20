@@ -45,7 +45,7 @@ class LabCollectionViewControllerUITest: MyUITestDelegate {
         searchBar.tap()
         XCTAssert(app.keyboards.count > 0)
         searchBar.typeSomeText()
-        searchBar.cancelTyping()
+        searchBar.clearText()
         
         swipeView(inVC: thisViewController)
         XCTAssertEqual(app.keyboards.count, 0)

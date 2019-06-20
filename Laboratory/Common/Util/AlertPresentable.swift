@@ -83,14 +83,11 @@ extension AlertPresentable where Self: UIViewController {
         case .invalidLabInfoInput, .failToSaveLab, .succeedToSaveLab,
              .failToLoadEquipments, .failToLoadLabEquipments, .failToLoadEquipmentInfo:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))
-            ac.view.accessibilityValue = AlertString.okay
         case .createLabToAddEquipments:
             ac.addAction(UIAlertAction(title: AlertString.yes, style: .default, handler: handler))
             ac.addAction(UIAlertAction(title: AlertString.no, style: .destructive, handler: nil))
-            ac.view.accessibilityValue = AlertString.yes
         case .failToSaveEquipmentEdit:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
-            ac.view.accessibilityValue = AlertString.okay
         }
         // present
         self.present(ac, animated: true, completion: nil)

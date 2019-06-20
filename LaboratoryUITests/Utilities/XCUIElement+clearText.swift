@@ -18,7 +18,7 @@ extension XCUIElement {
         self.typeText("5")
     }
     
-    func clearText() {
+    func deleteAllText() {
         guard let stringValue = self.value as? String else { return }
         // if the textfield is empty, value and placeholderValue are equal
         if let placeholderString = self.placeholderValue, placeholderString == stringValue {
@@ -29,7 +29,7 @@ extension XCUIElement {
         self.typeText(deleteString)
     }
     
-    func cancelTyping() {
+    func clearText() {
         let canceBtn: XCUIElement?
         canceBtn = self.buttons["Clear text"]
         XCTAssertNotNil(canceBtn)
