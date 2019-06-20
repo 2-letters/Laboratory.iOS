@@ -76,7 +76,8 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         navigationItem.rightBarButtonItem = saveBtn
         
         labInfoView.nameTextField.clearButtonMode = .whileEditing
-        labInfoView.descriptionTextField.clearButtonMode = .whileEditing
+        labInfoView.descriptionTextView.isEditable = true
+        labInfoView.descriptionTextView.clearButtonMode = .whileEditing
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
@@ -107,14 +108,16 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         labEquipmentTableView.dataSource = self
         labEquipmentTableView.keyboardDismissMode = .onDrag
         labInfoView.nameTextField.delegate = self
-        labInfoView.descriptionTextField.delegate = self
+        labInfoView.descriptionTextView.delegate = self
     }
     
     private func addIdentifiers() {
         mainView.accessibilityIdentifier = AccessibilityId.labInfoMainView.value
         saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.value
         labInfoView.nameTextField.accessibilityIdentifier = AccessibilityId.labInfoNameTextField.value
-        labInfoView.descriptionTextField.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextField.value
+        labInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.value
+        
+        
         labInfoView.addEquipmentsBtn.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.value
         labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.value
     }
@@ -140,7 +143,8 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func updateUI() {
         // setup the Lab info views
         labInfoView.nameTextField.text = viewModel.labName
-        labInfoView.descriptionTextField.text = viewModel.description
+        LayoutUtil.adjustUITextViewHeight(arg: labInfoView.descriptionTextView)
+        labInfoView.descriptionTextView.text = viewModel.description
     }
 }
 
@@ -177,7 +181,8 @@ extension LabInfoVC {
     
     private func tryToSaveLab(toAddEquipments: Bool) {
         let newLabName = labInfoView.nameTextField.text ?? ""
-        let newLabDescription = labInfoView.descriptionTextField.text ?? ""
+        let newLabDescription = labInfoView.descriptionTextView.text ?? ""
+
         
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
             presentAlert(forCase: .invalidLabInfoInput)
@@ -223,6 +228,13 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
 
 extension LabInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // there's some change, enable save Button
+        saveBtn.isEnabled = true
+    }
+}
+
+extension LabInfoVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         // there's some change, enable save Button
         saveBtn.isEnabled = true
     }

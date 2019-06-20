@@ -18,7 +18,7 @@ enum AccessibilityId {
     case labInfoMainView
     case labInfoSaveButton
     case labInfoNameTextField
-    case labInfoDescriptionTextField
+    case labInfoDescriptionTextView
     case labInfoAddEquipmentButton
     case labInfoTableView
     
@@ -51,20 +51,3 @@ enum AccessibilityId {
         return String(describing: self)
     }
 }
-
-//struct AccessibilityIdentifier {
-//    // Lab Collection VC
-//    static let labCollectionNavigationBar = "labCollectionNavigationBar"
-//    static let labCollectionSearchBar = "labCollectionSearchBar"
-//    static let labCollectionView = "labCollectionView"
-//    
-//    // Lab Info VC
-//    static let labInfoSaveButton = "labInfoSaveNavigationButton"
-//    static let labInfoNameTextField = "labInfoNameTextField"
-//    static let labInfoDescriptionTextField = "labInfoDescriptionTextField"
-//    static let labInfoAddEquipmentButton = "labInfoAddEquipmentButton"
-//    static let labInfoTableView = "labInfoTableView"
-//    
-//    // Lab Equipment Selection VC
-//    static let labEquipmentSelectionDoneButton = "labEquipmentSelectionDoneButton"
-//}

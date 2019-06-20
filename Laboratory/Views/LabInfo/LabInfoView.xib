@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
-                    <rect key="frame" x="20" y="52" width="374" height="169"/>
+                    <rect key="frame" x="20" y="52" width="374" height="267"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
                             <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -37,14 +37,14 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OCt-80-gVw">
-                            <rect key="frame" x="0.0" y="95" width="374" height="30"/>
-                            <nil key="textColor"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="fake description fake description fake description fake description fake description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-lF-bNE">
+                            <rect key="frame" x="0.0" y="95" width="374" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-bB-Eni">
-                            <rect key="frame" x="0.0" y="133" width="374" height="36"/>
+                            <rect key="frame" x="0.0" y="231" width="374" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="Xd6-tA-RiU"/>
                             </constraints>
@@ -53,15 +53,15 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="KyW-6i-9gj" secondAttribute="trailing" id="Ipy-fU-efG"/>
-                        <constraint firstAttribute="trailing" secondItem="OCt-80-gVw" secondAttribute="trailing" id="Pup-G5-BUR"/>
+                        <constraint firstAttribute="trailing" secondItem="7fa-lF-bNE" secondAttribute="trailing" id="QBB-U9-iaZ"/>
                         <constraint firstItem="gSt-bB-Eni" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="Xxl-Og-Zc5"/>
+                        <constraint firstItem="7fa-lF-bNE" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="fIP-MR-Ns6"/>
                         <constraint firstItem="KyW-6i-9gj" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="lfK-nC-WIJ"/>
                         <constraint firstAttribute="trailing" secondItem="gSt-bB-Eni" secondAttribute="trailing" id="mtm-ni-DC0"/>
-                        <constraint firstItem="OCt-80-gVw" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="pmg-9c-db6"/>
                     </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7i-yQ-Tle">
-                    <rect key="frame" x="0.0" y="221" width="414" height="641"/>
+                    <rect key="frame" x="0.0" y="319" width="414" height="543"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -78,7 +78,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addEquipmentsBtn" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
-                <outlet property="descriptionTextField" destination="OCt-80-gVw" id="b68-dq-cZn"/>
+                <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="BJj-bj-DaU"/>
                 <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
                 <outlet property="nameTextField" destination="KyW-6i-9gj" id="i3K-VI-hEe"/>
             </connections>

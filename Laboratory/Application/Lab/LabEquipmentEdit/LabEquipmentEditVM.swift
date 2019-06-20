@@ -24,7 +24,7 @@ struct LabEquipmentEditVM {
         
     }
     var available: Int {
-        return equipmentInfoVM.equipment?.available ?? 0
+        return equipmentInfoVM.equipment!.available
     }
     var isDecreaseBtnEnabled: Bool {
         return editingQuantity != 0

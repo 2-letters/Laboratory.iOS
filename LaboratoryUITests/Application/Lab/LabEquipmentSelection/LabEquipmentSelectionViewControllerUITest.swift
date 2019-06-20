@@ -58,7 +58,6 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
     
     func testFirstCellHittable() {
         let firstCell = getFirstCell(inVC: thisViewController)!
-        // todo: fail
         sleep(2)
         XCTAssertTrue(firstCell.exists)
         XCTAssertTrue(firstCell.isHittable)
