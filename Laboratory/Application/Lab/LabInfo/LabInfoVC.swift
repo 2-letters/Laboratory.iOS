@@ -83,17 +83,18 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
-        
+        let addEquipmentButton = labInfoView.addEquipmentsBtn!
         if isCreatingNewLab {
-            labInfoView.addEquipmentsBtn.setTitle("Add Equipments ...", for: .normal)
-            labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
+            addEquipmentButton.setTitle("Add Equipments ...", for: .normal)
+            addEquipmentButton.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
         } else {
-            labInfoView.addEquipmentsBtn.setTitle("Edit Equipments ...", for: .normal)
-            labInfoView.addEquipmentsBtn.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
+            addEquipmentButton.setTitle("Edit Equipments ...", for: .normal)
+            addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
         
-        labInfoView.addEquipmentsBtn.backgroundColor = Color.lightGreen
-        labInfoView.addEquipmentsBtn.setTitleColor(UIColor.white, for: .normal)
+        addEquipmentButton.backgroundColor = Color.lightGreen
+        addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
+        addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 16)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
