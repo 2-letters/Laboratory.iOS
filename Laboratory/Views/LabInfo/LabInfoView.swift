@@ -12,7 +12,7 @@ class LabInfoView: UIView {
 
 //    @IBOutlet var contentView: UIView!
 //    static let nibName = "LabInfoView"
-    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var nameTextView: UITextView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var addEquipmentsBtn: UIButton!
     @IBOutlet var labEquipmentTV: UITableView!

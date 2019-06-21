@@ -17,7 +17,7 @@ enum AccessibilityId {
     // Lab Info VC
     case labInfoMainView
     case labInfoSaveButton
-    case labInfoNameTextField
+    case labInfoNameTextView
     case labInfoDescriptionTextView
     case labInfoAddEquipmentButton
     case labInfoTableView
