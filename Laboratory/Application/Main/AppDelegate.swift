@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // change Navigation Bar Background Color
-        UINavigationBar.appearance().barTintColor = Color.lightLavender
+        UINavigationBar.appearance().barTintColor = MyColor.lightLavender
         // change Back button title & icon color
         UINavigationBar.appearance().tintColor = UIColor.white
         // To change Navigation Bar Title Color

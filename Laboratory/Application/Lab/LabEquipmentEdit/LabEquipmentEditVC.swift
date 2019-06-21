@@ -60,7 +60,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
         
-        separatingLine.backgroundColor = Color.separatingLine
+        separatingLine.backgroundColor = MyColor.separatingLine
         
         usingQuantityTextField.delegate = self
         scrollView.keyboardDismissMode = .onDrag

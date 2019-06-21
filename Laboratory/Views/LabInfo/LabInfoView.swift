@@ -14,7 +14,8 @@ class LabInfoView: UIView {
 //    static let nibName = "LabInfoView"
     @IBOutlet var nameTextView: UITextView!
     @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet var addEquipmentsBtn: UIButton!
+    @IBOutlet var addEquipmentButton: UIButton!
+    @IBOutlet var deleteLabButton: UIButton!
     @IBOutlet var labEquipmentTV: UITableView!
     
     static func instantiate() -> LabInfoView {

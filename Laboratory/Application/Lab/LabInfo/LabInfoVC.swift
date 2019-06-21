@@ -41,8 +41,10 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         super.viewWillAppear(animated)
         if isCreatingNewLab {
             navigationItem.title = MyString.labCreateTitle
+            labInfoView.deleteLabButton.isHidden = true
         } else {
             navigationItem.title = MyString.labEditTitle
+            labInfoView.deleteLabButton.isHidden = false
         }
     }
     
@@ -83,18 +85,23 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
-        let addEquipmentButton = labInfoView.addEquipmentsBtn!
+        let addEquipmentButton = labInfoView.addEquipmentButton!
         if isCreatingNewLab {
-            addEquipmentButton.setTitle("Add Equipments ...", for: .normal)
+            addEquipmentButton.setTitle("Add Equipments", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
         } else {
-            addEquipmentButton.setTitle("Edit Equipments ...", for: .normal)
+            addEquipmentButton.setTitle("Edit Equipments", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
         
-        addEquipmentButton.backgroundColor = Color.lightGreen
+        addEquipmentButton.backgroundColor = MyColor.lightGreen
         addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
-        addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 16)
+        addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        
+        let deleteLabButton = labInfoView.deleteLabButton!
+        deleteLabButton.backgroundColor = MyColor.superLightGreen
+        deleteLabButton.setTitleColor(MyColor.redWarning, for: .normal)
+        deleteLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
@@ -118,7 +125,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         labInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.value
         
         
-        labInfoView.addEquipmentsBtn.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.value
+        labInfoView.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.value
         labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.value
     }
     

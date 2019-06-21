@@ -27,11 +27,13 @@ extension UITextView {
         
         self.isScrollEnabled = false
         self.font = UIFont(name: secondaryFont, size: 20)
+        // remove left padding
+        self.textContainer.lineFragmentPadding = 0
     }
     
     func highlight() {
         self.layer.shadowOffset = CGSize(width: 0.0, height: 3)
-        self.layer.shadowColor = Color.lightBlue.cgColor
+        self.layer.shadowColor = MyColor.lightBlue.cgColor
     }
     
     func unhighlight() {
