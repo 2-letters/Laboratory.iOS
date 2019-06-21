@@ -23,6 +23,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         addTapRecognizer()
         addMainView()
+        setupUI()
         showSpinner()
         loadEquipmentInfo()
     }
@@ -32,6 +33,11 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         mainView.addSubview(equipmentInfoView)
         equipmentInfoView.frame = mainView.bounds
         equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    private func setupUI() {
+        equipmentInfoView.locationTextView.customize()
+        equipmentInfoView.descriptionTextView.customize()
     }
 
     private func loadEquipmentInfo() {
@@ -53,10 +59,10 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func updateUI() {
         equipmentInfoView.availableLabel.text = viewModel.availableString
         equipmentInfoView.nameLabel.text = viewModel.equipmentName
+        
+        
         equipmentInfoView.locationTextView.text = viewModel.location
-        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
         equipmentInfoView.descriptionTextView.text = viewModel.description
-        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
         do {
             let url = URL(string: viewModel.pictureUrl)!
             let data = try Data(contentsOf: url)

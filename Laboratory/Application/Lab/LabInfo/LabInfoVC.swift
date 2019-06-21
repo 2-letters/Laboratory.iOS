@@ -76,7 +76,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         navigationItem.rightBarButtonItem = saveBtn
         
         labInfoView.nameTextField.clearButtonMode = .whileEditing
-        labInfoView.descriptionTextView.isEditable = true
+        labInfoView.descriptionTextView.customize(isEditable: true)
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
@@ -142,7 +142,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func updateUI() {
         // setup the Lab info views
         labInfoView.nameTextField.text = viewModel.labName
-        LayoutUtil.adjustUITextViewHeight(arg: labInfoView.descriptionTextView)
         labInfoView.descriptionTextView.text = viewModel.description
     }
 }
@@ -235,6 +234,24 @@ extension LabInfoVC: UITextFieldDelegate {
 extension LabInfoVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         // there's some change, enable save Button
+        
         saveBtn.isEnabled = true
+        textView.highlight()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.unhighlight()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        var textLimit = 0
+        
+        if textView == labInfoView.descriptionTextView {
+            textLimit = 500
+        } else if textView == labInfoView.nameTextField {
+            textLimit = 100
+        }
+        
+        return textView.text.count + text.count - range.length < textLimit
     }
 }

@@ -99,14 +99,13 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private func updateEquipmentInfoLayout() {
         let equipmentInfoVM = viewModel.equipmentInfoVM
+        let locationTextView = equipmentInfoView.locationTextView!
+        let descriptionTextView = equipmentInfoView.descriptionTextView!
+        
         equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
         equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
-        equipmentInfoView.locationTextView.text = equipmentInfoVM.location
-        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.locationTextView)
-        equipmentInfoView.locationTextView.isEditable = false
-        equipmentInfoView.descriptionTextView.text = equipmentInfoVM.description
-        LayoutUtil.adjustUITextViewHeight(arg: equipmentInfoView.descriptionTextView)
-        equipmentInfoView.descriptionTextView.isEditable = false
+        locationTextView.customize(withText: equipmentInfoVM.location)
+        descriptionTextView.customize(withText: equipmentInfoVM.description)
         do {
             let url = URL(string: equipmentInfoVM.pictureUrl)!
             let data = try Data(contentsOf: url)

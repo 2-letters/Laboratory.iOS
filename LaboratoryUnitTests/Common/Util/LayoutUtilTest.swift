@@ -29,7 +29,7 @@ class LayoutUtilTest: XCTestCase {
         let mockTextView = MockTextView()
         
         // WHEN
-        LayoutUtil.adjustUITextViewHeight(arg: mockTextView)
+//        LayoutUtil.adjustUITextViewHeight(arg: mockTextView)
         
         // THEN
         XCTAssertTrue(mockTextView.translatesAutoresizingMaskIntoConstraints)

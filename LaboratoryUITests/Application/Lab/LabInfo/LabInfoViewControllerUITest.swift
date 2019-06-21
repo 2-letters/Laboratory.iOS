@@ -14,8 +14,6 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     var thisViewController: MyViewController!
     var nameTextField: XCUIElement!
     var descriptionTextView: XCUIElement!
-//    var nameText: String!
-//    var descriptionText: String!
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -29,8 +27,6 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         
         nameTextField = app.textFields[AccessibilityId.labInfoNameTextField.value]
         descriptionTextView = app.textFields[AccessibilityId.labInfoDescriptionTextView.value]
-//        nameText = nameTextField.value as? String
-//        descriptionText = descriptionTextField.value as? String
     }
     
     override func tearDown() {
