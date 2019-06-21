@@ -16,35 +16,35 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
-                    <rect key="frame" x="20" y="52" width="374" height="365"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
+                    <rect key="frame" x="20" y="52" width="374" height="212"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
-                            <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-9h-ENZ">
-                            <rect key="frame" x="0.0" y="28.5" width="374" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBV-CB-8hv">
-                            <rect key="frame" x="0.0" y="164.5" width="88" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
+                            <rect key="frame" x="0.0" y="61.5" width="45" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-lF-bNE">
-                            <rect key="frame" x="0.0" y="193" width="374" height="128"/>
+                            <rect key="frame" x="0.0" y="88" width="374" height="55.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBV-CB-8hv">
+                            <rect key="frame" x="0.0" y="149.5" width="88" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-bB-Eni">
-                            <rect key="frame" x="0.0" y="329" width="374" height="36"/>
+                            <rect key="frame" x="0.0" y="176" width="374" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="Xd6-tA-RiU"/>
                             </constraints>
@@ -61,7 +61,7 @@
                     </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7i-yQ-Tle">
-                    <rect key="frame" x="0.0" y="417" width="414" height="445"/>
+                    <rect key="frame" x="0.0" y="272" width="414" height="590"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -71,7 +71,7 @@
                 <constraint firstItem="x5K-7B-HEu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DYQ-kX-TDC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e7i-yQ-Tle" secondAttribute="trailing" id="noV-sa-aMz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x5K-7B-HEu" secondAttribute="trailing" constant="20" id="pEQ-sA-cmk"/>
-                <constraint firstItem="e7i-yQ-Tle" firstAttribute="top" secondItem="x5K-7B-HEu" secondAttribute="bottom" id="sNo-Xg-RXu"/>
+                <constraint firstItem="e7i-yQ-Tle" firstAttribute="top" secondItem="x5K-7B-HEu" secondAttribute="bottom" constant="8" id="sNo-Xg-RXu"/>
                 <constraint firstItem="x5K-7B-HEu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="uU8-54-U21"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="e7i-yQ-Tle" secondAttribute="bottom" id="uVk-hE-SpD"/>
             </constraints>
