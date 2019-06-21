@@ -67,8 +67,8 @@ class LabInfoVM {
             let newLab = Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
                 .collection("labs").document()
             newLab.setData([
-                "labName": labName,
-                "description": description
+                "labName": newName,
+                "description": newDescription
             ]) { err in
                 if let err = err {
                     completion(.failure("ERR creating a new Lab \(err)"))
@@ -77,5 +77,21 @@ class LabInfoVM {
                 }
             }
         }
+    }
+    
+    func removeLab(withId labId: String?, completion: @escaping DeleteFirestoreHandler) {
+        guard let labId = labId else {
+            completion(.failure("ERR could not find Lab Id"))
+            return
+        }
+        
+        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).delete() { err in
+            if let err = err {
+                completion(.failure("Error removing document: \(err)"))
+            } else {
+                completion(.success)
+            }
+        }
+
     }
 }

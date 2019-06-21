@@ -55,7 +55,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="PCJ-rH-kfc"/>
                             </constraints>
-                            <state key="normal" title="🗑️ Delete Lab">
+                            <state key="normal" title="🗑️ Remove Lab">
                                 <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                             </state>
                         </button>
@@ -89,10 +89,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addEquipmentButton" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
-                <outlet property="deleteLabButton" destination="Dck-os-CAM" id="Z0F-dT-fR9"/>
                 <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="BJj-bj-DaU"/>
                 <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
                 <outlet property="nameTextView" destination="I5b-9h-ENZ" id="kb5-KD-PUr"/>
+                <outlet property="removeLabButton" destination="Dck-os-CAM" id="Z0F-dT-fR9"/>
             </connections>
         </view>
     </objects>

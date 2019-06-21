@@ -31,6 +31,12 @@ enum UpdateFirestoreResult {
     case failure(String)
 }
 
+typealias DeleteFirestoreHandler = (DeleteFirestoreResult) -> Void
+
+enum DeleteFirestoreResult {
+    case success
+    case failure(String)
+}
 
 typealias FetchAllEquipmentHandler = (FetchAllEquipmentResult) -> Void
 
@@ -40,9 +46,11 @@ enum FetchAllEquipmentResult {
 }
 
 
+
 typealias FetchLabEquipmentHandler = (FetchLabEquipmentResult) -> Void
 
 enum FetchLabEquipmentResult {
     case success([LabEquipment])
     case failure(String)
 }
+

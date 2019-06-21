@@ -11,7 +11,6 @@ import UIKit
 // for both LabInfoVC and LabCreateVC
 class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var isCreatingNewLab: Bool = false
-    private var isLabCreated: Bool = false
     var labId: String?
 
     @IBOutlet private var mainView: UIView!
@@ -41,10 +40,10 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         super.viewWillAppear(animated)
         if isCreatingNewLab {
             navigationItem.title = MyString.labCreateTitle
-            labInfoView.deleteLabButton.isHidden = true
+            labInfoView.removeLabButton.isHidden = true
         } else {
             navigationItem.title = MyString.labEditTitle
-            labInfoView.deleteLabButton.isHidden = false
+            labInfoView.removeLabButton.isHidden = false
         }
     }
     
@@ -93,15 +92,15 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
             addEquipmentButton.setTitle("Edit Equipments", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
-        
         addEquipmentButton.backgroundColor = MyColor.lightGreen
         addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
         addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
-        let deleteLabButton = labInfoView.deleteLabButton!
-        deleteLabButton.backgroundColor = MyColor.superLightGreen
-        deleteLabButton.setTitleColor(MyColor.redWarning, for: .normal)
-        deleteLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        let removeLabButton = labInfoView.removeLabButton!
+        removeLabButton.addTarget(self, action: #selector(attemptToRemoveLab), for: .touchUpInside)
+        removeLabButton.backgroundColor = MyColor.superLightGreen
+        removeLabButton.setTitleColor(MyColor.redWarning, for: .normal)
+        removeLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
@@ -157,26 +156,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 
 // MARK: - User Interaction
 extension LabInfoVC {
-    @objc private func editEquipments() {
-        goToEquipmentsSelect()
-    }
-    
-    @objc private func addEquipments() {
-        if isLabCreated {
-            goToEquipmentsSelect()
-        } else {
-            presentAlert(forCase: .createLabToAddEquipments, handler: createLabToAddEquipments)
-        }
-    }
-    
-    @objc private func saveBtnPressed() {
-        tryToSaveLab(toAddEquipments: false)
-    }
-    
-    private func createLabToAddEquipments(alert: UIAlertAction!) {
-        tryToSaveLab(toAddEquipments: true)
-    }
-    
     private func goBackAndReload(alert: UIAlertAction!) {
         self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
     }
@@ -185,7 +164,44 @@ extension LabInfoVC {
         performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
     }
     
-    private func tryToSaveLab(toAddEquipments: Bool) {
+    @objc private func editEquipments() {
+        goToEquipmentsSelect()
+    }
+    
+    @objc private func addEquipments() {
+        if isCreatingNewLab {
+            presentAlert(forCase: .attemptCreateLabToAddEquipments, handler: createLabToAddEquipments)
+        } else {
+            goToEquipmentsSelect()
+        }
+    }
+    
+    private func createLabToAddEquipments(alert: UIAlertAction!) {
+        attemptToSaveLab(toAddEquipments: true)
+    }
+    
+    @objc private func attemptToRemoveLab() {
+        presentAlert(forCase: .attemptToRemoveLab, handler: removeLab)
+    }
+    
+    private func removeLab(alert: UIAlertAction!) {
+        viewModel.removeLab(withId: labId) { [weak self] (deleteResult) in
+            guard let self = self else { return }
+            switch deleteResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                self.presentAlert(forCase: .failToRemoveLab)
+            case .success:
+                self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+            }
+        }
+    }
+    
+    @objc private func saveBtnPressed() {
+        attemptToSaveLab(toAddEquipments: false)
+    }
+    
+    private func attemptToSaveLab(toAddEquipments: Bool) {
         let newLabName = labInfoView.nameTextView.text ?? ""
         let newLabDescription = labInfoView.descriptionTextView.text ?? ""
 
@@ -205,7 +221,7 @@ extension LabInfoVC {
                     self.presentAlert(forCase: .failToSaveLab)
                 case let .success(newLabId):
                     if toAddEquipments {
-                        self.isLabCreated = true
+                        self.isCreatingNewLab = false
                         self.labId = newLabId
                         self.goToEquipmentsSelect()
                     } else {
