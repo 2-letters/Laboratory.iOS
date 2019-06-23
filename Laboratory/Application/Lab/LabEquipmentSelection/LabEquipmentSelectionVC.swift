@@ -85,9 +85,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     }
     
     private func addIdentifiers() {
-        doneButton.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionDoneButton.value
-        searchBar.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionSearchBar.value
-        labEquipmentTV.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionTableView.value
+        doneButton.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionDoneButton.description
+        searchBar.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionSearchBar.description
+        labEquipmentTV.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionTableView.description
     }
     
     private func loadEquipments() {

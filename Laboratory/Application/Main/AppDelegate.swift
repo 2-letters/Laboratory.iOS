@@ -15,38 +15,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
             
-        NSSetUncaughtExceptionHandler { exception in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGABRT) { _ in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGILL) { _ in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGSEGV) { _ in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGFPE) { _ in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGBUS) { _ in
-            print(Thread.callStackSymbols)
-        }
-        
-        signal(SIGPIPE) { _ in
-            print(Thread.callStackSymbols)
-        }
+//        NSSetUncaughtExceptionHandler { exception in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGABRT) { _ in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGILL) { _ in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGSEGV) { _ in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGFPE) { _ in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGBUS) { _ in
+//            print(Thread.callStackSymbols)
+//        }
+//        
+//        signal(SIGPIPE) { _ in
+//            print(Thread.callStackSymbols)
+//        }
         
         
         FirebaseApp.configure()
@@ -67,6 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To change Navigation Bar Title Color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
 //        UINavigationBar.shadow
+        
+        // set user's info
+        UserUtil.userId = "uY4N6WXX7Ij9syuL5Eb6"
+        UserUtil.institutionId = "MXnWedK2McfuhBpVr3WQ"
         
         return true
     }

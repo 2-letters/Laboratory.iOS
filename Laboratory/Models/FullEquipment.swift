@@ -13,5 +13,5 @@ struct FullEquipment {
     var available: Int
     var description: String
     var location: String
-    var pictureUrl: String
+    var imageUrl: String
 }

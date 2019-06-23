@@ -22,7 +22,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         app.launch()
         thisViewController = .labEquipmentEdit
         goToLabEquipmentEditViewController()
-        usingQuantityTextField = app.textFields[AccessibilityId.labEquipmentEditUsingQuantityTextField.value]
+        usingQuantityTextField = app.textFields[AccessibilityId.labEquipmentEditUsingQuantityTextField.description]
     }
     
     override func tearDown() {
@@ -40,12 +40,12 @@ class LabEquipmentEditUITest: MyUITestDelegate {
     }
     
     func testViewsExist() {
-        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.value]
-        let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.value]
-        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.value]
-        let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.value]
-        let equipmentInfoView = app.otherElements[AccessibilityId.labEquipmentEditNameLabel.value]
-        let equipmentImageView = app.images[AccessibilityId.labEquipmentEditEquipmentImageView.value]
+        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.description]
+        let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.description]
+        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.description]
+        let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.description]
+        let equipmentInfoView = app.otherElements[AccessibilityId.labEquipmentEditNameLabel.description]
+        let equipmentImageView = app.images[AccessibilityId.labEquipmentEditEquipmentImageView.description]
         
         XCTAssertTrue(saveBtn.exists)
         XCTAssertTrue(decreaseBtn.exists)
@@ -71,10 +71,10 @@ class LabEquipmentEditUITest: MyUITestDelegate {
     func testChangingQuantity() {
         // GIVEN
         sleep(2)
-        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.value]
-        let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.value]
-        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.value]
-        let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.value]
+        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.description]
+        let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.description]
+        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.description]
+        let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.description]
         let usingQuantity = usingQuantityTextField.value as! String
         
         // WHEN

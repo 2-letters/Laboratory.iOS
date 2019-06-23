@@ -20,6 +20,7 @@ enum AccessibilityId {
     case labInfoNameTextView
     case labInfoDescriptionTextView
     case labInfoAddEquipmentButton
+    case labInfoRemoveLabButton
     case labInfoTableView
     
     // Lab Equipment Selection VC
@@ -47,7 +48,7 @@ enum AccessibilityId {
     // todo: this is made up, make it real
     case equipmentInfoScrollView
     
-    var value: String {
+    var description: String {
         return String(describing: self)
     }
 }

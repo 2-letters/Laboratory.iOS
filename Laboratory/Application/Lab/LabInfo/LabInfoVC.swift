@@ -118,14 +118,15 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func addIdentifiers() {
-        mainView.accessibilityIdentifier = AccessibilityId.labInfoMainView.value
-        saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.value
-        labInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.value
-        labInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.value
+        mainView.accessibilityIdentifier = AccessibilityId.labInfoMainView.description
+        saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.description
+        labInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
+        labInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
         
         
-        labInfoView.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.value
-        labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.value
+        labInfoView.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.description
+        labInfoView.removeLabButton.accessibilityIdentifier = AccessibilityId.labInfoRemoveLabButton.description
+        labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
     }
     
     private func loadLabEquipments() {
@@ -263,12 +264,12 @@ extension LabInfoVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         var textLimit = 0
         
-        if textView == labInfoView.descriptionTextView {
-            textLimit = 500
-        } else if textView == labInfoView.nameTextView {
-            textLimit = 100
+        if textView == labInfoView.nameTextView {
+            textLimit = MyInt.nameTextLimit
+        } else if textView == labInfoView.descriptionTextView {
+            textLimit = MyInt.descriptionTextLimit
         }
         
-        return textView.text.count + text.count - range.length < textLimit
+        return textView.text.count + text.count - range.length < textLimit + 1
     }
 }

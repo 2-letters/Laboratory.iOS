@@ -9,8 +9,12 @@
 import XCTest
 
 extension XCUIElement {
-    func typeSomeText() {
-        self.typeText("la")
+    func typeSomeText(withLength length: Int? = nil) {
+        if let length = length {
+            self.typeText(String(repeating: "a", count: length))
+        } else {
+            self.typeText("la")
+        }
     }
     
     // TODO: is this really working?

@@ -24,26 +24,22 @@ class LabInfoVM {
             completion(.failure("ERR could not load Lab Id"))
             return
         }
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId)
-        .getDocument { [weak self] (document, error) in
+        FirestoreUtil.getLab(withId: labId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Info"))
             } else {
-                if let labName = document!.data()!["labName"] as? String,
-                let description = document!.data()!["description"] as? String {
-                    FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
-                        switch fetchLabEquipmentResult {
-                        case let .success(labEquipments):
-                            self.labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
-                            completion(.success)
-                        case let .failure(errorStr):
-                            completion(.failure(errorStr))
-                        }
-                    })
-                } else {
-                    completion(.failure("ERR converting Lab Info data"))
-                }
+                let labName = document!.data()![LabKey.name] as! String
+                let description = document!.data()![LabKey.description] as! String
+                FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
+                    switch fetchLabEquipmentResult {
+                    case let .success(labEquipments):
+                        self.labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
+                        completion(.success)
+                    case let .failure(errorStr):
+                        completion(.failure(errorStr))
+                    }
+                })
             }
         }
     }
@@ -51,9 +47,9 @@ class LabInfoVM {
     func saveLab(withNewName newName: String, newDescription: String, labId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
         if let labId = labId {
             // Update existed lab
-            Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).updateData([
-                "labName": newName,
-                "description": newDescription
+            FirestoreUtil.getLab(withId: labId).updateData([
+                LabKey.name: newName,
+                LabKey.description: newDescription
             ]) { err in
                 if let err = err {
                     completion(.failure(err.localizedDescription + "ERR fail to update Lab Info"))
@@ -64,11 +60,10 @@ class LabInfoVM {
             }
         } else {
             // Create a new lab
-            let newLab = Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6")
-                .collection("labs").document()
+            let newLab = FirestoreUtil.getLabs().document()
             newLab.setData([
-                "labName": newName,
-                "description": newDescription
+                LabKey.name: newName,
+                LabKey.description: newDescription
             ]) { err in
                 if let err = err {
                     completion(.failure("ERR creating a new Lab \(err)"))
@@ -85,7 +80,7 @@ class LabInfoVM {
             return
         }
         
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).delete() { err in
+        FirestoreUtil.getLab(withId: labId).delete() { err in
             if let err = err {
                 completion(.failure("Error removing document: \(err)"))
             } else {

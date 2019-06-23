@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 class EquipmentInfoVM {
+//    let firestoreUtil = FirestoreUtil.shared
     var equipment: FullEquipment?
     var equipmentName: String {
         return "Name:  \(equipment!.name)"
@@ -26,8 +27,8 @@ class EquipmentInfoVM {
     var location: String {
         return equipment!.location
     }
-    var pictureUrl: String {
-        return equipment!.pictureUrl
+    var imageUrl: String {
+        return equipment!.imageUrl
     }
     
     func fetchEquipmentInfo(byId equipmentId: String?, completion: @escaping FetchFirestoreHandler) {
@@ -36,16 +37,17 @@ class EquipmentInfoVM {
             completion(.failure("ERR could not load Lab Id"))
             return
         }
-        Firestore.firestore().collection("institutions").document("MXnWedK2McfuhBpVr3WQ").collection("items").document(equipmentId).getDocument { [weak self] (document, error) in
+        FirestoreUtil.getEquipment(withId: equipmentId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
+            let key = EquipmentKey.self
             if let document = document, document.exists {
                 let docData = document.data()!
-                let equipmentName = docData["name"] as! String
-                let quantity = docData["available"] as! Int
-                let description = docData["description"] as! String
-                let location = docData["location"] as! String
-                let pictureUrl = docData["pictureUrl"] as! String
-                self.equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, pictureUrl: pictureUrl)
+                let equipmentName = docData[key.name] as! String
+                let quantity = docData[key.available] as! Int
+                let description = docData[key.description] as! String
+                let location = docData[key.location] as! String
+                let imageUrl = docData[key.imageUrl] as! String
+                self.equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, imageUrl: imageUrl)
                     completion(.success)
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))

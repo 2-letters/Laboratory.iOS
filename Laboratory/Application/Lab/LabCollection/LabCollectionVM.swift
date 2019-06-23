@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 // For Lab List ViewController
 class LabCollectionVM {
+//    let firestoreUtil = FirestoreUtil.shared
     var allLabVMs: [LabCellVM]?
     var displayingLabVMs: [LabCellVM]?
     
@@ -19,15 +20,15 @@ class LabCollectionVM {
     }
     
     func fetchLabData(completion: @escaping FetchFirestoreHandler) {
-         Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").order(by: "labName", descending: false).getDocuments { [weak self] (snapshot, error) in
+         FirestoreUtil.getLabsOrdered().getDocuments { [weak self] (snapshot, error) in
             guard let self = self else { return }
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Labs data"))
             } else {
                 var labVMs = [LabCellVM]()
                 for document in (snapshot!.documents) {
-                    if let labName = document.data()["labName"] as? String,
-                    let description = document.data()["description"] as? String {
+                    if let labName = document.data()[LabKey.name] as? String,
+                    let description = document.data()[LabKey.description] as? String {
                         labVMs.append(LabCellVM(lab: Lab(id: document.documentID, name: labName, description: description)))
                     }
                 }

@@ -64,7 +64,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         equipmentInfoView.locationTextView.text = viewModel.location
         equipmentInfoView.descriptionTextView.text = viewModel.description
         do {
-            let url = URL(string: viewModel.pictureUrl)!
+            let url = URL(string: viewModel.imageUrl)!
             let data = try Data(contentsOf: url)
             equipmentInfoView.equipmentImageView.image = UIImage(data: data)
         }

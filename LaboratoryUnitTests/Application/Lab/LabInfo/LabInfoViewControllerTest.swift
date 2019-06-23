@@ -9,10 +9,6 @@
 import XCTest
 @testable import Laboratory
 
-class MockTextField: UITextField {
-    
-}
-
 class LabInfoViewControllerTest: XCTestCase {
 
     var sut: LabInfoVC!
@@ -34,13 +30,15 @@ class LabInfoViewControllerTest: XCTestCase {
     
     func testViewDidLoad() {
         // GIVEN
-        let navItem = sut.navigationItem
         let gestureRecognizers = sut.view.gestureRecognizers
+        let saveBtn = sut.navigationItem.rightBarButtonItem
+        
         
         // THEN
-        XCTAssertNotNil(navItem.rightBarButtonItem)
-        XCTAssert(navItem.rightBarButtonItem?.target === sut)
-        XCTAssertTrue(navItem.rightBarButtonItem?.action?.description == "saveBtnPressed")
+        XCTAssertNotNil(saveBtn)
+        XCTAssertFalse(saveBtn!.isEnabled)
+        XCTAssert(saveBtn?.target === sut)
+        XCTAssertTrue(saveBtn?.action?.description == "saveBtnPressed")
         XCTAssertEqual(gestureRecognizers?.count, 1)
     }
     
@@ -50,7 +48,7 @@ class LabInfoViewControllerTest: XCTestCase {
         sut.beginAppearanceTransition(true, animated: true)
         // THEN
         XCTAssertEqual(sut.navigationItem.title, MyString.labCreateTitle)
-        
+
         sut.endAppearanceTransition()
         
         
@@ -60,6 +58,12 @@ class LabInfoViewControllerTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(sut.navigationItem.title, MyString.labEditTitle)
+    }
+    
+    func testDelegates() {
+        XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(sut.conforms(to: UITextViewDelegate.self))
     }
     
     func testSegueInfos() {
@@ -110,22 +114,8 @@ class LabInfoViewControllerTest: XCTestCase {
     }
     
     func testTableView() {
-        // conformation
-        XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
         // selectors
         XCTAssertTrue(sut.responds(to: #selector(sut.tableView(_:numberOfRowsInSection:))))
         XCTAssertTrue(sut.responds(to: #selector(sut.tableView(_:cellForRowAt:))))
-    }
-    
-    func testTextFieldDelegate() {
-        // GIVEN
-        let mockTextField = MockTextField()
-        
-        // WHEN
-        sut.textFieldDidBeginEditing(mockTextField)
-        
-        // THEN
-        XCTAssertTrue(sut.conforms(to: UITextFieldDelegate.self))
     }
 }

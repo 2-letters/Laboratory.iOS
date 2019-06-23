@@ -53,7 +53,7 @@ extension UITestable where Self: XCTestCase {
     }
     func goToLabEquipmentSelectionViewController() {
         goToLabInfoViewController()
-        let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.value]
+        let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
         addEquipmentButton.tap()
     }
     func goToLabEquipmentEditViewController() {
@@ -76,9 +76,9 @@ extension UITestable where Self: XCTestCase {
         let mainView: XCUIElement
         switch viewController {
         case .labInfo:
-            mainView = app.otherElements[AccessibilityId.labInfoMainView.value]
+            mainView = app.otherElements[AccessibilityId.labInfoMainView.description]
         case .labEquipmentEdit:
-            mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
+            mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
         default:
             return
         }
@@ -91,19 +91,19 @@ extension UITestable where Self: XCTestCase {
         let view: XCUIElement
         switch viewController {
         case .labCollection:
-            view = app.collectionViews[AccessibilityId.labCollectionView.value]
+            view = app.collectionViews[AccessibilityId.labCollectionView.description]
         case .labInfo:
-            view = app.tables[AccessibilityId.labInfoTableView.value]
+            view = app.tables[AccessibilityId.labInfoTableView.description]
         case .labEquipmentSelection:
-            view = app.tables[AccessibilityId.labEquipmentSelectionTableView.value]
+            view = app.tables[AccessibilityId.labEquipmentSelectionTableView.description]
         case .labEquipmentEdit:
-            view = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.value]
+            view = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
         case .equipmentList:
-            view = app.tables[AccessibilityId.equipmentListTableView.value
+            view = app.tables[AccessibilityId.equipmentListTableView.description
             ]
         case .equipmentInfo:
             // todo fix this case, this is made up
-            view = app.otherElements[AccessibilityId.equipmentInfoScrollView.value]
+            view = app.otherElements[AccessibilityId.equipmentInfoScrollView.description]
         }
 //        let searchBar = getSearchBar(inVC: viewController)!
         if let destinationView = destinationView {
@@ -117,44 +117,25 @@ extension UITestable where Self: XCTestCase {
         let searchBar: XCUIElement?
         switch viewController {
         case .labCollection:
-            searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.value]
+            searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.description]
         case .labEquipmentSelection:
-            searchBar = app.otherElements[AccessibilityId.labEquipmentSelectionSearchBar.value]
+            searchBar = app.otherElements[AccessibilityId.labEquipmentSelectionSearchBar.description]
         case .equipmentList:
-            searchBar = app.otherElements[AccessibilityId.equipmentListSearchBar.value]
+            searchBar = app.otherElements[AccessibilityId.equipmentListSearchBar.description]
         default:
             return nil
         }
         return searchBar
     }
     
-//    func typeTextSearchBar(inVC viewController: MyViewController) {
-//        let searchBar: XCUIElement?
-//        switch viewController {
-//        case .labCollection:
-//            searchBar = app.otherElements[AccessibilityId.labCollectionSearchBar.value]
-//        default:
-//            searchBar = nil
-//        }
-//        searchBar?.typeText("la")
-//    }
-    
-//    func cancelSearchBar(inVC viewController: MyViewController) {
-//        let cancelSearchBtn: XCUIElement?
-//        cancelSearchBtn = app/*@START_MENU_TOKEN@*/.otherElements["labCollectionSearchBar"].searchFields/*[[".otherElements[\"labCollectionSearchBar\"].searchFields",".searchFields"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.buttons["Clear text"]
-//        XCTAssertNotNil(cancelSearchBtn)
-//        XCTAssertTrue(cancelSearchBtn!.exists)
-//        cancelSearchBtn!.tap()
-//    }
-    
     func getFirstCell(inVC viewController: MyViewController) -> XCUIElement? {
         switch viewController {
         case .labCollection:
-            return app.collectionViews[AccessibilityId.labCollectionView.value].cells.element(boundBy: 0)
+            return app.collectionViews[AccessibilityId.labCollectionView.description].cells.element(boundBy: 0)
         case .labEquipmentSelection:
-            return app.tables[AccessibilityId.labEquipmentSelectionTableView.value].cells.element(boundBy: 0)
+            return app.tables[AccessibilityId.labEquipmentSelectionTableView.description].cells.element(boundBy: 0)
         case .equipmentList:
-            return app.tables[AccessibilityId.equipmentListTableView.value].cells.element(boundBy: 0)
+            return app.tables[AccessibilityId.equipmentListTableView.description].cells.element(boundBy: 0)
         default:
             return nil
         }
@@ -165,16 +146,18 @@ extension UITestable where Self: XCTestCase {
         
         switch alertCase {
         case .invalidLabInfoInput,
-             .failToSaveLab,
              .succeedToSaveLab,
+             .failToSaveLab,
+             .failToRemoveLab,
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
              .failToSaveEquipmentEdit:
             buttonText = AlertString.okay
             
-        case .createLabToAddEquipments:
-            buttonText = AlertString.yes
+        case .attemptCreateLabToAddEquipments,
+             .attemptToRemoveLab:
+            buttonText = AlertString.no
         }
         
         let alertButton = app.buttons[buttonText]

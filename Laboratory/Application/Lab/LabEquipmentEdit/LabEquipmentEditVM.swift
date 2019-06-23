@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 struct LabEquipmentEditVM {
+//    let firestoreUtil = FirestoreUtil.shared
     var equipmentInfoVM = EquipmentInfoVM()
     
     var usingQuantity = 0 {
@@ -42,10 +43,11 @@ struct LabEquipmentEditVM {
     
     
     func updateEquipmentUsing(forLabId labId: String, equipmentId: String, completion: @escaping UpdateFirestoreHandler) {
+        let key = EquipmentKey.self
         // Add a new document in collection "cities"
-        Firestore.firestore().collection("users").document("uY4N6WXX7Ij9syuL5Eb6").collection("labs").document(labId).collection("equipments").document(equipmentId).setData([
-            "equipmentName": equipmentName,
-            "using": editingQuantity
+        FirestoreUtil.getLabEquipment(withLabId: labId, equipmentId: equipmentId).setData([
+            key.name: equipmentName,
+            key.using: editingQuantity
         ]) { err in
             if let err = err {
                 completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))

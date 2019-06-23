@@ -70,9 +70,9 @@ class EquipmentListVC: UIViewController {
     }
     
     private func addIdentifiers() {
-        addButton.accessibilityIdentifier = AccessibilityId.equipmentListAddButton.value
-        searchBar.accessibilityIdentifier = AccessibilityId.equipmentListSearchBar.value
-        equipmentTV.accessibilityIdentifier = AccessibilityId.equipmentListTableView.value
+        addButton.accessibilityIdentifier = AccessibilityId.equipmentListAddButton.description
+        searchBar.accessibilityIdentifier = AccessibilityId.equipmentListSearchBar.description
+        equipmentTV.accessibilityIdentifier = AccessibilityId.equipmentListTableView.description
     }
     
     private func loadEquipmentData() {

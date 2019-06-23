@@ -30,9 +30,9 @@ class LabCollectionViewControllerUITest: MyUITestDelegate {
     }
     
     func testViewsExist() {
-        let addButton = app.buttons[AccessibilityId.labCollectionAddButton.value]
+        let addButton = app.buttons[AccessibilityId.labCollectionAddButton.description]
         let labSearchBar = getSearchBar(inVC: thisViewController)!
-        let labCollectionView = app.collectionViews[AccessibilityId.labCollectionView.value]
+        let labCollectionView = app.collectionViews[AccessibilityId.labCollectionView.description]
         
         XCTAssertTrue(addButton.exists)
         XCTAssertTrue(labSearchBar.exists)

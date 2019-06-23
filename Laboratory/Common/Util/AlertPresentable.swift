@@ -87,8 +87,6 @@ extension AlertPresentable where Self: UIViewController {
         case .attemptToRemoveLab:
             ac = UIAlertController(title: AlertString.attemptToRemoveLabTitle, message: AlertString.attemptToRemoveLabMessage, preferredStyle: .actionSheet)
         }
-        // add Accessibility Identifier
-        ac.view.accessibilityIdentifier = alertCase.description
         
         // add Actions
         switch alertCase {
@@ -104,6 +102,10 @@ extension AlertPresentable where Self: UIViewController {
         case .failToSaveEquipmentEdit, .failToRemoveLab:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
         }
+        
+        // add Accessibility Identifier
+        ac.view.accessibilityIdentifier = alertCase.description
+        
         // present
         self.present(ac, animated: true, completion: nil)
     }

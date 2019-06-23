@@ -68,14 +68,14 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     private func addIdentifiers() {
-        scrollView.accessibilityIdentifier = AccessibilityId.labEquipmentEditScrollView.value
-        saveBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditSaveButton.value
-        usingQuantityTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditUsingQuantityTextField.value
-        decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.value
-        increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.value
-        removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.value
-        equipmentInfoView.nameLabel.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameLabel.value
-        equipmentInfoView.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.value
+        scrollView.accessibilityIdentifier = AccessibilityId.labEquipmentEditScrollView.description
+        saveBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditSaveButton.description
+        usingQuantityTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditUsingQuantityTextField.description
+        decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.description
+        increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.description
+        removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.description
+        equipmentInfoView.nameLabel.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameLabel.description
+        equipmentInfoView.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
     }
     
     private func loadEquipmentInfo() {
@@ -107,7 +107,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         locationTextView.customize(withText: equipmentInfoVM.location)
         descriptionTextView.customize(withText: equipmentInfoVM.description)
         do {
-            let url = URL(string: equipmentInfoVM.pictureUrl)!
+            let url = URL(string: equipmentInfoVM.imageUrl)!
             let data = try Data(contentsOf: url)
             equipmentInfoView.equipmentImageView.image = UIImage(data: data)
         }

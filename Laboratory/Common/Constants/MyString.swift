@@ -9,6 +9,10 @@
 import Foundation
 
 struct MyString {
+    // UserDefaults
+    static let userId = "userId"
+    static let institutionId = "institutionId"
+    
     static let creatingNewInstanceFlag = "creatingNewInstance"
     
     // Navigation Bar titles

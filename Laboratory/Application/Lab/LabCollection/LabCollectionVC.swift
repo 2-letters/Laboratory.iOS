@@ -98,9 +98,9 @@ class LabCollectionVC: UIViewController {
     }
     
     private func addIdentifiers() {
-        addButton.accessibilityIdentifier = AccessibilityId.labCollectionAddButton.value
-        labSearchBar.accessibilityIdentifier = AccessibilityId.labCollectionSearchBar.value
-        labCollectionView.accessibilityIdentifier = AccessibilityId.labCollectionView.value
+        addButton.accessibilityIdentifier = AccessibilityId.labCollectionAddButton.description
+        labSearchBar.accessibilityIdentifier = AccessibilityId.labCollectionSearchBar.description
+        labCollectionView.accessibilityIdentifier = AccessibilityId.labCollectionView.description
     }
     
     private func loadLabData() {

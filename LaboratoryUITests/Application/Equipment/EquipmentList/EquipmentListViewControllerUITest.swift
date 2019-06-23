@@ -29,9 +29,9 @@ class EquipmentListViewControllerUITest: MyUITestDelegate {
     }
     
     func testViewsExist() {
-        let addButton = app.buttons[AccessibilityId.equipmentListAddButton.value]
+        let addButton = app.buttons[AccessibilityId.equipmentListAddButton.description]
         let searchBar = getSearchBar(inVC: thisViewController)!
-        let equipmentTV = app.tables[AccessibilityId.equipmentListTableView.value]
+        let equipmentTV = app.tables[AccessibilityId.equipmentListTableView.description]
         
         XCTAssertTrue(addButton.exists)
         XCTAssertTrue(searchBar.exists)
