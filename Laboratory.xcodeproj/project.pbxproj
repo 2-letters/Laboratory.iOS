@@ -78,6 +78,7 @@
 		DE2867A522BEF3CD00CBFC5F /* AppDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A422BEF3CD00CBFC5F /* AppDelegateTest.swift */; };
 		DE2867A722BFD8AE00CBFC5F /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */; };
 		DE2867A922BFE40B00CBFC5F /* FirestoreUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */; };
+		DE2867AA22C016F700CBFC5F /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */; };
 		DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */; };
 		DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */; };
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
@@ -1185,6 +1186,7 @@
 				C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */,
 				C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */,
 				C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */,
+				DE2867AA22C016F700CBFC5F /* UserUtil.swift in Sources */,
 				DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

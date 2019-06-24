@@ -10,8 +10,18 @@ import Foundation
 @testable import Laboratory
 
 struct FakeData {
-    static let labId = "fakeLab"
+    static let userId = "unitTestUser1"
+    static let wrongUserId = "neverCreatedUser"
+    static let institutionId = "unitTestInstitution"
+    static let wrongInstitutionId = "neverCreatedInstitution"
+    
+    static let labId = "unitTest1"
     static let labName = "fake Lab Name"
+    static let newLabNameSave = "Unit Test Lab 1"
+    static let newLabNameCreate = "Delete me when you are free"
+    static let newLabDescriptionSave = "Hello I am not gay"
+    static let newLabDescriptionCreate = "Please delete meeeeeee. Dont even ask"
+    
     static let equipmentId = "fakeEquipmentId"
     static let equipmentName = "fake Equipment Name"
     

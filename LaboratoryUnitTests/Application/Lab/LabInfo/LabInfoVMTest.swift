@@ -23,17 +23,88 @@ class LabInfoVMTest: XCTestCase {
     }
     
     func testFetchLabInfo() {
-        sut.fetchLabInfo(byId: FakeData.labId) { (<#FetchResult#>) in
-            <#code#>
+        // test success
+        // GIVEN
+        var isSuccessful = false
+        var responseError: String?
+        let promise = expectation(description: "Did fetch lab")
+        
+        // THEN
+        UserUtil.userId = FakeData.userId
+        
+        sut.fetchLabInfo(byId: FakeData.labId) { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
         }
+        wait(for: [promise], timeout: 5)
+        
+        // WHEN
+        XCTAssertNil(responseError)
+        XCTAssertTrue(isSuccessful)
+        
+        // test fail
+        // THEN
+        UserUtil.userId = FakeData.wrongUserId
+        
+        sut.fetchLabInfo(byId: FakeData.labId) { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        
+        // WHEN
+        XCTAssertNotNil(responseError)
+        XCTAssertFalse(isSuccessful)
     }
     
     func testSaveLab() {
+        // update existing lab
+        // GIVEN
+        var isSuccessful = false
+        var responseError: String?
+        let promise = expectation(description: "Did save lab")
         
-    }
-    
-    func testRemoveLab() {
         
+        // WHEN
+        sut.saveLab(withNewName: FakeData.newLabNameSave, newDescription: FakeData.newLabDescriptionSave, labId: FakeData.labId) { (updateResult) in
+            switch updateResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertNil(responseError)
+        XCTAssertTrue(isSuccessful)
+        
+        // create new lab
+        // WHEN
+        sut.saveLab(withNewName: FakeData.newLabNameCreate, newDescription: FakeData.newLabDescriptionCreate, labId: nil) { (updateResult) in
+            switch updateResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertNil(responseError)
+        XCTAssertTrue(isSuccessful)
     }
-
 }

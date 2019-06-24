@@ -33,6 +33,49 @@ class EquipmentListVMTest: XCTestCase {
         XCTAssertEqual(sut.getName(at: 2), fakeEquipmentVMs[2].equipmentName)
     }
     
+    func testFetchAllEquipments() {
+        // GIVEN
+        var isSuccessful = false
+        var responseError: String?
+        let promise = expectation(description: "did Fetch all equipments")
+        
+        // test success
+        // WHEN
+        UserUtil.institutionId = FakeData.institutionId
+        
+        sut.fetchAllEquipments { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertTrue(isSuccessful)
+        XCTAssertNil(responseError)
+        
+        // test failure
+        // WHEN
+        UserUtil.institutionId = FakeData.wrongInstitutionId
+        
+        sut.fetchAllEquipments { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertFalse(isSuccessful)
+        XCTAssertNotNil(responseError)
+    }
+    
     func testSearch() {
         // GIVEN
         let searchText1 = ""
