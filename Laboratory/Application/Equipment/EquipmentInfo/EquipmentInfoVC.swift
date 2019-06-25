@@ -16,6 +16,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var equipmentId: String?
     var isEditingEquipment = false
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet private var mainView: UIView!
     private var equipmentInfoView: EquipmentInfoView!
     private var editSaveBtn: UIBarButtonItem!
@@ -38,9 +39,26 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     // MARK: - Layout
     private func addMainView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
-        mainView.addSubview(equipmentInfoView)
-        equipmentInfoView.frame = mainView.bounds
-        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        scrollView.contentSize = equipmentInfoView.frame.size
+        scrollView.addSubview(equipmentInfoView)
+//        equipmentInfoView.frame = mainView.bounds
+//        equipmentInfoView.frame = scrollView.bounds
+//        equipmentInfoView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+//        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//        equipmentInfoView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
+    equipmentInfoView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        equipmentInfoView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+        let equipmentInfoViewBottomConstraint = NSLayoutConstraint(item: equipmentInfoView, attribute: .height, relatedBy: .equal, toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0)
+//        NSLayoutConstraint constraintWithItem:self
+//            attribute:NSLayoutAttributeHeight
+//            relatedBy:NSLayoutRelationEqual
+//            toItem:self.superview
+//            attribute:NSLayoutAttributeHeight
+//            multiplier:1
+//            constant:0];
+        equipmentInfoViewBottomConstraint.isActive = YES
+        equipmentInfoViewBottomConstraint.priority = 250
     }
     
     private func setupUI() {
