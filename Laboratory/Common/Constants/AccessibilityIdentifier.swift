@@ -47,6 +47,10 @@ enum AccessibilityId {
     // Equipment Info VC
     // todo: this is made up, make it real
     case equipmentInfoScrollView
+    case equipmentInfoAvailableTextField
+    case equipmentInfoNameTextView
+    case equipmentInfoDescriptionTextView
+    case equipmentInfoLocationTextView
     
     var description: String {
         return String(describing: self)

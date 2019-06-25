@@ -74,7 +74,7 @@ class LabCollectionVC: UIViewController {
         navigationItem.rightBarButtonItem = addButton
         
         labSearchBar.backgroundImage = UIImage()
-        labCollectionView.backgroundColor = MyColor.lightGray
+        labCollectionView.backgroundColor = MyColor.superLightGray
         
         // add refresh control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")

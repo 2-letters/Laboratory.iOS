@@ -14,11 +14,7 @@ extension UITextView {
             self.text = text
         }
         
-        if (isEditable) {
-            self.layer.shadowColor = UIColor.gray.cgColor
-        } else {
-            self.layer.shadowColor = MyColor.separatingLine.cgColor
-        }
+        updateEditingUI(forEditing: isEditable)
         
         self.layer.backgroundColor = UIColor.white.cgColor
         self.layer.masksToBounds = false
@@ -26,11 +22,19 @@ extension UITextView {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
         
-        self.isEditable = isEditable
         self.isScrollEnabled = false
         self.font = UIFont(name: secondaryFont, size: 19)
         // remove left padding
         self.textContainer.lineFragmentPadding = 0
+    }
+    
+    func updateEditingUI(forEditing isEditable: Bool) {
+        self.isEditable = isEditable
+        if (isEditable) {
+            self.layer.shadowColor = UIColor.black.cgColor
+        } else {
+            self.layer.shadowColor = UIColor.lightGray.cgColor
+        }
     }
     
     func highlight() {
@@ -50,11 +54,7 @@ extension UITextField {
             self.text = text
         }
         
-        if (isEditable) {
-            self.layer.shadowColor = UIColor.black.cgColor
-        } else {
-            self.layer.shadowColor = MyColor.separatingLine.cgColor
-        }
+        updateEditingUI(forEditing: isEditable)
         
         self.borderStyle = .none
         self.layer.backgroundColor = UIColor.white.cgColor
@@ -63,8 +63,16 @@ extension UITextField {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
         
-        self.isEnabled = isEditable
         self.font = UIFont(name: secondaryFont, size: 19)
+    }
+    
+    func updateEditingUI(forEditing isEnabled: Bool) {
+        self.isEnabled = isEnabled
+        if (isEnabled) {
+            self.layer.shadowColor = UIColor.black.cgColor
+        } else {
+            self.layer.shadowColor = UIColor.lightGray.cgColor
+        }
     }
     
     func highlight() {

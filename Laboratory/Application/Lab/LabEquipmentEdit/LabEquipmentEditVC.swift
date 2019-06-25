@@ -69,7 +69,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
         removeBtn.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
-        separatingLine.backgroundColor = MyColor.separatingLine
+        separatingLine.backgroundColor = MyColor.lightGray
 
         scrollView.keyboardDismissMode = .onDrag
         addIdentifiers()

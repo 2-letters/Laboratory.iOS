@@ -10,13 +10,15 @@ import UIKit
 
 class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     
+    let spinnerVC = SpinnerViewController()
+    
+    private var viewModel = EquipmentInfoVM()
+    var equipmentId: String?
+    var isEditingEquipment = false
+    
     @IBOutlet private var mainView: UIView!
     private var equipmentInfoView: EquipmentInfoView!
-    
-    let spinnerVC = SpinnerViewController()
-
-    var equipmentId: String?
-    private var viewModel = EquipmentInfoVM()
+    private var editSaveBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         loadEquipmentInfo()
     }
     
+    // MARK: - Layout
     private func addMainView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         mainView.addSubview(equipmentInfoView)
@@ -36,6 +39,8 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func setupUI() {
+        editSaveBtn = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editSaveButtonTapped))
+        navigationItem.rightBarButtonItem = editSaveBtn
         
         addDelegates()
         addIdentifiers()
@@ -49,7 +54,10 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func addIdentifiers() {
-        
+        equipmentInfoView.availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
+        equipmentInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
+        equipmentInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
+        equipmentInfoView.locationTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoLocationTextView.description
     }
 
     private func loadEquipmentInfo() {
@@ -58,7 +66,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
-                    self.updateUI()
+                    self.loadUI()
                 }
             case let .failure(errorStr):
                 print(errorStr)
@@ -68,7 +76,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         }
     }
     
-    private func updateUI() {
+    private func loadUI() {
 //        equipmentInfoView.availableTextView.text = viewModel.availableString
         equipmentInfoView.availableTextField.text = viewModel.availableString
         equipmentInfoView.nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
@@ -87,10 +95,37 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         // hide spinner
         hideSpinner()
     }
+}
+
+// MARK: - User Interaction
+extension EquipmentInfoVC {
+    @objc private func editSaveButtonTapped() {
+        if isEditingEquipment && isInputInvalid {
+//            presentAlert(forCase: .invalidEquipmentInfoInput)
+        } else {
+            updateUI(forEditing: !isEditingEquipment)
+        }
+        isEditingEquipment = !isEditingEquipment
+    }
     
     func goBack(alert: UIAlertAction!) {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Helper methods
+extension EquipmentInfoVC {
+    var isInputInvalid: Bool {
+        return false
+    }
+    
+    func updateUI(forEditing isEditable: Bool) {
+        editSaveBtn.title = isEditable ? "Save" : "Edit"
+        equipmentInfoView.availableTextField.updateEditingUI(forEditing: isEditable)
+        equipmentInfoView.nameTextView.updateEditingUI(forEditing: isEditable)
+        equipmentInfoView.locationTextView.updateEditingUI(forEditing: isEditable)
+        equipmentInfoView.descriptionTextView.updateEditingUI(forEditing: isEditable)
     }
 }
 

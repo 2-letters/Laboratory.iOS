@@ -73,7 +73,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func setupUI() {
-        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBtnPressed))
+        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBtn
         
         labInfoView.nameTextView.customize(isEditable: true)
@@ -200,7 +200,7 @@ extension LabInfoVC {
         }
     }
     
-    @objc private func saveBtnPressed() {
+    @objc private func saveButtonTapped() {
         attemptToSaveLab(toAddEquipments: false)
     }
     
