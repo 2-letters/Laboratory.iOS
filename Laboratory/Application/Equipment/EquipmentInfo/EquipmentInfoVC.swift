@@ -57,8 +57,8 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 //            attribute:NSLayoutAttributeHeight
 //            multiplier:1
 //            constant:0];
-        equipmentInfoViewBottomConstraint.isActive = YES
-        equipmentInfoViewBottomConstraint.priority = 250
+        equipmentInfoViewBottomConstraint.isActive = true
+        equipmentInfoViewBottomConstraint.priority = UILayoutPriority(rawValue: 250)
     }
     
     private func setupUI() {
