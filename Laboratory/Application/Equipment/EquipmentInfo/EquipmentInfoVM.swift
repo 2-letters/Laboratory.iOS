@@ -13,10 +13,10 @@ class EquipmentInfoVM {
 //    let firestoreUtil = FirestoreUtil.shared
     var equipment: FullEquipment?
     var equipmentName: String {
-        return "Name:  \(equipment!.name)"
+        return equipment!.name
     }
     var availableString: String {
-        return "Available:  \(equipment!.available) (items)"
+        return String(equipment!.available)
     }
 //    var available: Int {
 //        return equipment?.available ?? 0

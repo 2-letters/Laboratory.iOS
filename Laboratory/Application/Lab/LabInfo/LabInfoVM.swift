@@ -26,11 +26,9 @@ class LabInfoVM {
         }
         FirestoreUtil.getLab(withId: labId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
-            if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Lab Info"))
-            } else {
-                let labName = document!.data()![LabKey.name] as! String
-                let description = document!.data()![LabKey.description] as! String
+            if let document = document, document.exists {
+                let labName = document.data()![LabKey.name] as! String
+                let description = document.data()![LabKey.description] as! String
                 FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
                     switch fetchLabEquipmentResult {
                     case let .success(labEquipments):
@@ -40,6 +38,8 @@ class LabInfoVM {
                         completion(.failure(errorStr))
                     }
                 })
+            } else {
+                completion(.failure(error?.localizedDescription ?? "voxERR fetching Lab Info"))
             }
         }
     }

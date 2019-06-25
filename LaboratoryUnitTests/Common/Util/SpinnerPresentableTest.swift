@@ -54,12 +54,18 @@ class SpinnerPresentableTest: XCTestCase {
     }
     
     func testHideSpinner() {
+        // GIVEN
+        let delayExpectation = expectation(description: "wait for 2 seconds")
+        
         // WHEN
         sut.showSpinner()
         sut.hideSpinner()
-        sleep(2.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            delayExpectation.fulfill()
+        }
         
         // THEN
+        waitForExpectations(timeout: 2.5)
         XCTAssertTrue(mockSpinnerVC.willMoveCalled)
         XCTAssertNil(mockSpinnerVC.view.superview)
         XCTAssertNil(mockSpinnerVC.parent)

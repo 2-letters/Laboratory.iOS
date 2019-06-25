@@ -50,30 +50,13 @@ class EquipmentListVMTest: XCTestCase {
             case .success:
                 isSuccessful = true
             }
+            promise.fulfill()
         }
         wait(for: [promise], timeout: 5)
         
         // THEN
         XCTAssertTrue(isSuccessful)
         XCTAssertNil(responseError)
-        
-        // test failure
-        // WHEN
-        UserUtil.institutionId = FakeData.wrongInstitutionId
-        
-        sut.fetchAllEquipments { (fetchResult) in
-            switch fetchResult {
-            case let .failure(errorStr):
-                responseError = errorStr
-            case .success:
-                isSuccessful = true
-            }
-        }
-        wait(for: [promise], timeout: 5)
-        
-        // THEN
-        XCTAssertFalse(isSuccessful)
-        XCTAssertNotNil(responseError)
     }
     
     func testSearch() {

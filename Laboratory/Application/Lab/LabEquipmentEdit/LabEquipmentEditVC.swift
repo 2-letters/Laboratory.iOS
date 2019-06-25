@@ -59,10 +59,18 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         // quantity only accept numbers
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
+        usingQuantityTextField.delegate = self
+        usingQuantityTextField.customize(isEditable: true)
+        
+        decreaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
+        increaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
+        
+//        removeBtn.backgroundColor = MyColor.superLightGreen
+        removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
+        removeBtn.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         separatingLine.backgroundColor = MyColor.separatingLine
-        
-        usingQuantityTextField.delegate = self
+
         scrollView.keyboardDismissMode = .onDrag
         addIdentifiers()
     }
@@ -74,13 +82,13 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.description
         increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.description
         removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.description
-        equipmentInfoView.nameLabel.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameLabel.description
+        equipmentInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
         equipmentInfoView.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
     }
     
     private func loadEquipmentInfo() {
         guard let equipmentId = equipmentId else {
-            presentAlert(forCase: .failToLoadEquipmentInfo, handler: goBack(alert:))
+            presentAlert(forCase: .failToLoadEquipmentInfo, handler: goBack)
             return
         }
         viewModel.equipmentInfoVM.fetchEquipmentInfo(byId: equipmentId) { [weak self] (fetchResult) in
@@ -102,10 +110,11 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         let locationTextView = equipmentInfoView.locationTextView!
         let descriptionTextView = equipmentInfoView.descriptionTextView!
         
-        equipmentInfoView.availableLabel.text = equipmentInfoVM.availableString
-        equipmentInfoView.nameLabel.text = equipmentInfoVM.equipmentName
-        locationTextView.customize(withText: equipmentInfoVM.location)
-        descriptionTextView.customize(withText: equipmentInfoVM.description)
+//        equipmentInfoView.availableTextView.customize(withText: equipmentInfoVM.availableString, isEditable: false)
+        equipmentInfoView.availableTextField.customize(withText: equipmentInfoVM.availableString, isEditable: false)
+        equipmentInfoView.nameTextView.text = equipmentInfoVM.equipmentName
+        locationTextView.customize(withText: equipmentInfoVM.location, isEditable: false)
+        descriptionTextView.customize(withText: equipmentInfoVM.description, isEditable: false)
         do {
             let url = URL(string: equipmentInfoVM.imageUrl)!
             let data = try Data(contentsOf: url)
@@ -176,8 +185,18 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
 }
 
 extension LabEquipmentEditVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.highlight()
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.unhighlight()
         viewModel.updateQuantityTextField(withText: textField.text)
         updateUI()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let inputLength = textField.text?.count ?? 0 + string.count - range.length
+        return inputLength < (MyInt.quantityTextLimit + 1)
     }
 }

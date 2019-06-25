@@ -44,7 +44,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.description]
         let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.description]
         let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.description]
-        let equipmentInfoView = app.otherElements[AccessibilityId.labEquipmentEditNameLabel.description]
+        let equipmentInfoView = app.textViews[AccessibilityId.labEquipmentEditNameTextView.description]
         let equipmentImageView = app.images[AccessibilityId.labEquipmentEditEquipmentImageView.description]
         
         XCTAssertTrue(saveBtn.exists)
@@ -90,5 +90,37 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         tapOutside(inVC: thisViewController)
         
         XCTAssertFalse(saveBtn.isEnabled)
+    }
+    
+    func testExceedAvailable() {
+        // WHEN
+        usingQuantityTextField.tap()
+        usingQuantityTextField.typeBigNumber()
+        tapOutside(inVC: thisViewController)
+        
+        
+        // THEN
+        XCTAssertLessThan(Int(usingQuantityTextField.value as! String)!, 55555)
+    }
+    
+    func testSaveChange() {
+        // GIVEN
+        sleep(2)
+        let saveBtn = app.buttons[AccessibilityId.labEquipmentEditSaveButton.description]
+        let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.description]
+        
+        // WHEN
+        increaseBtn.tap()
+        
+        // THEN
+        XCTAssertTrue(saveBtn.isEnabled)
+        saveBtn.tap()
+        
+        // GIVEN
+        let doneButton = app.buttons[AccessibilityId.labEquipmentSelectionDoneButton.description]
+
+        // THEN
+        XCTAssertTrue(doneButton.exists)
+        doneButton.tap()
     }
 }

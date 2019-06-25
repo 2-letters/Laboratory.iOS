@@ -27,9 +27,9 @@ class LabInfoVMTest: XCTestCase {
         // GIVEN
         var isSuccessful = false
         var responseError: String?
-        let promise = expectation(description: "Did fetch lab")
+        var promise = expectation(description: "Did fetch lab")
         
-        // THEN
+        // WHEN
         UserUtil.userId = FakeData.userId
         
         sut.fetchLabInfo(byId: FakeData.labId) { (fetchResult) in
@@ -43,11 +43,15 @@ class LabInfoVMTest: XCTestCase {
         }
         wait(for: [promise], timeout: 5)
         
-        // WHEN
+        // THEN
         XCTAssertNil(responseError)
         XCTAssertTrue(isSuccessful)
         
         // test fail
+        // GIVEN
+        isSuccessful = false
+        promise = expectation(description: "Did fetch lab")
+        
         // THEN
         UserUtil.userId = FakeData.wrongUserId
         
@@ -60,6 +64,7 @@ class LabInfoVMTest: XCTestCase {
             }
             promise.fulfill()
         }
+        wait(for: [promise], timeout: 5)
         
         // WHEN
         XCTAssertNotNil(responseError)
@@ -71,10 +76,12 @@ class LabInfoVMTest: XCTestCase {
         // GIVEN
         var isSuccessful = false
         var responseError: String?
-        let promise = expectation(description: "Did save lab")
+        var promise = expectation(description: "Did save lab")
         
         
         // WHEN
+        UserUtil.userId = FakeData.userId
+        
         sut.saveLab(withNewName: FakeData.newLabNameSave, newDescription: FakeData.newLabDescriptionSave, labId: FakeData.labId) { (updateResult) in
             switch updateResult {
             case let .failure(errorStr):
@@ -91,6 +98,10 @@ class LabInfoVMTest: XCTestCase {
         XCTAssertTrue(isSuccessful)
         
         // create new lab
+        // GIVEN
+        isSuccessful = false
+        promise = expectation(description: "Did save lab")
+        
         // WHEN
         sut.saveLab(withNewName: FakeData.newLabNameCreate, newDescription: FakeData.newLabDescriptionCreate, labId: nil) { (updateResult) in
             switch updateResult {

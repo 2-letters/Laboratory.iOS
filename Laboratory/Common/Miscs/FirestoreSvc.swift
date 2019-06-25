@@ -12,7 +12,7 @@ import FirebaseFirestore
 struct FirestoreSvc {
 //    static let firestoreUtil = FirestoreUtil.shared
     static func fetchAllEquipments(completion: @escaping FetchAllEquipmentHandler) {
-        FirestoreUtil.getAllEquipments().getDocuments { (snapshot, error) in
+        FirestoreUtil.getAllEquipmentsOrdered().getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
             } else {

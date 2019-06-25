@@ -15,15 +15,16 @@ struct FakeData {
     static let institutionId = "unitTestInstitution"
     static let wrongInstitutionId = "neverCreatedInstitution"
     
-    static let labId = "unitTest1"
+    static let labId = "unitTestLab1"
     static let labName = "fake Lab Name"
     static let newLabNameSave = "Unit Test Lab 1"
     static let newLabNameCreate = "Delete me when you are free"
     static let newLabDescriptionSave = "Hello I am not gay"
     static let newLabDescriptionCreate = "Please delete meeeeeee. Dont even ask"
     
-    static let equipmentId = "fakeEquipmentId"
-    static let equipmentName = "fake Equipment Name"
+    static let equipmentId = "unitTestEquipment1"
+    static let equipmentName = "Unit Test Equipment Name 1"
+    static let equipmentDescription = "Please delete meeeeeee. Dont even ask"
     
     // MARK: - Models
     // MARK: Lab

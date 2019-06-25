@@ -36,7 +36,7 @@ enum AccessibilityId {
     case labEquipmentEditDecreaseButton
     case labEquipmentEditIncreaseButton
     case labEquipmentEditRemoveButton
-    case labEquipmentEditNameLabel
+    case labEquipmentEditNameTextView
     case labEquipmentEditEquipmentImageView
     
     // Equipment List VC

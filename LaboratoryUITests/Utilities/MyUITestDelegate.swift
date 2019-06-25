@@ -16,6 +16,7 @@ protocol UITestable {
     
     // Switch view controllers
     func goToLabCollectionViewController()
+    func goToLabCreate()
     func goToLabInfoViewController()
     func goToLabEquipmentSelectionViewController()
     func goToLabEquipmentEditViewController()
@@ -46,6 +47,13 @@ extension UITestable where Self: XCTestCase {
     func goToLabCollectionViewController() {
         return
     }
+    
+    func goToLabCreate() {
+        goToLabCollectionViewController()
+        let addButton = app.buttons[AccessibilityId.labCollectionAddButton.description]
+        addButton.tap()
+    }
+    
     func goToLabInfoViewController() {
         goToLabCollectionViewController()
         let firstCell = getFirstCell(inVC: .labCollection)!

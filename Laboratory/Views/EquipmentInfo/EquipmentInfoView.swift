@@ -16,9 +16,10 @@ import UIKit
 
 class EquipmentInfoView: UIView {
 //    static let nibName = "EquipmentInfoView"
-    @IBOutlet var availableLabel: UILabel!
-//    @IBOutlet var contentView: UIView!
-    @IBOutlet var nameLabel: UILabel!
+//    @IBOutlet var availableTextView: UITextView!
+    @IBOutlet var availableTextField: UITextField!
+    @IBOutlet var itemsLabel: UILabel!
+    @IBOutlet var nameTextView: UITextView!
     @IBOutlet var locationTextView: UITextView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var equipmentImageView: UIImageView!
@@ -30,6 +31,14 @@ class EquipmentInfoView: UIView {
     
     static func instantiate() -> EquipmentInfoView {
         let view: EquipmentInfoView = initFromNib()
+        view.itemsLabel.font = UIFont(name: secondaryFont, size: 20)
+//        view.availableTextView.customize(isEditable: false)
+        view.availableTextField.customize(isEditable: false)
+        view.availableTextField.keyboardType = .numberPad
+        view.availableTextField.textAlignment = .center
+        view.nameTextView.customize(isEditable: false)
+        view.locationTextView.customize(isEditable: false)
+        view.descriptionTextView.customize(isEditable: false)
         return view
     }
     

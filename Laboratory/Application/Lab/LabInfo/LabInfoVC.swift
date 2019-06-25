@@ -92,15 +92,10 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
             addEquipmentButton.setTitle("Edit Equipments", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
-        addEquipmentButton.backgroundColor = MyColor.lightGreen
-        addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
-        addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        
         
         let removeLabButton = labInfoView.removeLabButton!
         removeLabButton.addTarget(self, action: #selector(attemptToRemoveLab), for: .touchUpInside)
-        removeLabButton.backgroundColor = MyColor.superLightGreen
-        removeLabButton.setTitleColor(MyColor.redWarning, for: .normal)
-        removeLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
@@ -142,7 +137,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
                 self.hideSpinner()
             case let .failure(errorStr):
                 print(errorStr)
-                self.presentAlert(forCase: .failToLoadLabEquipments, handler: self.goBackAndReload)
+                self.presentAlert(forCase: .failToLoadLabEquipments, handler: { action in
+                    self.goBackAndReload()
+                })
             }
         })
     }
@@ -157,7 +154,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 
 // MARK: - User Interaction
 extension LabInfoVC {
-    private func goBackAndReload(alert: UIAlertAction!) {
+    private func goBackAndReload() {
         self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
     }
     
@@ -171,14 +168,19 @@ extension LabInfoVC {
     
     @objc private func addEquipments() {
         if isCreatingNewLab {
-            presentAlert(forCase: .attemptCreateLabToAddEquipments, handler: createLabToAddEquipments)
+            let newLabName = labInfoView.nameTextView.text ?? ""
+            let newLabDescription = labInfoView.descriptionTextView.text ?? ""
+            
+            if (newLabName.isEmpty || newLabDescription.isEmpty) {
+                presentAlert(forCase: .invalidLabInfoInput)
+            }
+            
+            presentAlert(forCase: .attemptCreateLabToAddEquipments, handler: { action in
+                self.attemptToSaveLab(toAddEquipments: true)
+            })
         } else {
             goToEquipmentsSelect()
         }
-    }
-    
-    private func createLabToAddEquipments(alert: UIAlertAction!) {
-        attemptToSaveLab(toAddEquipments: true)
     }
     
     @objc private func attemptToRemoveLab() {
@@ -193,7 +195,7 @@ extension LabInfoVC {
                 print(errorStr)
                 self.presentAlert(forCase: .failToRemoveLab)
             case .success:
-                self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+                self.goBackAndReload()
             }
         }
     }
@@ -226,7 +228,9 @@ extension LabInfoVC {
                         self.labId = newLabId
                         self.goToEquipmentsSelect()
                     } else {
-                        self.presentAlert(forCase: .succeedToSaveLab, handler: self.goBackAndReload)
+                        self.presentAlert(forCase: .succeedToSaveLab, handler: { action in
+                            self.goBackAndReload()
+                        })
                     }
                 }
             }

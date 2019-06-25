@@ -55,7 +55,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         if hasChange {
             goBackAndReload()
         } else {
-            dismiss(animated: true, completion: nil)
+            goBack()
         }
     }
     
@@ -104,7 +104,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
                 self.hideSpinner()
             case .failure:
                 // show an alert and return to the previous page
-                self.presentAlert(forCase: .failToLoadEquipments, handler: self.goBack)
+                self.presentAlert(forCase: .failToLoadEquipments, handler: { action in
+                    self.goBack()
+                })
             }
         }
     }
@@ -113,7 +115,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
 
 // MARK: - User Interaction
 extension LabEquipmentSelectionVC {
-    private func goBack(alert: UIAlertAction!) {
+    private func goBack() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -136,6 +138,7 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
             return viewModel.availableSectionHeader
         }
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {

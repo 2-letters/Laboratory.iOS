@@ -22,6 +22,10 @@ extension XCUIElement {
         self.typeText("5")
     }
     
+    func typeBigNumber() {
+        self.typeText(String(repeating: "5", count: 5))
+    }
+    
     func deleteAllText() {
         guard let stringValue = self.value as? String else { return }
         // if the textfield is empty, value and placeholderValue are equal

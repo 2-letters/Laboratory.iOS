@@ -37,4 +37,47 @@ class EquipmentInfoVMTest: XCTestCase {
         XCTAssertEqual(sut.location, fakeFullEquipment.location)
         XCTAssertEqual(sut.imageUrl, fakeFullEquipment.imageUrl)
     }
+    
+    func testFetchEquipmentInfo() {
+        // GIVEN
+        var isSuccessful = false
+        var responseError: String?
+        var promise = expectation(description: "did fetch equipment info")
+        
+        // WHEN
+        sut.fetchEquipmentInfo(byId: nil) { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertFalse(isSuccessful)
+        XCTAssertNotNil(responseError)
+        
+        // GIVEN
+        isSuccessful = false
+        promise = expectation(description: "did fetch equipment info")
+        
+        // WHEN
+        sut.fetchEquipmentInfo(byId: FakeData.equipmentId) { (fetchResult) in
+            switch fetchResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertFalse(isSuccessful)
+        XCTAssertNotNil(responseError)
+    }
 }

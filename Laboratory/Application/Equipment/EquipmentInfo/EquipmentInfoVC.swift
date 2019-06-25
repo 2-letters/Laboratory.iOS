@@ -36,8 +36,20 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func setupUI() {
-        equipmentInfoView.locationTextView.customize()
-        equipmentInfoView.descriptionTextView.customize()
+        
+        addDelegates()
+        addIdentifiers()
+    }
+    
+    private func addDelegates() {
+        equipmentInfoView.availableTextField.delegate = self
+        equipmentInfoView.nameTextView.delegate = self
+        equipmentInfoView.descriptionTextView.delegate = self
+        equipmentInfoView.locationTextView.delegate = self
+    }
+    
+    private func addIdentifiers() {
+        
     }
 
     private func loadEquipmentInfo() {
@@ -57,9 +69,9 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func updateUI() {
-        equipmentInfoView.availableLabel.text = viewModel.availableString
-        equipmentInfoView.nameLabel.text = viewModel.equipmentName
-        
+//        equipmentInfoView.availableTextView.text = viewModel.availableString
+        equipmentInfoView.availableTextField.text = viewModel.availableString
+        equipmentInfoView.nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
         
         equipmentInfoView.locationTextView.text = viewModel.location
         equipmentInfoView.descriptionTextView.text = viewModel.description
@@ -81,3 +93,42 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         navigationController?.popViewController(animated: true)
     }
 }
+
+extension EquipmentInfoVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.highlight()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.unhighlight()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let inputLength = textField.text?.count ?? 0 + string.count - range.length
+        return inputLength < (MyInt.quantityTextLimit + 1)
+    }
+}
+
+extension EquipmentInfoVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.highlight()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.unhighlight()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        var textLimit = 0
+//
+//        if textView == labInfoView.nameTextView {
+//            textLimit = MyInt.nameTextLimit
+//        } else if textView == labInfoView.descriptionTextView {
+//            textLimit = MyInt.descriptionTextLimit
+//        }
+//
+//        return textView.text.count + text.count - range.length < textLimit + 1
+        return true
+    }
+}
+

@@ -20,6 +20,13 @@ class LabInfoView: UIView {
     
     static func instantiate() -> LabInfoView {
         let view: LabInfoView = initFromNib()
+        view.addEquipmentButton.backgroundColor = MyColor.lightGreen
+        view.addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
+        view.addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        
+        view.removeLabButton.backgroundColor = MyColor.superLightGreen
+        view.removeLabButton.setTitleColor(MyColor.redWarning, for: .normal)
+        view.removeLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         return view
     }
 }

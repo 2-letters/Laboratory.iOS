@@ -5,8 +5,8 @@
 /* Class = "UIButton"; normalTitle = "+"; ObjectID = "RYc-pN-93o"; */
 "RYc-pN-93o.normalTitle" = "+";
 
-/* Class = "UILabel"; text = "Using:"; ObjectID = "Uq6-Oy-kOc"; */
-"Uq6-Oy-kOc.text" = "Using:";
+/* Class = "UILabel"; text = "USING"; ObjectID = "Uq6-Oy-kOc"; */
+"Uq6-Oy-kOc.text" = "USING";
 
 /* Class = "UIButton"; normalTitle = "-"; ObjectID = "fU8-2c-DPk"; */
 "fU8-2c-DPk.normalTitle" = "-";

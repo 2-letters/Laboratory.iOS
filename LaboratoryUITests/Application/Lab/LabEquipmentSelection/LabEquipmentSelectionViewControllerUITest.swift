@@ -63,6 +63,13 @@ class LabEquipmentSelectionViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(firstCell.isHittable)
     }
     
+    func testAvailableEquipmentCellHittable() {
+        let availableEquipmentCell = app.tables[AccessibilityId.labEquipmentSelectionTableView.description].cells.element(boundBy: 1)
+        sleep(2)
+        XCTAssertTrue(availableEquipmentCell.isHittable)
+        availableEquipmentCell.tap()
+    }
+    
     func testDoneButton() {
         let doneButton = app.buttons[AccessibilityId.labEquipmentSelectionDoneButton.description]
         
