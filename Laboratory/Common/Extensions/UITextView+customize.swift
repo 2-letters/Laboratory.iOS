@@ -33,7 +33,7 @@ extension UITextView {
         if (isEditable) {
             self.layer.shadowColor = UIColor.black.cgColor
         } else {
-            self.layer.shadowColor = UIColor.lightGray.cgColor
+            self.layer.shadowColor = MyColor.lightGray.cgColor
         }
     }
     
@@ -43,8 +43,13 @@ extension UITextView {
     }
     
     func unhighlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1)
-        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        self.layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    func warnInput() {
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        self.layer.shadowColor = MyColor.redWarning.cgColor
     }
 }
 
@@ -71,7 +76,7 @@ extension UITextField {
         if (isEnabled) {
             self.layer.shadowColor = UIColor.black.cgColor
         } else {
-            self.layer.shadowColor = UIColor.lightGray.cgColor
+            self.layer.shadowColor = MyColor.lightGray.cgColor
         }
     }
     
@@ -81,7 +86,7 @@ extension UITextField {
     }
     
     func unhighlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1)
-        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        self.layer.shadowColor = UIColor.black.cgColor
     }
 }

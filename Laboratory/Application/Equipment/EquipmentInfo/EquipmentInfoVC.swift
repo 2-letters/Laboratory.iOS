@@ -19,6 +19,11 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     @IBOutlet private var mainView: UIView!
     private var equipmentInfoView: EquipmentInfoView!
     private var editSaveBtn: UIBarButtonItem!
+    private var availableTextField: UITextField!
+    private var nameTextView: UITextView!
+    private var locationTextView: UITextView!
+    private var descriptionTextView: UITextView!
+    private var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,22 +47,28 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         editSaveBtn = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editSaveButtonTapped))
         navigationItem.rightBarButtonItem = editSaveBtn
         
+        availableTextField = equipmentInfoView.availableTextField
+        nameTextView = equipmentInfoView.nameTextView
+        locationTextView = equipmentInfoView.locationTextView
+        descriptionTextView = equipmentInfoView.descriptionTextView
+        imageView = equipmentInfoView.equipmentImageView
+        
         addDelegates()
         addIdentifiers()
     }
     
     private func addDelegates() {
-        equipmentInfoView.availableTextField.delegate = self
-        equipmentInfoView.nameTextView.delegate = self
-        equipmentInfoView.descriptionTextView.delegate = self
-        equipmentInfoView.locationTextView.delegate = self
+        availableTextField.delegate = self
+        nameTextView.delegate = self
+        descriptionTextView.delegate = self
+        locationTextView.delegate = self
     }
     
     private func addIdentifiers() {
-        equipmentInfoView.availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
-        equipmentInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
-        equipmentInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
-        equipmentInfoView.locationTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoLocationTextView.description
+        availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
+        nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
+        descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
+        locationTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoLocationTextView.description
     }
 
     private func loadEquipmentInfo() {
@@ -77,16 +88,15 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func loadUI() {
-//        equipmentInfoView.availableTextView.text = viewModel.availableString
-        equipmentInfoView.availableTextField.text = viewModel.availableString
-        equipmentInfoView.nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
+        availableTextField.text = viewModel.availableString
+        nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
         
-        equipmentInfoView.locationTextView.text = viewModel.location
-        equipmentInfoView.descriptionTextView.text = viewModel.description
+        locationTextView.text = viewModel.location
+        descriptionTextView.text = viewModel.description
         do {
             let url = URL(string: viewModel.imageUrl)!
             let data = try Data(contentsOf: url)
-            equipmentInfoView.equipmentImageView.image = UIImage(data: data)
+            imageView.image = UIImage(data: data)
         }
         catch{
             print(error)
@@ -101,7 +111,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 extension EquipmentInfoVC {
     @objc private func editSaveButtonTapped() {
         if isEditingEquipment && isInputInvalid {
-//            presentAlert(forCase: .invalidEquipmentInfoInput)
+            presentAlert(forCase: .invalidEquipmentInfoInput)
         } else {
             updateUI(forEditing: !isEditingEquipment)
         }
@@ -117,15 +127,18 @@ extension EquipmentInfoVC {
 // MARK: - Helper methods
 extension EquipmentInfoVC {
     var isInputInvalid: Bool {
-        return false
+        return availableTextField.text?.isEmpty ?? true ||
+            nameTextView.text.isEmpty ||
+            locationTextView.text.isEmpty ||
+            descriptionTextView.text.isEmpty
     }
     
     func updateUI(forEditing isEditable: Bool) {
         editSaveBtn.title = isEditable ? "Save" : "Edit"
-        equipmentInfoView.availableTextField.updateEditingUI(forEditing: isEditable)
-        equipmentInfoView.nameTextView.updateEditingUI(forEditing: isEditable)
-        equipmentInfoView.locationTextView.updateEditingUI(forEditing: isEditable)
-        equipmentInfoView.descriptionTextView.updateEditingUI(forEditing: isEditable)
+        availableTextField.updateEditingUI(forEditing: isEditable)
+        nameTextView.updateEditingUI(forEditing: isEditable)
+        locationTextView.updateEditingUI(forEditing: isEditable)
+        descriptionTextView.updateEditingUI(forEditing: isEditable)
     }
 }
 
@@ -136,6 +149,9 @@ extension EquipmentInfoVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.unhighlight()
+        if textField.text?.isEmpty ?? true {
+            textField.text = String(0)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -150,20 +166,25 @@ extension EquipmentInfoVC: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.unhighlight()
+        if textView.text.isEmpty {
+            textView.warnInput()
+        } else {
+            textView.unhighlight()
+        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        var textLimit = 0
-//
-//        if textView == labInfoView.nameTextView {
-//            textLimit = MyInt.nameTextLimit
-//        } else if textView == labInfoView.descriptionTextView {
-//            textLimit = MyInt.descriptionTextLimit
-//        }
-//
-//        return textView.text.count + text.count - range.length < textLimit + 1
-        return true
+        var textLimit = 0
+        
+        if textView == nameTextView {
+            textLimit = MyInt.nameTextLimit
+        } else if textView == locationTextView {
+            textLimit = MyInt.locationTextLimit
+        } else if textView == descriptionTextView {
+            textLimit = MyInt.descriptionTextLimit
+        }
+        
+        return textView.text.count + text.count - range.length < textLimit + 1
     }
 }
 

@@ -175,7 +175,7 @@ extension LabInfoVC {
                 presentAlert(forCase: .invalidLabInfoInput)
             }
             
-            presentAlert(forCase: .attemptCreateLabToAddEquipments, handler: { action in
+            presentAlert(forCase: .attemptCreateLab, handler: { action in
                 self.attemptToSaveLab(toAddEquipments: true)
             })
         } else {
@@ -262,7 +262,11 @@ extension LabInfoVC: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.unhighlight()
+        if textView.text.isEmpty {
+            textView.warnInput()
+        } else {
+            textView.unhighlight()
+        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

@@ -11,5 +11,6 @@ import Foundation
 struct MyInt {
     static let quantityTextLimit = 5
     static let nameTextLimit = 100
+    static let locationTextLimit = 250
     static let descriptionTextLimit = 500
 }

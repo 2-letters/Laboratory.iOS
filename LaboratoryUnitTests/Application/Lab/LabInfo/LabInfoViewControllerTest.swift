@@ -107,7 +107,7 @@ class LabInfoViewControllerTest: XCTestCase {
         
         // THEN
         XCTAssertNotNil(ac)
-        XCTAssertEqual(ac.title, AlertString.oopsTitle)
+        XCTAssertEqual(ac.title, AlertString.oops)
         XCTAssertEqual(ac.message, AlertString.invalidLabInfoMessage)
         XCTAssertEqual(ac.actions.count, 1)
         XCTAssertEqual(ac.actions[0].title, AlertString.okay)
