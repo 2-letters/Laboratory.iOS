@@ -32,6 +32,10 @@ class EquipmentListVC: UIViewController {
         if segue.identifier == SegueId.showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
             equipmentInfoVC.equipmentId = sender as? String
+            if sender == nil {
+                // Is Adding a new Equipment
+                equipmentInfoVC.isEditingEquipment = true
+            }
         }
     }
     
@@ -94,7 +98,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: User interaction
     @objc private func createNewEquipment() {
-        // TODO implement
+        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: nil)
     }
     
     @objc private func refreshData(sender: Any) {

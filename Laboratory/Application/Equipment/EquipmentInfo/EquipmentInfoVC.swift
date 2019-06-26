@@ -35,14 +35,15 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         addTapRecognizer()
         addMainView()
         setupUI()
-        showSpinner()
-        loadEquipmentInfo()
+        if equipmentId != nil {
+            showSpinner()
+            loadEquipmentInfo()
+        }
     }
     
     // MARK: - Layout
     private func addMainView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
-        scrollView.contentSize = equipmentInfoView.frame.size
         scrollView.addSubview(equipmentInfoView)
     }
     
@@ -57,9 +58,16 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         imageView = equipmentInfoView.equipmentImageView
         addImageButton = equipmentInfoView.addImageButton
 
-        addImageButton.titleLabel?.text = "Edit Image"
-        addImageButton.isHidden = true
+        updateUI(forEditing: isEditingEquipment)
+        
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
+        if equipmentId == nil {
+            // TODO this does not work
+            addImageButton.titleLabel?.text = "Add Image"
+            imageView.isHidden = true
+        } else {
+            addImageButton.titleLabel?.text = "Edit Image"
+        }
         
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         
@@ -204,7 +212,8 @@ extension EquipmentInfoVC: UITextViewDelegate {
 }
 
 extension EquipmentInfoVC: ImagePickable {
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage) {
         imageView.image = image
+        imageView.isHidden = false
     }
 }
