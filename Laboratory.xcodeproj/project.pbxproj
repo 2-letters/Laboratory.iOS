@@ -71,6 +71,7 @@
 		C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */; };
 		C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED950229D9707006314A8 /* FirestoreSvc.swift */; };
 		C9F43E74228F2B740049C68D /* LabInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F43E73228F2B740049C68D /* LabInfoVC.swift */; };
+		C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD440422C4094B007CA394 /* ImagePickable.swift */; };
 		DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */; };
 		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
 		DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28679E22BD9C5300CBFC5F /* MyInt.swift */; };
@@ -198,6 +199,7 @@
 		C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVM.swift; sourceTree = "<group>"; };
 		C9EED950229D9707006314A8 /* FirestoreSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSvc.swift; sourceTree = "<group>"; };
 		C9F43E73228F2B740049C68D /* LabInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVC.swift; sourceTree = "<group>"; };
+		C9FD440422C4094B007CA394 /* ImagePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickable.swift; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
 		DE28679E22BD9C5300CBFC5F /* MyInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInt.swift; sourceTree = "<group>"; };
 		DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVMTest.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				C940B96122AA98990025E5AC /* AlertPresentable.swift */,
 				DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */,
 				DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */,
+				C9FD440422C4094B007CA394 /* ImagePickable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1111,6 +1114,7 @@
 				C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
+				C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */,
 				C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C940B96022AA98380025E5AC /* MyFont.swift in Sources */,

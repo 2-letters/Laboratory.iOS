@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses the camera to associate photos with items.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app uses the Photos library to associate photos with items.</string>
 </dict>
 </plist>

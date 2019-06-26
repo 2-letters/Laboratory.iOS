@@ -25,6 +25,9 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var locationTextView: UITextView!
     private var descriptionTextView: UITextView!
     private var imageView: UIImageView!
+    private var addImageButton: UIButton!
+    
+    private var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,28 +44,10 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         equipmentInfoView = EquipmentInfoView.instantiate()
         scrollView.contentSize = equipmentInfoView.frame.size
         scrollView.addSubview(equipmentInfoView)
-//        equipmentInfoView.frame = mainView.bounds
-//        equipmentInfoView.frame = scrollView.bounds
-//        equipmentInfoView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-//        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-//        equipmentInfoView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
-    equipmentInfoView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        equipmentInfoView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        let equipmentInfoViewBottomConstraint = NSLayoutConstraint(item: equipmentInfoView, attribute: .height, relatedBy: .equal, toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0)
-//        NSLayoutConstraint constraintWithItem:self
-//            attribute:NSLayoutAttributeHeight
-//            relatedBy:NSLayoutRelationEqual
-//            toItem:self.superview
-//            attribute:NSLayoutAttributeHeight
-//            multiplier:1
-//            constant:0];
-        equipmentInfoViewBottomConstraint.isActive = true
-        equipmentInfoViewBottomConstraint.priority = UILayoutPriority(rawValue: 250)
     }
     
     private func setupUI() {
-        editSaveBtn = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editSaveButtonTapped))
+        editSaveBtn = UIBarButtonItem(title: "Request an Edit", style: .plain, target: self, action: #selector(editSaveButtonTapped))
         navigationItem.rightBarButtonItem = editSaveBtn
         
         availableTextField = equipmentInfoView.availableTextField
@@ -70,6 +55,13 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         locationTextView = equipmentInfoView.locationTextView
         descriptionTextView = equipmentInfoView.descriptionTextView
         imageView = equipmentInfoView.equipmentImageView
+        addImageButton = equipmentInfoView.addImageButton
+
+        addImageButton.titleLabel?.text = "Edit Image"
+        addImageButton.isHidden = true
+        addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
+        
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         addDelegates()
         addIdentifiers()
@@ -136,6 +128,10 @@ extension EquipmentInfoVC {
         isEditingEquipment = !isEditingEquipment
     }
     
+    @objc private func editImage(_ sender: UIButton) {
+        imagePicker.present(from: sender)
+    }
+    
     func goBack(alert: UIAlertAction!) {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
@@ -151,12 +147,13 @@ extension EquipmentInfoVC {
             descriptionTextView.text.isEmpty
     }
     
-    func updateUI(forEditing isEditable: Bool) {
-        editSaveBtn.title = isEditable ? "Save" : "Edit"
-        availableTextField.updateEditingUI(forEditing: isEditable)
-        nameTextView.updateEditingUI(forEditing: isEditable)
-        locationTextView.updateEditingUI(forEditing: isEditable)
-        descriptionTextView.updateEditingUI(forEditing: isEditable)
+    func updateUI(forEditing isBeingEdited: Bool) {
+        editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
+        addImageButton.isHidden = !isBeingEdited
+        availableTextField.updateEditingUI(forEditing: isBeingEdited)
+        nameTextView.updateEditingUI(forEditing: isBeingEdited)
+        locationTextView.updateEditingUI(forEditing: isBeingEdited)
+        descriptionTextView.updateEditingUI(forEditing: isBeingEdited)
     }
 }
 
@@ -206,3 +203,8 @@ extension EquipmentInfoVC: UITextViewDelegate {
     }
 }
 
+extension EquipmentInfoVC: ImagePickable {
+    func didSelect(image: UIImage?) {
+        imageView.image = image
+    }
+}

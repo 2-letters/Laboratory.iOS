@@ -126,6 +126,14 @@ extension AlertPresentable where Self: UIViewController {
         // add Accessibility Identifier
         ac.view.accessibilityIdentifier = alertCase.description
         
+        // check if the device is an iPad & set the proper source view & rect if it's needed, otherwise the app will crash on iPads
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // this maybe not be self.view, see ImagePicker, it is using the UIButton
+            ac.popoverPresentationController?.sourceView = self.view
+            ac.popoverPresentationController?.sourceRect = self.view.bounds
+            ac.popoverPresentationController?.permittedArrowDirections = [.down, .up]
+        }
+        
         // present
         self.present(ac, animated: true, completion: nil)
     }
