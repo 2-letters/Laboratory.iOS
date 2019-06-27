@@ -39,6 +39,11 @@ class EquipmentListVC: UIViewController {
         }
     }
     
+    @IBAction private func unwindFromEquipmentInfo(segue: UIStoryboardSegue) {
+        // there's some change, reload collection view
+        loadEquipmentData()
+    }
+    
     
     // MARK: Layout
     private func setupUI() {

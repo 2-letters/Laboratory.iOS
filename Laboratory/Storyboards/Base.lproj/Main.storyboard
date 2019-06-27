@@ -218,14 +218,14 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oE-TH-1m4" userLabel="Separating Line">
-                                                <rect key="frame" x="0.0" y="62" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="58" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="9Cy-ZO-0kN"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTz-LL-nxc">
-                                                <rect key="frame" x="0.0" y="71" width="375" height="807"/>
+                                                <rect key="frame" x="0.0" y="63" width="375" height="815"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -237,9 +237,9 @@
                                             <constraint firstAttribute="trailing" secondItem="2oE-TH-1m4" secondAttribute="trailing" id="Ipt-8m-ih5"/>
                                             <constraint firstItem="SQc-4N-Xbt" firstAttribute="top" secondItem="sUh-Bc-3QV" secondAttribute="top" constant="8" id="Sfv-rT-KUw"/>
                                             <constraint firstItem="SQc-4N-Xbt" firstAttribute="leading" secondItem="qoS-42-leg" secondAttribute="trailing" constant="8" id="Uu5-zS-IcU"/>
-                                            <constraint firstItem="LTz-LL-nxc" firstAttribute="top" secondItem="2oE-TH-1m4" secondAttribute="bottom" constant="8" id="Z0w-88-wAi"/>
+                                            <constraint firstItem="LTz-LL-nxc" firstAttribute="top" secondItem="2oE-TH-1m4" secondAttribute="bottom" constant="4" id="Z0w-88-wAi"/>
                                             <constraint firstAttribute="bottom" secondItem="LTz-LL-nxc" secondAttribute="bottom" id="eGQ-3g-AYA"/>
-                                            <constraint firstItem="2oE-TH-1m4" firstAttribute="top" secondItem="qoS-42-leg" secondAttribute="bottom" constant="16" id="fv0-i4-cKQ"/>
+                                            <constraint firstItem="2oE-TH-1m4" firstAttribute="top" secondItem="qoS-42-leg" secondAttribute="bottom" constant="12" id="fv0-i4-cKQ"/>
                                             <constraint firstItem="LTz-LL-nxc" firstAttribute="leading" secondItem="sUh-Bc-3QV" secondAttribute="leading" id="oN8-46-8Yh"/>
                                             <constraint firstItem="2oE-TH-1m4" firstAttribute="leading" secondItem="sUh-Bc-3QV" secondAttribute="leading" id="x7E-on-hrw"/>
                                         </constraints>
@@ -380,9 +380,11 @@
                     <connections>
                         <outlet property="mainView" destination="qSM-TM-uvH" id="Jrq-A9-CUJ"/>
                         <outlet property="scrollView" destination="IKp-HI-N1F" id="MgJ-sz-CMT"/>
+                        <segue destination="oDP-Iz-nka" kind="unwind" identifier="unwindFromEquipmentInfo" unwindAction="unwindFromEquipmentInfoWithSegue:" id="vQR-0X-JeO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mq0-5F-6qY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oDP-Iz-nka" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2110" y="126"/>
         </scene>

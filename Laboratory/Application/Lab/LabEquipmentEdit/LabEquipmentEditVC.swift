@@ -109,6 +109,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         let equipmentInfoVM = viewModel.equipmentInfoVM
         let locationTextView = equipmentInfoView.locationTextView!
         let descriptionTextView = equipmentInfoView.descriptionTextView!
+        let addImageButton = equipmentInfoView.addImageButton!
         
 //        equipmentInfoView.availableTextView.customize(withText: equipmentInfoVM.availableString, isEditable: false)
         equipmentInfoView.availableTextField.customize(withText: equipmentInfoVM.availableString, isEditable: false)
@@ -123,6 +124,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         catch{
             print(error)
         }
+        addImageButton.removeFromSuperview()
         
         updateUI()
         // hide spinner
@@ -150,7 +152,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
-                self.presentAlert(forCase: .failToSaveEquipmentEdit)
+                self.presentAlert(forCase: .failToSaveEdit)
             case .success:
                 self.goBackAndReload()
             }

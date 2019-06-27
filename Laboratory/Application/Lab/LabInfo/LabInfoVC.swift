@@ -213,7 +213,7 @@ extension LabInfoVC {
             presentAlert(forCase: .invalidLabInfoInput)
         } else {
             if isCreatingNewLab || toAddEquipments {
-                // make sure lab Id is empty before creating
+                // make sure lab Id is empty if creating a new Lab
                 labId = nil
             }
             viewModel.saveLab(withNewName: newLabName, newDescription: newLabDescription, labId: labId) { [weak self] (updateResult) in
@@ -224,10 +224,12 @@ extension LabInfoVC {
                     self.presentAlert(forCase: .failToSaveLab)
                 case let .success(newLabId):
                     if toAddEquipments {
+                        // Successfully created a new Lab, to add Equipments
                         self.isCreatingNewLab = false
                         self.labId = newLabId
                         self.goToEquipmentsSelect()
                     } else {
+                        // Save this lab (either new or old), go back 
                         self.presentAlert(forCase: .succeedToSaveLab, handler: { action in
                             self.goBackAndReload()
                         })

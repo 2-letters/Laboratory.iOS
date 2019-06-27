@@ -17,7 +17,8 @@ enum AlertCase {
     case failToLoadEquipmentInfo
     case failToSaveLab
     case failToRemoveLab
-    case failToSaveEquipmentEdit
+    case failToSaveEdit
+    case failToSaveEquipment
 
     case attemptCreateLab
     case attemptToRemoveLab
@@ -38,10 +39,11 @@ struct AlertString {
     
     // Titles
     static let succeedToSaveLabTitle = "Successfully saved this lab"
-    static let failToLoadLabEquipmentsTitle = "Failed to load equipments"
+    static let failToLoadLabEquipmentsTitle = "Cannot load equipments"
     static let failToSaveEditTitle = "Cannot save this edit"
     static let failToSaveLabTitle = "Cannot save this Lab"
     static let failToRemoveLabTitle = "Cannot delete this Lab"
+    static let failToSaveEquipmentTitle = "Cannot save this Equipment"
     
     static let attempToCreateLabTitle = "Create Lab is required"
     static let attemptToRemoveLabTitle = "Confirm Deletion"
@@ -49,8 +51,11 @@ struct AlertString {
     
     // Messages
     static let succeedToSaveLabMessage = "Your lab has been successfully saved"
-    static let failToLoadLabEquipmentsMessage = "Cannot load equipments for this lab. Please try again later"
+    static let failToSaveLabMesage = "Fail to save this lab. Please try again later"
+    static let failToLoadLabEquipmentsMessage = "Fail to load equipments for this lab. Please try again later"
     static let failToRemoveLabMessage = "Fail to delete this lab. Please try again later"
+    static let failToSaveEquipmentMessage = "Fail to save this equipment. Please try again later"
+    static let failToSaveEditMessage = "Fail to save this edit. Please try again later"
     
     static let attemptToCreateLabMessage = "Create a Lab is required to add equipments. Would you like to create this Lab?"
     static let attemptToRemoveLabMessage = "Are you sure you want to delete this lab?"
@@ -59,12 +64,6 @@ struct AlertString {
     static let invalidEquipmentInfoMessage = "Please make sure you have all information for the equipment provided"
     
     static let pleaseTryAgainLaterMessage = "Something went wrong. Please try again later."
-    
-    
-    
-    
-    
-    
 }
 
 protocol AlertPresentable {}
@@ -77,17 +76,20 @@ extension AlertPresentable where Self: UIViewController {
         case .succeedToSaveLab:
             ac = UIAlertController(title: AlertString.succeedToSaveLabTitle, message: AlertString.succeedToSaveLabTitle, preferredStyle: .alert)
             
+        case .failToSaveLab:
+            ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.failToSaveLabMesage, preferredStyle: .alert)
         case .failToLoadEquipments,
              .failToLoadEquipmentInfo:
             ac = UIAlertController(title: AlertString.oops, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         case .failToLoadLabEquipments:
             ac = UIAlertController(title: AlertString.failToLoadLabEquipmentsTitle, message: AlertString.failToLoadLabEquipmentsMessage, preferredStyle: .alert)
-        case .failToSaveLab:
-            ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         case .failToRemoveLab:
             ac = UIAlertController(title: AlertString.failToRemoveLabTitle, message: AlertString.failToRemoveLabMessage, preferredStyle: .alert)
-        case .failToSaveEquipmentEdit:
-            ac = UIAlertController(title: AlertString.failToSaveEditTitle, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
+        case .failToSaveEquipment:
+            ac = UIAlertController(title: AlertString.failToSaveEquipmentTitle, message: AlertString.failToSaveEquipmentMessage, preferredStyle: .alert)
+        case .failToSaveEdit:
+            ac = UIAlertController(title: AlertString.failToSaveEditTitle, message: AlertString.failToSaveEditMessage, preferredStyle: .alert)
+            
             
         case .attemptCreateLab:
             ac = UIAlertController(title: AlertString.attempToCreateLabTitle, message: AlertString.attemptToCreateLabMessage, preferredStyle: .actionSheet)
@@ -106,12 +108,11 @@ extension AlertPresentable where Self: UIViewController {
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
-             .failToSaveLab,
              .invalidLabInfoInput,
              .invalidEquipmentInfoInput:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))
             
-        case .failToRemoveLab, .failToSaveEquipmentEdit:
+        case .failToSaveLab, .failToRemoveLab, .failToSaveEquipment, .failToSaveEdit:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: nil))
             
         case .attemptCreateLab:

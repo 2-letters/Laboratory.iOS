@@ -26,6 +26,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var descriptionTextView: UITextView!
     private var imageView: UIImageView!
     private var addImageButton: UIButton!
+    private var whoIsUsingButton: UIButton!
     
     private var imagePicker: ImagePicker!
     
@@ -57,6 +58,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         descriptionTextView = equipmentInfoView.descriptionTextView
         imageView = equipmentInfoView.equipmentImageView
         addImageButton = equipmentInfoView.addImageButton
+        whoIsUsingButton = equipmentInfoView.whoIsUsingButton
 
         updateUI(forEditing: isEditingEquipment)
         
@@ -108,7 +110,6 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func loadUI() {
         availableTextField.text = viewModel.availableString
         nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
-        
         locationTextView.text = viewModel.location
         descriptionTextView.text = viewModel.description
         do {
@@ -131,6 +132,24 @@ extension EquipmentInfoVC {
         if isEditingEquipment && isInputInvalid {
             presentAlert(forCase: .invalidEquipmentInfoInput)
         } else {
+            if isEditingEquipment {
+                // finish editing, save the new info to Firestore
+                let newName = nameTextView.text!
+                let newDescription = descriptionTextView.text!
+                let newLocation = locationTextView.text!
+                let newImageUrl = viewModel.getUrl(forImage: imageView.image!)
+                let newAvailable = Int(availableTextField.text ?? "0")!
+                viewModel.saveEquipment(withNewName: newName, newDescription: newDescription, newLocation: newLocation, newImageUrl: newImageUrl, newAvailable: newAvailable, equipmentId: equipmentId) { [weak self] (updateResult) in
+                    guard let self = self else { return }
+                    switch updateResult {
+                    case let .failure(errorStr):
+                        print(errorStr)
+                        self.presentAlert(forCase: .failToSaveEquipment)
+                    case .success:
+                        self.goBackAndReload()
+                    }
+                }
+            }
             updateUI(forEditing: !isEditingEquipment)
         }
         isEditingEquipment = !isEditingEquipment
@@ -144,6 +163,10 @@ extension EquipmentInfoVC {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
     }
+    
+    func goBackAndReload() {
+        performSegue(withIdentifier: SegueId.unwindFromEquipmentInfo, sender: nil)
+    }
 }
 
 // MARK: - Helper methods
@@ -152,12 +175,14 @@ extension EquipmentInfoVC {
         return availableTextField.text?.isEmpty ?? true ||
             nameTextView.text.isEmpty ||
             locationTextView.text.isEmpty ||
-            descriptionTextView.text.isEmpty
+            descriptionTextView.text.isEmpty ||
+            imageView.image == nil
     }
     
     func updateUI(forEditing isBeingEdited: Bool) {
         editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
         addImageButton.isHidden = !isBeingEdited
+        whoIsUsingButton.isHidden = isBeingEdited
         availableTextField.updateEditingUI(forEditing: isBeingEdited)
         nameTextView.updateEditingUI(forEditing: isBeingEdited)
         locationTextView.updateEditingUI(forEditing: isBeingEdited)

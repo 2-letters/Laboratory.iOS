@@ -21,4 +21,5 @@ struct SegueId {
     static let unwindFromLabInfo = "unwindFromLabInfo"
     static let unwindFromEquipmentSelection = "unwindFromEquipmentSelection"
     static let unwindFromEquipmentEdit = "unwindFromEquipmentEdit"
+    static let unwindFromEquipmentInfo = "unwindFromEquipmentInfo"
 }

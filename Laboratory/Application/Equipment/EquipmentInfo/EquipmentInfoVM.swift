@@ -31,6 +31,11 @@ class EquipmentInfoVM {
         return equipment!.imageUrl
     }
     
+    func getUrl(forImage image: UIImage) -> String {
+        // TODO get image url
+        return imageUrl
+    }
+    
     func fetchEquipmentInfo(byId equipmentId: String?, completion: @escaping FetchFirestoreHandler) {
         // TODO: get department and instituion from Cache?
         guard let equipmentId = equipmentId else {
@@ -51,6 +56,42 @@ class EquipmentInfoVM {
                     completion(.success)
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))
+            }
+        }
+    }
+    
+    func saveEquipment(withNewName newName: String, newDescription: String, newLocation: String, newImageUrl: String, newAvailable: Int, equipmentId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
+        if let equipmentId = equipmentId {
+            // Update existed equipment
+            FirestoreUtil.getEquipment(withId: equipmentId).updateData([
+                EquipmentKey.name: newName,
+                EquipmentKey.description: newDescription,
+                EquipmentKey.location: newLocation,
+                EquipmentKey.imageUrl: newImageUrl,
+                EquipmentKey.available: newAvailable
+            ]) { err in
+                if let err = err {
+                    completion(.failure(err.localizedDescription + "voxERR fail to update Equipment Info"))
+                } else {
+                    print("Successfully update lab with id: \(equipmentId)")
+                    completion(.success(nil))
+                }
+            }
+        } else {
+            // Create a new Equipment
+            let newEquipment = FirestoreUtil.getAllEquipments().document()
+            newEquipment.setData([
+                EquipmentKey.name: newName,
+                EquipmentKey.description: newDescription,
+                EquipmentKey.location: newLocation,
+                EquipmentKey.imageUrl: newImageUrl,
+                EquipmentKey.available: newAvailable
+            ]) { err in
+                if let err = err {
+                    completion(.failure("voxERR creating a new Equipment \(err)"))
+                } else {
+                    completion(.success(nil))
+                }
             }
         }
     }

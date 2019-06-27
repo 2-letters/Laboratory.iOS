@@ -61,7 +61,7 @@ class LabCollectionVC: UIViewController {
     }
     
     @IBAction private func unwindFromLabInfo(segue: UIStoryboardSegue) {
-        // there's some change, reload table view and enable save Button
+        // there's some change, reload collection view
         loadLabData()
     }
     
