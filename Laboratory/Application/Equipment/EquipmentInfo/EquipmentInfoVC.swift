@@ -26,6 +26,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var descriptionTextView: UITextView!
     private var imageView: UIImageView!
     private var addImageButton: UIButton!
+    private var removeEquipmentButton: UIButton!
     private var whoIsUsingButton: UIButton!
     
     private var imagePicker: ImagePicker!
@@ -58,11 +59,11 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         descriptionTextView = equipmentInfoView.descriptionTextView
         imageView = equipmentInfoView.equipmentImageView
         addImageButton = equipmentInfoView.addImageButton
+        removeEquipmentButton = equipmentInfoView.removeEquipmentButton
         whoIsUsingButton = equipmentInfoView.whoIsUsingButton
 
-        updateUI(forEditing: isEditingEquipment)
-        
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
+        
         if equipmentId == nil {
             // TODO this does not work
             addImageButton.titleLabel?.text = "Add Image"
@@ -70,6 +71,8 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         } else {
             addImageButton.titleLabel?.text = "Edit Image"
         }
+        
+        updateUI(forEditing: isEditingEquipment)
         
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         
@@ -182,6 +185,7 @@ extension EquipmentInfoVC {
     func updateUI(forEditing isBeingEdited: Bool) {
         editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
         addImageButton.isHidden = !isBeingEdited
+        removeEquipmentButton.isHidden = !isBeingEdited
         whoIsUsingButton.isHidden = isBeingEdited
         availableTextField.updateEditingUI(forEditing: isBeingEdited)
         nameTextView.updateEditingUI(forEditing: isBeingEdited)
