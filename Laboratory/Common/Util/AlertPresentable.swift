@@ -15,6 +15,7 @@ enum AlertCase {
     case failToLoadEquipments
     case failToLoadLabEquipments
     case failToLoadEquipmentInfo
+    case failToLoadEquipmentUser
     case failToSaveLab
     case failToSaveEdit
     case failToSaveEquipment
@@ -42,6 +43,7 @@ struct AlertString {
     // Titles
     static let succeedToSaveLabTitle = "Successfully saved this lab"
     static let failToLoadLabEquipmentsTitle = "Cannot load equipments"
+    static let failToLoadEquipmentUserTitle = "Cannot load users"
     static let failToSaveEditTitle = "Cannot save this edit"
     static let failToSaveLabTitle = "Cannot save this Lab"
     static let failToSaveEquipmentTitle = "Cannot save this Equipment"
@@ -55,6 +57,7 @@ struct AlertString {
     // Messages
     static let succeedToSaveLabMessage = "Your lab has been successfully saved"
     static let failToLoadLabEquipmentsMessage = "Fail to load equipments for this lab. Please try again later"
+    static let failToLoadEquipmentUserMessage = "Fail to load users for this equipment"
     static let failToSaveLabMesage = "Fail to save this lab. Please try again later"
     static let failToSaveEquipmentMessage = "Fail to save this equipment. Please try again later"
     static let failToSaveEditMessage = "Fail to save this edit. Please try again later"
@@ -86,6 +89,8 @@ extension AlertPresentable where Self: UIViewController {
             ac = UIAlertController(title: AlertString.oops, message: AlertString.pleaseTryAgainLaterMessage, preferredStyle: .alert)
         case .failToLoadLabEquipments:
             ac = UIAlertController(title: AlertString.failToLoadLabEquipmentsTitle, message: AlertString.failToLoadLabEquipmentsMessage, preferredStyle: .alert)
+        case .failToLoadEquipmentUser:
+            ac = UIAlertController(title: AlertString.failToLoadEquipmentUserTitle, message: AlertString.failToLoadEquipmentUserMessage, preferredStyle: .alert)
         case .failToSaveLab:
             ac = UIAlertController(title: AlertString.failToSaveLabTitle, message: AlertString.failToSaveLabMesage, preferredStyle: .alert)
         case .failToSaveEquipment:
@@ -116,6 +121,7 @@ extension AlertPresentable where Self: UIViewController {
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
+             .failToLoadEquipmentUser,
              .invalidLabInfoInput,
              .invalidEquipmentInfoInput:
             ac.addAction(UIAlertAction(title: AlertString.okay, style: .default, handler: handler))

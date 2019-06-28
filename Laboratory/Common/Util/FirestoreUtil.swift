@@ -68,4 +68,7 @@ struct EquipmentKey {
     static let description = "description"
     static let location = "location"
     static let imageUrl = "imageUrl"
+    
+    static let users = "users"
+    static let userName = "userName"
 }

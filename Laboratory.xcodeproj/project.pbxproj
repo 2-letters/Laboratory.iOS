@@ -39,6 +39,8 @@
 		C93B100E22AF05DB0035A9FA /* EquipmentListVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100D22AF05DB0035A9FA /* EquipmentListVMTest.swift */; };
 		C93B101022AF077D0035A9FA /* EquipmentListVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100F22AF077D0035A9FA /* EquipmentListVCTest.swift */; };
 		C94020B622C681A2006D71DA /* EquipmentUserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */; };
+		C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020B822C68865006D71DA /* EquipmentUserListVM.swift */; };
+		C94020BB22C688A0006D71DA /* EquipmentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020BA22C688A0006D71DA /* EquipmentUser.swift */; };
 		C940B96022AA98380025E5AC /* MyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B95F22AA98380025E5AC /* MyFont.swift */; };
 		C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
 		C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96422AAC0FF0025E5AC /* TestUtil.swift */; };
@@ -166,6 +168,8 @@
 		C93B100D22AF05DB0035A9FA /* EquipmentListVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVMTest.swift; sourceTree = "<group>"; };
 		C93B100F22AF077D0035A9FA /* EquipmentListVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVCTest.swift; sourceTree = "<group>"; };
 		C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVC.swift; sourceTree = "<group>"; };
+		C94020B822C68865006D71DA /* EquipmentUserListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVM.swift; sourceTree = "<group>"; };
+		C94020BA22C688A0006D71DA /* EquipmentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUser.swift; sourceTree = "<group>"; };
 		C940B95F22AA98380025E5AC /* MyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFont.swift; sourceTree = "<group>"; };
 		C940B96122AA98990025E5AC /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				DE42094A228BCCF100ADFEA1 /* Equipment.swift */,
 				C97B114422949B5C00E90B46 /* FullEquipment.swift */,
 				C97B11462294A4EB00E90B46 /* LabInfo.swift */,
+				C94020BA22C688A0006D71DA /* EquipmentUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */,
+				C94020B822C68865006D71DA /* EquipmentUserListVM.swift */,
 			);
 			path = EquipmentUserList;
 			sourceTree = "<group>";
@@ -1127,6 +1133,7 @@
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
 				C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */,
+				C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */,
 				C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
 				C940B96022AA98380025E5AC /* MyFont.swift in Sources */,
@@ -1145,6 +1152,7 @@
 				C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */,
 				DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,
+				C94020BB22C688A0006D71DA /* EquipmentUser.swift in Sources */,
 				C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
