@@ -87,6 +87,5 @@ class LabInfoVM {
                 completion(.success)
             }
         }
-
     }
 }

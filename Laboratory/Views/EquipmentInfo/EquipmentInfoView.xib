@@ -93,47 +93,44 @@
                         <constraint firstAttribute="trailing" secondItem="kRb-gL-WFs" secondAttribute="trailing" id="ssC-Jb-Xfa"/>
                     </constraints>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-SQ-knl">
-                    <rect key="frame" x="0.0" y="370" width="421" height="421"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="RMK-SQ-knl" secondAttribute="height" multiplier="1:1" id="qae-6O-ROP"/>
-                    </constraints>
-                </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-nP-1ia">
-                    <rect key="frame" x="0.0" y="799" width="421" height="102"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-nP-1ia">
+                    <rect key="frame" x="20" y="370" width="381" height="507"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-SQ-knl">
+                            <rect key="frame" x="0.0" y="0.0" width="381" height="381"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="RMK-SQ-knl" secondAttribute="height" multiplier="1:1" id="qae-6O-ROP"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nri-LI-CSL">
-                            <rect key="frame" x="0.0" y="0.0" width="421" height="36"/>
+                            <rect key="frame" x="0.0" y="389" width="381" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="1Wb-EH-hgE"/>
                             </constraints>
                             <state key="normal" title="Edit Image"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ark-qD-Fbq">
-                            <rect key="frame" x="0.0" y="36" width="421" height="30"/>
+                            <rect key="frame" x="0.0" y="433" width="381" height="30"/>
                             <state key="normal" title="🗑️ Remove Equipment"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-g7-Vuz">
-                            <rect key="frame" x="0.0" y="66" width="421" height="36"/>
+                            <rect key="frame" x="0.0" y="471" width="381" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="f0i-oI-8Zw"/>
                             </constraints>
-                            <state key="normal" title="👥 Who is using"/>
+                            <state key="normal" title="👥 List of users"/>
                         </button>
                     </subviews>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="sUd-nP-1ia" firstAttribute="leading" secondItem="SxJ-5z-LwO" secondAttribute="leading" id="7NY-oC-zac"/>
+                <constraint firstItem="sUd-nP-1ia" firstAttribute="leading" secondItem="SxJ-5z-LwO" secondAttribute="leading" constant="20" id="7NY-oC-zac"/>
                 <constraint firstItem="ufZ-Tb-bDG" firstAttribute="top" secondItem="SxJ-5z-LwO" secondAttribute="top" constant="8" id="LwH-ql-XMu"/>
                 <constraint firstItem="ufZ-Tb-bDG" firstAttribute="leading" secondItem="SxJ-5z-LwO" secondAttribute="leading" constant="20" id="Twm-w0-RfE"/>
-                <constraint firstItem="SxJ-5z-LwO" firstAttribute="trailing" secondItem="RMK-SQ-knl" secondAttribute="trailing" id="afH-GI-gVb"/>
                 <constraint firstItem="SxJ-5z-LwO" firstAttribute="trailing" secondItem="ufZ-Tb-bDG" secondAttribute="trailing" constant="20" id="h89-o6-ibQ"/>
-                <constraint firstItem="sUd-nP-1ia" firstAttribute="top" secondItem="RMK-SQ-knl" secondAttribute="bottom" constant="8" id="l1K-3u-pVe"/>
-                <constraint firstItem="RMK-SQ-knl" firstAttribute="top" secondItem="ufZ-Tb-bDG" secondAttribute="bottom" constant="8" id="mMV-nJ-pjo"/>
-                <constraint firstItem="SxJ-5z-LwO" firstAttribute="trailing" secondItem="sUd-nP-1ia" secondAttribute="trailing" id="myy-BF-S4f"/>
-                <constraint firstItem="RMK-SQ-knl" firstAttribute="leading" secondItem="SxJ-5z-LwO" secondAttribute="leading" id="wit-zC-IJ3"/>
+                <constraint firstItem="sUd-nP-1ia" firstAttribute="top" secondItem="ufZ-Tb-bDG" secondAttribute="bottom" constant="8" id="mfR-eN-sdA"/>
+                <constraint firstItem="SxJ-5z-LwO" firstAttribute="trailing" secondItem="sUd-nP-1ia" secondAttribute="trailing" constant="20" id="myy-BF-S4f"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="SxJ-5z-LwO"/>
@@ -143,10 +140,10 @@
                 <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="Dss-rN-tIJ"/>
                 <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="k2R-Hc-fnJ"/>
                 <outlet property="itemsLabel" destination="AGm-To-MNz" id="JAh-1X-3yu"/>
+                <outlet property="listOfUserButton" destination="7LQ-g7-Vuz" id="wbd-xc-4su"/>
                 <outlet property="locationTextView" destination="kRb-gL-WFs" id="yw1-yk-JTv"/>
                 <outlet property="nameTextView" destination="M1V-Fj-6mu" id="GA3-Zr-jkU"/>
                 <outlet property="removeEquipmentButton" destination="Ark-qD-Fbq" id="5em-oE-c1N"/>
-                <outlet property="whoIsUsingButton" destination="7LQ-g7-Vuz" id="wbd-xc-4su"/>
             </connections>
             <point key="canvasLocation" x="931.15942028985512" y="257.20108695652175"/>
         </view>

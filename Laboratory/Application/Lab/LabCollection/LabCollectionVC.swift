@@ -65,7 +65,6 @@ class LabCollectionVC: UIViewController {
         loadLabData()
     }
     
-    
     // MARK: Layout
     private func setupUI() {
         navigationItem.title = MyString.labCollectionTitle

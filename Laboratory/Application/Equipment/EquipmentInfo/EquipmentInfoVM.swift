@@ -28,6 +28,9 @@ class EquipmentInfoVM {
         return equipment!.location
     }
     var imageUrl: String {
+        if equipment?.imageUrl == nil {
+            return "https://i.imgur.com/0ISKm8z.jpg"
+        }
         return equipment!.imageUrl
     }
     
@@ -92,6 +95,21 @@ class EquipmentInfoVM {
                 } else {
                     completion(.success(nil))
                 }
+            }
+        }
+    }
+    
+    func removeEquipment(withId equipmentId: String?, completion: @escaping DeleteFirestoreHandler) {
+        guard let equipmentId = equipmentId else {
+            completion(.failure("ERR could not find Lab Id"))
+            return
+        }
+        
+        FirestoreUtil.getEquipment(withId: equipmentId).delete() { err in
+            if let err = err {
+                completion(.failure("Error removing document: \(err)"))
+            } else {
+                completion(.success)
             }
         }
     }

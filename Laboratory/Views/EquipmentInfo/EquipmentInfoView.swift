@@ -18,7 +18,7 @@ class EquipmentInfoView: UIView {
     @IBOutlet var equipmentImageView: UIImageView!
     @IBOutlet var addImageButton: UIButton!
     @IBOutlet var removeEquipmentButton: UIButton!
-    @IBOutlet var whoIsUsingButton: UIButton!
+    @IBOutlet var listOfUserButton: UIButton!
     
     static func instantiate() -> EquipmentInfoView {
         let view: EquipmentInfoView = initFromNib()
@@ -38,9 +38,9 @@ class EquipmentInfoView: UIView {
         view.removeEquipmentButton.setTitleColor(MyColor.redWarning, for: .normal)
         view.removeEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
-        view.whoIsUsingButton.backgroundColor = MyColor.lightGreen
-        view.whoIsUsingButton.setTitleColor(UIColor.white, for: .normal)
-        view.whoIsUsingButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        view.listOfUserButton.backgroundColor = MyColor.lightGreen
+        view.listOfUserButton.setTitleColor(UIColor.white, for: .normal)
+        view.listOfUserButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         return view
     }
 }

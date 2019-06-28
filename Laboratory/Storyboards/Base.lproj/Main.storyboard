@@ -146,7 +146,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ase-Ob-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rts-C0-Goj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4690.3999999999996" y="-398.27586206896552"/>
+            <point key="canvasLocation" x="4603" y="-672"/>
         </scene>
         <!--Lab Equipment EditVC-->
         <scene sceneID="8c5-Q3-bQ6">
@@ -185,7 +185,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SQc-4N-Xbt">
-                                                <rect key="frame" x="138" y="8" width="186" height="38"/>
+                                                <rect key="frame" x="138" y="8" width="168" height="38"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-sC-Ovu">
                                                         <rect key="frame" x="0.0" y="4" width="60" height="30"/>
@@ -205,10 +205,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoN-vV-ZN5">
-                                                        <rect key="frame" x="106" y="2.5" width="80" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="kh6-dm-pHg"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="106" y="2.5" width="62" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Remove"/>
                                                         <connections>
@@ -274,12 +271,54 @@
                         <outlet property="separatingLine" destination="2oE-TH-1m4" id="hDl-8B-NHO"/>
                         <outlet property="usingQuantityTextField" destination="0Hb-sC-Ovu" id="iqc-Gm-3zr"/>
                         <segue destination="olc-za-gWK" kind="unwind" identifier="unwindFromEquipmentEdit" unwindAction="unwindFromEquipmentEditWithSegue:" id="dE8-yR-9bk"/>
+                        <segue destination="QXx-5b-iab" kind="presentation" identifier="showEquipmentUserListFromLab" id="p7e-bD-H0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7M2-8R-0Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="olc-za-gWK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5492" y="-398"/>
+            <point key="canvasLocation" x="5446" y="-672"/>
+        </scene>
+        <!--Equipment User ListVC-->
+        <scene sceneID="nLv-q8-eiJ">
+            <objects>
+                <tableViewController id="QXx-5b-iab" customClass="EquipmentUserListVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g4W-Ai-BVl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="WCR-4e-nmq">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="List of users" id="rFA-a7-p8d">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="5JG-90-KHm">
+                                        <connections>
+                                            <action selector="done:" destination="QXx-5b-iab" id="BcB-zh-AQ9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ENz-49-HYZ">
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ENz-49-HYZ" id="Sta-Gn-r68">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QXx-5b-iab" id="frA-aR-bMS"/>
+                            <outlet property="delegate" destination="QXx-5b-iab" id="aMQ-2v-Jgb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v7O-pa-maS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5445" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GVG-qi-G2A">
@@ -340,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bM7-j8-WUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="126"/>
+            <point key="canvasLocation" x="2109" y="127"/>
         </scene>
         <!--Equipment InfoVC-->
         <scene sceneID="q3C-iP-zlp">
@@ -366,12 +405,13 @@
                     <connections>
                         <outlet property="scrollView" destination="IKp-HI-N1F" id="MgJ-sz-CMT"/>
                         <segue destination="oDP-Iz-nka" kind="unwind" identifier="unwindFromEquipmentInfo" unwindAction="unwindFromEquipmentInfoWithSegue:" id="vQR-0X-JeO"/>
+                        <segue destination="QXx-5b-iab" kind="presentation" identifier="showEquipmentUserListFromEquipment" id="Vf5-2g-CfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mq0-5F-6qY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="oDP-Iz-nka" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="126"/>
+            <point key="canvasLocation" x="2929" y="127"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JUm-Rg-vP4">
@@ -418,7 +458,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egE-UN-Tr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="127"/>
+            <point key="canvasLocation" x="1232" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GZ5-at-OJP">
@@ -436,11 +476,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Etl-Vk-Qxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3748" y="-398.27586206896552"/>
+            <point key="canvasLocation" x="3772" y="-672"/>
         </scene>
     </scenes>
     <resources>
         <image name="equipmentIcon" width="25" height="25"/>
         <image name="labIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vf5-2g-CfU"/>
+    </inferredMetricsTieBreakers>
 </document>

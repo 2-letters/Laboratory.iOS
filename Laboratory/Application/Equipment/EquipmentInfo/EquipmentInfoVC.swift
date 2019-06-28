@@ -17,7 +17,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     var isEditingEquipment = false
     
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet private var mainView: UIView!
+//    @IBOutlet private var mainView: UIView!
     private var equipmentInfoView: EquipmentInfoView!
     private var editSaveBtn: UIBarButtonItem!
     private var availableTextField: UITextField!
@@ -27,7 +27,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var imageView: UIImageView!
     private var addImageButton: UIButton!
     private var removeEquipmentButton: UIButton!
-    private var whoIsUsingButton: UIButton!
+    private var listOfUserButton: UIButton!
     
     private var imagePicker: ImagePicker!
     
@@ -40,6 +40,13 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         if equipmentId != nil {
             showSpinner()
             loadEquipmentInfo()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showEquipmentUserListFromEquipment {
+            let equipmentUserListVC = segue.destination as! EquipmentUserListVC
+            equipmentUserListVC.equipmentId = sender as? String
         }
     }
     
@@ -60,16 +67,19 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         imageView = equipmentInfoView.equipmentImageView
         addImageButton = equipmentInfoView.addImageButton
         removeEquipmentButton = equipmentInfoView.removeEquipmentButton
-        whoIsUsingButton = equipmentInfoView.whoIsUsingButton
+        listOfUserButton = equipmentInfoView.listOfUserButton
 
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
+        removeEquipmentButton.addTarget(self, action: #selector(attemptToRemoveEquipment), for: .touchUpInside)
+        listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
         
         if equipmentId == nil {
             // TODO this does not work
-            addImageButton.titleLabel?.text = "Add Image"
+            removeEquipmentButton.isHidden = true
+            addImageButton.setTitle("Add Image", for: .normal)
             imageView.isHidden = true
         } else {
-            addImageButton.titleLabel?.text = "Edit Image"
+            addImageButton.setTitle("Edit Image", for: .normal)
         }
         
         updateUI(forEditing: isEditingEquipment)
@@ -162,6 +172,27 @@ extension EquipmentInfoVC {
         imagePicker.present(from: sender)
     }
     
+    @objc private func attemptToRemoveEquipment() {
+        presentAlert(forCase: .attemptToRemoveEquipment, handler: removeEquipment)
+    }
+    
+    private func removeEquipment(alert: UIAlertAction!) {
+        viewModel.removeEquipment(withId: equipmentId) { [weak self] (deleteResult) in
+            guard let self = self else { return }
+            switch deleteResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                self.presentAlert(forCase: .failToRemoveEquipment)
+            case .success:
+                self.goBackAndReload()
+            }
+        }
+    }
+    
+    @objc private func showListOfUser() {
+        performSegue(withIdentifier: SegueId.showEquipmentUserListFromEquipment, sender: equipmentId)
+    }
+    
     func goBack(alert: UIAlertAction!) {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
@@ -185,8 +216,10 @@ extension EquipmentInfoVC {
     func updateUI(forEditing isBeingEdited: Bool) {
         editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
         addImageButton.isHidden = !isBeingEdited
-        removeEquipmentButton.isHidden = !isBeingEdited
-        whoIsUsingButton.isHidden = isBeingEdited
+        if equipmentId != nil {
+            removeEquipmentButton.isHidden = !isBeingEdited
+        }
+        listOfUserButton.isHidden = isBeingEdited
         availableTextField.updateEditingUI(forEditing: isBeingEdited)
         nameTextView.updateEditingUI(forEditing: isBeingEdited)
         locationTextView.updateEditingUI(forEditing: isBeingEdited)
