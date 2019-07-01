@@ -112,6 +112,8 @@ extension UITestable where Self: XCTestCase {
         case .equipmentInfo:
             // todo fix this case, this is made up
             view = app.otherElements[AccessibilityId.equipmentInfoScrollView.description]
+        default:
+            return
         }
 //        let searchBar = getSearchBar(inVC: viewController)!
         if let destinationView = destinationView {
@@ -144,6 +146,8 @@ extension UITestable where Self: XCTestCase {
             return app.tables[AccessibilityId.labEquipmentSelectionTableView.description].cells.element(boundBy: 0)
         case .equipmentList:
             return app.tables[AccessibilityId.equipmentListTableView.description].cells.element(boundBy: 0)
+        case .equipmentUserList:
+            return app.tables[AccessibilityId.equipmentUserListTableView.description].cells.element(boundBy: 0)
         default:
             return nil
         }
@@ -160,12 +164,22 @@ extension UITestable where Self: XCTestCase {
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
-             .failToSaveEquipmentEdit:
+             .failToSaveEdit:
             buttonText = AlertString.okay
             
-        case .attemptCreateLabToAddEquipments,
+        case .attemptCreateLab,
              .attemptToRemoveLab:
             buttonText = AlertString.no
+        case .failToLoadEquipmentUser:
+            <#code#>
+        case .failToSaveEquipment:
+            <#code#>
+        case .failToRemoveEquipment:
+            <#code#>
+        case .attemptToRemoveEquipment:
+            <#code#>
+        case .invalidEquipmentInfoInput:
+            <#code#>
         }
         
         let alertButton = app.buttons[buttonText]

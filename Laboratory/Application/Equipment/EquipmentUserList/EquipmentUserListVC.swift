@@ -11,18 +11,26 @@ import UIKit
 class EquipmentUserListVC: UITableViewController, AlertPresentable {
 
     var equipmentId: String!
+    @IBOutlet private var doneButton: UIBarButtonItem!
     private var viewModel = EquipmentUserListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = MyString.equipmentListTitle
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        navigationItem.title = MyString.equipmentListTitle
+        addIdentifiers()
         
         loadEquipmentUserData()
     }
+    
+    private func addIdentifiers() {
+        tableView.accessibilityIdentifier = AccessibilityId.equipmentUserListTableView.description
+        doneButton.accessibilityIdentifier = AccessibilityId.equipmentUserListDoneButton.description
+    }
+    
     @IBAction private func done(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

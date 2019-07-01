@@ -80,4 +80,52 @@ class EquipmentInfoVMTest: XCTestCase {
         XCTAssertFalse(isSuccessful)
         XCTAssertNotNil(responseError)
     }
+    
+    func testSaveEquipment() {
+        // update existing lab
+        // GIVEN
+        var isSuccessful = false
+        var responseError: String?
+        var promise = expectation(description: "Did save equipment")
+        
+        
+        // WHEN
+        UserUtil.institutionId = FakeData.institutionId
+        
+        sut.saveEquipment(withNewName: FakeData.equipmentName, newDescription: FakeData.equipmentDescription, newLocation: FakeData.equipmentLocation, newImageUrl: FakeData.equipmentImageUrl, newAvailable: FakeData.equipmentAvailable) { (updateResult) in
+            switch updateResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertNil(responseError)
+        XCTAssertTrue(isSuccessful)
+        
+        // create new equipment
+        // GIVEN
+        isSuccessful = false
+        promise = expectation(description: "Did save lab")
+        
+        // WHEN
+        sut.saveEquipment(withNewName: FakeData.equipmentNameCreate, newDescription: FakeData.equipmentDescriptionCreate, newLocation: FakeData.equipmentLocationCreate, newImageUrl: FakeData.equipmentImageUrlCreate, newAvailable: FakeData.equipmentAvailableCreate) { (updateResult) in
+            switch updateResult {
+            case let .failure(errorStr):
+                responseError = errorStr
+            case .success:
+                isSuccessful = true
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // THEN
+        XCTAssertNil(responseError)
+        XCTAssertTrue(isSuccessful)
+    }
 }

@@ -52,6 +52,10 @@ enum AccessibilityId {
     case equipmentInfoDescriptionTextView
     case equipmentInfoLocationTextView
     
+    // Equipment User List VC
+    case equipmentUserListTableView
+    case equipmentUserListDoneButton
+    
     var description: String {
         return String(describing: self)
     }
