@@ -19,6 +19,8 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
         tableView.delegate = self
         tableView.dataSource = self
         
+        navigationItem.title = MyString.equipmentListTitle
+        
         loadEquipmentUserData()
     }
     @IBAction private func done(_ sender: Any) {
@@ -39,11 +41,6 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
     }
     
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.equipmentUserVMs?.count ?? 0
     }
@@ -63,15 +60,4 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
         cell.detailTextLabel?.font = UIFont(name: secondaryFont, size: 18)
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
