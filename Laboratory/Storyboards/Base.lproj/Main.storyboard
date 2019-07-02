@@ -263,7 +263,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="List of users" id="rFA-a7-p8d">
+                                <navigationItem id="rFA-a7-p8d">
                                     <barButtonItem key="rightBarButtonItem" systemItem="done" id="5JG-90-KHm">
                                         <connections>
                                             <action selector="done:" destination="QXx-5b-iab" id="BcB-zh-AQ9"/>
@@ -303,6 +303,9 @@
                             <outlet property="delegate" destination="QXx-5b-iab" id="aMQ-2v-Jgb"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="doneButton" destination="5JG-90-KHm" id="kGg-pc-ydw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7O-pa-maS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

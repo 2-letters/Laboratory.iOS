@@ -22,4 +22,5 @@ struct MyString {
     static let labEquipmentCollectionTitle = "Edit Equipments"
     
     static let equipmentListTitle = "Equipments"
+    static let equipmentUserListTitle = "List of users"
 }

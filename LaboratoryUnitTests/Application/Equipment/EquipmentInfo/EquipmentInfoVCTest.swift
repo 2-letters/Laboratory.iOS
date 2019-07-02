@@ -1,41 +1,23 @@
 //
-//  LabEquipmentEditVCTest.swift
+//  EquipmentInfoVCTest.swift
 //  LaboratoryUnitTests
 //
-//  Created by Huy Vo on 6/9/19.
+//  Created by Developers on 7/1/19.
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
 import XCTest
-@testable import Laboratory
 
-class LabEquipmentEditVCTest: XCTestCase {
+class EquipmentInfoVCTest: XCTestCase {
 
-    var sut: LabEquipmentEditVC!
-    var equipmentUserListVC: EquipmentUserListVC!
     override func setUp() {
-        super.setUp()
-        sut = MyViewController.labEquipmentEdit.instance as? LabEquipmentEditVC
-        equipmentUserListVC = MyViewController.equipmentUserList.instance as? EquipmentUserListVC
-        let _ = sut.view
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
-        sut = nil
-        equipmentUserListVC = nil
-        super.tearDown()
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testViewDidLoad() {
-        // GIVEN
-        let gestureRecognizers = sut.view.gestureRecognizers
-        
-        // THEN
-        XCTAssertEqual(gestureRecognizers?.count, 1)
-        
-        XCTAssertNotNil(sut.spinnerVC.view)
-    }
-    
     func testSegueInfo() {
         // GIVEN
         let identifiers = TestUtil.segues(ofViewController: sut)
@@ -56,4 +38,5 @@ class LabEquipmentEditVCTest: XCTestCase {
         // THEN
         XCTAssertEqual(equipmentUserListVC.equipmentId, FakeData.equipmentId)
     }
+
 }
