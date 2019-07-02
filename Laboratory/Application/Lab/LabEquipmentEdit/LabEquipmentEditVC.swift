@@ -16,13 +16,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var usingQuantity: Int = 0
     // the quantity being edited
 
-    @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var usingQuantityTextField: UITextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
     @IBOutlet private var removeBtn: UIButton!
     @IBOutlet private var separatingLine: UIView!
-    @IBOutlet private var equipmentInfoViewContainer: UIView!
+    @IBOutlet private var scrollView: UIScrollView!
     private var equipmentInfoView: EquipmentInfoView!
     
     private var saveBtn: UIBarButtonItem!
@@ -46,9 +45,19 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     // MARK: Layout
     private func addEquipmentInfoView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
-        equipmentInfoViewContainer.addSubview(equipmentInfoView)
-        equipmentInfoView.frame = equipmentInfoViewContainer.bounds
-        equipmentInfoView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        scrollView.addSubview(equipmentInfoView)
+        //        scrollView.isDirectionalLockEnabled = true
+        equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            equipmentInfoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
+            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 110),
+            equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+            equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
+            
+            equipmentInfoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0),
+            equipmentInfoView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0),
+            ])
     }
     
     private func setupUI() {
@@ -70,6 +79,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         removeBtn.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         separatingLine.backgroundColor = MyColor.lightGray
+        
+        equipmentInfoView.removeEquipmentButton.removeFromSuperview()
 
         scrollView.keyboardDismissMode = .onDrag
         addIdentifiers()

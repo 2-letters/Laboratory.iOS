@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
+class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentable, AlertPresentable {
     
     let spinnerVC = SpinnerViewController()
     
@@ -35,7 +35,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         super.viewDidLoad()
         
         addTapRecognizer()
-        addMainView()
+        addEquipmentInfoView()
         setupUI()
         if equipmentId != nil {
             showSpinner()
@@ -51,9 +51,25 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     // MARK: - Layout
-    private func addMainView() {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentOffset.x = 0
+    }
+    
+    private func addEquipmentInfoView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         scrollView.addSubview(equipmentInfoView)
+//        scrollView.isDirectionalLockEnabled = true
+        equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            equipmentInfoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
+            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
+            equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+            equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
+            
+            equipmentInfoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0),
+            equipmentInfoView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0),
+            ])
     }
     
     private func setupUI() {
@@ -91,6 +107,7 @@ class EquipmentInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     }
     
     private func addDelegates() {
+        scrollView.delegate = self
         availableTextField.delegate = self
         nameTextView.delegate = self
         descriptionTextView.delegate = self
