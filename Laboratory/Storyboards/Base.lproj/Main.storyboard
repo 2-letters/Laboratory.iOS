@@ -395,6 +395,7 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="IKp-HI-N1F" id="MgJ-sz-CMT"/>
+                        <outlet property="topView" destination="zR4-df-DMb" id="HuQ-8q-Cdg"/>
                         <segue destination="oDP-Iz-nka" kind="unwind" identifier="unwindFromEquipmentInfo" unwindAction="unwindFromEquipmentInfoWithSegue:" id="vQR-0X-JeO"/>
                         <segue destination="QXx-5b-iab" kind="presentation" identifier="showEquipmentUserListFromEquipment" id="Vf5-2g-CfU"/>
                     </connections>
@@ -475,6 +476,6 @@
         <image name="labIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p7e-bD-H0e"/>
+        <segue reference="Vf5-2g-CfU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,19 +1,17 @@
 //
-//  LabInfoViewControllerUITest.swift
+//  EquipmentInfoViewControllerUITest.swift
 //  LaboratoryUITests
 //
-//  Created by Developers on 6/14/19.
+//  Created by Developers on 7/2/19.
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
 import XCTest
 
-class LabInfoViewControllerUITest: MyUITestDelegate {
+class EquipmentInfoViewControllerUITest: MyUITestDelegate {
 
     var app: XCUIApplication!
     var thisViewController: MyViewController!
-    var nameTextView: XCUIElement!
-    var descriptionTextView: XCUIElement!
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -21,21 +19,15 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app = XCUIApplication()
         app.launch()
-        thisViewController = .labInfo
-        
-        goToLabInfoViewController()
-        
-        nameTextView = app.textViews[AccessibilityId.labInfoNameTextView.description]
-        descriptionTextView = app.textViews[AccessibilityId.labInfoDescriptionTextView.description]
+        thisViewController = .equipmentInfo
     }
     
     override func tearDown() {
         app = nil
-        nameTextView = nil
-        descriptionTextView = nil
+        thisViewController = nil
         super.tearDown()
     }
-    
+
     func testBackButton() {
         let backButton = app.navigationBars.buttons.element(boundBy: 0)
         
@@ -43,34 +35,36 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         backButton.tap()
         
         sleep(2)
-        let labCollectionSearchBar = getSearchBar(inVC: .labCollection)!
-        XCTAssertTrue(labCollectionSearchBar.exists)
+        let equipmentListSearchBar = getSearchBar(inVC: .equipmentList)!
+        XCTAssertTrue(equipmentListSearchBar.exists)
     }
     
     func testViewsExist() {
-        let saveBtn = app.buttons[AccessibilityId.labInfoSaveButton.description]
-        let addEquipmentsBtn = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
-        let removeLabButton = app.buttons[AccessibilityId.labInfoRemoveLabButton.description]
-        let tableView = app.tables[AccessibilityId.labInfoTableView.description]
+        let editSaveBtn = app.buttons[AccessibilityId.equipmentInfoEditSaveButton.description]
+        let availableTextField = app.textFields[AccessibilityId.equipmentInfoAvailableTextField.description]
+        let nameTextView = app.textViews[AccessibilityId.equipmentInfoNameTextView.description]
+        let locationTextView = app.textViews[AccessibilityId.equipmentInfoLocationTextView.description]
+        let descriptionTextView = app.textViews[AccessibilityId.equipmentInfoDescriptionTextView.description]
+        let imageView = app.images[AccessibilityId.equipmentInfoImageView.description]
+        let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
+        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        let listOfUserButton = app.buttons[AccessibilityId.equipmentInfoListOfUserButton.description]
         
-        XCTAssertTrue(saveBtn.exists)
-        XCTAssertTrue(addEquipmentsBtn.exists)
-        XCTAssertTrue(removeLabButton.exists)
-        XCTAssertTrue(tableView.exists)
+        XCTAssertTrue(editSaveBtn.exists)
+        XCTAssertTrue(availableTextField.exists)
         XCTAssertTrue(nameTextView.exists)
+        XCTAssertTrue(locationTextView.exists)
         XCTAssertTrue(descriptionTextView.exists)
+        XCTAssertTrue(imageView.exists)
+        XCTAssertTrue(addImageButton.exists)
+        XCTAssertFalse(addImageButton.isHittable)
+        XCTAssertTrue(removeEquipmentButton.exists)
+        XCTAssertFalse(removeEquipmentButton.isHittable)
+        XCTAssertTrue(listOfUserButton.exists)
     }
     
-    func testTextViewEndEditing() {
-        // GIVEN
-        let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.description]
-        XCTAssertFalse(saveButton.isEnabled)
-        
-        // WHEN
-        nameTextView.tap()
-        
-        // THEN
-        XCTAssertTrue(saveButton.isEnabled)
+    func testTextFieldEndEditing() {
+        // TODO
     }
     
     func testTextViewShouldChangeText() {
@@ -105,8 +99,8 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         saveButton.tap()
         sleep(2)
         
-//        let alert = app.alerts[AlertCase.invalidLabInfoInput.description]
-//        XCTAssertTrue(alert.exists)
+        //        let alert = app.alerts[AlertCase.invalidLabInfoInput.description]
+        //        XCTAssertTrue(alert.exists)
         // close the alert
         proceedAlertButton(ofCase: .invalidLabInfoInput)
     }

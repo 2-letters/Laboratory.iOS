@@ -51,7 +51,20 @@ class EquipmentListVCTest: XCTestCase {
         XCTAssertTrue(identifiers.contains(SegueId.showEquipmentInfo))
     }
     
-    func testPassingDataToEquipmentEdit() {
+    func testPassingDataToEquipmentCreate() {
+        // GIVEN
+        let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentInfo, source: sut, destination: equipmentInfoVC)
+        
+        /// For not using equipments
+        // WHEN
+        sut.prepare(for: showEquipmentEditSegue, sender: nil)
+        
+        // THEN
+        XCTAssertTrue(equipmentInfoVC.isEditingEquipment)
+        XCTAssertNil(equipmentInfoVC.equipmentId)
+    }
+    
+    func testPassingDataToEquipmentInfo() {
         // GIVEN
         let fakeEquipmentId = FakeData.equipmentId
         let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentInfo, source: sut, destination: equipmentInfoVC)

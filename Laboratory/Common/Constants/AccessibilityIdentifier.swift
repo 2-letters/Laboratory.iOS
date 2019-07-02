@@ -46,11 +46,16 @@ enum AccessibilityId {
     
     // Equipment Info VC
     // todo: this is made up, make it real
+    case equipmentInfoEditSaveButton
     case equipmentInfoScrollView
     case equipmentInfoAvailableTextField
     case equipmentInfoNameTextView
     case equipmentInfoDescriptionTextView
     case equipmentInfoLocationTextView
+    case equipmentInfoImageView
+    case equipmentInfoAddImageButton
+    case equipmentInfoRemoveEquipmentButton
+    case equipmentInfoListOfUserButton
     
     // Equipment User List VC
     case equipmentUserListTableView

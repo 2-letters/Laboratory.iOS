@@ -16,8 +16,8 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     var equipmentId: String?
     var isEditingEquipment = false
     
-    @IBOutlet var scrollView: UIScrollView!
-//    @IBOutlet private var mainView: UIView!
+    @IBOutlet var topView: UIView!
+    @IBOutlet private var scrollView: UIScrollView!
     private var equipmentInfoView: EquipmentInfoView!
     private var editSaveBtn: UIBarButtonItem!
     private var availableTextField: UITextField!
@@ -58,17 +58,19 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private func addEquipmentInfoView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         scrollView.addSubview(equipmentInfoView)
-//        scrollView.isDirectionalLockEnabled = true
+        
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
         
+        let constraintHeight = equipmentInfoView.heightAnchor.constraint(equalTo: topView.heightAnchor, constant: 0)
+        constraintHeight.priority = UILayoutPriority(rawValue: 250)
         NSLayoutConstraint.activate([
             equipmentInfoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
-            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
+            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             
-            equipmentInfoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0),
-            equipmentInfoView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0),
+            equipmentInfoView.widthAnchor.constraint(equalTo: topView.widthAnchor, constant: 0),
+            constraintHeight
             ])
     }
     
@@ -115,10 +117,15 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     }
     
     private func addIdentifiers() {
+        editSaveBtn.accessibilityIdentifier = AccessibilityId.equipmentInfoEditSaveButton.description
         availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
-        nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
-        descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
+        nameTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoNameTextView.description
         locationTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoLocationTextView.description
+        descriptionTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoDescriptionTextView.description
+        imageView.accessibilityIdentifier = AccessibilityId.equipmentInfoImageView.description
+        addImageButton.accessibilityIdentifier = AccessibilityId.equipmentInfoAddImageButton.description
+        removeEquipmentButton.accessibilityIdentifier = AccessibilityId.equipmentInfoRemoveEquipmentButton.description
+        listOfUserButton.accessibilityIdentifier = AccessibilityId.equipmentInfoListOfUserButton.description
     }
 
     private func loadEquipmentInfo() {
@@ -210,19 +217,19 @@ extension EquipmentInfoVC {
         performSegue(withIdentifier: SegueId.showEquipmentUserListFromEquipment, sender: equipmentId)
     }
     
-    func goBack(alert: UIAlertAction!) {
+    private func goBack(alert: UIAlertAction!) {
         // go back to Equipment List View
         navigationController?.popViewController(animated: true)
     }
     
-    func goBackAndReload() {
+    private func goBackAndReload() {
         performSegue(withIdentifier: SegueId.unwindFromEquipmentInfo, sender: nil)
     }
 }
 
 // MARK: - Helper methods
 extension EquipmentInfoVC {
-    var isInputInvalid: Bool {
+    private var isInputInvalid: Bool {
         return availableTextField.text?.isEmpty ?? true ||
             nameTextView.text.isEmpty ||
             locationTextView.text.isEmpty ||
@@ -230,7 +237,7 @@ extension EquipmentInfoVC {
             imageView.image == nil
     }
     
-    func updateUI(forEditing isBeingEdited: Bool) {
+    private func updateUI(forEditing isBeingEdited: Bool) {
         editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
         addImageButton.isHidden = !isBeingEdited
         if equipmentId != nil {

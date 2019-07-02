@@ -46,12 +46,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     private func addEquipmentInfoView() {
         equipmentInfoView = EquipmentInfoView.instantiate()
         scrollView.addSubview(equipmentInfoView)
-        //        scrollView.isDirectionalLockEnabled = true
+        
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             equipmentInfoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
-            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 110),
+            equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             

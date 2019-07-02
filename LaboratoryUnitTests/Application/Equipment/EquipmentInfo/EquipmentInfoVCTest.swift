@@ -7,15 +7,36 @@
 //
 
 import XCTest
+@testable import Laboratory
 
 class EquipmentInfoVCTest: XCTestCase {
 
+    var sut: EquipmentInfoVC!
+    var equipmentUserListVC: EquipmentUserListVC!
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        sut = EquipmentInfoVC()
+        equipmentUserListVC = EquipmentUserListVC()
+        let _ = sut.view
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        equipmentUserListVC = nil
+        super.tearDown()
+    }
+    
+    func testViewDidLoad() {
+        // GIVEN
+        let gestureRecognizers = sut.view.gestureRecognizers
+        let editSaveButton = sut.navigationItem.rightBarButtonItem
+        
+        // THEN
+        XCTAssertNotNil(editSaveButton)
+        XCTAssertFalse(editSaveButton!.isEnabled)
+        XCTAssert(editSaveButton?.target === sut)
+        XCTAssertTrue(editSaveButton?.action?.description == "editSaveButtonTapped")
+        XCTAssertEqual(gestureRecognizers?.count, 1)
     }
 
     func testSegueInfo() {
@@ -38,5 +59,10 @@ class EquipmentInfoVCTest: XCTestCase {
         // THEN
         XCTAssertEqual(equipmentUserListVC.equipmentId, FakeData.equipmentId)
     }
-
+    
+    func testDelegates() {
+        XCTAssertTrue(sut.conforms(to: UIScrollViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITextFieldDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITextViewDelegate.self))
+    }
 }
