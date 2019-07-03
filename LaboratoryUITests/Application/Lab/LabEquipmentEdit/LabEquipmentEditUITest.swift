@@ -95,12 +95,13 @@ class LabEquipmentEditUITest: MyUITestDelegate {
     func testExceedAvailable() {
         // WHEN
         usingQuantityTextField.tap()
-        usingQuantityTextField.typeBigNumber()
+        usingQuantityTextField.typeSomeText(withLength: MyInt.quantityTextLimit + 1)
         tapOutside(inVC: thisViewController)
         
-        
+        let usingQuantityText = usingQuantityTextField.value as! String
         // THEN
-        XCTAssertLessThan(Int(usingQuantityTextField.value as! String)!, 55555)
+        // TODO replace this with available quantity
+        XCTAssertEqual(Int(usingQuantityText)!, 99999)
     }
     
     func testSaveChange() {

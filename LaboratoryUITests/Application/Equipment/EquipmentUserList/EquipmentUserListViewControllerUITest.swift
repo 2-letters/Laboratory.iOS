@@ -20,6 +20,7 @@ class EquipmentUserListViewControllerUITest: MyUITestDelegate {
         app = XCUIApplication()
         app.launch()
         thisViewController = .equipmentUserList
+        goToEquipmentUserListVC()
     }
     
     override func tearDown() {

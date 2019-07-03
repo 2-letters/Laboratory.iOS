@@ -20,8 +20,10 @@ protocol UITestable {
     func goToLabInfoViewController()
     func goToLabEquipmentSelectionViewController()
     func goToLabEquipmentEditViewController()
+    
     func goToEquipmentListViewController()
     func goToEquipmentInfoViewController()
+    func goToEquipmentUserListVC()
     
     // Interactions
     func tapOutside(inVC viewController: MyViewController)
@@ -77,6 +79,11 @@ extension UITestable where Self: XCTestCase {
         let firstCell = getFirstCell(inVC: .equipmentList)!
         firstCell.tap()
     }
+    func goToEquipmentUserListVC() {
+        goToEquipmentInfoViewController()
+        let listOfUserButton = app.buttons[AccessibilityId.equipmentInfoListOfUserButton.description]
+        listOfUserButton.tap()
+    }
     
     
     // MARK: - Interactions
@@ -86,6 +93,8 @@ extension UITestable where Self: XCTestCase {
         case .labInfo:
             mainView = app.otherElements[AccessibilityId.labInfoMainView.description]
         case .labEquipmentEdit:
+            mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
+        case .equipmentInfo:
             mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
         default:
             return
@@ -111,7 +120,7 @@ extension UITestable where Self: XCTestCase {
             ]
         case .equipmentInfo:
             // todo fix this case, this is made up
-            view = app.otherElements[AccessibilityId.equipmentInfoScrollView.description]
+            view = app.scrollViews[AccessibilityId.equipmentInfoScrollView.description]
         default:
             return
         }
@@ -158,6 +167,7 @@ extension UITestable where Self: XCTestCase {
         
         switch alertCase {
         case .invalidLabInfoInput,
+             .invalidEquipmentInfoInput,
              .succeedToSaveLab,
              .failToSaveLab,
              .failToRemoveLab,
@@ -168,17 +178,14 @@ extension UITestable where Self: XCTestCase {
             buttonText = AlertString.okay
             
         case .attemptCreateLab,
-             .attemptToRemoveLab:
+             .attemptToRemoveLab,
+             .attemptToRemoveEquipment:
             buttonText = AlertString.no
         case .failToLoadEquipmentUser:
             <#code#>
         case .failToSaveEquipment:
             <#code#>
         case .failToRemoveEquipment:
-            <#code#>
-        case .attemptToRemoveEquipment:
-            <#code#>
-        case .invalidEquipmentInfoInput:
             <#code#>
         }
         

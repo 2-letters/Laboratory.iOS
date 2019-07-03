@@ -9,22 +9,18 @@
 import XCTest
 
 extension XCUIElement {
-    func typeSomeText(withLength length: Int? = nil) {
-        if let length = length {
-            self.typeText(String(repeating: "a", count: length))
-        } else {
-            self.typeText("la")
-        }
+    func typeSomeText(withLength length: Int = 1) {
+        self.typeText(String(repeating: "a", count: length))
     }
     
     // TODO: is this really working?
-    func typeSomeNumber() {
-        self.typeText("5")
+    func typeSomeNumber(withLength length: Int = 1) {
+        self.typeText(String(repeating: "5", count: length))
     }
     
-    func typeBigNumber() {
-        self.typeText(String(repeating: "5", count: 5))
-    }
+//    func typeBigNumber() {
+//        self.typeText(String(repeating: "5", count: 5))
+//    }
     
     func deleteAllText() {
         guard let stringValue = self.value as? String else { return }

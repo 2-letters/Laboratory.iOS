@@ -114,9 +114,11 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         nameTextView.delegate = self
         descriptionTextView.delegate = self
         locationTextView.delegate = self
+        scrollView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {
+        scrollView.accessibilityIdentifier = AccessibilityId.equipmentInfoScrollView.description
         editSaveBtn.accessibilityIdentifier = AccessibilityId.equipmentInfoEditSaveButton.description
         availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
         nameTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoNameTextView.description
@@ -126,6 +128,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         addImageButton.accessibilityIdentifier = AccessibilityId.equipmentInfoAddImageButton.description
         removeEquipmentButton.accessibilityIdentifier = AccessibilityId.equipmentInfoRemoveEquipmentButton.description
         listOfUserButton.accessibilityIdentifier = AccessibilityId.equipmentInfoListOfUserButton.description
+        
     }
 
     private func loadEquipmentInfo() {
@@ -183,7 +186,9 @@ extension EquipmentInfoVC {
                         print(errorStr)
                         self.presentAlert(forCase: .failToSaveEquipment)
                     case .success:
-                        self.goBackAndReload()
+                        self.presentAlert(forCase: .succeedToSaveEquipment, handler: { action in
+                            self.goBackAndReload()
+                        })
                     }
                 }
             }

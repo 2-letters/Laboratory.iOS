@@ -11,6 +11,7 @@ import UIKit
 
 enum AlertCase {
     case succeedToSaveLab
+    case succeedToSaveEquipment
 
     case failToLoadEquipments
     case failToLoadLabEquipments
@@ -42,6 +43,7 @@ struct AlertString {
     
     // Titles
     static let succeedToSaveLabTitle = "Successfully saved this lab"
+    static let succeedToSaveEquipmentTitle = "Successfully saved this equipment"
     static let failToLoadLabEquipmentsTitle = "Cannot load equipments"
     static let failToLoadEquipmentUserTitle = "Cannot load users"
     static let failToSaveEditTitle = "Cannot save this edit"
@@ -56,6 +58,7 @@ struct AlertString {
     
     // Messages
     static let succeedToSaveLabMessage = "Your lab has been successfully saved"
+    static let succeedToSaveEquipmentMessage = "Your equipment has been successfully saved"
     static let failToLoadLabEquipmentsMessage = "Fail to load equipments for this lab. Please try again later"
     static let failToLoadEquipmentUserMessage = "Fail to load users for this equipment"
     static let failToSaveLabMesage = "Fail to save this lab. Please try again later"
@@ -83,6 +86,8 @@ extension AlertPresentable where Self: UIViewController {
         switch alertCase {
         case .succeedToSaveLab:
             ac = UIAlertController(title: AlertString.succeedToSaveLabTitle, message: AlertString.succeedToSaveLabTitle, preferredStyle: .alert)
+        case .succeedToSaveEquipment:
+            ac = UIAlertController(title: AlertString.succeedToSaveEquipmentTitle, message: AlertString.succeedToSaveEquipmentMessage, preferredStyle: .alert)
            
         case .failToLoadEquipments,
              .failToLoadEquipmentInfo:
@@ -118,6 +123,7 @@ extension AlertPresentable where Self: UIViewController {
         // add Actions
         switch alertCase {
         case .succeedToSaveLab,
+             .succeedToSaveEquipment,
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,

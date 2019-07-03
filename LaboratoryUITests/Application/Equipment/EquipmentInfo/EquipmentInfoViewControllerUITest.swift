@@ -12,6 +12,11 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
 
     var app: XCUIApplication!
     var thisViewController: MyViewController!
+    var editSaveBtn: XCUIElement
+    var availableTextField: XCUIElement
+    var nameTextView: XCUIElement
+    var locationTextView: XCUIElement
+    var descriptionTextView: XCUIElement
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -20,6 +25,11 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         app = XCUIApplication()
         app.launch()
         thisViewController = .equipmentInfo
+        editSaveBtn = app.buttons[AccessibilityId.equipmentInfoEditSaveButton.description]
+        availableTextField = app.textFields[AccessibilityId.equipmentInfoAvailableTextField.description]
+        nameTextView = app.textViews[AccessibilityId.equipmentInfoNameTextView.description]
+        locationTextView = app.textViews[AccessibilityId.equipmentInfoLocationTextView.description]
+        descriptionTextView = app.textViews[AccessibilityId.equipmentInfoDescriptionTextView.description]
     }
     
     override func tearDown() {
@@ -40,11 +50,6 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
     }
     
     func testViewsExist() {
-        let editSaveBtn = app.buttons[AccessibilityId.equipmentInfoEditSaveButton.description]
-        let availableTextField = app.textFields[AccessibilityId.equipmentInfoAvailableTextField.description]
-        let nameTextView = app.textViews[AccessibilityId.equipmentInfoNameTextView.description]
-        let locationTextView = app.textViews[AccessibilityId.equipmentInfoLocationTextView.description]
-        let descriptionTextView = app.textViews[AccessibilityId.equipmentInfoDescriptionTextView.description]
         let imageView = app.images[AccessibilityId.equipmentInfoImageView.description]
         let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
         let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
@@ -63,19 +68,55 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(listOfUserButton.exists)
     }
     
-    func testTextFieldEndEditing() {
-        // TODO
+    func testEditSaveButtonTapped() {
+        let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
+        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        
+        editSaveBtn.tap()
+        
+        XCTAssertTrue(addImageButton.isHittable)
+        XCTAssertTrue(removeEquipmentButton.isHittable)
     }
     
-    func testTextViewShouldChangeText() {
+    func testEmptyQuantityBecomeZero() {
+        editSaveBtn.tap()
+        
+        availableTextField.tap()
+        availableTextField.deleteAllText()
+        tapOutside(inVC: thisViewController)
+        
+        XCTAssertEqual(availableTextField.value as! String, "0")
+    }
+    
+    func testTextViewAndTextFieldShouldChangeText() {
+        editSaveBtn.tap()
+        
+        // WHEN
+        availableTextField.tap()
+        availableTextField.deleteAllText()
+        availableTextField.typeSomeNumber(withLength: MyInt.nameTextLimit + 1)
+        
+        // THEN
+        let availableText = nameTextView.value as! String
+        XCTAssertEqual(availableText.count, MyInt.quantityTextLimit)
+        
         // WHEN
         nameTextView.tap()
         nameTextView.deleteAllText()
-        nameTextView.typeSomeText(withLength: 101)
+        nameTextView.typeSomeText(withLength: MyInt.nameTextLimit + 1)
         
         // THEN
         let nameText = nameTextView.value as! String
         XCTAssertEqual(nameText.count, MyInt.nameTextLimit)
+        
+        // WHEN
+        locationTextView.tap()
+        locationTextView.deleteAllText()
+        locationTextView.typeSomeText(withLength: MyInt.locationTextLimit + 1)
+        
+        // THEN
+        let locationText = locationTextView.value as! String
+        XCTAssertEqual(locationText.count, MyInt.locationTextLimit)
         
         // WHEN
         descriptionTextView.tap()
@@ -88,45 +129,61 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
     }
     
     func testInvalidInput() {
-        sleep(2)
+        editSaveBtn.tap()
+        
         // clear all inputs
         nameTextView.tap()
         nameTextView.deleteAllText()
         descriptionTextView.tap()
         descriptionTextView.deleteAllText()
         
-        let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.description]
-        saveButton.tap()
+        editSaveBtn.tap()
         sleep(2)
         
         //        let alert = app.alerts[AlertCase.invalidLabInfoInput.description]
         //        XCTAssertTrue(alert.exists)
         // close the alert
-        proceedAlertButton(ofCase: .invalidLabInfoInput)
+        proceedAlertButton(ofCase: .invalidEquipmentInfoInput)
     }
     
-    func testAddEquipmentButtonHittable()  {
-        let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
-        sleep(2)
-        XCTAssertTrue(addEquipmentButton.isHittable)
-    }
+//    func testAddEquipmentButtonHittable()  {
+//        let addEquipmentButton = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
+//        sleep(2)
+//        XCTAssertTrue(addEquipmentButton.isHittable)
+//    }
     
     func testRemoveButton() {
-        let removeLabButton = app.buttons[AccessibilityId.labInfoRemoveLabButton.description]
-        sleep(2)
-        XCTAssertTrue(removeLabButton.isHittable)
+        editSaveBtn.tap()
         
-        removeLabButton.tap()
+        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        XCTAssertTrue(removeEquipmentButton.isHittable)
+        
+        removeEquipmentButton.tap()
         sleep(2)
         
         XCTAssertTrue(app.buttons[AlertString.yes].exists)
         XCTAssertTrue(app.buttons[AlertString.no].exists)
         
-        proceedAlertButton(ofCase: .attemptToRemoveLab)
+        proceedAlertButton(ofCase: .attemptToRemoveEquipment)
     }
     
     func testDismissKeyboard() {
+        editSaveBtn.tap()
         // THEN
+        availableTextField.tap()
+        XCTAssert(app.keyboards.count > 0)
+        availableTextField.typeSomeNumber()
+        
+        tapOutside(inVC: thisViewController)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
+        availableTextField.tap()
+        XCTAssert(app.keyboards.count > 0)
+        
+        swipeView(inVC: thisViewController, toView: descriptionTextView)
+        sleep(2)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
         // Test name text field
         nameTextView.tap()
         XCTAssert(app.keyboards.count > 0)
@@ -136,6 +193,34 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertEqual(app.keyboards.count, 0)
         
         nameTextView.tap()
+        XCTAssert(app.keyboards.count > 0)
+        
+        swipeView(inVC: thisViewController, toView: descriptionTextView)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
+        nameTextView.tap()
+        XCTAssert(app.keyboards.count > 0)
+        nameTextView.typeSomeText()
+        
+        tapOutside(inVC: thisViewController)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
+        nameTextView.tap()
+        XCTAssert(app.keyboards.count > 0)
+        
+        swipeView(inVC: thisViewController, toView: descriptionTextView)
+        sleep(2)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
+        // location
+        locationTextView.tap()
+        XCTAssert(app.keyboards.count > 0)
+        locationTextView.typeSomeText()
+        
+        tapOutside(inVC: thisViewController)
+        XCTAssertEqual(app.keyboards.count, 0)
+        
+        locationTextView.tap()
         XCTAssert(app.keyboards.count > 0)
         
         swipeView(inVC: thisViewController, toView: descriptionTextView)
@@ -158,22 +243,19 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
     }
     
     func testSucceedAlertShowed() {
-        let saveButton = app.buttons[AccessibilityId.labInfoSaveButton.description]
+        editSaveBtn.tap()
         
-        // do some text change to enable saveButton
-        sleep(2)
         let nameText = nameTextView.value as! String
         nameTextView.tap()
         nameTextView.deleteAllText()
         nameTextView.typeText(nameText)
-        XCTAssertTrue(saveButton.isEnabled)
         
-        
-        saveButton.tap()
+        editSaveBtn.tap()
         sleep(2)
         // tap on alert button
-        let alert = app.alerts[AlertCase.succeedToSaveLab.description]
+        let alert = app.alerts[AlertCase.succeedToSaveEquipment.description]
         XCTAssertTrue(alert.exists)
-        proceedAlertButton(ofCase: .succeedToSaveLab)
+        proceedAlertButton(ofCase: .succeedToSaveEquipment)
     }
 }
+

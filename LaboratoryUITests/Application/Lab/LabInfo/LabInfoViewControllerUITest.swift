@@ -77,7 +77,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         // WHEN
         nameTextView.tap()
         nameTextView.deleteAllText()
-        nameTextView.typeSomeText(withLength: 101)
+        nameTextView.typeSomeText(withLength: MyInt.nameTextLimit + 1)
         
         // THEN
         let nameText = nameTextView.value as! String
@@ -86,7 +86,7 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         // WHEN
         descriptionTextView.tap()
         descriptionTextView.deleteAllText()
-        descriptionTextView.typeSomeText(withLength: 501)
+        descriptionTextView.typeSomeText(withLength: MyInt.descriptionTextLimit + 1)
         
         // THEN
         let descriptionText = descriptionTextView.value as! String

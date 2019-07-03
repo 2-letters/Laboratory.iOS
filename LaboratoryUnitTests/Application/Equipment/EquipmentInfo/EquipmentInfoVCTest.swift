@@ -64,5 +64,8 @@ class EquipmentInfoVCTest: XCTestCase {
         XCTAssertTrue(sut.conforms(to: UIScrollViewDelegate.self))
         XCTAssertTrue(sut.conforms(to: UITextFieldDelegate.self))
         XCTAssertTrue(sut.conforms(to: UITextViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: SpinnerPresentable.self))
+        XCTAssertTrue(sut.conforms(to: AlertPresentable.self))
+        XCTAssertTrue(sut.conforms(to: ImagePickable.self))
     }
 }
