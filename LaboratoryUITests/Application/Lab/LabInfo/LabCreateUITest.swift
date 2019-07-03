@@ -59,21 +59,21 @@ class LabCreateUITest: MyUITestDelegate {
     }
     
     func testAddEquipments() {
-        let equipmentName = "Unit Test Equipment Name 1"
-        let equipmentDescription = "Please delete meeeeeee. Dont even ask"
+        let labName = "A Unit Test Lab Name 1"
+        let labDescription = "Please delete meeeeeee. Dont even ask"
         
         let addEquipmentsBtn = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
         
         nameTextView.tap()
-        nameTextView.typeText(equipmentName)
+        nameTextView.typeText(labName)
         
         descriptionTextView.tap()
-        descriptionTextView.typeText(equipmentDescription)
+        descriptionTextView.typeText(labDescription)
         
         addEquipmentsBtn.tap()
         sleep(2)
         // press no
-        proceedAlertButton(ofCase: .attemptCreateLabToAddEquipments)
+        proceedAlertButton(ofCase: .attemptCreateLab)
         
         addEquipmentsBtn.tap()
         sleep(2)

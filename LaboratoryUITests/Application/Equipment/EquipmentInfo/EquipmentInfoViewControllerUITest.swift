@@ -12,11 +12,11 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
 
     var app: XCUIApplication!
     var thisViewController: MyViewController!
-    var editSaveBtn: XCUIElement
-    var availableTextField: XCUIElement
-    var nameTextView: XCUIElement
-    var locationTextView: XCUIElement
-    var descriptionTextView: XCUIElement
+    var editSaveBtn: XCUIElement!
+    var availableTextField: XCUIElement!
+    var nameTextView: XCUIElement!
+    var locationTextView: XCUIElement!
+    var descriptionTextView: XCUIElement!
     override func setUp() {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -25,6 +25,8 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         app = XCUIApplication()
         app.launch()
         thisViewController = .equipmentInfo
+        goToEquipmentInfoVC()
+        
         editSaveBtn = app.buttons[AccessibilityId.equipmentInfoEditSaveButton.description]
         availableTextField = app.textFields[AccessibilityId.equipmentInfoAvailableTextField.description]
         nameTextView = app.textViews[AccessibilityId.equipmentInfoNameTextView.description]
@@ -78,55 +80,7 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(removeEquipmentButton.isHittable)
     }
     
-    func testEmptyQuantityBecomeZero() {
-        editSaveBtn.tap()
-        
-        availableTextField.tap()
-        availableTextField.deleteAllText()
-        tapOutside(inVC: thisViewController)
-        
-        XCTAssertEqual(availableTextField.value as! String, "0")
-    }
     
-    func testTextViewAndTextFieldShouldChangeText() {
-        editSaveBtn.tap()
-        
-        // WHEN
-        availableTextField.tap()
-        availableTextField.deleteAllText()
-        availableTextField.typeSomeNumber(withLength: MyInt.nameTextLimit + 1)
-        
-        // THEN
-        let availableText = nameTextView.value as! String
-        XCTAssertEqual(availableText.count, MyInt.quantityTextLimit)
-        
-        // WHEN
-        nameTextView.tap()
-        nameTextView.deleteAllText()
-        nameTextView.typeSomeText(withLength: MyInt.nameTextLimit + 1)
-        
-        // THEN
-        let nameText = nameTextView.value as! String
-        XCTAssertEqual(nameText.count, MyInt.nameTextLimit)
-        
-        // WHEN
-        locationTextView.tap()
-        locationTextView.deleteAllText()
-        locationTextView.typeSomeText(withLength: MyInt.locationTextLimit + 1)
-        
-        // THEN
-        let locationText = locationTextView.value as! String
-        XCTAssertEqual(locationText.count, MyInt.locationTextLimit)
-        
-        // WHEN
-        descriptionTextView.tap()
-        descriptionTextView.deleteAllText()
-        descriptionTextView.typeSomeText(withLength: 501)
-        
-        // THEN
-        let descriptionText = descriptionTextView.value as! String
-        XCTAssertEqual(descriptionText.count, MyInt.descriptionTextLimit)
-    }
     
     func testInvalidInput() {
         editSaveBtn.tap()
@@ -258,4 +212,3 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         proceedAlertButton(ofCase: .succeedToSaveEquipment)
     }
 }
-

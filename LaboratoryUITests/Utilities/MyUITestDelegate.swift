@@ -22,7 +22,8 @@ protocol UITestable {
     func goToLabEquipmentEditViewController()
     
     func goToEquipmentListViewController()
-    func goToEquipmentInfoViewController()
+    func goToEquipmentCreate()
+    func goToEquipmentInfoVC()
     func goToEquipmentUserListVC()
     
     // Interactions
@@ -74,13 +75,20 @@ extension UITestable where Self: XCTestCase {
     func goToEquipmentListViewController() {
         goToSecondTab()
     }
-    func goToEquipmentInfoViewController() {
+    
+    func goToEquipmentCreate() {
+        goToEquipmentListViewController()
+        let addButton = app.buttons[AccessibilityId.equipmentListAddButton.description]
+        addButton.tap()
+    }
+    
+    func goToEquipmentInfoVC() {
         goToEquipmentListViewController()
         let firstCell = getFirstCell(inVC: .equipmentList)!
         firstCell.tap()
     }
     func goToEquipmentUserListVC() {
-        goToEquipmentInfoViewController()
+        goToEquipmentInfoVC()
         let listOfUserButton = app.buttons[AccessibilityId.equipmentInfoListOfUserButton.description]
         listOfUserButton.tap()
     }
