@@ -29,6 +29,7 @@
                 <constraints>
                     <constraint firstItem="Sfu-Q3-u9G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="5h8-Sr-Vpj"/>
                     <constraint firstItem="Sfu-Q3-u9G" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XG8-KX-Bru"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Sfu-Q3-u9G" secondAttribute="trailing" constant="16" id="vN0-hg-tY8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

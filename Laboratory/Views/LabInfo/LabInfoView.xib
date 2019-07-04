@@ -26,7 +26,7 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
-                            <rect key="frame" x="0.0" y="63.5" width="41" height="17.5"/>
+                            <rect key="frame" x="0.0" y="63.5" width="374" height="17.5"/>
                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBV-CB-8hv">
-                            <rect key="frame" x="0.0" y="152.5" width="94" height="17.5"/>
+                            <rect key="frame" x="0.0" y="152.5" width="374" height="17.5"/>
                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -62,13 +62,17 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Dck-os-CAM" secondAttribute="trailing" id="AOx-94-fbd"/>
+                        <constraint firstAttribute="trailing" secondItem="mBV-CB-8hv" secondAttribute="trailing" id="CIA-hu-LZS"/>
+                        <constraint firstAttribute="trailing" secondItem="Vv7-q2-dRz" secondAttribute="trailing" id="CX1-Ue-rXE"/>
                         <constraint firstItem="Dck-os-CAM" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="GWr-u9-WCa"/>
                         <constraint firstAttribute="trailing" secondItem="7fa-lF-bNE" secondAttribute="trailing" id="QBB-U9-iaZ"/>
                         <constraint firstItem="gSt-bB-Eni" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="Xxl-Og-Zc5"/>
                         <constraint firstItem="I5b-9h-ENZ" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="b6a-xT-gsC"/>
                         <constraint firstItem="7fa-lF-bNE" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="fIP-MR-Ns6"/>
+                        <constraint firstItem="mBV-CB-8hv" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="gjr-Xi-gMN"/>
                         <constraint firstAttribute="trailing" secondItem="gSt-bB-Eni" secondAttribute="trailing" id="mtm-ni-DC0"/>
                         <constraint firstAttribute="trailing" secondItem="I5b-9h-ENZ" secondAttribute="trailing" id="vMu-BY-aPF"/>
+                        <constraint firstItem="Vv7-q2-dRz" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="ylQ-Ld-CsT"/>
                     </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7i-yQ-Tle">
