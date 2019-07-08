@@ -9,8 +9,8 @@
 import UIKit
 
 class SimpleEquipmentTVCell: UITableViewCell {
-    static let nibId = "SimpleEquipmentTVCell"
-    static let reuseId = "SimpleEquipmentCell"
+//    static let nibId = "SimpleEquipmentTVCell"
+//    static let reuseId = "SimpleEquipmentCell"
     
     @IBOutlet var equipmentNameLabel: UILabel!
     

@@ -15,7 +15,7 @@ class SimpleEquipmentTVCellTest: XCTestCase {
     override func setUp() {
         super.setUp()
         let bundle = Bundle(for: SimpleEquipmentTVCell.self)
-        let nib = bundle.loadNibNamed(SimpleEquipmentTVCell.nibId, owner: nil, options: nil)
+        let nib = bundle.loadNibNamed(NibName.a, owner: nil, options: nil)
         sut = nib?.first as? SimpleEquipmentTVCell
     }
     

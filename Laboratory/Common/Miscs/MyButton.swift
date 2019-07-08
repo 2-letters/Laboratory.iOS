@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MyButton.swift
 //  Laboratory
 //
 //  Created by Huy Vo on 7/5/19.

@@ -12,10 +12,10 @@ class EquipmentListVC: UIViewController {
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var equipmentTV: UITableView!
-    private var addButton: UIBarButtonItem!
+    private var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
     
     private var viewModel = EquipmentListVM()
-    private let refreshControl = UIRefreshControl()
+    private lazy var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +52,8 @@ class EquipmentListVC: UIViewController {
         searchBar.backgroundImage = UIImage()
         
         // register table cells
-        let nib = UINib(nibName: SimpleEquipmentTVCell.nibId, bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: SimpleEquipmentTVCell.reuseId)
+        let nib = UINib(nibName: NibName.a, bundle: nil)
+        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.a)
         
         // add Refresh Control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
@@ -64,7 +64,7 @@ class EquipmentListVC: UIViewController {
             equipmentTV.addSubview(refreshControl)
         }
         
-        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+//        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
         navigationItem.rightBarButtonItem = addButton
         
         addDelegates()
@@ -133,7 +133,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseId, for: indexPath) as! SimpleEquipmentTVCell
+        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         

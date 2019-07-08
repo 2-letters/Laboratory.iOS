@@ -18,7 +18,7 @@ class SimpleEquipmentCellSnapshotTest: FBSnapshotTestCase {
     
     func test() {
         let bundle = Bundle(for: SimpleEquipmentTVCell.self)
-        let nib = bundle.loadNibNamed(SimpleEquipmentTVCell.nibId, owner: nil, options: nil)
+        let nib = bundle.loadNibNamed(NibName.a, owner: nil, options: nil)
         let simpleEquipmentCell = nib?.first as! SimpleEquipmentTVCell
         simpleEquipmentCell.viewModel = FakeData.simpleEquipmentVM
         
