@@ -32,7 +32,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         if !isCreatingNewLab {
             showSpinner()
-            loadLabEquipments()
+            loadLabInfo()
         }
     }
     
@@ -59,7 +59,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     @IBAction private func unwindFromEquipmentSelection(segue: UIStoryboardSegue) {
         // there's some change, reload table view and enable save Button
         isCreatingNewLab = false
-        loadLabEquipments()
+        loadLabInfo()
         saveBtn.isEnabled = true
     }
     
@@ -75,9 +75,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func setupUI() {
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBtn
-        
-        labInfoView.nameTextView.customize(isEditable: true)
-        labInfoView.descriptionTextView.customize(isEditable: true)
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
@@ -115,23 +112,17 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private func addIdentifiers() {
         mainView.accessibilityIdentifier = AccessibilityId.labInfoMainView.description
         saveBtn.accessibilityIdentifier = AccessibilityId.labInfoSaveButton.description
-        labInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
-        labInfoView.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
-        
-        
-        labInfoView.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.description
-        labInfoView.removeLabButton.accessibilityIdentifier = AccessibilityId.labInfoRemoveLabButton.description
-        labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
     }
     
-    private func loadLabEquipments() {
+    private func loadLabInfo() {
         // start fetching Lab Equipments
         viewModel.fetchLabInfo(byId: labId, completion: { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
-                    self.updateUI()
+                    // updateUI
+                    self.labInfoView.labInfoVM = self.viewModel
                     self.labEquipmentTableView?.reloadData()
                 }
                 self.hideSpinner()
@@ -142,12 +133,6 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
                 })
             }
         })
-    }
-    
-    private func updateUI() {
-        // setup the Lab info views
-        labInfoView.nameTextView.text = viewModel.labName
-        labInfoView.descriptionTextView.text = viewModel.description
     }
 }
 
@@ -248,7 +233,7 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId) as! LabEquipmentTVCell
+        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
         
         cell.viewModel = viewModel.equipmentVMs?[indexPath.row]
         return cell

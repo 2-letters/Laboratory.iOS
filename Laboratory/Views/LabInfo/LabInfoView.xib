@@ -19,7 +19,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
                     <rect key="frame" x="20" y="52" width="374" height="258"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-9h-ENZ">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-9h-ENZ" customClass="MyTextView" customModule="Laboratory" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -31,7 +31,7 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-lF-bNE">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-lF-bNE" customClass="MyTextView" customModule="Laboratory" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="89" width="374" height="55.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -93,9 +93,9 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addEquipmentButton" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
-                <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="BJj-bj-DaU"/>
+                <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="kAF-Hm-35a"/>
                 <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
-                <outlet property="nameTextView" destination="I5b-9h-ENZ" id="kb5-KD-PUr"/>
+                <outlet property="nameTextView" destination="I5b-9h-ENZ" id="bfF-S0-yXf"/>
                 <outlet property="removeLabButton" destination="Dck-os-CAM" id="Z0F-dT-fR9"/>
             </connections>
         </view>

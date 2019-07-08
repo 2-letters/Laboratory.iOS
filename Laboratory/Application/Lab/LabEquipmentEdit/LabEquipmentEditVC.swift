@@ -16,7 +16,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var usingQuantity: Int = 0
     // the quantity being edited
 
-    @IBOutlet private var usingQuantityTextField: UITextField!
+    @IBOutlet private var usingQuantityTextField: MyTextField!
     @IBOutlet private var decreaseBtn: UIButton!
     @IBOutlet private var increaseBtn: UIButton!
     @IBOutlet private var removeBtn: UIButton!
@@ -41,10 +41,17 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         loadEquipmentInfo()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueId.showEquipmentUserListFromLab {
+            let equipmentUserListVC = segue.destination as! EquipmentUserListVC
+            equipmentUserListVC.equipmentId = sender as? String
+        }
+    }
     
-    // MARK: Layout
+    
+    // MARK: - Layout
     private func addEquipmentInfoView() {
-        equipmentInfoView = EquipmentInfoView.instantiate()
+        equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentInfoLabEdit)
         scrollView.addSubview(equipmentInfoView)
         
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,19 +76,17 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
         usingQuantityTextField.delegate = self
-        usingQuantityTextField.customize(isEditable: true)
         
         decreaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
         increaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
-        
-//        removeBtn.backgroundColor = MyColor.superLightGreen
         removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
         removeBtn.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
         
         separatingLine.backgroundColor = MyColor.lightGray
-        
-        equipmentInfoView.removeEquipmentButton.removeFromSuperview()
 
+        equipmentInfoView.update(forEditing: false)
+        equipmentInfoView.listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
+        
         scrollView.keyboardDismissMode = .onDrag
         addIdentifiers()
     }
@@ -93,8 +98,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.description
         increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.description
         removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.description
-        equipmentInfoView.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
-        equipmentInfoView.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
     }
     
     private func loadEquipmentInfo() {
@@ -107,39 +110,15 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
-                    self.updateEquipmentInfoLayout()
+                    self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
+                    self.updateUI()
                 }
+                self.hideSpinner()
             case .failure:
                 // show an alert and return to the previous page
                 self.presentAlert(forCase: .failToLoadEquipmentInfo, handler: self.goBack)
             }
         }
-    }
-    
-    private func updateEquipmentInfoLayout() {
-        let equipmentInfoVM = viewModel.equipmentInfoVM
-        let locationTextView = equipmentInfoView.locationTextView!
-        let descriptionTextView = equipmentInfoView.descriptionTextView!
-        let addImageButton = equipmentInfoView.addImageButton!
-        
-//        equipmentInfoView.availableTextView.customize(withText: equipmentInfoVM.availableString, isEditable: false)
-        equipmentInfoView.availableTextField.customize(withText: equipmentInfoVM.availableString, isEditable: false)
-        equipmentInfoView.nameTextView.text = equipmentInfoVM.equipmentName
-        locationTextView.customize(withText: equipmentInfoVM.location, isEditable: false)
-        descriptionTextView.customize(withText: equipmentInfoVM.description, isEditable: false)
-        do {
-            let url = URL(string: equipmentInfoVM.imageUrl)!
-            let data = try Data(contentsOf: url)
-            equipmentInfoView.equipmentImageView.image = UIImage(data: data)
-        }
-        catch{
-            print(error)
-        }
-        addImageButton.removeFromSuperview()
-        
-        updateUI()
-        // hide spinner
-        hideSpinner()
     }
     
     private func updateUI() {
@@ -155,7 +134,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     
     // MARK: - User Interaction
-    // MARK: Buttons
     @objc private func saveChange() {
         viewModel.updateEquipmentUsing(forLabId: labId, equipmentId: equipmentId) { [weak self] (updateFirestoreResult) in
             guard let self = self else { return }
@@ -186,6 +164,10 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         updateUI()
     }
     
+    @objc private func showListOfUser() {
+        performSegue(withIdentifier: SegueId.showEquipmentUserListFromLab, sender: equipmentId)
+    }
+    
     private func goBack(alert: UIAlertAction!) {
         // go back to Equipment Selection
         navigationController?.popViewController(animated: true)
@@ -199,11 +181,15 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
 
 extension LabEquipmentEditVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.highlight()
+        if textField == usingQuantityTextField {
+            usingQuantityTextField.highlight()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.unhighlight()
+        if textField == usingQuantityTextField {
+            usingQuantityTextField.unhighlight()
+        }
         viewModel.updateQuantityTextField(withText: textField.text)
         updateUI()
     }

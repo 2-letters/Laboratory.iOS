@@ -112,6 +112,8 @@
 		DE75CF6222B709DC006A0780 /* EquipmentListViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF6122B709DC006A0780 /* EquipmentListViewControllerUITest.swift */; };
 		DE7AF431229A094F0008181E /* UITextView+customize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* UITextView+customize.swift */; };
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
+		DEBCB9AF22D043B100852B01 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9AE22D043B100852B01 /* File.swift */; };
+		DEBCB9B122D2699100852B01 /* InputHighlightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B022D2699100852B01 /* InputHighlightable.swift */; };
 		DEC45BEB2291006200F164BD /* SegueId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC45BEA2291006200F164BD /* SegueId.swift */; };
 		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
 		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
@@ -246,6 +248,8 @@
 		DE75CF6122B709DC006A0780 /* EquipmentListViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListViewControllerUITest.swift; sourceTree = "<group>"; };
 		DE7AF430229A094F0008181E /* UITextView+customize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+customize.swift"; sourceTree = "<group>"; };
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
+		DEBCB9AE22D043B100852B01 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		DEBCB9B022D2699100852B01 /* InputHighlightable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHighlightable.swift; sourceTree = "<group>"; };
 		DEC45BEA2291006200F164BD /* SegueId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueId.swift; sourceTree = "<group>"; };
 		DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -589,6 +593,7 @@
 				DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */,
 				DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */,
 				C9FD440422C4094B007CA394 /* ImagePickable.swift */,
+				DEBCB9B022D2699100852B01 /* InputHighlightable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -894,6 +899,7 @@
 				C9EED950229D9707006314A8 /* FirestoreSvc.swift */,
 				C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */,
 				C903D5B222AB0EF600D1A79B /* MyViewController.swift */,
+				DEBCB9AE22D043B100852B01 /* File.swift */,
 			);
 			path = Miscs;
 			sourceTree = "<group>";
@@ -1173,6 +1179,7 @@
 				C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */,
 				C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
+				DEBCB9B122D2699100852B01 /* InputHighlightable.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
 				C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */,
 				C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */,
@@ -1186,6 +1193,7 @@
 				DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */,
 				C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */,
 				C97B11492294A57400E90B46 /* LabInfoVM.swift in Sources */,
+				DEBCB9AF22D043B100852B01 /* File.swift in Sources */,
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
@@ -1427,14 +1435,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H63XNGVZ25;
+				DEVELOPMENT_TEAM = XG84P2VT48;
 				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = twoletter.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1449,14 +1457,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H63XNGVZ25;
+				DEVELOPMENT_TEAM = XG84P2VT48;
 				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = twoletter.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

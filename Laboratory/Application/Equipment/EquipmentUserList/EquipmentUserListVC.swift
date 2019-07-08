@@ -54,12 +54,14 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseId) else {
-                return UITableViewCell(style: .value1, reuseIdentifier: viewModel.reuseId)
-            }
-            return cell
-        }()
+//        let cell: UITableViewCell = {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseId, for: indexPath) else {
+//                return UITableViewCell(style: .value1, reuseIdentifier: viewModel.reuseId)
+//            }
+//            return cell
+//        }()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseId, for: indexPath)
         
         let equipmentUserVM = viewModel.equipmentUserVMs?[indexPath.row]
         cell.textLabel?.text = equipmentUserVM?.userName

@@ -8,15 +8,6 @@
 
 import UIKit
 
-//extension UIColor {
-//    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
-//        return UIGraphicsImageRenderer(size: size).image(actions: { (rendererContext) in
-//            self.setFill()
-//            rendererContext.fill(CGRect(origin: .zero, size: size))
-//        })
-//    }
-//}
-
 class LabCollectionVC: UIViewController {
     @IBOutlet private var labSearchBar: UISearchBar!
     @IBOutlet private var labCollectionView: UICollectionView!
@@ -37,11 +28,6 @@ class LabCollectionVC: UIViewController {
         
         loadLabData()
     }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,11 +126,7 @@ extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseId, for: indexPath) as! LabCollectionViewCell
     
         cell.viewModel = viewModel.displayingLabVMs?[indexPath.row]
-        cell.labNameLabel.font = UIFont(name: primaryFont, size: 17)
-        cell.labDescriptionLabel.font = UIFont(name: secondaryFont, size: 15)
-        cell.labDescriptionLabel.textColor = UIColor.lightGray
-    
-        cell.backgroundColor = UIColor.white
+        
         return cell
     }
     

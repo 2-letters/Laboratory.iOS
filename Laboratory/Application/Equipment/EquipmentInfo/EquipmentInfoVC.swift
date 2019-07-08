@@ -29,7 +29,9 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private var removeEquipmentButton: UIButton!
     private var listOfUserButton: UIButton!
     
-    private var imagePicker: ImagePicker!
+    private lazy var imagePicker: ImagePicker = {
+        return ImagePicker(presentationController: self, delegate: self)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +58,12 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     }
     
     private func addEquipmentInfoView() {
-        equipmentInfoView = EquipmentInfoView.instantiate()
+        if equipmentId == nil {
+            equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentCreate)
+        } else {
+            equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentInfo)
+        }
+        
         scrollView.addSubview(equipmentInfoView)
         
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +82,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     }
     
     private func setupUI() {
-        editSaveBtn = UIBarButtonItem(title: "Request an Edit", style: .plain, target: self, action: #selector(editSaveButtonTapped))
+        editSaveBtn = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(editSubmitButtonTapped))
         navigationItem.rightBarButtonItem = editSaveBtn
         
         availableTextField = equipmentInfoView.availableTextField
@@ -87,22 +94,16 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         removeEquipmentButton = equipmentInfoView.removeEquipmentButton
         listOfUserButton = equipmentInfoView.listOfUserButton
 
+        if equipmentId != nil {
+            equipmentInfoView.update(forEditing: false)
+            editSaveBtn.title = "Request an Edit"
+        }
+        
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
         removeEquipmentButton.addTarget(self, action: #selector(attemptToRemoveEquipment), for: .touchUpInside)
         listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
         
-        if equipmentId == nil {
-            // TODO this does not work
-            removeEquipmentButton.isHidden = true
-            addImageButton.setTitle("Add Image", for: .normal)
-            imageView.isHidden = true
-        } else {
-            addImageButton.setTitle("Edit Image", for: .normal)
-        }
-        
-        updateUI(forEditing: isEditingEquipment)
-        
-        imagePicker = ImagePicker(presentationController: self, delegate: self)
+//        imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         addDelegates()
         addIdentifiers()
@@ -120,15 +121,6 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private func addIdentifiers() {
         scrollView.accessibilityIdentifier = AccessibilityId.equipmentInfoScrollView.description
         editSaveBtn.accessibilityIdentifier = AccessibilityId.equipmentInfoEditSaveButton.description
-        availableTextField.accessibilityIdentifier = AccessibilityId.equipmentInfoAvailableTextField.description
-        nameTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoNameTextView.description
-        locationTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoLocationTextView.description
-        descriptionTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoDescriptionTextView.description
-        imageView.accessibilityIdentifier = AccessibilityId.equipmentInfoImageView.description
-        addImageButton.accessibilityIdentifier = AccessibilityId.equipmentInfoAddImageButton.description
-        removeEquipmentButton.accessibilityIdentifier = AccessibilityId.equipmentInfoRemoveEquipmentButton.description
-        listOfUserButton.accessibilityIdentifier = AccessibilityId.equipmentInfoListOfUserButton.description
-        
     }
 
     private func loadEquipmentInfo() {
@@ -137,7 +129,8 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
-                    self.loadUI()
+                    self.equipmentInfoView.viewModel = self.viewModel
+                    self.hideSpinner()
                 }
             case let .failure(errorStr):
                 print(errorStr)
@@ -146,29 +139,11 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
             }
         }
     }
-    
-    private func loadUI() {
-        availableTextField.text = viewModel.availableString
-        nameTextView.customize(withText: viewModel.equipmentName, isEditable: false)
-        locationTextView.text = viewModel.location
-        descriptionTextView.text = viewModel.description
-        do {
-            let url = URL(string: viewModel.imageUrl)!
-            let data = try Data(contentsOf: url)
-            imageView.image = UIImage(data: data)
-        }
-        catch{
-            print(error)
-        }
-        
-        // hide spinner
-        hideSpinner()
-    }
 }
 
 // MARK: - User Interaction
 extension EquipmentInfoVC {
-    @objc private func editSaveButtonTapped() {
+    @objc private func editSubmitButtonTapped() {
         if isEditingEquipment && isInputInvalid {
             presentAlert(forCase: .invalidEquipmentInfoInput)
         } else {
@@ -185,16 +160,20 @@ extension EquipmentInfoVC {
                     case let .failure(errorStr):
                         print(errorStr)
                         self.presentAlert(forCase: .failToSaveEquipment)
+                        return
                     case .success:
                         self.presentAlert(forCase: .succeedToSaveEquipment, handler: { action in
                             self.goBackAndReload()
                         })
                     }
                 }
+            } else {
+                // switch to edit
+                isEditingEquipment = true
+                equipmentInfoView.update(forEditing: true)
+                editSaveBtn.title = "Submit"
             }
-            updateUI(forEditing: !isEditingEquipment)
         }
-        isEditingEquipment = !isEditingEquipment
     }
     
     @objc private func editImage(_ sender: UIButton) {
@@ -240,19 +219,6 @@ extension EquipmentInfoVC {
             locationTextView.text.isEmpty ||
             descriptionTextView.text.isEmpty ||
             imageView.image == nil
-    }
-    
-    private func updateUI(forEditing isBeingEdited: Bool) {
-        editSaveBtn.title = isBeingEdited ? "Submit" : "Request an Edit"
-        addImageButton.isHidden = !isBeingEdited
-        if equipmentId != nil {
-            removeEquipmentButton.isHidden = !isBeingEdited
-        }
-        listOfUserButton.isHidden = isBeingEdited
-        availableTextField.updateEditingUI(forEditing: isBeingEdited)
-        nameTextView.updateEditingUI(forEditing: isBeingEdited)
-        locationTextView.updateEditingUI(forEditing: isBeingEdited)
-        descriptionTextView.updateEditingUI(forEditing: isBeingEdited)
     }
 }
 

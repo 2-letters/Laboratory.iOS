@@ -8,85 +8,78 @@
 
 import UIKit
 
-extension UITextView {
-    func customize(withText text: String? = nil, isEditable: Bool) {
-        if let text = text {
-            self.text = text
-        }
+class MyTextView: UITextView {
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 0.0
         
-        updateEditingUI(forEditing: isEditable)
-        
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.masksToBounds = false
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 0.0
-        
-        self.isScrollEnabled = false
-        self.font = UIFont(name: secondaryFont, size: 19)
+        isScrollEnabled = false
+        font = UIFont(name: secondaryFont, size: 19)
         // remove left padding
-        self.textContainer.lineFragmentPadding = 0
+        textContainer.lineFragmentPadding = 0
+        
+        customize(forEditing: true)
     }
     
-    func updateEditingUI(forEditing isEditable: Bool) {
-        self.isEditable = isEditable
-        if (isEditable) {
-            self.layer.shadowColor = UIColor.black.cgColor
-        } else {
-            self.layer.shadowColor = MyColor.lightGray.cgColor
+    func customize(forEditing isEditing: Bool) {
+        if isEditable != isEditing {
+            isEditable = isEditing
         }
-    }
-    
-    func highlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 3)
-        self.layer.shadowColor = MyColor.lightBlue.cgColor
-    }
-    
-    func unhighlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        self.layer.shadowColor = UIColor.black.cgColor
-    }
-    
-    func warnInput() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        self.layer.shadowColor = MyColor.redWarning.cgColor
+        
+        if (isEditing) {
+            layer.shadowColor = UIColor.black.cgColor
+        } else {
+            layer.shadowColor = MyColor.lightGray.cgColor
+        }
     }
 }
 
-extension UITextField {
-    func customize(withText text: String? = nil, isEditable: Bool) {
-        if let text = text {
-            self.text = text
-        }
-        
-        updateEditingUI(forEditing: isEditable)
-        
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.masksToBounds = false
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 0.0
-        
-        self.font = UIFont(name: secondaryFont, size: 19)
+
+class MyTextField: UITextField {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
     
-    func updateEditingUI(forEditing isEnabled: Bool) {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        borderStyle = .none
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 0.0
+        
+        font = UIFont(name: secondaryFont, size: 19)
+        
+        customize(forEditing: true)
+    }
+    
+    func customize(forEditing isEnabled: Bool) {
         self.isEnabled = isEnabled
         if (isEnabled) {
-            self.layer.shadowColor = UIColor.black.cgColor
+            layer.shadowColor = UIColor.black.cgColor
         } else {
-            self.layer.shadowColor = MyColor.lightGray.cgColor
+            layer.shadowColor = MyColor.lightGray.cgColor
         }
-    }
-    
-    func highlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 3)
-        self.layer.shadowColor = MyColor.lightBlue.cgColor
-    }
-    
-    func unhighlight() {
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        self.layer.shadowColor = UIColor.black.cgColor
     }
 }

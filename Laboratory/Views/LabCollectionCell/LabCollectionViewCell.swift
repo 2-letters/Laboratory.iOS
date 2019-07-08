@@ -16,16 +16,27 @@ class LabCollectionViewCell: UICollectionViewCell {
     @IBOutlet var labNameLabel: UILabel!
     @IBOutlet var labDescriptionLabel: UILabel!
     
-    var viewModel: LabCellVM? {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backgroundColor = UIColor.white
+        
+        layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowRadius = 2
+        layer.shadowOpacity = 0.25
+        clipsToBounds = false
+        layer.masksToBounds = false
+        
+        labNameLabel.font = UIFont(name: primaryFont, size: 17)
+        labDescriptionLabel.font = UIFont(name: secondaryFont, size: 15)
+        labDescriptionLabel.textColor = UIColor.lightGray 
+    }
+    
+    var viewModel: LabCellVM! {
         didSet {
-            labNameLabel.text = viewModel?.labName
-            labDescriptionLabel.text = viewModel?.description
-            self.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-            self.layer.shadowColor = UIColor.lightGray.cgColor
-            self.layer.shadowRadius = 2
-            self.layer.shadowOpacity = 0.25
-            self.clipsToBounds = false
-            self.layer.masksToBounds = false
+            labNameLabel.text = viewModel.labName
+            labDescriptionLabel.text = viewModel.description     
         }
     }
     

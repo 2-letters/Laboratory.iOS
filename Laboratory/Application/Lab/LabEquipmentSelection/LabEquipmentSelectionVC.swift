@@ -102,6 +102,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
                 }
                 // hide spinner
                 self.hideSpinner()
+                
             case .failure:
                 // show an alert and return to the previous page
                 self.presentAlert(forCase: .failToLoadEquipments, handler: { action in
@@ -151,14 +152,14 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId) as! LabEquipmentTVCell
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
             
             cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseId) as! SimpleEquipmentTVCell
+            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: SimpleEquipmentTVCell.reuseId, for: indexPath) as! SimpleEquipmentTVCell
             cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator

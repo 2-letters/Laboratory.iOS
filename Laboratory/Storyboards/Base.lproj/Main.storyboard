@@ -181,7 +181,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SQc-4N-Xbt">
                                 <rect key="frame" x="138" y="96" width="168" height="38"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-sC-Ovu">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-sC-Ovu" customClass="MyTextField" customModule="Laboratory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="4" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="1LA-bi-pLC"/>
@@ -476,6 +476,6 @@
         <image name="labIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vf5-2g-CfU"/>
+        <segue reference="p7e-bD-H0e"/>
     </inferredMetricsTieBreakers>
 </document>
