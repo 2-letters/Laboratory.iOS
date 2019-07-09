@@ -67,8 +67,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         searchBar.backgroundImage = UIImage()
         
         // load LabItems TableView
-        let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
-        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+//        let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
+//        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+        labEquipmentTV.register(LabEquipmentTVCell.self)
         
 //        let simpleEquipmentNib = UINib(nibName: NibName.a, bundle: nil)
 //        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: ReuseId.a)
@@ -153,8 +154,8 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
-            
+//            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
+            let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator

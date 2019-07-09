@@ -16,6 +16,7 @@ class EquipmentListVC: UIViewController {
     
     private var viewModel = EquipmentListVM()
     private lazy var refreshControl = UIRefreshControl()
+    private let showEquipmentInfoSegue = "showEquipmentInfo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId().showEquipmentInfo {
+        if segue.identifier == showEquipmentInfoSegue {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
             equipmentInfoVC.equipmentId = sender as? String
             if sender == nil {
@@ -104,7 +105,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: User interaction
     @objc private func createNewEquipment() {
-        performSegue(withIdentifier: SegueId().showEquipmentInfo, sender: nil)
+        performSegue(withIdentifier: showEquipmentInfoSegue, sender: nil)
     }
     
     @objc private func refreshData(sender: Any) {
@@ -146,6 +147,6 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]
         // todo should send equipment id instead
-        performSegue(withIdentifier: SegueId().showEquipmentInfo, sender: equipmentVM.equipmentId)
+        performSegue(withIdentifier: showEquipmentInfoSegue, sender: equipmentVM.equipmentId)
     }
 }

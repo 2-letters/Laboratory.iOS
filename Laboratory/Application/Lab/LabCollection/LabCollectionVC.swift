@@ -23,8 +23,10 @@ class LabCollectionVC: UIViewController {
         setupUI()
         
         // register lab cells
-        let nib = UINib(nibName: LabCollectionViewCell.nibId, bundle: nil)
-        labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
+        labCollectionView.register(LabCollectionViewCell.self)
+//        let nib = UINib(nibName: LabCollectionViewCell.nibId, bundle: nil)
+//
+//        labCollectionView.register(nib, forCellWithReuseIdentifier: LabCollectionViewCell.reuseId)
         
         loadLabData()
     }
@@ -123,7 +125,8 @@ extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseId, for: indexPath) as! LabCollectionViewCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseId, for: indexPath) as! LabCollectionViewCell
+        let cell: LabCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
     
         cell.viewModel = viewModel.displayingLabVMs?[indexPath.row]
         

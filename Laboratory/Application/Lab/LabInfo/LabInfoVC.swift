@@ -78,8 +78,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
-        let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
-        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+        labEquipmentTableView.register(LabEquipmentTVCell.self)
+//        let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
+//        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
         let addEquipmentButton = labInfoView.addEquipmentButton!
         if isCreatingNewLab {
@@ -233,7 +234,8 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
+        let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+//        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
         
         cell.viewModel = viewModel.equipmentVMs?[indexPath.row]
         return cell

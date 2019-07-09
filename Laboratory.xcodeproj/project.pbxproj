@@ -31,8 +31,8 @@
 		C9156F7222C144350039DC18 /* LabCreateUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9156F7122C144350039DC18 /* LabCreateUITest.swift */; };
 		C938A9C922D39A4B004C05D1 /* InputHighlightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */; };
 		C938A9CB22D3D8E5004C05D1 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CA22D3D8E5004C05D1 /* MyButton.swift */; };
-		C938A9CD22D3F01D004C05D1 /* ReuseId&NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReuseId&NibName.swift */; };
-		C938A9CE22D3F048004C05D1 /* ReuseId&NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReuseId&NibName.swift */; };
+		C938A9CD22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */; };
+		C938A9CE22D3F048004C05D1 /* ReusableView&NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */; };
 		C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF322AE970B0035A9FA /* LabCellVM.swift */; };
 		C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */; };
 		C93B0FFD22AEE7880035A9FA /* LabEquipmentTVCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */; };
@@ -170,7 +170,7 @@
 		C9156F7122C144350039DC18 /* LabCreateUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateUITest.swift; sourceTree = "<group>"; };
 		C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHighlightable.swift; sourceTree = "<group>"; };
 		C938A9CA22D3D8E5004C05D1 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
-		C938A9CC22D3F01D004C05D1 /* ReuseId&NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReuseId&NibName.swift"; sourceTree = "<group>"; };
+		C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView&NibLoadableView.swift"; sourceTree = "<group>"; };
 		C93B0FF322AE970B0035A9FA /* LabCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabCellVM.swift; sourceTree = "<group>"; };
 		C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionCellTest.swift; sourceTree = "<group>"; };
 		C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCellTest.swift; sourceTree = "<group>"; };
@@ -378,7 +378,6 @@
 				C940B95F22AA98380025E5AC /* MyFont.swift */,
 				C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */,
 				DE28679E22BD9C5300CBFC5F /* MyInt.swift */,
-				C938A9CC22D3F01D004C05D1 /* ReuseId&NibName.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -598,6 +597,7 @@
 				DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */,
 				C9FD440422C4094B007CA394 /* ImagePickable.swift */,
 				C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */,
+				C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1160,7 +1160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */,
-				C938A9CD22D3F01D004C05D1 /* ReuseId&NibName.swift in Sources */,
+				C938A9CD22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift in Sources */,
 				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
 				DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */,
 				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
@@ -1251,7 +1251,7 @@
 				C93B100A22AF04660035A9FA /* EquipmentInfoVMTest.swift in Sources */,
 				DE6B4DB022AD9DB5006CE211 /* AlertPresentableTest.swift in Sources */,
 				C93B100422AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift in Sources */,
-				C938A9CE22D3F048004C05D1 /* ReuseId&NibName.swift in Sources */,
+				C938A9CE22D3F048004C05D1 /* ReusableView&NibLoadableView.swift in Sources */,
 				C903D5AD22AAEFA900D1A79B /* FakeData.swift in Sources */,
 				C9EE234B22B18874004AB9BB /* LabInfoVCSnapshotTest.swift in Sources */,
 				DE2867A522BEF3CD00CBFC5F /* AppDelegateTest.swift in Sources */,
