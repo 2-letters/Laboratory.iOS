@@ -9,10 +9,6 @@
 import UIKit
 
 class LabCollectionViewCell: UICollectionViewCell {
-
-//    static let nibId = "LabCollectionViewCell"
-//    static let reuseId = "LabCell"
-//    
     @IBOutlet var labNameLabel: UILabel!
     @IBOutlet var labDescriptionLabel: UILabel!
     

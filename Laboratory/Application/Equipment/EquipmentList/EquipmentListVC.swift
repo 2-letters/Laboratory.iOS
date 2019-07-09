@@ -16,6 +16,7 @@ class EquipmentListVC: UIViewController {
     
     private var viewModel = EquipmentListVM()
     private lazy var refreshControl = UIRefreshControl()
+    private let cellReuseIdAndNibName = "SimpleEquipmentTVCell"
     private let showEquipmentInfoSegue = "showEquipmentInfo"
     
     override func viewDidLoad() {
@@ -53,9 +54,8 @@ class EquipmentListVC: UIViewController {
         searchBar.backgroundImage = UIImage()
         
         // register table cells
-        equipmentTV.register(SimpleEquipmentTVCell.self)
-//        let nib = UINib(nibName: NibName.a, bundle: nil)
-//        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.a)
+        let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
+        equipmentTV.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
         
         // add Refresh Control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
@@ -135,8 +135,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
-        let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        let cell = equipmentTV.dequeueReusableCell(withIdentifier: cellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         

@@ -75,13 +75,22 @@ class EquipmentInfoView: UIView {
             nameTextView.text = viewModel.equipmentName
             locationTextView.text = viewModel.location
             descriptionTextView.text = viewModel.description
-            do {
-                let url = URL(string: viewModel.imageUrl)!
-                let data = try Data(contentsOf: url)
-                equipmentImageView.image = UIImage(data: data)
-            }
-            catch{
-                print(error)
+//            do {
+//                let url = URL(string: viewModel.imageUrl)!
+//                let data = try Data(contentsOf: url)
+//                equipmentImageView.image = UIImage(data: data)
+//            }
+//            catch{
+//                print(error)
+//            }
+            
+            let url = URL(string: viewModel.imageUrl)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.equipmentImageView.image = UIImage(data: data!)
+                }
             }
         }
     }
