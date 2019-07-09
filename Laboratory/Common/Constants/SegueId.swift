@@ -11,7 +11,7 @@ import Foundation
 struct SegueId {
     // show Segues
     static let showLabInfo = "showLabInfo"
-    static let showEquipmentInfo = "showEquipmentInfo"
+    let showEquipmentInfo = "showEquipmentInfo"
     static let showEquipmentEdit = "showEquipmentEdit"
     static let showEquipmentUserListFromLab = "showEquipmentUserListFromLab"
     static let showEquipmentUserListFromEquipment = "showEquipmentUserListFromEquipment"

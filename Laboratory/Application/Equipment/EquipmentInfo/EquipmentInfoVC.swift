@@ -45,6 +45,10 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         }
     }
     
+    deinit {
+        print("vox-deinit equipmentInfoVC")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueId.showEquipmentUserListFromEquipment {
             let equipmentUserListVC = segue.destination as! EquipmentUserListVC

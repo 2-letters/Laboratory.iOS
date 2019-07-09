@@ -70,8 +70,9 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
         labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
         
-        let simpleEquipmentNib = UINib(nibName: NibName.a, bundle: nil)
-        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: ReuseId.a)
+//        let simpleEquipmentNib = UINib(nibName: NibName.a, bundle: nil)
+//        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: ReuseId.a)
+        labEquipmentTV.register(SimpleEquipmentTVCell.self)
         
         addDelegates()
         addIdentifiers()
@@ -159,7 +160,8 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
+//            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
+            let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator

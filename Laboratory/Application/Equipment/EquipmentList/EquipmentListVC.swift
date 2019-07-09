@@ -29,7 +29,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showEquipmentInfo {
+        if segue.identifier == SegueId().showEquipmentInfo {
             let equipmentInfoVC = segue.destination as! EquipmentInfoVC
             equipmentInfoVC.equipmentId = sender as? String
             if sender == nil {
@@ -52,8 +52,9 @@ class EquipmentListVC: UIViewController {
         searchBar.backgroundImage = UIImage()
         
         // register table cells
-        let nib = UINib(nibName: NibName.a, bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.a)
+        equipmentTV.register(SimpleEquipmentTVCell.self)
+//        let nib = UINib(nibName: NibName.a, bundle: nil)
+//        equipmentTV.register(nib, forCellReuseIdentifier: ReuseId.a)
         
         // add Refresh Control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
@@ -103,7 +104,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: User interaction
     @objc private func createNewEquipment() {
-        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: nil)
+        performSegue(withIdentifier: SegueId().showEquipmentInfo, sender: nil)
     }
     
     @objc private func refreshData(sender: Any) {
@@ -133,7 +134,8 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
+//        let cell = equipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
+        let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         
@@ -144,6 +146,6 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]
         // todo should send equipment id instead
-        performSegue(withIdentifier: SegueId.showEquipmentInfo, sender: equipmentVM.equipmentId)
+        performSegue(withIdentifier: SegueId().showEquipmentInfo, sender: equipmentVM.equipmentId)
     }
 }
