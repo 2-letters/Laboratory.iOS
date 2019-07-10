@@ -25,11 +25,11 @@ class EquipmentUserListVMTest: XCTestCase {
     func testGetters() {
         // GIVEN
         sut.equipmentUserVMs = FakeData.equipmentUserVMs
-        let equipmentUserVM1 = sut.equipmentUserVMs[0] as!EquipmentUserVM
+        let equipmentUserVM1: EquipmentUserVM = sut.equipmentUserVMs!.first!
         
         // THEN
         XCTAssertEqual(equipmentUserVM1.userName, FakeData.userName1)
-        XCTAssertEqual(equipmentUserVM1.using, "Using: \(FakeData.using1)")
+        XCTAssertEqual(equipmentUserVM1.usingString, "Using: \(FakeData.using1)")
     }
     
     func testGetUsers() {

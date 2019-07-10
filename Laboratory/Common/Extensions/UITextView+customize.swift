@@ -74,9 +74,9 @@ class MyTextField: UITextField {
         customize(forEditing: true)
     }
     
-    func customize(forEditing isEnabled: Bool) {
-        self.isEnabled = isEnabled
-        if (isEnabled) {
+    func customize(forEditing beingEnabled: Bool) {
+        self.isEnabled = beingEnabled
+        if (beingEnabled) {
             layer.shadowColor = UIColor.black.cgColor
         } else {
             layer.shadowColor = MyColor.lightGray.cgColor

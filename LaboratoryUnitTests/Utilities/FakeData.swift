@@ -64,7 +64,7 @@ struct FakeData {
     }
     
     static var equipmentUser: EquipmentUser {
-        return EquipmentUser(userName: <#T##String#>, using: <#T##Int#>)
+        return EquipmentUser(userName: userName1, using: using1)
     }
     
     
@@ -113,9 +113,9 @@ struct FakeData {
     static var equipmentUserVMs: [EquipmentUserVM] {
         return [
             EquipmentUserVM(equipmentUser:
-                EquipmentUser(userName: testUser1, using: using1)),
+                EquipmentUser(userName: userName1, using: using1)),
             EquipmentUserVM(equipmentUser:
-                EquipmentUser(userName: testUser2, using: using2))
+                EquipmentUser(userName: userName2, using: using2))
         ]
     }
     

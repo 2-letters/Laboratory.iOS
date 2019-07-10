@@ -13,6 +13,7 @@ class EquipmentListVCTest: XCTestCase {
 
     var sut: EquipmentListVC!
     var equipmentInfoVC: EquipmentInfoVC!
+    private let showLabInfoSegue = "showEquipmentInfo"
     
     override func setUp() {
         super.setUp()
@@ -48,12 +49,12 @@ class EquipmentListVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(identifiers.count, 1)
-        XCTAssertTrue(identifiers.contains(SegueId.showEquipmentInfo))
+        XCTAssertTrue(identifiers.contains(showLabInfoSegue))
     }
     
     func testPassingDataToEquipmentCreate() {
         // GIVEN
-        let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentInfo, source: sut, destination: equipmentInfoVC)
+        let showEquipmentEditSegue = UIStoryboardSegue(identifier: showLabInfoSegue, source: sut, destination: equipmentInfoVC)
         
         /// For not using equipments
         // WHEN
@@ -67,7 +68,7 @@ class EquipmentListVCTest: XCTestCase {
     func testPassingDataToEquipmentInfo() {
         // GIVEN
         let fakeEquipmentId = FakeData.equipmentId
-        let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentInfo, source: sut, destination: equipmentInfoVC)
+        let showEquipmentEditSegue = UIStoryboardSegue(identifier: showLabInfoSegue, source: sut, destination: equipmentInfoVC)
         
         /// For not using equipments
         // WHEN

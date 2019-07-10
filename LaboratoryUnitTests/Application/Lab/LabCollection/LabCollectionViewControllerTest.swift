@@ -13,6 +13,7 @@ class LabCollectionViewControllerTest: XCTestCase {
 
     var sut: LabCollectionVC!
     var labInfoVC: LabInfoVC!
+    private let showLabInfoSegue = "showLabInfo"
     
     override func setUp() {
         super.setUp()
@@ -71,12 +72,12 @@ class LabCollectionViewControllerTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(identifiers.count, 1)
-        XCTAssertTrue(identifiers.contains(SegueId.showLabInfo))
+        XCTAssertTrue(identifiers.contains(showLabInfoSegue))
     }
     
     func testPassingDataToLabCreate() {
         // GIVEN
-        let showLabCreateSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
+        let showLabCreateSegue = UIStoryboardSegue(identifier: showLabInfoSegue, source: sut, destination: labInfoVC)
         
         // WHEN
         sut.prepare(for: showLabCreateSegue, sender: "creatingNewInstance")
@@ -88,10 +89,10 @@ class LabCollectionViewControllerTest: XCTestCase {
     
     func testPassingDataToLabInfo() {
         // GIVEN
-        let showLabInfoSegue = UIStoryboardSegue(identifier: SegueId.showLabInfo, source: sut, destination: labInfoVC)
+        let showLabInfoSeguee = UIStoryboardSegue(identifier: showLabInfoSegue, source: sut, destination: labInfoVC)
         
         // WHEN
-        sut.prepare(for: showLabInfoSegue, sender: FakeData.labId)
+        sut.prepare(for: showLabInfoSeguee, sender: FakeData.labId)
         
         // THEN
         XCTAssertFalse(labInfoVC.isCreatingNewLab)

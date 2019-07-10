@@ -13,6 +13,7 @@ class EquipmentInfoVCTest: XCTestCase {
 
     var sut: EquipmentInfoVC!
     var equipmentUserListVC: EquipmentUserListVC!
+    private let showEquipmentUserListFromLabSegue = "showEquipmentUserListFromLab"
     override func setUp() {
         super.setUp()
         sut = EquipmentInfoVC()
@@ -45,12 +46,12 @@ class EquipmentInfoVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(identifiers.count, 1)
-        XCTAssertTrue(identifiers.contains(SegueId.showEquipmentUserListFromLab))
+        XCTAssertTrue(identifiers.contains(showEquipmentUserListFromLabSegue))
     }
     
     func testPassingDataToEquipmentUserList() {
         // GIVEN
-        let showUserListSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentUserListFromLab, source: sut, destination: equipmentUserListVC)
+        let showUserListSegue = UIStoryboardSegue(identifier: showEquipmentUserListFromLabSegue, source: sut, destination: equipmentUserListVC)
         
         // WHEN
         UserUtil.institutionId = FakeData.institutionId
@@ -64,8 +65,8 @@ class EquipmentInfoVCTest: XCTestCase {
         XCTAssertTrue(sut.conforms(to: UIScrollViewDelegate.self))
         XCTAssertTrue(sut.conforms(to: UITextFieldDelegate.self))
         XCTAssertTrue(sut.conforms(to: UITextViewDelegate.self))
-        XCTAssertTrue(sut.conforms(to: SpinnerPresentable.self))
-        XCTAssertTrue(sut.conforms(to: AlertPresentable.self))
-        XCTAssertTrue(sut.conforms(to: ImagePickable.self))
+//        XCTAssertTrue(sut.conforms(to: SpinnerPresentable.self))
+//        XCTAssertTrue(sut.conforms(to: AlertPresentable.self))
+//        XCTAssertTrue(sut.conforms(to: ImagePickable.self))
     }
 }

@@ -13,7 +13,8 @@ class LabEquipmentSelectionVCTest: XCTestCase {
 
     var sut: LabEquipmentSelectionVC!
     var labEquipmentEditVC: LabEquipmentEditVC!
-    
+    private let showEquipmentEditSegue = "showEquipmentEdit"
+    private let unwindFromEquipmentSelectionSegue = "unwindFromEquipmentSelection"
     override func setUp() {
         super.setUp()
         sut = MyViewController.labEquipmentSelection.instance as? LabEquipmentSelectionVC
@@ -43,20 +44,20 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(identifiers.count, 2)
-        XCTAssertTrue(identifiers.contains(SegueId.showEquipmentEdit))
-        XCTAssertTrue(identifiers.contains(SegueId.unwindFromEquipmentSelection))
+        XCTAssertTrue(identifiers.contains(showEquipmentEditSegue))
+        XCTAssertTrue(identifiers.contains(unwindFromEquipmentSelectionSegue))
     }
     
     func testPassingDataToEquipmentEdit() {
         // GIVEN
         sut.labId = FakeData.labId
-        let showEquipmentEditSegue = UIStoryboardSegue(identifier: SegueId.showEquipmentEdit, source: sut, destination: labEquipmentEditVC)
+        let showEquipmentEditSeguee = UIStoryboardSegue(identifier: showEquipmentEditSegue, source: sut, destination: labEquipmentEditVC)
         let fakeSimpleEquipmentVM = FakeData.simpleEquipmentVM
         let fakeLabEquipmentVM = FakeData.labEquipmentVM
         
         /// For not using equipments
         // WHEN
-        sut.prepare(for: showEquipmentEditSegue, sender: fakeSimpleEquipmentVM)
+        sut.prepare(for: showEquipmentEditSeguee, sender: fakeSimpleEquipmentVM)
         
         // THEN
         XCTAssertEqual(labEquipmentEditVC.labId, FakeData.labId)
@@ -65,7 +66,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         
         /// For currently using equipments
         // WHEN
-        sut.prepare(for: showEquipmentEditSegue, sender: fakeLabEquipmentVM)
+        sut.prepare(for: showEquipmentEditSeguee, sender: fakeLabEquipmentVM)
         
         // THEN
         XCTAssertEqual(labEquipmentEditVC.labId, FakeData.labId)

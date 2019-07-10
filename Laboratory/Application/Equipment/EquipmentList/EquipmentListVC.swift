@@ -135,7 +135,7 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = equipmentTV.dequeueReusableCell(withIdentifier: cellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
         

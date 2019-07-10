@@ -12,10 +12,11 @@ import XCTest
 class LabCollectionCellTest: XCTestCase {
 
     var sut: LabCollectionViewCell!
+    private let cellNibName = "LabCollectionViewCell"
     override func setUp() {
         super.setUp()
         let bundle = Bundle(for: LabCollectionViewCell.self)
-        let nib = bundle.loadNibNamed(LabCollectionViewCell.nibId, owner: nil, options: nil)
+        let nib = bundle.loadNibNamed(cellNibName, owner: nil, options: nil)
         sut = nib?.first as? LabCollectionViewCell
     }
 

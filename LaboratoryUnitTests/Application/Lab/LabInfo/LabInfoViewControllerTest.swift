@@ -13,6 +13,8 @@ class LabInfoViewControllerTest: XCTestCase {
 
     var sut: LabInfoVC!
     var labEquipmentSelectionVC: LabEquipmentSelectionVC!
+    private let presentEquipmentSelectionSegue = "presentEquipmentSelection"
+    private let unwindFromLabInfoSegue = "unwindFromLabInfo"
     
     override func setUp() {
         super.setUp()
@@ -72,12 +74,12 @@ class LabInfoViewControllerTest: XCTestCase {
         
         // WHEN
         UIApplication.shared.keyWindow?.rootViewController = sut
-        sut.performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+        sut.performSegue(withIdentifier: presentEquipmentSelectionSegue, sender: nil)
         
         // THEN
         XCTAssertEqual(identifiers.count, 2)
-        XCTAssertTrue(identifiers.contains(SegueId.presentEquipmentSelection))
-        XCTAssertTrue(identifiers.contains(SegueId.unwindFromLabInfo))
+        XCTAssertTrue(identifiers.contains(presentEquipmentSelectionSegue))
+        XCTAssertTrue(identifiers.contains(unwindFromLabInfoSegue))
         
         XCTAssert(sut.presentedViewController is UINavigationController)
         XCTAssert((sut.presentedViewController as! UINavigationController).viewControllers[0] is LabEquipmentSelectionVC)
@@ -87,10 +89,10 @@ class LabInfoViewControllerTest: XCTestCase {
         // GIVEN
         sut.labId = FakeData.labId
         let navVC = UINavigationController(rootViewController: labEquipmentSelectionVC)
-        let showLabEquipmentSelection = UIStoryboardSegue(identifier: SegueId.presentEquipmentSelection, source: sut, destination: navVC)
+        let presentLabEquipmentSelection = UIStoryboardSegue(identifier: presentEquipmentSelectionSegue, source: sut, destination: navVC)
         
         // WHEN
-        sut.prepare(for: showLabEquipmentSelection, sender: nil)
+        sut.prepare(for: presentLabEquipmentSelection, sender: nil)
         
         // THEN
         XCTAssertEqual(labEquipmentSelectionVC.labId!, FakeData.labId)

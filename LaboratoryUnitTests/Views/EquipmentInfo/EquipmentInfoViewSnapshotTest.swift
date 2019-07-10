@@ -17,7 +17,7 @@ class EquipmentInfoViewSnapshotTest: FBSnapshotTestCase {
     }
     
     func test() {
-        let equipmentInfoView = EquipmentInfoView.instantiate()
+        let equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentInfo)
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         view.addSubview(equipmentInfoView)
         equipmentInfoView.frame = view.bounds

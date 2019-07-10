@@ -12,10 +12,11 @@ import XCTest
 class SimpleEquipmentTVCellTest: XCTestCase {
 
     var sut: SimpleEquipmentTVCell!
+    private let cellNibName = "SimpleEquipmentTVCell"
     override func setUp() {
         super.setUp()
         let bundle = Bundle(for: SimpleEquipmentTVCell.self)
-        let nib = bundle.loadNibNamed(NibName.a, owner: nil, options: nil)
+        let nib = bundle.loadNibNamed(cellNibName, owner: nil, options: nil)
         sut = nib?.first as? SimpleEquipmentTVCell
     }
     

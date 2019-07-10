@@ -177,24 +177,22 @@ extension UITestable where Self: XCTestCase {
         case .invalidLabInfoInput,
              .invalidEquipmentInfoInput,
              .succeedToSaveLab,
+             .succeedToSaveEquipment,
              .failToSaveLab,
              .failToRemoveLab,
+             .failToRemoveEquipment,
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
-             .failToSaveEdit:
+             .failToLoadEquipmentUser,
+             .failToSaveEdit,
+             .failToSaveEquipment:
             buttonText = AlertString.okay
             
         case .attemptCreateLab,
              .attemptToRemoveLab,
              .attemptToRemoveEquipment:
             buttonText = AlertString.no
-        case .failToLoadEquipmentUser:
-            <#code#>
-        case .failToSaveEquipment:
-            <#code#>
-        case .failToRemoveEquipment:
-            <#code#>
         }
         
         let alertButton = app.buttons[buttonText]

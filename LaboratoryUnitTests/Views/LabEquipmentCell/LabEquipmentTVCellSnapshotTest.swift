@@ -11,6 +11,7 @@ import FBSnapshotTestCase
 
 class LabEquipmentCellSnapshotTest: FBSnapshotTestCase {
     
+    private let cellNibName = "LabEquipmentTVCell"
     override func setUp() {
         super.setUp()
         recordMode = false
@@ -18,7 +19,7 @@ class LabEquipmentCellSnapshotTest: FBSnapshotTestCase {
     
     func test() {
         let bundle = Bundle(for: LabEquipmentTVCell.self)
-        let nib = bundle.loadNibNamed(LabEquipmentTVCell.nibId, owner: nil, options: nil)
+        let nib = bundle.loadNibNamed(cellNibName, owner: nil, options: nil)
         let labEquipmentCell = nib?.first as! LabEquipmentTVCell
         labEquipmentCell.viewModel = FakeData.labEquipmentVM
         
