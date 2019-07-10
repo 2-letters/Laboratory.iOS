@@ -13,11 +13,12 @@ class EquipmentInfoVCTest: XCTestCase {
 
     var sut: EquipmentInfoVC!
     var equipmentUserListVC: EquipmentUserListVC!
-    private let showEquipmentUserListFromLabSegue = "showEquipmentUserListFromLab"
+    private let showEquipmentUserListFromEquipmentSegue = "showEquipmentUserListFromEquipment"
+    private let unwindFromEquipmentInfoSegue = "unwindFromEquipmentInfo"
     override func setUp() {
         super.setUp()
-        sut = EquipmentInfoVC()
-        equipmentUserListVC = EquipmentUserListVC()
+        sut = MyViewController.equipmentInfo.instance as? EquipmentInfoVC
+        equipmentUserListVC = MyViewController.equipmentUserList.instance as? EquipmentUserListVC
         let _ = sut.view
     }
     
@@ -34,9 +35,9 @@ class EquipmentInfoVCTest: XCTestCase {
         
         // THEN
         XCTAssertNotNil(editSaveButton)
-        XCTAssertFalse(editSaveButton!.isEnabled)
+        XCTAssertTrue(editSaveButton!.isEnabled)
         XCTAssert(editSaveButton?.target === sut)
-        XCTAssertTrue(editSaveButton?.action?.description == "editSaveButtonTapped")
+        XCTAssertTrue(editSaveButton?.action?.description == "editSubmitButtonTapped")
         XCTAssertEqual(gestureRecognizers?.count, 1)
     }
 
@@ -45,13 +46,14 @@ class EquipmentInfoVCTest: XCTestCase {
         let identifiers = TestUtil.segues(ofViewController: sut)
         
         // THEN
-        XCTAssertEqual(identifiers.count, 1)
-        XCTAssertTrue(identifiers.contains(showEquipmentUserListFromLabSegue))
+        XCTAssertEqual(identifiers.count, 2)
+        XCTAssertTrue(identifiers.contains(showEquipmentUserListFromEquipmentSegue))
+        XCTAssertTrue(identifiers.contains(unwindFromEquipmentInfoSegue))
     }
     
     func testPassingDataToEquipmentUserList() {
         // GIVEN
-        let showUserListSegue = UIStoryboardSegue(identifier: showEquipmentUserListFromLabSegue, source: sut, destination: equipmentUserListVC)
+        let showUserListSegue = UIStoryboardSegue(identifier: showEquipmentUserListFromEquipmentSegue, source: sut, destination: equipmentUserListVC)
         
         // WHEN
         UserUtil.institutionId = FakeData.institutionId

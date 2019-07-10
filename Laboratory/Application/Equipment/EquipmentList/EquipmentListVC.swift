@@ -12,7 +12,7 @@ class EquipmentListVC: UIViewController {
 
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var equipmentTV: UITableView!
-    private var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+    private var addButton: UIBarButtonItem!
     
     private var viewModel = EquipmentListVM()
     private lazy var refreshControl = UIRefreshControl()
@@ -66,7 +66,7 @@ class EquipmentListVC: UIViewController {
             equipmentTV.addSubview(refreshControl)
         }
         
-//        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
         navigationItem.rightBarButtonItem = addButton
         
         addDelegates()

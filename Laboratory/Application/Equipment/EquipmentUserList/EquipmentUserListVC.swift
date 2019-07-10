@@ -10,14 +10,14 @@ import UIKit
 
 class EquipmentUserListVC: UITableViewController, AlertPresentable {
 
-    var equipmentId: String!
+    var equipmentId: String?
     @IBOutlet private var doneButton: UIBarButtonItem!
     private var viewModel = EquipmentUserListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Users"
+        navigationItem.title = "List of users"
         
         tableView.delegate = self
         tableView.dataSource = self

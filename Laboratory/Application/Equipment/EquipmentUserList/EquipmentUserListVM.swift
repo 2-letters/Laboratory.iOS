@@ -22,7 +22,11 @@ class EquipmentUserListVM {
     var equipmentUserVMs: [EquipmentUserVM]?
     let reuseId = "EquipmentUserCell"
     
-    func getUsers(forEquipmentId equipmentId: String, completion: @escaping FetchFirestoreHandler) {
+    func getUsers(forEquipmentId equipmentId: String?, completion: @escaping FetchFirestoreHandler) {
+        guard let equipmentId = equipmentId else {
+            completion(.failure("ERR could not find Lab Id"))
+            return
+        }
         // empty the aray before appending
         equipmentUserVMs = []
         

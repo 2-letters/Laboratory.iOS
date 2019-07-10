@@ -14,8 +14,9 @@ class EquipmentUserListVCTest: XCTestCase {
     var sut: EquipmentUserListVC!
     override func setUp() {
         super.setUp()
-        sut = EquipmentUserListVC()
-        
+        sut = MyViewController.equipmentUserList.instance as? EquipmentUserListVC
+        sut.equipmentId = FakeData.equipmentId
+        let _ = sut.view
     }
     
     override func tearDown() {

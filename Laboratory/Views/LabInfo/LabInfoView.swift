@@ -45,7 +45,7 @@ class LabInfoView: UIView {
         view.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
         view.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.description
         view.removeLabButton.accessibilityIdentifier = AccessibilityId.labInfoRemoveLabButton.description
-        view.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
+        view.labEquipmentTV.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
 
         return view
     }

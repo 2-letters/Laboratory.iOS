@@ -13,7 +13,7 @@ class EquipmentUserListVCSnapshotTest: FBSnapshotTestCase {
     
     override func setUp() {
         super.setUp()
-        recordMode = true
+        recordMode = false
     }
     
     func test() {

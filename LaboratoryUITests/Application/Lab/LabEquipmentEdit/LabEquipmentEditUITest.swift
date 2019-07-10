@@ -95,7 +95,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
     func testExceedAvailable() {
         // WHEN
         usingQuantityTextField.tap()
-        usingQuantityTextField.typeSomeText(withLength: MyInt.quantityTextLimit + 1)
+        usingQuantityTextField.typeSomeNumber(withLength: MyInt.quantityTextLimit + 1)
         tapOutside(inVC: thisViewController)
         
         let usingQuantityText = usingQuantityTextField.value as! String

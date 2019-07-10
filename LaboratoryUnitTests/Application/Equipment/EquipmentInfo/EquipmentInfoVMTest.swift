@@ -31,8 +31,8 @@ class EquipmentInfoVMTest: XCTestCase {
         sut.equipment = fakeFullEquipment
         
         // THEN
-        XCTAssertEqual(sut.equipmentName, "Name:  \(fakeFullEquipment.name)")
-        XCTAssertEqual(sut.availableString, "Available:  \(fakeFullEquipment.available) (items)")
+        XCTAssertEqual(sut.equipmentName, fakeFullEquipment.name)
+        XCTAssertEqual(sut.availableString, String(fakeFullEquipment.available))
         XCTAssertEqual(sut.description, fakeFullEquipment.description)
         XCTAssertEqual(sut.location, fakeFullEquipment.location)
         XCTAssertEqual(sut.imageUrl, fakeFullEquipment.imageUrl)

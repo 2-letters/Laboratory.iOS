@@ -63,7 +63,7 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(locationTextView.exists)
         XCTAssertTrue(descriptionTextView.exists)
         XCTAssertTrue(imageView.exists)
-        XCTAssertTrue(addImageButton.exists)
+        XCTAssertFalse(addImageButton.exists)
         XCTAssertFalse(addImageButton.isHittable)
         XCTAssertTrue(removeEquipmentButton.exists)
         XCTAssertFalse(removeEquipmentButton.isHittable)
@@ -75,7 +75,7 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
         
         editSaveBtn.tap()
-        
+        sleep(2)
         XCTAssertTrue(addImageButton.isHittable)
         XCTAssertTrue(removeEquipmentButton.isHittable)
     }
@@ -108,10 +108,8 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
     
     func testRemoveButton() {
         editSaveBtn.tap()
-        
+        sleep(2)
         let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
-        XCTAssertTrue(removeEquipmentButton.isHittable)
-        
         removeEquipmentButton.tap()
         sleep(2)
         

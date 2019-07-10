@@ -14,6 +14,7 @@ class LabEquipmentEditVCTest: XCTestCase {
     var sut: LabEquipmentEditVC!
     var equipmentUserListVC: EquipmentUserListVC!
     private let showEquipmentUserListFromLabSegue = "showEquipmentUserListFromLab"
+    private let unwindFromEquipmentEditSegue = "unwindFromEquipmentEdit"
     override func setUp() {
         super.setUp()
         sut = MyViewController.labEquipmentEdit.instance as? LabEquipmentEditVC
@@ -42,8 +43,9 @@ class LabEquipmentEditVCTest: XCTestCase {
         let identifiers = TestUtil.segues(ofViewController: sut)
         
         // THEN
-        XCTAssertEqual(identifiers.count, 1)
+        XCTAssertEqual(identifiers.count, 2)
         XCTAssertTrue(identifiers.contains(showEquipmentUserListFromLabSegue))
+        XCTAssertTrue(identifiers.contains(unwindFromEquipmentEditSegue))
     }
     
     func testPassingDataToEquipmentUserList() {

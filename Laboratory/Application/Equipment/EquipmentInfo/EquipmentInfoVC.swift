@@ -10,8 +10,6 @@ import UIKit
 
 class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentable, AlertPresentable {
     
-    
-    
     @IBOutlet var topView: UIView!
     @IBOutlet private var scrollView: UIScrollView!
     private var equipmentInfoView: EquipmentInfoView!

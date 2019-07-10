@@ -35,12 +35,11 @@ class LabInfoViewControllerTest: XCTestCase {
         let gestureRecognizers = sut.view.gestureRecognizers
         let saveBtn = sut.navigationItem.rightBarButtonItem
         
-        
         // THEN
         XCTAssertNotNil(saveBtn)
         XCTAssertFalse(saveBtn!.isEnabled)
         XCTAssert(saveBtn?.target === sut)
-        XCTAssertTrue(saveBtn?.action?.description == "saveBtnPressed")
+        XCTAssertTrue(saveBtn?.action?.description == "saveButtonTapped")
         XCTAssertEqual(gestureRecognizers?.count, 1)
     }
     
