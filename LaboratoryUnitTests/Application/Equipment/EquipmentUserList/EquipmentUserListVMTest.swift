@@ -73,6 +73,7 @@ class EquipmentUserListVMTest: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         // THEN
+        // TODO: both fail
         XCTAssertNotNil(responseError)
         XCTAssertFalse(isSuccessful)
     }

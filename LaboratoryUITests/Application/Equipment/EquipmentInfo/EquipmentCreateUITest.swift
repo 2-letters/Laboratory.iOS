@@ -56,6 +56,7 @@ class EquipmentCreateUITest: MyUITestDelegate {
         XCTAssertTrue(nameTextView.exists)
         XCTAssertTrue(locationTextView.exists)
         XCTAssertTrue(descriptionTextView.exists)
+        // TODO: this fail
         XCTAssertTrue(imageView.exists)
         XCTAssertTrue(addImageButton.exists)
         XCTAssertTrue(addImageButton.isHittable)
@@ -83,6 +84,7 @@ class EquipmentCreateUITest: MyUITestDelegate {
         
         // THEN
         let availableText = nameTextView.value as! String
+        // TODO: this fail XCTAssertEqual failed: ("0") is not equal to ("5")
         XCTAssertEqual(availableText.count, MyInt.quantityTextLimit)
         
         // WHEN
@@ -152,6 +154,7 @@ class EquipmentCreateUITest: MyUITestDelegate {
         addImageButton.tap()
         
         // tap on "Camera Roll"
+        // TODO: this fail No matches found for Find: Descendants matching type Table from input {(
         app.tables.cells.element(boundBy: 0).tap()
         sleep(2)
         // tap on the first picture

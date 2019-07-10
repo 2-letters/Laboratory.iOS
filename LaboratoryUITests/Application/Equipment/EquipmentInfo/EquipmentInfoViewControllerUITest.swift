@@ -77,6 +77,7 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         editSaveBtn.tap()
         sleep(2)
         XCTAssertTrue(addImageButton.isHittable)
+        // TODO: this fail
         XCTAssertTrue(removeEquipmentButton.isHittable)
     }
     

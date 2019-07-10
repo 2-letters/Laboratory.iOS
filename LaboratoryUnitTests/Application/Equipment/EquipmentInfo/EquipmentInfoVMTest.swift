@@ -77,6 +77,7 @@ class EquipmentInfoVMTest: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         // THEN
+        // TODO: this fail
         XCTAssertFalse(isSuccessful)
         XCTAssertNotNil(responseError)
     }

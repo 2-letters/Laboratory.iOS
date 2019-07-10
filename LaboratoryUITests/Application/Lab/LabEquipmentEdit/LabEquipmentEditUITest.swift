@@ -101,6 +101,7 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         let usingQuantityText = usingQuantityTextField.value as! String
         // THEN
         // TODO replace this with available quantity
+        // TODO this fail  XCTAssertEqual failed: ("11") is not equal to ("99999")
         XCTAssertEqual(Int(usingQuantityText)!, 99999)
     }
     
