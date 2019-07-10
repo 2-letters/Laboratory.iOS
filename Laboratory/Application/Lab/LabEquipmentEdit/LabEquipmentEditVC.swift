@@ -26,6 +26,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private var saveBtn: UIBarButtonItem!
     var spinnerVC = SpinnerViewController()
+    private let showEquipmentUserListFromLabSegue = "showEquipmentUserListFromLab"
+    private let unwindFromEquipmentEditSegue = "unwindFromEquipmentEdit"
     private var viewModel = LabEquipmentEditVM()
     
     override func viewDidLoad() {
@@ -42,7 +44,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showEquipmentUserListFromLab {
+        if segue.identifier == showEquipmentUserListFromLabSegue {
             let equipmentUserListVC = segue.destination as! EquipmentUserListVC
             equipmentUserListVC.equipmentId = sender as? String
         }
@@ -80,7 +82,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         decreaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
         increaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
         removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
-        removeBtn.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        removeBtn.titleLabel?.font = UIFont(name: "GillSans", size: 17)
         
         separatingLine.backgroundColor = MyColor.lightGray
 
@@ -165,7 +167,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     @objc private func showListOfUser() {
-        performSegue(withIdentifier: SegueId.showEquipmentUserListFromLab, sender: equipmentId)
+        performSegue(withIdentifier: showEquipmentUserListFromLabSegue, sender: equipmentId)
     }
     
     private func goBack(alert: UIAlertAction!) {
@@ -175,7 +177,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private func goBackAndReload() {
         // go back to Equipment Selection
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentEdit, sender: nil)
+        performSegue(withIdentifier: unwindFromEquipmentEditSegue, sender: nil)
     }
 }
 

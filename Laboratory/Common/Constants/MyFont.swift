@@ -6,11 +6,11 @@
 //  Copyright © 2019 2Letters. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-let primaryFont = "GillSans-SemiBold"
-let secondaryFont = "GillSans"
+//let primaryFont = "GillSans-SemiBold"
+//let secondaryFont = "GillSans"
 
-struct MyFont {
-    
-}
+//extension UIFont {
+//    private let secondaryFont = "GillSans"
+//}

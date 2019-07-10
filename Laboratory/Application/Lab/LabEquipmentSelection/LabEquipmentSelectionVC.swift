@@ -16,6 +16,10 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     @IBOutlet private var labEquipmentTV: UITableView!
     
     var spinnerVC = SpinnerViewController()
+    private let labEquipmentCellReuseIdAndNibName = "LabEquipmentTVCell"
+    private let simpleEquipmentCellReuseIdAndNibName = "SimpleEquipmentTVCell"
+    private let showEquipmentEditSegue = "showEquipmentEdit"
+    private let unwindFromEquipmentSelectionSegue = "unwindFromEquipmentSelection"
     private var viewModel = LabEquipmentSelectionVM()
     private var hasChange = false
     
@@ -33,7 +37,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showEquipmentEdit {
+        if segue.identifier == showEquipmentEditSegue {
             let labEquipmentEditVC = segue.destination as? LabEquipmentEditVC
             labEquipmentEditVC?.labId = labId
             if let addedEquipmentVM = sender as? LabEquipmentVM {
@@ -62,18 +66,18 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     // MARK: Layout
     private func setupUI() {
-        navigationItem.title = MyString.labEquipmentCollectionTitle
+        navigationItem.title = "Edit Equipments"
         
         searchBar.backgroundImage = UIImage()
         
         // load LabItems TableView
-//        let labEquipmentNib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
-//        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
-        labEquipmentTV.register(LabEquipmentTVCell.self)
+        let labEquipmentNib = UINib(nibName: labEquipmentCellReuseIdAndNibName, bundle: nil)
+        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: labEquipmentCellReuseIdAndNibName)
+//        labEquipmentTV.register(labEquipmentCellReuseIdAndNibName)
         
-//        let simpleEquipmentNib = UINib(nibName: NibName.a, bundle: nil)
-//        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: ReuseId.a)
-        labEquipmentTV.register(SimpleEquipmentTVCell.self)
+        let simpleEquipmentNib = UINib(nibName: simpleEquipmentCellReuseIdAndNibName, bundle: nil)
+        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: simpleEquipmentCellReuseIdAndNibName)
+//        labEquipmentTV.register(simpleEquipmentCellReuseIdAndNibName)
         
         addDelegates()
         addIdentifiers()
@@ -123,7 +127,7 @@ extension LabEquipmentSelectionVC {
     }
     
     private func goBackAndReload() {
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentSelection, sender: nil)
+        performSegue(withIdentifier: unwindFromEquipmentSelectionSegue, sender: nil)
     }
 }
 
@@ -154,15 +158,15 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-//            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
-            let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: labEquipmentCellReuseIdAndNibName, for: indexPath) as! LabEquipmentTVCell
+//            let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-//            let cell = labEquipmentTV.dequeueReusableCell(withIdentifier: ReuseId.a, for: indexPath) as! SimpleEquipmentTVCell
-            let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: simpleEquipmentCellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
+//            let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator
@@ -173,10 +177,10 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let vm = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
-            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
+            performSegue(withIdentifier: showEquipmentEditSegue, sender: vm)
         } else {
             let vm = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
-            performSegue(withIdentifier: SegueId.showEquipmentEdit, sender: vm)
+            performSegue(withIdentifier: showEquipmentEditSegue, sender: vm)
         }
     }
 }

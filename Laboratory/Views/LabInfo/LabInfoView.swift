@@ -31,11 +31,11 @@ class LabInfoView: UIView {
         
         addEquipmentButton.backgroundColor = MyColor.lightGreen
         addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
-        addEquipmentButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        addEquipmentButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
         
         removeLabButton.backgroundColor = MyColor.superLightGreen
         removeLabButton.setTitleColor(MyColor.redWarning, for: .normal)
-        removeLabButton.titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        removeLabButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
     }
     
     static func instantiate() -> LabInfoView {

@@ -36,7 +36,7 @@ class EquipmentListVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(gestureRecognizers?.count, 1)
-        XCTAssertEqual(navItem.title, MyString.equipmentListTitle)
+        XCTAssertEqual(navItem.title, "Equipments")
         XCTAssertNotNil(navItem.rightBarButtonItem)
         XCTAssert(navItem.rightBarButtonItem?.target === sut)
         XCTAssertTrue(navItem.rightBarButtonItem?.action?.description == "createNewEquipment")

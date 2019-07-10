@@ -28,7 +28,7 @@ class MyTextView: UITextView {
         layer.shadowRadius = 0.0
         
         isScrollEnabled = false
-        font = UIFont(name: secondaryFont, size: 19)
+        font = UIFont(name: "GillSans", size: 19)
         // remove left padding
         textContainer.lineFragmentPadding = 0
         
@@ -69,7 +69,7 @@ class MyTextField: UITextField {
         layer.shadowOpacity = 1.0
         layer.shadowRadius = 0.0
         
-        font = UIFont(name: secondaryFont, size: 19)
+        font = UIFont(name: "GillSans", size: 19)
         
         customize(forEditing: true)
     }

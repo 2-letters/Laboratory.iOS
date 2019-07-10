@@ -16,6 +16,7 @@ class LabCollectionVC: UIViewController {
     private var viewModel = LabCollectionVM()
     private let refreshControl = UIRefreshControl()
     private let cellReuseIdAndNibName = "LabCollectionViewCell"
+    private let showLabInfoSegue = "showLabInfo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +33,13 @@ class LabCollectionVC: UIViewController {
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showLabInfo {
+        if segue.identifier == showLabInfoSegue {
             let labInfoVC = segue.destination as! LabInfoVC
             // send info to LabInfo View Controller
             guard let sender = sender as? String else {
                 return
             }
-            if sender == MyString.creatingNewInstanceFlag {
+            if sender == "creatingNewInstance" {
                 labInfoVC.isCreatingNewLab = true
             } else {
                 labInfoVC.isCreatingNewLab = false
@@ -54,7 +55,7 @@ class LabCollectionVC: UIViewController {
     
     // MARK: Layout
     private func setupUI() {
-        navigationItem.title = MyString.labCollectionTitle
+        navigationItem.title = "Labs"
         // "Create Lab" button
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewLab))
         navigationItem.rightBarButtonItem = addButton
@@ -108,7 +109,7 @@ class LabCollectionVC: UIViewController {
     
     // MARK: User Interaction
     @objc private func createNewLab() {
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: MyString.creatingNewInstanceFlag)
+        performSegue(withIdentifier: showLabInfoSegue, sender: "creatingNewInstance")
     }
     
     @objc private func refreshData() {
@@ -134,7 +135,7 @@ extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedLabId = viewModel.getLabId(at: indexPath.row)
         // show LabInfo View and send labVM to it
-        performSegue(withIdentifier: SegueId.showLabInfo, sender: selectedLabId)
+        performSegue(withIdentifier: showLabInfoSegue, sender: selectedLabId)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

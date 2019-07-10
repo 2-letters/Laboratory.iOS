@@ -17,7 +17,7 @@ class SimpleEquipmentTVCell: UITableViewCell {
     var viewModel: SimpleEquipmentVM! {
         didSet {
             equipmentNameLabel.text = viewModel.equipmentName
-            equipmentNameLabel.font = UIFont(name: secondaryFont, size: 18)
+            equipmentNameLabel.font = UIFont(name: "GillSans", size: 18)
         }
     }
     

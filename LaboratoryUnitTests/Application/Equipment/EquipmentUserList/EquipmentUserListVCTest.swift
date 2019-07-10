@@ -28,7 +28,7 @@ class EquipmentUserListVCTest: XCTestCase {
         let navItem = sut.navigationItem
         
         // THEN
-        XCTAssertEqual(navItem.title, MyString.equipmentUserListTitle)
+        XCTAssertEqual(navItem.title, "List of users")
     }
     
     func testTableView() {

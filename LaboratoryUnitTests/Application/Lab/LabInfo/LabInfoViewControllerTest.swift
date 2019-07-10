@@ -47,7 +47,7 @@ class LabInfoViewControllerTest: XCTestCase {
         sut.isCreatingNewLab = true
         sut.beginAppearanceTransition(true, animated: true)
         // THEN
-        XCTAssertEqual(sut.navigationItem.title, MyString.labCreateTitle)
+        XCTAssertEqual(sut.navigationItem.title, "Create a Lab")
 
         sut.endAppearanceTransition()
         
@@ -57,7 +57,7 @@ class LabInfoViewControllerTest: XCTestCase {
         sut.beginAppearanceTransition(true, animated: true)
         
         // THEN
-        XCTAssertEqual(sut.navigationItem.title, MyString.labEditTitle)
+        XCTAssertEqual(sut.navigationItem.title, "Edit Lab")
     }
     
     func testDelegates() {

@@ -29,7 +29,7 @@ class EquipmentInfoView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        itemsLabel.font = UIFont(name: secondaryFont, size: 20)
+        itemsLabel.font = UIFont(name: "GillSans", size: 20)
 //        availableTextField.customize(forEditing: false)
         availableTextField.keyboardType = .numberPad
         availableTextField.textAlignment = .center

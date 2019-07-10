@@ -10,11 +10,7 @@ import UIKit
 
 class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentable, AlertPresentable {
     
-    let spinnerVC = SpinnerViewController()
     
-    private var viewModel = EquipmentInfoVM()
-    var equipmentId: String?
-    var isEditingEquipment = false
     
     @IBOutlet var topView: UIView!
     @IBOutlet private var scrollView: UIScrollView!
@@ -29,9 +25,16 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private var removeEquipmentButton: UIButton!
     private var listOfUserButton: UIButton!
     
+    let spinnerVC = SpinnerViewController()
     private lazy var imagePicker: ImagePicker = {
         return ImagePicker(presentationController: self, delegate: self)
     }()
+    
+    private var viewModel = EquipmentInfoVM()
+    private let showEquipmentUserListFromEquipmentSegue = "showEquipmentUserListFromEquipment"
+    private let unwindFromEquipmentInfoSegue = "unwindFromEquipmentInfo"
+    var equipmentId: String?
+    var isEditingEquipment = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +53,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.showEquipmentUserListFromEquipment {
+        if segue.identifier == showEquipmentUserListFromEquipmentSegue {
             let equipmentUserListVC = segue.destination as! EquipmentUserListVC
             equipmentUserListVC.equipmentId = sender as? String
         }
@@ -202,7 +205,7 @@ extension EquipmentInfoVC {
     }
     
     @objc private func showListOfUser() {
-        performSegue(withIdentifier: SegueId.showEquipmentUserListFromEquipment, sender: equipmentId)
+        performSegue(withIdentifier: showEquipmentUserListFromEquipmentSegue, sender: equipmentId)
     }
     
     private func goBack(alert: UIAlertAction!) {
@@ -211,7 +214,7 @@ extension EquipmentInfoVC {
     }
     
     private func goBackAndReload() {
-        performSegue(withIdentifier: SegueId.unwindFromEquipmentInfo, sender: nil)
+        performSegue(withIdentifier: unwindFromEquipmentInfoSegue, sender: nil)
     }
 }
 

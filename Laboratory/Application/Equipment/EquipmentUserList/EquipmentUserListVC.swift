@@ -17,7 +17,7 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = MyString.equipmentListTitle
+        navigationItem.title = "Users"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -65,9 +65,9 @@ class EquipmentUserListVC: UITableViewController, AlertPresentable {
         
         let equipmentUserVM = viewModel.equipmentUserVMs?[indexPath.row]
         cell.textLabel?.text = equipmentUserVM?.userName
-        cell.textLabel?.font = UIFont(name: secondaryFont, size: 18)
+        cell.textLabel?.font = UIFont(name: "GillSans", size: 18)
         cell.detailTextLabel?.text = equipmentUserVM?.usingString
-        cell.detailTextLabel?.font = UIFont(name: secondaryFont, size: 18)
+        cell.detailTextLabel?.font = UIFont(name: "GillSans", size: 18)
         return cell
     }
 }

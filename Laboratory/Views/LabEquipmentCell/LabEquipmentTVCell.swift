@@ -19,8 +19,8 @@ class LabEquipmentTVCell: UITableViewCell {
         didSet {
             equipmentNameLbl.text = viewModel.equipmentName
             quantityLbl.text = viewModel.quantityString
-            equipmentNameLbl.font = UIFont(name: secondaryFont, size: 18)
-            quantityLbl.font = UIFont(name: secondaryFont, size: 18)
+            equipmentNameLbl.font = UIFont(name: "GillSans", size: 18)
+            quantityLbl.font = UIFont(name: "GillSans", size: 18)
         }
     }
     

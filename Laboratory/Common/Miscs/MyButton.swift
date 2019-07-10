@@ -14,6 +14,8 @@ enum MyButtonCase {
 }
 
 class MyButton: UIButton {
+//    private let secondaryFont = "GillSans"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -25,7 +27,7 @@ class MyButton: UIButton {
     }
     
     private func setup() {
-        titleLabel?.font = UIFont(name: secondaryFont, size: 17)
+        titleLabel?.font = UIFont(name: "GillSans", size: 17)
     }
     
     func customize(forCase buttonCase: MyButtonCase) {

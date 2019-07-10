@@ -24,8 +24,8 @@ class LabCollectionViewCell: UICollectionViewCell {
         clipsToBounds = false
         layer.masksToBounds = false
         
-        labNameLabel.font = UIFont(name: primaryFont, size: 17)
-        labDescriptionLabel.font = UIFont(name: secondaryFont, size: 15)
+        labNameLabel.font = UIFont(name: "GillSans-SemiBold", size: 17)
+        labDescriptionLabel.font = UIFont(name: "GillSans", size: 15)
         labDescriptionLabel.textColor = UIColor.lightGray 
     }
     

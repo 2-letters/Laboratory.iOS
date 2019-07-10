@@ -49,7 +49,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: Layout
     private func setupUI() {
-        navigationItem.title = MyString.equipmentListTitle
+        navigationItem.title = "Equipments"
         
         searchBar.backgroundImage = UIImage()
         

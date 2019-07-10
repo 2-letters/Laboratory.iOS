@@ -11,27 +11,27 @@ import Foundation
 struct UserUtil {
     static var userId: String {
         get {
-            let id =  UserDefaults.standard.string(forKey: MyString.userId)
+            let id =  UserDefaults.standard.string(forKey: "userId")
             guard let userId = id else {
                 preconditionFailure("voxErr cannot load userId")
             }
             return userId
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: MyString.userId)
+            UserDefaults.standard.set(newValue, forKey: "userId")
         }
     }
     
     static var institutionId: String {
         get {
-            let id =  UserDefaults.standard.string(forKey: MyString.institutionId)
+            let id =  UserDefaults.standard.string(forKey: "institutionId")
             guard let institutionId = id else {
                 preconditionFailure("voxErr cannot load userId")
             }
             return institutionId
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: MyString.institutionId)
+            UserDefaults.standard.set(newValue, forKey: "institutionId")
         }
     }
 }

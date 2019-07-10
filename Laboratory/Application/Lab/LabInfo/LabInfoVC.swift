@@ -21,6 +21,9 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var labEquipmentTableView: UITableView!
     
     private var viewModel = LabInfoVM()
+    private let cellReuseIdAndNibName = "LabEquipmentTVCell"
+    private let presentEquipmentSelectionSegue = "presentEquipmentSelection"
+    private let unwindFromLabInfoSegue = "unwindFromLabInfo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +42,17 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isCreatingNewLab {
-            navigationItem.title = MyString.labCreateTitle
+            navigationItem.title = "Create a Lab"
             labInfoView.removeLabButton.isHidden = true
         } else {
-            navigationItem.title = MyString.labEditTitle
+            navigationItem.title = "Edit Lab"
             labInfoView.removeLabButton.isHidden = false
         }
     }
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueId.presentEquipmentSelection {
+        if segue.identifier == presentEquipmentSelectionSegue {
             let navC = segue.destination as! UINavigationController
             let labEquipmentSelectionVC = navC.viewControllers.first as! LabEquipmentSelectionVC
             labEquipmentSelectionVC.labId = labId
@@ -78,9 +81,8 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         
         // register table cells
         labEquipmentTableView = labInfoView.labEquipmentTV
-        labEquipmentTableView.register(LabEquipmentTVCell.self)
-//        let nib = UINib(nibName: LabEquipmentTVCell.nibId, bundle: nil)
-//        labEquipmentTableView.register(nib, forCellReuseIdentifier: LabEquipmentTVCell.reuseId)
+        let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
         
         let addEquipmentButton = labInfoView.addEquipmentButton!
         if isCreatingNewLab {
@@ -141,11 +143,11 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 // MARK: - User Interaction
 extension LabInfoVC {
     private func goBackAndReload() {
-        self.performSegue(withIdentifier: SegueId.unwindFromLabInfo, sender: nil)
+        self.performSegue(withIdentifier: unwindFromLabInfoSegue, sender: nil)
     }
     
     private func goToEquipmentsSelect() {
-        performSegue(withIdentifier: SegueId.presentEquipmentSelection, sender: nil)
+        performSegue(withIdentifier: presentEquipmentSelectionSegue, sender: nil)
     }
     
     @objc private func editEquipments() {
@@ -234,8 +236,8 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//        let cell = labEquipmentTableView?.dequeueReusableCell(withIdentifier: LabEquipmentTVCell.reuseId, for: indexPath) as! LabEquipmentTVCell
+//        let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdAndNibName, for: indexPath) as! LabEquipmentTVCell
         
         cell.viewModel = viewModel.equipmentVMs?[indexPath.row]
         return cell
