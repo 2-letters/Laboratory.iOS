@@ -62,6 +62,10 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         scrollView.contentOffset.x = 0
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     private func addEquipmentInfoView() {
         if equipmentId == nil {
             equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentCreate)
@@ -120,7 +124,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         nameTextView.delegate = self
         descriptionTextView.delegate = self
         locationTextView.delegate = self
-        scrollView.keyboardDismissMode = .onDrag
+//        scrollView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {

@@ -45,11 +45,13 @@ class EquipmentInfoView: UIView {
         case .equipmentInfoLabEdit:
             view.addImageButton.removeFromSuperview()
             view.removeEquipmentButton.removeFromSuperview()
-            view.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
+            view.availableTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditAvailableTextField.description
+//            view.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
             view.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
             
         case .equipmentCreate:
             view.removeEquipmentButton.removeFromSuperview()
+            view.listOfUserButton.removeFromSuperview()
             view.addImageButton.setTitle("Add Image", for: .normal)
             view.equipmentImageView.isHidden = true
             fallthrough

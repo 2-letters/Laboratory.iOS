@@ -61,6 +61,8 @@ class ImagePicker: NSObject {
             alertController.popoverPresentationController?.permittedArrowDirections = [.down, .up]
         }
         
+        alertController.view.accessibilityIdentifier = AccessibilityId.addImageActionSheet.description
+        
         presentationController?.present(alertController, animated: true)
     }
     

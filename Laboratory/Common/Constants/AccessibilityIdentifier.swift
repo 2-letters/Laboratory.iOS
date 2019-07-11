@@ -36,7 +36,8 @@ enum AccessibilityId {
     case labEquipmentEditDecreaseButton
     case labEquipmentEditIncreaseButton
     case labEquipmentEditRemoveButton
-    case labEquipmentEditNameTextView
+//    case labEquipmentEditNameTextView
+    case labEquipmentEditAvailableTextField
     case labEquipmentEditEquipmentImageView
     
     // Equipment List VC
@@ -60,6 +61,9 @@ enum AccessibilityId {
     // Equipment User List VC
     case equipmentUserListTableView
     case equipmentUserListDoneButton
+    
+    // Action sheets
+    case addImageActionSheet
     
     var description: String {
         return String(describing: self)

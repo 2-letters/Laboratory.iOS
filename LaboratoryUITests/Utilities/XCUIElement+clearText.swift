@@ -29,6 +29,9 @@ extension XCUIElement {
             return
         }
         
+        let lowerRightCorner = self.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.9))
+        lowerRightCorner.tap()
+        
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)
     }

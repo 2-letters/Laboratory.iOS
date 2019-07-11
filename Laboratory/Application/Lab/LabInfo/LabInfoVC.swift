@@ -212,6 +212,7 @@ extension LabInfoVC {
                     self.presentAlert(forCase: .failToSaveLab)
                 case let .success(newLabId):
                     if toAddEquipments {
+                        // TODO: test this
                         // Successfully created a new Lab, to add Equipments
                         self.isCreatingNewLab = false
                         self.labId = newLabId

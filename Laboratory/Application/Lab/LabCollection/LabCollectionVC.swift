@@ -111,7 +111,7 @@ class LabCollectionVC: UIViewController {
     @objc private func createNewLab() {
         performSegue(withIdentifier: showLabInfoSegue, sender: "creatingNewInstance")
     }
-    
+    // TODO: test this
     @objc private func refreshData() {
         loadLabData()
     }

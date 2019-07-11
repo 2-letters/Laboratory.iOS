@@ -44,14 +44,15 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         let decreaseBtn = app.buttons[AccessibilityId.labEquipmentEditDecreaseButton.description]
         let increaseBtn = app.buttons[AccessibilityId.labEquipmentEditIncreaseButton.description]
         let removeBtn = app.buttons[AccessibilityId.labEquipmentEditRemoveButton.description]
-        let equipmentInfoView = app.textViews[AccessibilityId.labEquipmentEditNameTextView.description]
+//        let equipmentInfoView = app.textViews[AccessibilityId.labEquipmentEditNameTextView.description]
+        let availableTextField = app.textFields[AccessibilityId.labEquipmentEditAvailableTextField.description]
         let equipmentImageView = app.images[AccessibilityId.labEquipmentEditEquipmentImageView.description]
         
         XCTAssertTrue(saveBtn.exists)
         XCTAssertTrue(decreaseBtn.exists)
         XCTAssertTrue(increaseBtn.exists)
         XCTAssertTrue(removeBtn.exists)
-        XCTAssertNotNil(equipmentInfoView)
+        XCTAssertNotNil(availableTextField.exists)
         XCTAssertTrue(usingQuantityTextField.exists)
         XCTAssertTrue(equipmentImageView.exists)
     }
@@ -99,10 +100,11 @@ class LabEquipmentEditUITest: MyUITestDelegate {
         tapOutside(inVC: thisViewController)
         
         let usingQuantityText = usingQuantityTextField.value as! String
+        let availableTextField = app.textFields[AccessibilityId.labEquipmentEditAvailableTextField.description]
+        let availableText = availableTextField.value as! String
         // THEN
         // TODO replace this with available quantity
-        // TODO this fail  XCTAssertEqual failed: ("11") is not equal to ("99999")
-        XCTAssertEqual(Int(usingQuantityText)!, 99999)
+        XCTAssertEqual(Int(usingQuantityText)!, Int(availableText)!)
     }
     
     func testSaveChange() {

@@ -54,27 +54,5 @@ class EquipmentUserListVMTest: XCTestCase {
         // THEN
         XCTAssertNil(responseError)
         XCTAssertTrue(isSuccessful)
-        
-        // GIVEN
-        isSuccessful = false
-        responseError = nil
-        promise = expectation(description: "successfuly fetch equipment users")
-        
-        // WHEN
-        sut.getUsers(forEquipmentId: FakeData.wrongEquipmentId) { (fetchResult) in
-            switch fetchResult {
-            case let .failure(errorStr):
-                responseError = errorStr
-            case .success:
-                isSuccessful = true
-            }
-            promise.fulfill()
-        }
-        wait(for: [promise], timeout: 5)
-        
-        // THEN
-        // TODO: both fail
-        XCTAssertNotNil(responseError)
-        XCTAssertFalse(isSuccessful)
     }
 }

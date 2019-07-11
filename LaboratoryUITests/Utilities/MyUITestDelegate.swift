@@ -103,7 +103,7 @@ extension UITestable where Self: XCTestCase {
         case .labEquipmentEdit:
             mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
         case .equipmentInfo:
-            mainView = app.scrollViews[AccessibilityId.labEquipmentEditScrollView.description]
+            mainView = app.scrollViews[AccessibilityId.equipmentInfoScrollView.description]
         default:
             return
         }
@@ -127,7 +127,6 @@ extension UITestable where Self: XCTestCase {
             view = app.tables[AccessibilityId.equipmentListTableView.description
             ]
         case .equipmentInfo:
-            // todo fix this case, this is made up
             view = app.scrollViews[AccessibilityId.equipmentInfoScrollView.description]
         default:
             return

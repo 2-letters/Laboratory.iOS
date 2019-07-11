@@ -62,10 +62,11 @@ class EquipmentInfoVMTest: XCTestCase {
         
         // GIVEN
         isSuccessful = false
+        responseError = nil
         promise = expectation(description: "did fetch equipment info")
         
         // WHEN
-        sut.fetchEquipmentInfo(byId: FakeData.equipmentId) { (fetchResult) in
+        sut.fetchEquipmentInfo(byId: FakeData.wrongEquipmentId) { (fetchResult) in
             switch fetchResult {
             case let .failure(errorStr):
                 responseError = errorStr
@@ -77,7 +78,6 @@ class EquipmentInfoVMTest: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         // THEN
-        // TODO: this fail
         XCTAssertFalse(isSuccessful)
         XCTAssertNotNil(responseError)
     }

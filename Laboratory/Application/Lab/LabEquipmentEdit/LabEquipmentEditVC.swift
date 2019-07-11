@@ -166,10 +166,11 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         updateUI()
     }
     
+    // TODO: test this
     @objc private func showListOfUser() {
         performSegue(withIdentifier: showEquipmentUserListFromLabSegue, sender: equipmentId)
     }
-    
+    // TODO: test this
     private func goBack(alert: UIAlertAction!) {
         // go back to Equipment Selection
         navigationController?.popViewController(animated: true)

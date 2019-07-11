@@ -107,7 +107,7 @@ class EquipmentListVC: UIViewController {
     @objc private func createNewEquipment() {
         performSegue(withIdentifier: showEquipmentInfoSegue, sender: nil)
     }
-    
+    // TODO: test this
     @objc private func refreshData(sender: Any) {
         loadEquipmentData()
     }
