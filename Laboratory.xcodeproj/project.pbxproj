@@ -188,6 +188,7 @@
 		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		C94F58E122B402AB007DEF03 /* MyUITestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITestDelegate.swift; sourceTree = "<group>"; };
 		C94F58E422B40429007DEF03 /* LabInfoViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerUITest.swift; sourceTree = "<group>"; };
+		C95B514822D78815006B18CF /* Laboratory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Laboratory.entitlements; sourceTree = "<group>"; };
 		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C961847022CA582300B397AD /* EquipmentUserListVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVCTest.swift; sourceTree = "<group>"; };
@@ -333,6 +334,7 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
+				C95B514822D78815006B18CF /* Laboratory.entitlements */,
 				DE6B4D8222ACC28C006CE211 /* Common */,
 				C344387C228202AA0021168B /* Models */,
 				C34438742281F6F10021168B /* Views */,
@@ -989,6 +991,11 @@
 					C344385E2281DDFA0021168B = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					C96425DD22B0513200B627F1 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -1447,14 +1454,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XG84P2VT48;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletter.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1469,14 +1476,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XG84P2VT48;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
 				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = twoletter.Laboratory;
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

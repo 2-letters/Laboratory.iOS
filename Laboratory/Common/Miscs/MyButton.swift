@@ -35,9 +35,11 @@ class MyButton: UIButton {
         case .primary:
             backgroundColor = MyColor.lightGreen
             setTitleColor(UIColor.white, for: .normal)
+            setTitleColor(UIColor.gray, for: .disabled)
         case .danger:
             backgroundColor = MyColor.superLightGreen
             setTitleColor(MyColor.redWarning, for: .normal)
+            setTitleColor(UIColor.gray, for: .disabled)
         }
     }
 }

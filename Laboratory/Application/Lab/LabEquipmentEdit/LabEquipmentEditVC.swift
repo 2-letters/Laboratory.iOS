@@ -80,9 +80,11 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         usingQuantityTextField.delegate = self
         
         decreaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
+        decreaseBtn.setTitleColor(UIColor.gray, for: .disabled)
         increaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
         removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
         removeBtn.titleLabel?.font = UIFont(name: "GillSans", size: 17)
+        removeBtn.setTitleColor(UIColor.gray, for: .disabled)
         
         separatingLine.backgroundColor = MyColor.lightGray
 
@@ -125,13 +127,22 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private func updateUI() {
         // Quantity Layout
-        usingQuantityTextField.text = String(viewModel.editingQuantity)
-        
-        decreaseBtn.isEnabled = viewModel.isDecreaseBtnEnabled
-        increaseBtn.isEnabled = viewModel.isIncreaseBtnEnabled
-        removeBtn.isEnabled = viewModel.isRemoveBtnEnabled
-        
-        saveBtn.isEnabled = viewModel.isSaveBtnEnabled 
+//        usingQuantityTextField.text = String(viewModel.editingQuantity)
+        viewModel.editingQuantity.bindAndFire { [unowned self] in
+            self.usingQuantityTextField.text = String($0)
+        }
+        viewModel.isDecreaseBtnEnabled.bindAndFire { [unowned self] in
+            self.decreaseBtn.isEnabled = $0
+        }
+        viewModel.isIncreaseBtnEnabled.bindAndFire { [unowned self] in
+            self.increaseBtn.isEnabled = $0
+        }
+        viewModel.isRemoveBtnEnabled.bindAndFire { [unowned self] in
+            self.removeBtn.isEnabled = $0
+        }
+        viewModel.isSaveBtnEnabled.bindAndFire { [unowned self] in
+            self.saveBtn.isEnabled = $0
+        }
     }
     
     
@@ -151,19 +162,19 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     @IBAction private func decreaseEquipment(_ sender: UIButton) {
-        viewModel.editingQuantity -= 1
-        updateUI()
+        viewModel.editingQuantity.value -= 1
+//        updateUI()
     }
     
     @IBAction private func increaseEquipment(_ sender: UIButton) {
-        viewModel.editingQuantity += 1
-        updateUI()
+        viewModel.editingQuantity.value += 1
+//        updateUI()
     }
     
     @IBAction private func removeEquipment(_ sender: UIButton) {
         // set quantity to 0
-        viewModel.editingQuantity = 0
-        updateUI()
+        viewModel.editingQuantity.value = 0
+//        updateUI()
     }
     
     // TODO: test this
@@ -194,7 +205,7 @@ extension LabEquipmentEditVC: UITextFieldDelegate {
             usingQuantityTextField.unhighlight()
         }
         viewModel.updateQuantityTextField(withText: textField.text)
-        updateUI()
+//        updateUI()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

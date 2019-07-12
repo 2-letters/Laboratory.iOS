@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let didEditEquipment = Notification.Name(rawValue: "didEditEquipment")
+}
+
 class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentable, AlertPresentable {
     
     @IBOutlet var topView: UIView!
