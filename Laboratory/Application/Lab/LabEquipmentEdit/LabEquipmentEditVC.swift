@@ -115,7 +115,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             case .success:
                 DispatchQueue.main.async {
                     self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
-                    self.updateUI()
+                    self.viewModel.updateButtonState()
                 }
                 self.hideSpinner()
             case .failure:

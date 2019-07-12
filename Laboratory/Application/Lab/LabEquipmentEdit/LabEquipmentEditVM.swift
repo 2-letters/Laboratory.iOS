@@ -58,20 +58,15 @@ class LabEquipmentEditVM: NSObject {
     var available: Int {
         return equipmentInfoVM.equipment!.available
     }
-    let isDecreaseBtnEnabled: Dynamic<Bool>
-    let isIncreaseBtnEnabled: Dynamic<Bool>
-    let isRemoveBtnEnabled: Dynamic<Bool>
+    lazy var isDecreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    lazy var isIncreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    lazy var isRemoveBtnEnabled: Dynamic<Bool> = Dynamic(false)
     // "Save" button is only enable when there's change in quantity
-    let isSaveBtnEnabled: Dynamic<Bool>
+    lazy var isSaveBtnEnabled: Dynamic<Bool> = Dynamic(false)
     
-    init(usingQuantity: Int) {
+    init(usingQuantity: Int = 0) {
         self.usingQuantity = usingQuantity
         editingQuantity = Dynamic(usingQuantity)
-        isDecreaseBtnEnabled = Dynamic(editingQuantity.value != 0)
-        isIncreaseBtnEnabled = Dynamic(editingQuantity.value != available)
-        isRemoveBtnEnabled = Dynamic(editingQuantity.value != 0)
-        // "Save" button is only enable when there's change in quantity
-        isSaveBtnEnabled = Dynamic(editingQuantity.value != usingQuantity)
         super.init()
     }
     
@@ -88,7 +83,7 @@ class LabEquipmentEditVM: NSObject {
         updateButtonState()
     }
     
-    private func updateButtonState() {
+    func updateButtonState() {
         isDecreaseBtnEnabled.value = editingQuantity.value != 0
         isIncreaseBtnEnabled.value = editingQuantity.value != available
         isRemoveBtnEnabled.value = editingQuantity.value != 0
