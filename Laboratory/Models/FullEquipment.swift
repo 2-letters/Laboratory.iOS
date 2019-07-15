@@ -8,10 +8,18 @@
 
 import Foundation
 
-struct FullEquipment {
+class FullEquipment {
     var name: String
     var available: Int
     var description: String
     var location: String
     var imageUrl: String
+    
+    init(name: String, available: Int, description: String, location: String, imageUrl: String) {
+        self.name = name
+        self.available = available
+        self.description = description
+        self.location = location
+        self.imageUrl = imageUrl
+    }
 }

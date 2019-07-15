@@ -9,8 +9,10 @@
 import Foundation
 import FirebaseFirestore
 
+import Foundation
+
 class EquipmentInfoVM {
-//    let firestoreUtil = FirestoreUtil.shared
+//    let cache = NSCache<NSString, FullEquipment>()
     var equipment: FullEquipment?
     var equipmentName: String {
         return equipment!.name
@@ -45,6 +47,16 @@ class EquipmentInfoVM {
             completion(.failure("ERR could not load Lab Id"))
             return
         }
+        // Check the cache
+        
+        let equipmentKey = "Equipment.\(equipmentId)" as NSString
+        if let cachedEquipment = MyCache.shared.object(forKey: equipmentKey) {
+            equipment = (cachedEquipment as! FullEquipment)
+            completion(.success)
+            return
+        }
+        
+        // Else get from Firestore
         FirestoreUtil.getEquipment(withId: equipmentId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             let key = EquipmentKey.self
@@ -55,8 +67,13 @@ class EquipmentInfoVM {
                 let description = docData[key.description] as! String
                 let location = docData[key.location] as! String
                 let imageUrl = docData[key.imageUrl] as! String
-                self.equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, imageUrl: imageUrl)
-                    completion(.success)
+                let equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, imageUrl: imageUrl)
+                self.equipment = equipment
+                
+                // Cache it
+                MyCache.shared.setObject(equipment, forKey: equipmentKey)
+                completion(.success)
+                
             } else {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Info data"))
             }

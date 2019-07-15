@@ -24,6 +24,15 @@ class LabInfoVM {
             completion(.failure("ERR could not load Lab Id"))
             return
         }
+        
+        // Check cache
+        let labInfoKey = "Lab\(labId)" as NSString
+        if let labInfo = MyCache.shared.object(forKey: labInfoKey) {
+            self.labInfo = (labInfo as! LabInfo)
+            completion(.success)
+            return
+        }
+        
         FirestoreUtil.getLab(withId: labId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             if let document = document, document.exists {
@@ -32,8 +41,12 @@ class LabInfoVM {
                 FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
                     switch fetchLabEquipmentResult {
                     case let .success(labEquipments):
-                        self.labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
+                        let labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
+                        self.labInfo = labInfo
+                        // cache labInfo
+                        MyCache.shared.setObject(labInfo, forKey: labInfoKey)
                         completion(.success)
+                        
                     case let .failure(errorStr):
                         completion(.failure(errorStr))
                     }

@@ -117,6 +117,7 @@
 		DEBCB9B522D6202700852B01 /* GillSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B322D6202700852B01 /* GillSans.ttf */; };
 		DEBCB9B622D6202700852B01 /* GillSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */; };
 		DEBCB9B822DBACC100852B01 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B722DBACC100852B01 /* Dynamic.swift */; };
+		DEBCB9BA22DC2ECE00852B01 /* MyCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B922DC2ECE00852B01 /* MyCache.swift */; };
 		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
 		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
 		EC182607B74D439754F3CC77 /* Pods_Laboratory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7478D3EDDC112D5BBB41CF6A /* Pods_Laboratory.framework */; };
@@ -256,6 +257,7 @@
 		DEBCB9B322D6202700852B01 /* GillSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GillSans.ttf; sourceTree = "<group>"; };
 		DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GillSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		DEBCB9B722DBACC100852B01 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		DEBCB9B922DC2ECE00852B01 /* MyCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCache.swift; sourceTree = "<group>"; };
 		DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
 		DED9152322A2DEC2008139E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */,
 				C903D5B222AB0EF600D1A79B /* MyViewController.swift */,
 				DEBCB9B722DBACC100852B01 /* Dynamic.swift */,
+				DEBCB9B922DC2ECE00852B01 /* MyCache.swift */,
 			);
 			path = Miscs;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
 				C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */,
 				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
+				DEBCB9BA22DC2ECE00852B01 /* MyCache.swift in Sources */,
 				C34438812282094A0021168B /* LabCollectionVM.swift in Sources */,
 				DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */,
 				C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */,
