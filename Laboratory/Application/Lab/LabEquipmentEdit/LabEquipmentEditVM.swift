@@ -9,30 +9,6 @@
 import Foundation
 import FirebaseFirestore
 
-class Dynamic<T> {
-    typealias Listener = (T) -> ()
-    var listener: Listener?
-    
-    func bind(_ listener: Listener?) {
-        self.listener = listener
-    }
-    
-    func bindAndFire(_ listener: Listener?) {
-        self.listener = listener
-        listener?(value)
-    }
-    
-    var value: T {
-        didSet {
-            listener?(value)
-        }
-    }
-    
-    init(_ v: T) {
-        value = v
-    }
-}
-
 enum QuantityChange {
     case increase
     case decrease
@@ -40,7 +16,6 @@ enum QuantityChange {
 }
 
 class LabEquipmentEditVM: NSObject {
-//    let firestoreUtil = FirestoreUtil.shared
     var equipmentInfoVM = EquipmentInfoVM()
     
     var usingQuantity = 0 {
@@ -48,7 +23,7 @@ class LabEquipmentEditVM: NSObject {
             editingQuantity.value = usingQuantity
         }
     }
-//    var editingQuantity = 0
+    
     let editingQuantity: Dynamic<Int>
     
     var equipmentName: String {
@@ -58,11 +33,12 @@ class LabEquipmentEditVM: NSObject {
     var available: Int {
         return equipmentInfoVM.equipment!.available
     }
-    lazy var isDecreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
-    lazy var isIncreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
-    lazy var isRemoveBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    
+    let isDecreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    let isIncreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    let isRemoveBtnEnabled: Dynamic<Bool> = Dynamic(false)
     // "Save" button is only enable when there's change in quantity
-    lazy var isSaveBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    let isSaveBtnEnabled: Dynamic<Bool> = Dynamic(false)
     
     init(usingQuantity: Int = 0) {
         self.usingQuantity = usingQuantity
@@ -113,6 +89,5 @@ class LabEquipmentEditVM: NSObject {
             inputedQuantity = available
         }
         editingQuantity.value = inputedQuantity
-//        editingQuantity = inputedQuantity
     }
 }

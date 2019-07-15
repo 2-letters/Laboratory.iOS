@@ -28,7 +28,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     var spinnerVC = SpinnerViewController()
     private let showEquipmentUserListFromLabSegue = "showEquipmentUserListFromLab"
     private let unwindFromEquipmentEditSegue = "unwindFromEquipmentEdit"
-    private var viewModel = LabEquipmentEditVM()
+    private var viewModel: LabEquipmentEditVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,8 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         addTapRecognizer()
         addEquipmentInfoView()
         
-        viewModel.usingQuantity = usingQuantity
+        viewModel = LabEquipmentEditVM(usingQuantity: usingQuantity)
+//        viewModel.usingQuantity = usingQuantity
         
         setupUI()
         showSpinner()
@@ -116,6 +117,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
                 DispatchQueue.main.async {
                     self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
                     self.viewModel.updateButtonState()
+                    self.updateUI()
                 }
                 self.hideSpinner()
             case .failure:
@@ -126,8 +128,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     private func updateUI() {
-        // Quantity Layout
-//        usingQuantityTextField.text = String(viewModel.editingQuantity)
         viewModel.editingQuantity.bindAndFire { [unowned self] in
             self.usingQuantityTextField.text = String($0)
         }
@@ -162,19 +162,15 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     }
     
     @IBAction private func decreaseEquipment(_ sender: UIButton) {
-        viewModel.editingQuantity.value -= 1
-//        updateUI()
+        viewModel.changeQuantity(by: .decrease)
     }
     
     @IBAction private func increaseEquipment(_ sender: UIButton) {
-        viewModel.editingQuantity.value += 1
-//        updateUI()
+        viewModel.changeQuantity(by: .increase)
     }
     
     @IBAction private func removeEquipment(_ sender: UIButton) {
-        // set quantity to 0
-        viewModel.editingQuantity.value = 0
-//        updateUI()
+        viewModel.changeQuantity(by: .remove)
     }
     
     // TODO: test this
@@ -205,7 +201,6 @@ extension LabEquipmentEditVC: UITextFieldDelegate {
             usingQuantityTextField.unhighlight()
         }
         viewModel.updateQuantityTextField(withText: textField.text)
-//        updateUI()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

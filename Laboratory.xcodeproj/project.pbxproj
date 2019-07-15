@@ -116,6 +116,7 @@
 		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
 		DEBCB9B522D6202700852B01 /* GillSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B322D6202700852B01 /* GillSans.ttf */; };
 		DEBCB9B622D6202700852B01 /* GillSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */; };
+		DEBCB9B822DBACC100852B01 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B722DBACC100852B01 /* Dynamic.swift */; };
 		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
 		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
 		EC182607B74D439754F3CC77 /* Pods_Laboratory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7478D3EDDC112D5BBB41CF6A /* Pods_Laboratory.framework */; };
@@ -254,6 +255,7 @@
 		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
 		DEBCB9B322D6202700852B01 /* GillSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GillSans.ttf; sourceTree = "<group>"; };
 		DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GillSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		DEBCB9B722DBACC100852B01 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
 		DED9152322A2DEC2008139E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				C9EED950229D9707006314A8 /* FirestoreSvc.swift */,
 				C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */,
 				C903D5B222AB0EF600D1A79B /* MyViewController.swift */,
+				DEBCB9B722DBACC100852B01 /* Dynamic.swift */,
 			);
 			path = Miscs;
 			sourceTree = "<group>";
@@ -1178,6 +1181,7 @@
 				C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */,
 				C938A9CD22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift in Sources */,
 				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
+				DEBCB9B822DBACC100852B01 /* Dynamic.swift in Sources */,
 				DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */,
 				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
