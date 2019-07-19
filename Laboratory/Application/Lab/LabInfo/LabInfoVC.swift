@@ -43,10 +43,10 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         super.viewWillAppear(animated)
         if isCreatingNewLab {
             navigationItem.title = "Create a Lab"
-            labInfoView.removeLabButton.isHidden = true
+            labInfoView.deleteLabButton.isHidden = true
         } else {
             navigationItem.title = "Edit Lab"
-            labInfoView.removeLabButton.isHidden = false
+            labInfoView.deleteLabButton.isHidden = false
         }
     }
     
@@ -94,8 +94,8 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         }
         
         
-        let removeLabButton = labInfoView.removeLabButton!
-        removeLabButton.addTarget(self, action: #selector(attemptToRemoveLab), for: .touchUpInside)
+        let deleteLabButton = labInfoView.deleteLabButton!
+        deleteLabButton.addTarget(self, action: #selector(attemptToDeleteLab), for: .touchUpInside)
         
         // disable Save button until some change is made
         saveBtn.isEnabled = false
@@ -171,17 +171,17 @@ extension LabInfoVC {
         }
     }
     
-    @objc private func attemptToRemoveLab() {
-        presentAlert(forCase: .attemptToRemoveLab, handler: removeLab)
+    @objc private func attemptToDeleteLab() {
+        presentAlert(forCase: .attemptToDeleteLab, handler: deleteLab)
     }
     
-    private func removeLab(alert: UIAlertAction!) {
-        viewModel.removeLab(withId: labId) { [weak self] (deleteResult) in
+    private func deleteLab(alert: UIAlertAction!) {
+        viewModel.deleteLab(withId: labId) { [weak self] (deleteResult) in
             guard let self = self else { return }
             switch deleteResult {
             case let .failure(errorStr):
                 print(errorStr)
-                self.presentAlert(forCase: .failToRemoveLab)
+                self.presentAlert(forCase: .failToDeleteLab)
             case .success:
                 self.goBackAndReload()
             }

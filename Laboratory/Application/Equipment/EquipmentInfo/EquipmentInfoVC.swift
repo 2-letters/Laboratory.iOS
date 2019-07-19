@@ -24,7 +24,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private var descriptionTextView: UITextView!
     private var imageView: UIImageView!
     private var addImageButton: UIButton!
-    private var removeEquipmentButton: UIButton!
+    private var deleteEquipmentButton: UIButton!
     private var listOfUserButton: UIButton!
     
     let spinnerVC = SpinnerViewController()
@@ -104,7 +104,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         descriptionTextView = equipmentInfoView.descriptionTextView
         imageView = equipmentInfoView.equipmentImageView
         addImageButton = equipmentInfoView.addImageButton
-        removeEquipmentButton = equipmentInfoView.removeEquipmentButton
+        deleteEquipmentButton = equipmentInfoView.deleteEquipmentButton
         listOfUserButton = equipmentInfoView.listOfUserButton
 
         if equipmentId != nil {
@@ -113,7 +113,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         }
         
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
-        removeEquipmentButton.addTarget(self, action: #selector(attemptToRemoveEquipment), for: .touchUpInside)
+        deleteEquipmentButton.addTarget(self, action: #selector(attemptToDeleteEquipment), for: .touchUpInside)
         listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
         
 //        imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -193,17 +193,17 @@ extension EquipmentInfoVC {
         imagePicker.present(from: sender)
     }
     
-    @objc private func attemptToRemoveEquipment() {
-        presentAlert(forCase: .attemptToRemoveEquipment, handler: removeEquipment)
+    @objc private func attemptToDeleteEquipment() {
+        presentAlert(forCase: .attemptToDeleteEquipment, handler: deleteEquipment)
     }
     
-    private func removeEquipment(alert: UIAlertAction!) {
-        viewModel.removeEquipment(withId: equipmentId) { [weak self] (deleteResult) in
+    private func deleteEquipment(alert: UIAlertAction!) {
+        viewModel.deleteEquipment(withId: equipmentId) { [weak self] (deleteResult) in
             guard let self = self else { return }
             switch deleteResult {
             case let .failure(errorStr):
                 print(errorStr)
-                self.presentAlert(forCase: .failToRemoveEquipment)
+                self.presentAlert(forCase: .failToDeleteEquipment)
             case .success:
                 self.goBackAndReload()
             }

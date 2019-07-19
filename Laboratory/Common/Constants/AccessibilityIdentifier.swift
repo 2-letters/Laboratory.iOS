@@ -20,7 +20,7 @@ enum AccessibilityId {
     case labInfoNameTextView
     case labInfoDescriptionTextView
     case labInfoAddEquipmentButton
-    case labInfoRemoveLabButton
+    case labInfoDeleteLabButton
     case labInfoTableView
     
     // Lab Equipment Selection VC
@@ -55,7 +55,7 @@ enum AccessibilityId {
     case equipmentInfoLocationTextView
     case equipmentInfoImageView
     case equipmentInfoAddImageButton
-    case equipmentInfoRemoveEquipmentButton
+    case equipmentInfoDeleteEquipmentButton
     case equipmentInfoListOfUserButton
     
     // Equipment User List VC

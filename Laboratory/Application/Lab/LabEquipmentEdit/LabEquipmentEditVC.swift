@@ -169,7 +169,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         viewModel.changeQuantity(by: .increase)
     }
     
-    @IBAction private func removeEquipment(_ sender: UIButton) {
+    @IBAction private func deleteEquipment(_ sender: UIButton) {
         viewModel.changeQuantity(by: .remove)
     }
     

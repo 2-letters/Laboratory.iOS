@@ -87,7 +87,7 @@ class LabInfoVM {
         }
     }
     
-    func removeLab(withId labId: String?, completion: @escaping DeleteFirestoreHandler) {
+    func deleteLab(withId labId: String?, completion: @escaping DeleteFirestoreHandler) {
         guard let labId = labId else {
             completion(.failure("ERR could not find Lab Id"))
             return

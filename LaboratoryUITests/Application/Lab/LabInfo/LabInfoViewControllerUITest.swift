@@ -50,12 +50,12 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
     func testViewsExist() {
         let saveBtn = app.buttons[AccessibilityId.labInfoSaveButton.description]
         let addEquipmentsBtn = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
-        let removeLabButton = app.buttons[AccessibilityId.labInfoRemoveLabButton.description]
+        let deleteLabButton = app.buttons[AccessibilityId.labInfoDeleteLabButton.description]
         let tableView = app.tables[AccessibilityId.labInfoTableView.description]
         
         XCTAssertTrue(saveBtn.exists)
         XCTAssertTrue(addEquipmentsBtn.exists)
-        XCTAssertTrue(removeLabButton.exists)
+        XCTAssertTrue(deleteLabButton.exists)
         XCTAssertTrue(tableView.exists)
         XCTAssertTrue(nameTextView.exists)
         XCTAssertTrue(descriptionTextView.exists)
@@ -117,18 +117,18 @@ class LabInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(addEquipmentButton.isHittable)
     }
     
-    func testRemoveButton() {
-        let removeLabButton = app.buttons[AccessibilityId.labInfoRemoveLabButton.description]
+    func testDeleteButton() {
+        let deleteLabButton = app.buttons[AccessibilityId.labInfoDeleteLabButton.description]
         sleep(2)
-        XCTAssertTrue(removeLabButton.isHittable)
+        XCTAssertTrue(deleteLabButton.isHittable)
         
-        removeLabButton.tap()
+        deleteLabButton.tap()
         sleep(2)
         
         XCTAssertTrue(app.buttons[AlertString.yes].exists)
         XCTAssertTrue(app.buttons[AlertString.no].exists)
         
-        proceedAlertButton(ofCase: .attemptToRemoveLab)
+        proceedAlertButton(ofCase: .attemptToDeleteLab)
     }
     
     func testDismissKeyboard() {

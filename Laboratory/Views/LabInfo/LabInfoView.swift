@@ -19,7 +19,7 @@ class LabInfoView: UIView {
     
     @IBOutlet var addEquipmentButton: UIButton!
     
-    @IBOutlet var removeLabButton: UIButton!
+    @IBOutlet var deleteLabButton: UIButton!
     
     @IBOutlet var labEquipmentTV: UITableView!
     
@@ -33,9 +33,9 @@ class LabInfoView: UIView {
         addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
         addEquipmentButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
         
-        removeLabButton.backgroundColor = MyColor.superLightGreen
-        removeLabButton.setTitleColor(MyColor.redWarning, for: .normal)
-        removeLabButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
+        deleteLabButton.backgroundColor = MyColor.superLightGreen
+        deleteLabButton.setTitleColor(MyColor.redWarning, for: .normal)
+        deleteLabButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
     }
     
     static func instantiate() -> LabInfoView {
@@ -44,7 +44,7 @@ class LabInfoView: UIView {
         view.nameTextView.accessibilityIdentifier = AccessibilityId.labInfoNameTextView.description
         view.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
         view.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.description
-        view.removeLabButton.accessibilityIdentifier = AccessibilityId.labInfoRemoveLabButton.description
+        view.deleteLabButton.accessibilityIdentifier = AccessibilityId.labInfoDeleteLabButton.description
         view.labEquipmentTV.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
 
         return view

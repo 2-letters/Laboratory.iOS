@@ -178,8 +178,8 @@ extension UITestable where Self: XCTestCase {
              .succeedToSaveLab,
              .succeedToSaveEquipment,
              .failToSaveLab,
-             .failToRemoveLab,
-             .failToRemoveEquipment,
+             .failToDeleteLab,
+             .failToDeleteEquipment,
              .failToLoadEquipments,
              .failToLoadLabEquipments,
              .failToLoadEquipmentInfo,
@@ -189,8 +189,8 @@ extension UITestable where Self: XCTestCase {
             buttonText = AlertString.okay
             
         case .attemptCreateLab,
-             .attemptToRemoveLab,
-             .attemptToRemoveEquipment:
+             .attemptToDeleteLab,
+             .attemptToDeleteEquipment:
             buttonText = AlertString.no
         }
         

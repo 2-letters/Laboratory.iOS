@@ -122,7 +122,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="1kx-li-TmS"/>
                             </constraints>
-                            <state key="normal" title="🗑️ Remove Equipment"/>
+                            <state key="normal" title="🗑️ Delete Equipment"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-g7-Vuz" customClass="MyButton" customModule="Laboratory" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="470" width="374" height="36"/>
@@ -148,13 +148,13 @@
             <connections>
                 <outlet property="addImageButton" destination="Nri-LI-CSL" id="zPF-DQ-E9L"/>
                 <outlet property="availableTextField" destination="iie-LC-8VS" id="EcL-Bi-1LQ"/>
+                <outlet property="deleteEquipmentButton" destination="Ark-qD-Fbq" id="5em-oE-c1N"/>
                 <outlet property="descriptionTextView" destination="0S7-UN-qNw" id="Dss-rN-tIJ"/>
                 <outlet property="equipmentImageView" destination="RMK-SQ-knl" id="k2R-Hc-fnJ"/>
                 <outlet property="itemsLabel" destination="AGm-To-MNz" id="JAh-1X-3yu"/>
                 <outlet property="listOfUserButton" destination="7LQ-g7-Vuz" id="wbd-xc-4su"/>
                 <outlet property="locationTextView" destination="kRb-gL-WFs" id="yw1-yk-JTv"/>
                 <outlet property="nameTextView" destination="M1V-Fj-6mu" id="GA3-Zr-jkU"/>
-                <outlet property="removeEquipmentButton" destination="Ark-qD-Fbq" id="5em-oE-c1N"/>
             </connections>
             <point key="canvasLocation" x="931.15942028985512" y="257.20108695652175"/>
         </view>

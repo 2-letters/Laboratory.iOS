@@ -48,7 +48,7 @@ class EquipmentCreateUITest: MyUITestDelegate {
     func testViewsExist() {
         let imageView = app.images[AccessibilityId.equipmentInfoImageView.description]
         let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
-        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        let deleteEquipmentButton = app.buttons[AccessibilityId.equipmentInfoDeleteEquipmentButton.description]
         let listOfUserButton = app.buttons[AccessibilityId.equipmentInfoListOfUserButton.description]
         
         XCTAssertTrue(saveBtn.exists)
@@ -59,7 +59,7 @@ class EquipmentCreateUITest: MyUITestDelegate {
         XCTAssertFalse(imageView.exists)
         XCTAssertTrue(addImageButton.exists)
         XCTAssertTrue(addImageButton.isHittable)
-        XCTAssertFalse(removeEquipmentButton.exists)
+        XCTAssertFalse(deleteEquipmentButton.exists)
         XCTAssertFalse(listOfUserButton.exists)
     }
     

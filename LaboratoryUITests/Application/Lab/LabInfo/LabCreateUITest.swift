@@ -35,12 +35,12 @@ class LabCreateUITest: MyUITestDelegate {
     func testViewsExist() {
         let saveBtn = app.buttons[AccessibilityId.labInfoSaveButton.description]
         let addEquipmentsBtn = app.buttons[AccessibilityId.labInfoAddEquipmentButton.description]
-        let removeLabButton = app.buttons[AccessibilityId.labInfoRemoveLabButton.description]
+        let deleteLabButton = app.buttons[AccessibilityId.labInfoDeleteLabButton.description]
         let tableView = app.tables[AccessibilityId.labInfoTableView.description]
         
         XCTAssertFalse(saveBtn.isEnabled)
         XCTAssertTrue(addEquipmentsBtn.exists)
-        XCTAssertFalse(removeLabButton.exists)
+        XCTAssertFalse(deleteLabButton.exists)
         XCTAssertTrue(tableView.exists)
         XCTAssertTrue(nameTextView.exists)
         XCTAssertTrue(descriptionTextView.exists)

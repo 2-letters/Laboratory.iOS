@@ -23,7 +23,7 @@ class EquipmentInfoView: UIView {
     @IBOutlet var descriptionTextView: MyTextView!
     @IBOutlet var equipmentImageView: UIImageView!
     @IBOutlet var addImageButton: MyButton!
-    @IBOutlet var removeEquipmentButton: MyButton!
+    @IBOutlet var deleteEquipmentButton: MyButton!
     @IBOutlet var listOfUserButton: MyButton!
     
     override func awakeFromNib() {
@@ -35,7 +35,7 @@ class EquipmentInfoView: UIView {
         availableTextField.textAlignment = .center
         
         addImageButton.customize(forCase: .primary)
-        removeEquipmentButton.customize(forCase: .danger)
+        deleteEquipmentButton.customize(forCase: .danger)
         listOfUserButton.customize(forCase: .primary)
     }
     
@@ -44,13 +44,13 @@ class EquipmentInfoView: UIView {
         switch viewCase {
         case .equipmentInfoLabEdit:
             view.addImageButton.removeFromSuperview()
-            view.removeEquipmentButton.removeFromSuperview()
+            view.deleteEquipmentButton.removeFromSuperview()
             view.availableTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditAvailableTextField.description
 //            view.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
             view.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
             
         case .equipmentCreate:
-            view.removeEquipmentButton.removeFromSuperview()
+            view.deleteEquipmentButton.removeFromSuperview()
             view.listOfUserButton.removeFromSuperview()
             view.addImageButton.setTitle("Add Image", for: .normal)
             view.equipmentImageView.isHidden = true
@@ -63,7 +63,7 @@ class EquipmentInfoView: UIView {
             view.descriptionTextView.accessibilityIdentifier = AccessibilityId.equipmentInfoDescriptionTextView.description
             view.equipmentImageView.accessibilityIdentifier = AccessibilityId.equipmentInfoImageView.description
             view.addImageButton.accessibilityIdentifier = AccessibilityId.equipmentInfoAddImageButton.description
-            view.removeEquipmentButton.accessibilityIdentifier = AccessibilityId.equipmentInfoRemoveEquipmentButton.description
+            view.deleteEquipmentButton.accessibilityIdentifier = AccessibilityId.equipmentInfoDeleteEquipmentButton.description
             view.listOfUserButton.accessibilityIdentifier = AccessibilityId.equipmentInfoListOfUserButton.description
         }
         return view
@@ -100,7 +100,7 @@ class EquipmentInfoView: UIView {
     
     func update(forEditing isBeingEdited: Bool) {
         addImageButton.isHidden = !isBeingEdited
-        removeEquipmentButton.isHidden = !isBeingEdited
+        deleteEquipmentButton.isHidden = !isBeingEdited
         listOfUserButton.isHidden = isBeingEdited
         availableTextField.customize(forEditing: isBeingEdited)
         nameTextView.customize(forEditing: isBeingEdited)

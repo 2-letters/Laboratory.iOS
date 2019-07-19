@@ -116,7 +116,7 @@ class EquipmentInfoVM {
         }
     }
     
-    func removeEquipment(withId equipmentId: String?, completion: @escaping DeleteFirestoreHandler) {
+    func deleteEquipment(withId equipmentId: String?, completion: @escaping DeleteFirestoreHandler) {
         guard let equipmentId = equipmentId else {
             completion(.failure("ERR could not find Lab Id"))
             return

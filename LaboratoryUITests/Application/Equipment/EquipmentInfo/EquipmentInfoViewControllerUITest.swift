@@ -54,7 +54,7 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
     func testViewsExist() {
         let imageView = app.images[AccessibilityId.equipmentInfoImageView.description]
         let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
-        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        let deleteEquipmentButton = app.buttons[AccessibilityId.equipmentInfoDeleteEquipmentButton.description]
         let listOfUserButton = app.buttons[AccessibilityId.equipmentInfoListOfUserButton.description]
         
         XCTAssertTrue(editSaveBtn.exists)
@@ -64,19 +64,19 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
         XCTAssertTrue(descriptionTextView.exists)
         XCTAssertTrue(imageView.exists)
         XCTAssertFalse(addImageButton.exists)
-        XCTAssertFalse(removeEquipmentButton.exists)
+        XCTAssertFalse(deleteEquipmentButton.exists)
         XCTAssertTrue(listOfUserButton.exists)
     }
     
     func testEditSaveButtonTapped() {
         let addImageButton = app.buttons[AccessibilityId.equipmentInfoAddImageButton.description]
-        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
+        let deleteEquipmentButton = app.buttons[AccessibilityId.equipmentInfoDeleteEquipmentButton.description]
         
         editSaveBtn.tap()
         sleep(2)
         XCTAssertTrue(addImageButton.isHittable)
         swipeView(inVC: thisViewController)
-        XCTAssertTrue(removeEquipmentButton.isHittable)
+        XCTAssertTrue(deleteEquipmentButton.isHittable)
     }
     
     
@@ -105,17 +105,17 @@ class EquipmentInfoViewControllerUITest: MyUITestDelegate {
 //        XCTAssertTrue(addEquipmentButton.isHittable)
 //    }
     
-    func testRemoveButton() {
+    func testDeleteButton() {
         editSaveBtn.tap()
         sleep(2)
-        let removeEquipmentButton = app.buttons[AccessibilityId.equipmentInfoRemoveEquipmentButton.description]
-        removeEquipmentButton.tap()
+        let deleteEquipmentButton = app.buttons[AccessibilityId.equipmentInfoDeleteEquipmentButton.description]
+        deleteEquipmentButton.tap()
         sleep(2)
         
         XCTAssertTrue(app.buttons[AlertString.yes].exists)
         XCTAssertTrue(app.buttons[AlertString.no].exists)
         
-        proceedAlertButton(ofCase: .attemptToRemoveEquipment)
+        proceedAlertButton(ofCase: .attemptToDeleteEquipment)
     }
     
     func testDismissKeyboard() {
