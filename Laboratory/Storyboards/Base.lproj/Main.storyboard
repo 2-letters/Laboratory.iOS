@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="2110" y="-672"/>
         </scene>
-        <!--Lab InfoVC-->
+        <!--Lab Info View Controller-->
         <scene sceneID="u5g-r4-aj8">
             <objects>
-                <viewController storyboardIdentifier="LabInfoVC" id="0cc-Dk-jsw" customClass="LabInfoVC" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabInfoVC" id="0cc-Dk-jsw" customClass="LabInfoViewController" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fig-9v-6xp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="RjR-TO-nQJ" id="4tX-lD-DaX"/>
-                        <outlet property="labEquipmentTV" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
+                        <outlet property="labEquipmentTableView" destination="d9j-bD-7Oh" id="KUh-se-TgZ"/>
                         <outlet property="searchBar" destination="wNM-zi-urh" id="OG1-mX-58M"/>
                         <segue destination="cly-ig-uLQ" kind="show" identifier="showEquipmentEdit" id="sx8-EH-ggk"/>
                         <segue destination="Rts-C0-Goj" kind="unwind" identifier="unwindFromEquipmentSelection" unwindAction="unwindFromEquipmentSelectionWithSegue:" id="fok-5t-80f"/>
@@ -236,9 +236,9 @@
                         <viewLayoutGuide key="safeArea" id="bwq-FC-yeI"/>
                     </view>
                     <connections>
-                        <outlet property="decreaseBtn" destination="fU8-2c-DPk" id="qse-Nq-cGC"/>
-                        <outlet property="increaseBtn" destination="RYc-pN-93o" id="7F0-Ah-MEP"/>
-                        <outlet property="removeBtn" destination="EoN-vV-ZN5" id="7GG-ZX-URg"/>
+                        <outlet property="decreaseButton" destination="fU8-2c-DPk" id="qse-Nq-cGC"/>
+                        <outlet property="increaseButton" destination="RYc-pN-93o" id="7F0-Ah-MEP"/>
+                        <outlet property="removeButton" destination="EoN-vV-ZN5" id="7GG-ZX-URg"/>
                         <outlet property="scrollView" destination="4E5-Wu-hHe" id="tKk-qK-noR"/>
                         <outlet property="separatingLine" destination="2oE-TH-1m4" id="hDl-8B-NHO"/>
                         <outlet property="usingQuantityTextField" destination="0Hb-sC-Ovu" id="iqc-Gm-3zr"/>
@@ -363,7 +363,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gPu-kW-eM4"/>
                     <connections>
-                        <outlet property="equipmentTV" destination="AGQ-aK-lpY" id="XJa-4B-jw8"/>
+                        <outlet property="equipmentTableView" destination="AGQ-aK-lpY" id="XJa-4B-jw8"/>
                         <outlet property="searchBar" destination="zWT-2d-Z7Z" id="lK9-kq-1g0"/>
                         <segue destination="g91-L7-Nax" kind="show" identifier="showEquipmentInfo" id="fAj-fS-x2V"/>
                     </connections>

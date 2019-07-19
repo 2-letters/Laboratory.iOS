@@ -95,7 +95,7 @@
                 <outlet property="addEquipmentButton" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
                 <outlet property="deleteLabButton" destination="Dck-os-CAM" id="Z0F-dT-fR9"/>
                 <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="kAF-Hm-35a"/>
-                <outlet property="labEquipmentTV" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
+                <outlet property="labEquipmentTableView" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
                 <outlet property="nameTextView" destination="I5b-9h-ENZ" id="bfF-S0-yXf"/>
             </connections>
         </view>

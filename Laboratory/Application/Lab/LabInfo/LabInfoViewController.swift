@@ -1,5 +1,5 @@
 //
-//  LabInfoVC.swift
+//  LabInfoViewController.swift
 //  Laboratory
 //
 //  Created by Developers on 5/17/19.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// for both LabInfoVC and LabCreateVC
-class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
+// for both LabInfoViewController and LabCreateVC
+class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresentable {
     var isCreatingNewLab: Bool = false
     var labId: String?
 
@@ -20,7 +20,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
     private var saveBtn: UIBarButtonItem!
     private var labEquipmentTableView: UITableView!
     
-    private var viewModel = LabInfoVM()
+    private var viewModel = LabInfoViewModel()
     private let cellReuseIdAndNibName = "LabEquipmentTVCell"
     private let presentEquipmentSelectionSegue = "presentEquipmentSelection"
     private let unwindFromLabInfoSegue = "unwindFromLabInfo"
@@ -80,7 +80,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
         navigationItem.rightBarButtonItem = saveBtn
         
         // register table cells
-        labEquipmentTableView = labInfoView.labEquipmentTV
+        labEquipmentTableView = labInfoView.labEquipmentTableView
         let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
         labEquipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
         
@@ -141,7 +141,7 @@ class LabInfoVC: UIViewController, SpinnerPresentable, AlertPresentable {
 
 
 // MARK: - User Interaction
-extension LabInfoVC {
+extension LabInfoViewController {
     private func goBackAndReload() {
         self.performSegue(withIdentifier: unwindFromLabInfoSegue, sender: nil)
     }
@@ -231,7 +231,7 @@ extension LabInfoVC {
 
 
 // MARK: - Table View
-extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
+extension LabInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.equipmentVMs?.count ?? 0
     }
@@ -245,7 +245,7 @@ extension LabInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension LabInfoVC: UITextViewDelegate {
+extension LabInfoViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         // there's some change, enable save Button
         

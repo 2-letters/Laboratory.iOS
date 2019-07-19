@@ -70,10 +70,10 @@ struct FakeData {
     
     // MARK: - View Models
     // MARK: Lab
-    static var labInfoVM: LabInfoVM {
-        let labInfoVM = LabInfoVM()
+    static var labInfoVM: LabInfoViewModel {
+        let labInfoVM = LabInfoViewModel()
         labInfoVM.labInfo = FakeData.labInfo
-        return LabInfoVM()
+        return LabInfoViewModel()
     }
     
     static var labEquipmentVM: LabEquipmentVM {

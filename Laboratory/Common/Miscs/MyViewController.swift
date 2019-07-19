@@ -10,7 +10,7 @@ import UIKit
 
 enum MyViewController: String {
     case labCollection = "LabCollectionVC"
-    case labInfo = "LabInfoVC"
+    case labInfo = "LabInfoViewController"
     case labEquipmentSelection = "LabEquipmentSelectionVC"
     case labEquipmentEdit = "LabEquipmentEditVC"
     case equipmentList = "EquipmentListVC"

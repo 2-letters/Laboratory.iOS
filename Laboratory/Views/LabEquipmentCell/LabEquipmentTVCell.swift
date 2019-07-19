@@ -12,15 +12,15 @@ class LabEquipmentTVCell: UITableViewCell {
 //    static let nibId = "LabEquipmentTVCell"
 //    static let reuseId =  "LabEquipmentCell"
     
-    @IBOutlet var equipmentNameLbl: UILabel!
-    @IBOutlet var quantityLbl: UILabel!
+    @IBOutlet var equipmentNameLabel: UILabel!
+    @IBOutlet var quantityLabel: UILabel!
     
     var viewModel: LabEquipmentVM! {
         didSet {
-            equipmentNameLbl.text = viewModel.equipmentName
-            quantityLbl.text = viewModel.quantityString
-            equipmentNameLbl.font = UIFont(name: "GillSans", size: 18)
-            quantityLbl.font = UIFont(name: "GillSans", size: 18)
+            equipmentNameLabel.text = viewModel.equipmentName
+            quantityLabel.text = viewModel.quantityString
+            equipmentNameLabel.font = UIFont(name: "GillSans", size: 18)
+            quantityLabel.font = UIFont(name: "GillSans", size: 18)
         }
     }
     

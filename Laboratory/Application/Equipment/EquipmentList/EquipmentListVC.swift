@@ -11,7 +11,7 @@ import UIKit
 class EquipmentListVC: UIViewController {
 
     @IBOutlet private var searchBar: UISearchBar!
-    @IBOutlet private var equipmentTV: UITableView!
+    @IBOutlet private var equipmentTableView: UITableView!
     private var addButton: UIBarButtonItem!
     
     private var viewModel = EquipmentListVM()
@@ -55,15 +55,15 @@ class EquipmentListVC: UIViewController {
         
         // register table cells
         let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
-        equipmentTV.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
+        equipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
         
         // add Refresh Control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         if #available(iOS 10.0, *) {
-            equipmentTV.refreshControl = refreshControl
+            equipmentTableView.refreshControl = refreshControl
         } else {
-            equipmentTV.addSubview(refreshControl)
+            equipmentTableView.addSubview(refreshControl)
         }
         
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
@@ -75,15 +75,15 @@ class EquipmentListVC: UIViewController {
     
     private func addDelegates() {
         searchBar.delegate = self
-        equipmentTV.delegate = self
-        equipmentTV.dataSource = self
-        equipmentTV.keyboardDismissMode = .onDrag
+        equipmentTableView.delegate = self
+        equipmentTableView.dataSource = self
+        equipmentTableView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {
         addButton.accessibilityIdentifier = AccessibilityId.equipmentListAddButton.description
         searchBar.accessibilityIdentifier = AccessibilityId.equipmentListSearchBar.description
-        equipmentTV.accessibilityIdentifier = AccessibilityId.equipmentListTableView.description
+        equipmentTableView.accessibilityIdentifier = AccessibilityId.equipmentListTableView.description
     }
     
     private func loadEquipmentData() {
@@ -94,7 +94,7 @@ class EquipmentListVC: UIViewController {
                 print(error)
             case .success:
                 DispatchQueue.main.async {
-                    self.equipmentTV.reloadData()
+                    self.equipmentTableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
                 // TODO save to cache
@@ -117,12 +117,12 @@ class EquipmentListVC: UIViewController {
 extension EquipmentListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(by: searchText)
-        equipmentTV.reloadData()
+        equipmentTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        equipmentTV.reloadData()
+        equipmentTableView.reloadData()
     }
 }
 

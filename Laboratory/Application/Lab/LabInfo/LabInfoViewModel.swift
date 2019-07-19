@@ -1,5 +1,5 @@
 //
-//  LabInfoVM.swift
+//  LabInfoViewModel.swift
 //  Laboratory
 //
 //  Created by Developers on 5/21/19.
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 
-class LabInfoVM {
+class LabInfoViewModel {
     var labInfo: LabInfo?
     
     var labName: String { return labInfo!.name }

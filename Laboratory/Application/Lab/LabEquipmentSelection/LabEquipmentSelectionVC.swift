@@ -13,7 +13,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
 
     @IBOutlet private var doneButton: UIBarButtonItem!
     @IBOutlet private var searchBar: UISearchBar!
-    @IBOutlet private var labEquipmentTV: UITableView!
+    @IBOutlet private var labEquipmentTableView: UITableView!
     
     var spinnerVC = SpinnerViewController()
     private let labEquipmentCellReuseIdAndNibName = "LabEquipmentTVCell"
@@ -72,12 +72,12 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         
         // load LabItems TableView
         let labEquipmentNib = UINib(nibName: labEquipmentCellReuseIdAndNibName, bundle: nil)
-        labEquipmentTV.register(labEquipmentNib, forCellReuseIdentifier: labEquipmentCellReuseIdAndNibName)
-//        labEquipmentTV.register(labEquipmentCellReuseIdAndNibName)
+        labEquipmentTableView.register(labEquipmentNib, forCellReuseIdentifier: labEquipmentCellReuseIdAndNibName)
+//        labEquipmentTableView.register(labEquipmentCellReuseIdAndNibName)
         
         let simpleEquipmentNib = UINib(nibName: simpleEquipmentCellReuseIdAndNibName, bundle: nil)
-        labEquipmentTV.register(simpleEquipmentNib, forCellReuseIdentifier: simpleEquipmentCellReuseIdAndNibName)
-//        labEquipmentTV.register(simpleEquipmentCellReuseIdAndNibName)
+        labEquipmentTableView.register(simpleEquipmentNib, forCellReuseIdentifier: simpleEquipmentCellReuseIdAndNibName)
+//        labEquipmentTableView.register(simpleEquipmentCellReuseIdAndNibName)
         
         addDelegates()
         addIdentifiers()
@@ -85,15 +85,15 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     private func addDelegates() {
         searchBar.delegate = self
-        labEquipmentTV.delegate = self
-        labEquipmentTV.dataSource = self
-        labEquipmentTV.keyboardDismissMode = .onDrag
+        labEquipmentTableView.delegate = self
+        labEquipmentTableView.dataSource = self
+        labEquipmentTableView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {
         doneButton.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionDoneButton.description
         searchBar.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionSearchBar.description
-        labEquipmentTV.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionTableView.description
+        labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labEquipmentSelectionTableView.description
     }
     
     private func loadEquipments() {
@@ -104,7 +104,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
             switch fetchResult {
             case .success:
                 DispatchQueue.main.async {
-                    self.labEquipmentTV.reloadData()
+                    self.labEquipmentTableView.reloadData()
                 }
                 // hide spinner
                 self.hideSpinner()
@@ -190,11 +190,11 @@ extension LabEquipmentSelectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(by: searchText)
         // done changing text, reload table view
-        labEquipmentTV.reloadData()
+        labEquipmentTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        labEquipmentTV.reloadData()
+        labEquipmentTableView.reloadData()
     }
 }

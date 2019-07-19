@@ -34,7 +34,7 @@ class LabCollectionVC: UIViewController {
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showLabInfoSegue {
-            let labInfoVC = segue.destination as! LabInfoVC
+            let labInfoVC = segue.destination as! LabInfoViewController
             // send info to LabInfo View Controller
             guard let sender = sender as? String else {
                 return

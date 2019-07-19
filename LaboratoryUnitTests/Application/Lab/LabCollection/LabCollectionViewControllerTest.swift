@@ -12,14 +12,14 @@ import XCTest
 class LabCollectionViewControllerTest: XCTestCase {
 
     var sut: LabCollectionVC!
-    var labInfoVC: LabInfoVC!
+    var labInfoVC: LabInfoViewController!
     private let showLabInfoSegue = "showLabInfo"
     
     override func setUp() {
         super.setUp()
         
         sut = MyViewController.labCollection.instance as? LabCollectionVC
-        labInfoVC = MyViewController.labInfo.instance as? LabInfoVC
+        labInfoVC = MyViewController.labInfo.instance as? LabInfoViewController
         
         // Create the view
         let _ = sut.view

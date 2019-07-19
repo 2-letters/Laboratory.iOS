@@ -33,8 +33,8 @@ class LabEquipmentTVCellTest: XCTestCase {
         sut.viewModel = fakeVM
         
         // THEN
-        XCTAssertEqual(sut.equipmentNameLbl.text, fakeVM.equipmentName)
-        XCTAssertEqual(sut.quantityLbl.text, fakeVM.quantityString)
+        XCTAssertEqual(sut.equipmentNameLabel.text, fakeVM.equipmentName)
+        XCTAssertEqual(sut.quantityLabel.text, fakeVM.quantityString)
     }
 
 }

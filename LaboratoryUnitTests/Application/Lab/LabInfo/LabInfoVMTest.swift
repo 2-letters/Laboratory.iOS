@@ -11,7 +11,7 @@ import XCTest
 
 class LabInfoVMTest: XCTestCase {
 
-    var sut: LabInfoVM!
+    var sut: LabInfoViewModel!
     override func setUp() {
         super.setUp()
         sut = FakeData.labInfoVM

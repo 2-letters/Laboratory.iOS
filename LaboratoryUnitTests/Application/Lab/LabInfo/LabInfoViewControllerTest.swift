@@ -11,14 +11,14 @@ import XCTest
 
 class LabInfoViewControllerTest: XCTestCase {
 
-    var sut: LabInfoVC!
+    var sut: LabInfoViewController!
     var labEquipmentSelectionVC: LabEquipmentSelectionVC!
     private let presentEquipmentSelectionSegue = "presentEquipmentSelection"
     private let unwindFromLabInfoSegue = "unwindFromLabInfo"
     
     override func setUp() {
         super.setUp()
-        sut = MyViewController.labInfo.instance as? LabInfoVC
+        sut = MyViewController.labInfo.instance as? LabInfoViewController
         labEquipmentSelectionVC = MyViewController.labEquipmentSelection.instance as? LabEquipmentSelectionVC
         let _ = sut.view
     }

@@ -17,9 +17,9 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     // the quantity being edited
 
     @IBOutlet private var usingQuantityTextField: MyTextField!
-    @IBOutlet private var decreaseBtn: UIButton!
-    @IBOutlet private var increaseBtn: UIButton!
-    @IBOutlet private var removeBtn: UIButton!
+    @IBOutlet private var decreaseButton: UIButton!
+    @IBOutlet private var increaseButton: UIButton!
+    @IBOutlet private var removeButton: UIButton!
     @IBOutlet private var separatingLine: UIView!
     @IBOutlet private var scrollView: UIScrollView!
     private var equipmentInfoView: EquipmentInfoView!
@@ -80,12 +80,12 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         usingQuantityTextField.textAlignment = .center
         usingQuantityTextField.delegate = self
         
-        decreaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
-        decreaseBtn.setTitleColor(UIColor.gray, for: .disabled)
-        increaseBtn.setTitleColor(MyColor.lightLavender, for: .normal)
-        removeBtn.setTitleColor(MyColor.redWarning, for: .normal)
-        removeBtn.titleLabel?.font = UIFont(name: "GillSans", size: 17)
-        removeBtn.setTitleColor(UIColor.gray, for: .disabled)
+        decreaseButton.setTitleColor(MyColor.lightLavender, for: .normal)
+        decreaseButton.setTitleColor(UIColor.gray, for: .disabled)
+        increaseButton.setTitleColor(MyColor.lightLavender, for: .normal)
+        removeButton.setTitleColor(MyColor.redWarning, for: .normal)
+        removeButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
+        removeButton.setTitleColor(UIColor.gray, for: .disabled)
         
         separatingLine.backgroundColor = MyColor.lightGray
 
@@ -100,9 +100,9 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         scrollView.accessibilityIdentifier = AccessibilityId.labEquipmentEditScrollView.description
         saveBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditSaveButton.description
         usingQuantityTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditUsingQuantityTextField.description
-        decreaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.description
-        increaseBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.description
-        removeBtn.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.description
+        decreaseButton.accessibilityIdentifier = AccessibilityId.labEquipmentEditDecreaseButton.description
+        increaseButton.accessibilityIdentifier = AccessibilityId.labEquipmentEditIncreaseButton.description
+        removeButton.accessibilityIdentifier = AccessibilityId.labEquipmentEditRemoveButton.description
     }
     
     private func loadEquipmentInfo() {
@@ -132,13 +132,13 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             self.usingQuantityTextField.text = String($0)
         }
         viewModel.isDecreaseBtnEnabled.bindAndFire { [unowned self] in
-            self.decreaseBtn.isEnabled = $0
+            self.decreaseButton.isEnabled = $0
         }
         viewModel.isIncreaseBtnEnabled.bindAndFire { [unowned self] in
-            self.increaseBtn.isEnabled = $0
+            self.increaseButton.isEnabled = $0
         }
         viewModel.isRemoveBtnEnabled.bindAndFire { [unowned self] in
-            self.removeBtn.isEnabled = $0
+            self.removeButton.isEnabled = $0
         }
         viewModel.isSaveBtnEnabled.bindAndFire { [unowned self] in
             self.saveBtn.isEnabled = $0

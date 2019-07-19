@@ -21,7 +21,7 @@ class LabInfoView: UIView {
     
     @IBOutlet var deleteLabButton: UIButton!
     
-    @IBOutlet var labEquipmentTV: UITableView!
+    @IBOutlet var labEquipmentTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,12 +45,12 @@ class LabInfoView: UIView {
         view.descriptionTextView.accessibilityIdentifier = AccessibilityId.labInfoDescriptionTextView.description
         view.addEquipmentButton.accessibilityIdentifier = AccessibilityId.labInfoAddEquipmentButton.description
         view.deleteLabButton.accessibilityIdentifier = AccessibilityId.labInfoDeleteLabButton.description
-        view.labEquipmentTV.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
+        view.labEquipmentTableView.accessibilityIdentifier = AccessibilityId.labInfoTableView.description
 
         return view
     }
     
-    var labInfoVM: LabInfoVM! {
+    var labInfoVM: LabInfoViewModel! {
         didSet {
             nameTextView.text = labInfoVM.labName
             descriptionTextView.text = labInfoVM.description
