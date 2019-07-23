@@ -13,7 +13,7 @@ class LabInfo {
     var description: String = ""
     var equipments: [LabEquipment] = [LabEquipment]()
     
-    init(name: String, description: String, equipments: [LabEquipment]) {
+    init(name: String, description: String, equipments: [LabEquipment] = []) {
         self.name = name
         self.description = description
         self.equipments = equipments

@@ -30,7 +30,6 @@ class EquipmentInfoView: UIView {
         super.awakeFromNib()
         
         itemsLabel.font = UIFont(name: "GillSans", size: 20)
-//        availableTextField.customize(forEditing: false)
         availableTextField.keyboardType = .numberPad
         availableTextField.textAlignment = .center
         
@@ -46,7 +45,6 @@ class EquipmentInfoView: UIView {
             view.addImageButton.removeFromSuperview()
             view.deleteEquipmentButton.removeFromSuperview()
             view.availableTextField.accessibilityIdentifier = AccessibilityId.labEquipmentEditAvailableTextField.description
-//            view.nameTextView.accessibilityIdentifier = AccessibilityId.labEquipmentEditNameTextView.description
             view.equipmentImageView.accessibilityIdentifier = AccessibilityId.labEquipmentEditEquipmentImageView.description
             
         case .equipmentCreate:
@@ -71,40 +69,46 @@ class EquipmentInfoView: UIView {
     
     var viewModel: EquipmentInfoVM! {
         didSet {
-//            availableTextField.customize(forEditing: false)
             availableTextField.text = viewModel.availableString
-            
             nameTextView.text = viewModel.equipmentName
             locationTextView.text = viewModel.location
             descriptionTextView.text = viewModel.description
-//            do {
-//                let url = URL(string: viewModel.imageUrl)!
-//                let data = try Data(contentsOf: url)
-//                equipmentImageView.image = UIImage(data: data)
-//            }
-//            catch{
-//                print(error)
-//            }
             
-            let url = URL(string: viewModel.imageUrl)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.equipmentImageView.image = UIImage(data: data!)
-                }
+            loadImage(withUrl: viewModel.imageUrl)
+        }
+    }
+    
+    private func loadImage(withUrl url: String) {
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: URL(string: url)!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.equipmentImageView.image = UIImage(data: data!)
             }
         }
     }
     
+    func updateForEditing() {
+        addImageButton.isHidden = false
+        deleteEquipmentButton.isHidden = false
+        listOfUserButton.isHidden = true
+        
+        availableTextField.customizeForEditing()
+        
+        nameTextView.customize(forEditing: true)
+        locationTextView.customize(forEditing: true)
+        descriptionTextView.customize(forEditing: true)
+    }
     
-    func update(forEditing isBeingEdited: Bool) {
-        addImageButton.isHidden = !isBeingEdited
-        deleteEquipmentButton.isHidden = !isBeingEdited
-        listOfUserButton.isHidden = isBeingEdited
-        availableTextField.customize(forEditing: isBeingEdited)
-        nameTextView.customize(forEditing: isBeingEdited)
-        locationTextView.customize(forEditing: isBeingEdited)
-        descriptionTextView.customize(forEditing: isBeingEdited)
+    func updateForViewOnly() {
+        addImageButton.isHidden = true
+        deleteEquipmentButton.isHidden = true
+        listOfUserButton.isHidden = false
+        
+        availableTextField.customizeForViewOnly()
+        
+        nameTextView.customize(forEditing: false)
+        locationTextView.customize(forEditing: false)
+        descriptionTextView.customize(forEditing: false)
     }
 }

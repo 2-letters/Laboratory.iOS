@@ -37,7 +37,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         addEquipmentInfoView()
         
         viewModel = LabEquipmentEditVM(usingQuantity: usingQuantity)
-//        viewModel.usingQuantity = usingQuantity
         
         setupUI()
         showSpinner()
@@ -57,6 +56,10 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         equipmentInfoView = EquipmentInfoView.instantiate(forCase: .equipmentInfoLabEdit)
         scrollView.addSubview(equipmentInfoView)
         
+        setupEquipmentInfoViewConstraints()
+    }
+    
+    private func setupEquipmentInfoViewConstraints() {
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -64,7 +67,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
-            
             equipmentInfoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0),
             equipmentInfoView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0),
             ])
@@ -75,25 +77,32 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         navigationItem.rightBarButtonItem = saveBtn
         saveBtn.isEnabled = false
         
+        setupUsingQuantityTextField()
+        setupQuantityButtons()
+        
+        separatingLine.backgroundColor = MyColor.lightGray
+
+        equipmentInfoView.updateForViewOnly()
+        equipmentInfoView.listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
+        
+        scrollView.keyboardDismissMode = .onDrag
+        addIdentifiers()
+    }
+    
+    private func setupUsingQuantityTextField() {
         // quantity only accept numbers
         usingQuantityTextField.keyboardType = .numberPad
         usingQuantityTextField.textAlignment = .center
         usingQuantityTextField.delegate = self
-        
+    }
+    
+    private func setupQuantityButtons() {
         decreaseButton.setTitleColor(MyColor.lightLavender, for: .normal)
         decreaseButton.setTitleColor(UIColor.gray, for: .disabled)
         increaseButton.setTitleColor(MyColor.lightLavender, for: .normal)
         removeButton.setTitleColor(MyColor.redWarning, for: .normal)
         removeButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)
         removeButton.setTitleColor(UIColor.gray, for: .disabled)
-        
-        separatingLine.backgroundColor = MyColor.lightGray
-
-        equipmentInfoView.update(forEditing: false)
-        equipmentInfoView.listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
-        
-        scrollView.keyboardDismissMode = .onDrag
-        addIdentifiers()
     }
     
     private func addIdentifiers() {
@@ -110,16 +119,14 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
             presentAlert(forCase: .failToLoadEquipmentInfo, handler: goBack)
             return
         }
+        
         viewModel.equipmentInfoVM.fetchEquipmentInfo(byId: equipmentId) { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
+                
             case .success:
-                DispatchQueue.main.async {
-                    self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
-                    self.viewModel.updateButtonState()
-                    self.updateUI()
-                }
-                self.hideSpinner()
+                self.handleSucceedFetchingEquipmentInfo()
+                
             case .failure:
                 // show an alert and return to the previous page
                 self.presentAlert(forCase: .failToLoadEquipmentInfo, handler: self.goBack)
@@ -127,7 +134,16 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
         }
     }
     
-    private func updateUI() {
+    private func handleSucceedFetchingEquipmentInfo() {
+        DispatchQueue.main.async {
+            self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
+            self.viewModel.updateButtonState()
+            self.bindUI()
+        }
+        self.hideSpinner()
+    }
+    
+    private func bindUI() {
         viewModel.editingQuantity.bindAndFire { [unowned self] in
             self.usingQuantityTextField.text = String($0)
         }

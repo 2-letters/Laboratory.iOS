@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum AlertCase {
     case succeedToSaveLab
     case succeedToSaveEquipment
@@ -151,6 +150,8 @@ extension AlertPresentable where Self: UIViewController {
         // add Accessibility Identifier
         ac.view.accessibilityIdentifier = alertCase.description
         
+        // TODO break this function
+        
         // check if the device is an iPad & set the proper source view & rect if it's needed, otherwise the app will crash on iPads
         if UIDevice.current.userInterfaceIdiom == .pad {
             // this maybe not be self.view, see ImagePicker, it is using the UIButton
@@ -161,5 +162,9 @@ extension AlertPresentable where Self: UIViewController {
         
         // present
         self.present(ac, animated: true, completion: nil)
+    }
+    
+    private func handleIpad() {
+        
     }
 }

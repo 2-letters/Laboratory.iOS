@@ -22,40 +22,26 @@ class LabEquipmentSelectionVM {
     var displayingAddedEquipmentVMs: [LabEquipmentVM]?
     var displayingAvailableEquipmentVMs: [SimpleEquipmentVM]?
     
+    lazy var searchText = ""
+    
     func fetchEquipments(byLabId labId: String, completion: @escaping FetchFirestoreHandler) {
         FirestoreSvc.fetchLabEquipments(byLabId: labId) { [weak self] (fetchLabEquipmentResult) in
             guard let self = self else { return }
+            
             switch fetchLabEquipmentResult {
-                
             case let .failure(errorStr):
                 completion(.failure(errorStr))
                 
             case let .success(addedEquipments):
                 let addedEquipmentVMs = addedEquipments.map({ LabEquipmentVM(equipment: $0) })
                 FirestoreSvc.fetchAllEquipments(completion: { (fetchResult) in
+                    
                     switch fetchResult {
-                        
                     case let .failure(errorStr):
                         completion(.failure(errorStr))
                         
                     case let .success(allEquipmentVMs):
-                        // assign addedEquipmentVMs to both all and displaying
-                        self.allAddedEquipmentVMs = addedEquipmentVMs
-                        self.displayingAddedEquipmentVMs = addedEquipmentVMs
-                        
-                        // convert addedEquipmentVMs to addedSimpleEquipmentVMs to do the subtraction
-                        let addedSimpleEquipmentVMs = addedEquipmentVMs.map({
-                            SimpleEquipmentVM(equipment: Equipment(id: $0.equipmentId, name: $0.equipmentName))
-                        })
-                        
-                        // available = all - added
-                        let availableEquipmentVMs = allEquipmentVMs.filter({
-                            !addedSimpleEquipmentVMs.contains($0)
-                        })
-                        
-                        // assign availableEquipmentVMs to both all and displaying
-                        self.allAvailableEquipmentVMs = availableEquipmentVMs
-                        self.displayingAvailableEquipmentVMs = availableEquipmentVMs
+                        self.assignEquipmentViewModels(withAddedEquipmentViewModels: addedEquipmentVMs, allEquipmentViewModels: allEquipmentVMs)
                         
                         completion(.success)
                     }
@@ -64,17 +50,42 @@ class LabEquipmentSelectionVM {
         }
     }
     
-    func search(by text: String) {
-        if text == "" {
-            // show all when search text is empty
-            displayingAddedEquipmentVMs = allAddedEquipmentVMs
-            displayingAvailableEquipmentVMs = allAvailableEquipmentVMs
+    private func assignEquipmentViewModels(withAddedEquipmentViewModels addedEquipmentViewModels: [LabEquipmentVM], allEquipmentViewModels: [SimpleEquipmentVM]) {
+        self.allAddedEquipmentVMs = addedEquipmentViewModels
+        self.displayingAddedEquipmentVMs = addedEquipmentViewModels
+        
+        // convert addedEquipmentVMs to addedSimpleEquipmentVMs to do the subtraction
+        let addedSimpleEquipmentVMs = addedEquipmentViewModels.map({
+            SimpleEquipmentVM(equipment: Equipment(id: $0.equipmentId, name: $0.equipmentName))
+        })
+        
+        // available = all - added
+        let availableEquipmentVMs = allEquipmentViewModels.filter({
+            !addedSimpleEquipmentVMs.contains($0)
+        })
+        
+        self.allAvailableEquipmentVMs = availableEquipmentVMs
+        self.displayingAvailableEquipmentVMs = availableEquipmentVMs
+    }
+    
+    func doSearch() {
+        if searchText == "" {
+            clearFilter()
         } else {
-            displayingAddedEquipmentVMs = allAddedEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
-            })
-            
-            displayingAvailableEquipmentVMs = allAvailableEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(text.lowercased())
-            })
+            filterViewModels()
         }
+    }
+    
+    private func clearFilter() {
+        displayingAddedEquipmentVMs = allAddedEquipmentVMs
+        displayingAvailableEquipmentVMs = allAvailableEquipmentVMs
+    }
+    
+    private func filterViewModels() {
+        displayingAddedEquipmentVMs = allAddedEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(searchText.lowercased())
+        })
+        
+        displayingAvailableEquipmentVMs = allAvailableEquipmentVMs?.filter({ $0.equipmentName.lowercased().contains(searchText.lowercased())
+        })
     }
 }

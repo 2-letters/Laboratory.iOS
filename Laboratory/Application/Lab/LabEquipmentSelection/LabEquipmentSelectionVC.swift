@@ -70,17 +70,18 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
         
         searchBar.backgroundImage = UIImage()
         
-        // load LabItems TableView
-        let labEquipmentNib = UINib(nibName: labEquipmentCellReuseIdAndNibName, bundle: nil)
-        labEquipmentTableView.register(labEquipmentNib, forCellReuseIdentifier: labEquipmentCellReuseIdAndNibName)
-//        labEquipmentTableView.register(labEquipmentCellReuseIdAndNibName)
-        
-        let simpleEquipmentNib = UINib(nibName: simpleEquipmentCellReuseIdAndNibName, bundle: nil)
-        labEquipmentTableView.register(simpleEquipmentNib, forCellReuseIdentifier: simpleEquipmentCellReuseIdAndNibName)
-//        labEquipmentTableView.register(simpleEquipmentCellReuseIdAndNibName)
+        registerCells()
         
         addDelegates()
         addIdentifiers()
+    }
+    
+    private func registerCells() {
+        let labEquipmentNib = UINib(nibName: labEquipmentCellReuseIdAndNibName, bundle: nil)
+        labEquipmentTableView.register(labEquipmentNib, forCellReuseIdentifier: labEquipmentCellReuseIdAndNibName)
+        
+        let simpleEquipmentNib = UINib(nibName: simpleEquipmentCellReuseIdAndNibName, bundle: nil)
+        labEquipmentTableView.register(simpleEquipmentNib, forCellReuseIdentifier: simpleEquipmentCellReuseIdAndNibName)
     }
     
     private func addDelegates() {
@@ -131,9 +132,9 @@ extension LabEquipmentSelectionVC {
     }
 }
 
-
 // MARK: - Table View
-extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
+extension LabEquipmentSelectionVC: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -146,7 +147,6 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.displayingAddedEquipmentVMs?.count ?? 0
@@ -158,21 +158,14 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: labEquipmentCellReuseIdAndNibName, for: indexPath) as! LabEquipmentTVCell
-//            let cell: LabEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
-            
-            cell.accessoryType = .disclosureIndicator
-            return cell
+            return getAddedEquipmentCellFor(tableView, indexPath: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: simpleEquipmentCellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
-//            let cell: SimpleEquipmentTVCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
-            
-            cell.accessoryType = .disclosureIndicator
-            return cell
+            return getAvailableEquipmentCellFor(tableView, indexPath: indexPath)
         }
     }
+}
+
+extension LabEquipmentSelectionVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
@@ -188,7 +181,8 @@ extension LabEquipmentSelectionVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Search bar
 extension LabEquipmentSelectionVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(by: searchText)
+        viewModel.searchText = searchText
+        viewModel.doSearch()
         // done changing text, reload table view
         labEquipmentTableView.reloadData()
     }
@@ -196,5 +190,26 @@ extension LabEquipmentSelectionVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         labEquipmentTableView.reloadData()
+    }
+}
+
+// MARK: - Helpers
+extension LabEquipmentSelectionVC {
+    private func getAddedEquipmentCellFor(_ tableView : UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: labEquipmentCellReuseIdAndNibName, for: indexPath) as! LabEquipmentTVCell
+        
+        cell.viewModel = viewModel.displayingAddedEquipmentVMs?[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
+        
+        return cell
+    }
+    
+    private func getAvailableEquipmentCellFor(_ tableView : UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: simpleEquipmentCellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
+        
+        cell.viewModel = viewModel.displayingAvailableEquipmentVMs?[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
+        
+        return cell
     }
 }

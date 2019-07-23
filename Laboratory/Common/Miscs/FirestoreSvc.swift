@@ -12,7 +12,7 @@ import FirebaseFirestore
 struct FirestoreSvc {
 //    static let firestoreUtil = FirestoreUtil.shared
     static func fetchAllEquipments(completion: @escaping FetchAllEquipmentHandler) {
-        FirestoreUtil.getAllEquipmentsOrdered().getDocuments { (snapshot, error) in
+        FirestoreUtil.fetchAllEquipmentsOrdered().getDocuments { (snapshot, error) in
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
             } else {
@@ -28,7 +28,7 @@ struct FirestoreSvc {
     }
     
     static func fetchLabEquipments(byLabId labId: String, completion: @escaping FetchLabEquipmentHandler) {
-        FirestoreUtil.getLabEquipments(withId: labId).getDocuments { (snapshot, error) in
+        FirestoreUtil.fetchLabEquipments(withId: labId).getDocuments { (snapshot, error) in
                 if error != nil {
                     completion(.failure(error?.localizedDescription
                         ?? "ERR fetching Lab Equipments data"))

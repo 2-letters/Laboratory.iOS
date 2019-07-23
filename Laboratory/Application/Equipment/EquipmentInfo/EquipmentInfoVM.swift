@@ -14,21 +14,10 @@ import Foundation
 class EquipmentInfoVM {
 //    let cache = NSCache<NSString, FullEquipment>()
     var equipment: FullEquipment?
-    var equipmentName: String {
-        return equipment!.name
-    }
-    var availableString: String {
-        return String(equipment!.available)
-    }
-//    var available: Int {
-//        return equipment?.available ?? 0
-//    }
-    var description: String {
-        return equipment!.description
-    }
-    var location: String {
-        return equipment!.location
-    }
+    var equipmentName: String { return equipment!.name }
+    var availableString: String { return String(equipment!.available) }
+    var description: String { return equipment!.description }
+    var location: String { return equipment!.location }
     var imageUrl: String {
         if equipment?.imageUrl == nil {
             return "https://i.imgur.com/0ISKm8z.jpg"
@@ -57,7 +46,7 @@ class EquipmentInfoVM {
         }
         
         // Else get from Firestore
-        FirestoreUtil.getEquipment(withId: equipmentId).getDocument { [weak self] (document, error) in
+        FirestoreUtil.fetchEquipment(withId: equipmentId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             let key = EquipmentKey.self
             if let document = document, document.exists {
@@ -83,7 +72,7 @@ class EquipmentInfoVM {
     func saveEquipment(withNewName newName: String, newDescription: String, newLocation: String, newImageUrl: String, newAvailable: Int, equipmentId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
         if let equipmentId = equipmentId {
             // Update existed equipment
-            FirestoreUtil.getEquipment(withId: equipmentId).updateData([
+            FirestoreUtil.fetchEquipment(withId: equipmentId).updateData([
                 EquipmentKey.name: newName,
                 EquipmentKey.description: newDescription,
                 EquipmentKey.location: newLocation,
@@ -99,7 +88,7 @@ class EquipmentInfoVM {
             }
         } else {
             // Create a new Equipment
-            let newEquipment = FirestoreUtil.getAllEquipments().document()
+            let newEquipment = FirestoreUtil.fetchAllEquipments().document()
             newEquipment.setData([
                 EquipmentKey.name: newName,
                 EquipmentKey.description: newDescription,
@@ -122,7 +111,7 @@ class EquipmentInfoVM {
             return
         }
         
-        FirestoreUtil.getEquipment(withId: equipmentId).delete() { err in
+        FirestoreUtil.fetchEquipment(withId: equipmentId).delete() { err in
             if let err = err {
                 completion(.failure("Error removing document: \(err)"))
             } else {

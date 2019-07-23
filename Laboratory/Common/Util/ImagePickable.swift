@@ -41,6 +41,7 @@ class ImagePicker: NSObject {
         }
     }
     
+    // TODO break this function
     func present(from sourceView: UIView) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if let action = action(for: .camera, title: "Take photo") {

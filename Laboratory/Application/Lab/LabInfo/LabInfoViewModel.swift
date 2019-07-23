@@ -12,39 +12,44 @@ import FirebaseFirestore
 
 class LabInfoViewModel {
     var labInfo: LabInfo?
+//    var labInfoCacheKey: NSString?
     
-    var labName: String { return labInfo!.name }
-    var description: String { return labInfo!.description }
+    var labId: String?
+    var labName: String {
+        get { return labInfo!.name }
+        set { labInfo!.name = newValue }
+    }
+    var description: String {
+        get { return labInfo!.description }
+        set { labInfo!.description = newValue }
+    }
     var equipmentVMs: [LabEquipmentVM]? {
         return labInfo?.equipments.map({ LabEquipmentVM(equipment: $0) })
     }
     
-    func fetchLabInfo(byId labId: String?, completion: @escaping FetchFirestoreHandler) {
-        guard let labId = labId else {
-            completion(.failure("ERR could not load Lab Id"))
-            return
-        }
+    func setupLabInfo(withLabName labName: String, description: String) {
+        labInfo = LabInfo(name: labName, description: description)
+    }
+    
+    func fetchLabInfo(completion: @escaping FetchFirestoreHandler) {
+        guard let labId = labId else { return }
         
         // Check cache
-        let labInfoKey = "Lab\(labId)" as NSString
-        if let labInfo = MyCache.shared.object(forKey: labInfoKey) {
-            self.labInfo = (labInfo as! LabInfo)
-            completion(.success)
-            return
-        }
+//        labInfoCacheKey = "Lab\(labId)" as NSString
+//        if isFetchingLabInfoFromCache(withLabId: labId) {
+//            completion(.success)
+//            return
+//        }
         
-        FirestoreUtil.getLab(withId: labId).getDocument { [weak self] (document, error) in
+        FirestoreUtil.fetchLab(withId: labId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
+            
             if let document = document, document.exists {
-                let labName = document.data()![LabKey.name] as! String
-                let description = document.data()![LabKey.description] as! String
-                FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchLabEquipmentResult) in
-                    switch fetchLabEquipmentResult {
+                FirestoreSvc.fetchLabEquipments(byLabId: labId, completion: { (fetchResult) in
+                    switch fetchResult {
                     case let .success(labEquipments):
-                        let labInfo = LabInfo(name: labName, description: description, equipments: labEquipments)
-                        self.labInfo = labInfo
-                        // cache labInfo
-                        MyCache.shared.setObject(labInfo, forKey: labInfoKey)
+                        self.handleSucceedFetchingLabInfo(withDocument: document, equipments: labEquipments)
+                        
                         completion(.success)
                         
                     case let .failure(errorStr):
@@ -52,17 +57,36 @@ class LabInfoViewModel {
                     }
                 })
             } else {
-                completion(.failure(error?.localizedDescription ?? "voxERR fetching Lab Info"))
+                completion(.failure(error?.localizedDescription ?? "voxERR fetch Lab Info"))
             }
         }
     }
     
-    func saveLab(withNewName newName: String, newDescription: String, labId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
+//    private func isFetchingLabInfoFromCache(withLabId labId: String) -> Bool {
+//        if let labInfo = MyCache.shared.object(forKey: labInfoCacheKey!) {
+//            self.labInfo = (labInfo as! LabInfo)
+//            return true
+//        }
+//        return false
+//    }
+    
+    private func handleSucceedFetchingLabInfo(withDocument document: DocumentSnapshot, equipments: [LabEquipment]) {
+        let labName = document.data()![LabKey.name] as! String
+        let description = document.data()![LabKey.description] as! String
+        
+        let labInfo = LabInfo(name: labName, description: description, equipments: equipments)
+        self.labInfo = labInfo
+        
+//        MyCache.shared.setObject(labInfo, forKey: self.labInfoCacheKey!)
+    }
+    
+    
+    func saveLab(completion: @escaping UpdateFirestoreHandler) {
         if let labId = labId {
             // Update existed lab
-            FirestoreUtil.getLab(withId: labId).updateData([
-                LabKey.name: newName,
-                LabKey.description: newDescription
+            FirestoreUtil.fetchLab(withId: labId).updateData([
+                LabKey.name: labName,
+                LabKey.description: description
             ]) { err in
                 if let err = err {
                     completion(.failure(err.localizedDescription + "ERR fail to update Lab Info"))
@@ -73,10 +97,10 @@ class LabInfoViewModel {
             }
         } else {
             // Create a new lab
-            let newLab = FirestoreUtil.getLabs().document()
+            let newLab = FirestoreUtil.fetchLabs().document()
             newLab.setData([
-                LabKey.name: newName,
-                LabKey.description: newDescription
+                LabKey.name: labName,
+                LabKey.description: description
             ]) { err in
                 if let err = err {
                     completion(.failure("ERR creating a new Lab \(err)"))
@@ -87,13 +111,8 @@ class LabInfoViewModel {
         }
     }
     
-    func deleteLab(withId labId: String?, completion: @escaping DeleteFirestoreHandler) {
-        guard let labId = labId else {
-            completion(.failure("ERR could not find Lab Id"))
-            return
-        }
-        
-        FirestoreUtil.getLab(withId: labId).delete() { err in
+    func deleteLab(withId labId: String, completion: @escaping DeleteFirestoreHandler) {
+        FirestoreUtil.fetchLab(withId: labId).delete() { err in
             if let err = err {
                 completion(.failure("Error removing document: \(err)"))
             } else {

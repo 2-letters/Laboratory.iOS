@@ -53,11 +53,22 @@ class EquipmentListVC: UIViewController {
         
         searchBar.backgroundImage = UIImage()
         
-        // register table cells
+        registerCell()
+        addRefreshControl()
+        
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
+        navigationItem.rightBarButtonItem = addButton
+        
+        addDelegates()
+        addIdentifiers()
+    }
+    
+    private func registerCell() {
         let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
         equipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
-        
-        // add Refresh Control
+    }
+    
+    private func addRefreshControl() {
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         if #available(iOS 10.0, *) {
@@ -65,12 +76,6 @@ class EquipmentListVC: UIViewController {
         } else {
             equipmentTableView.addSubview(refreshControl)
         }
-        
-        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewEquipment))
-        navigationItem.rightBarButtonItem = addButton
-        
-        addDelegates()
-        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -128,7 +133,7 @@ extension EquipmentListVC: UISearchBarDelegate {
 
 
 // MARK: - Table View
-extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
+extension EquipmentListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.displayingEquipmentVMs?.count ?? 0
@@ -138,10 +143,12 @@ extension EquipmentListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdAndNibName, for: indexPath) as! SimpleEquipmentTVCell
         
         cell.viewModel = viewModel.displayingEquipmentVMs?[indexPath.row]
-        
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+}
+
+extension EquipmentListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equipmentVM = viewModel.displayingEquipmentVMs![indexPath.row]

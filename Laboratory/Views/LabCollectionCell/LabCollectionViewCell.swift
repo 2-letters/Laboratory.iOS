@@ -15,6 +15,14 @@ class LabCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        customizeCell()
+        
+        labNameLabel.font = UIFont(name: "GillSans-SemiBold", size: 17)
+        labDescriptionLabel.font = UIFont(name: "GillSans", size: 15)
+        labDescriptionLabel.textColor = UIColor.lightGray 
+    }
+    
+    private func customizeCell() {
         backgroundColor = UIColor.white
         
         layer.shadowOffset = CGSize(width: 0, height: 0.5)
@@ -23,10 +31,6 @@ class LabCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.25
         clipsToBounds = false
         layer.masksToBounds = false
-        
-        labNameLabel.font = UIFont(name: "GillSans-SemiBold", size: 17)
-        labDescriptionLabel.font = UIFont(name: "GillSans", size: 15)
-        labDescriptionLabel.textColor = UIColor.lightGray 
     }
     
     var viewModel: LabCellVM! {

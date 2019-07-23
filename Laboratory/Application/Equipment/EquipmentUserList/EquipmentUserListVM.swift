@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct EquipmentUserVM {
     var equipmentUser: EquipmentUser!
@@ -27,23 +28,28 @@ class EquipmentUserListVM {
             completion(.failure("ERR could not find Lab Id"))
             return
         }
-        // empty the aray before appending
-        equipmentUserVMs = []
         
-        FirestoreUtil.getEquipment(withId: equipmentId).collection(EquipmentKey.users).getDocuments { [weak self] (snapshot, error) in
+        FirestoreUtil.fetchEquipment(withId: equipmentId).collection(EquipmentKey.users).getDocuments { [weak self] (snapshot, error) in
             guard let self = self else { return }
             if error != nil {
                 completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment Users data"))
             } else {
-                for document in (snapshot!.documents) {
-                    if let userName = document.data()[EquipmentKey.userName] as? String,
-                        let using = document.data()[EquipmentKey.using] as? Int
-                    {
-                        self.equipmentUserVMs?.append(EquipmentUserVM(equipmentUser:
-                            EquipmentUser(userName: userName, using: using)))
-                    }
-                }
+                self.assignEquipmentUserViewModels(withSnapshot: snapshot!)
                 completion(.success)
+            }
+        }
+    }
+    
+    private func assignEquipmentUserViewModels(withSnapshot snapshot: QuerySnapshot) {
+        // empty the aray before appending
+        equipmentUserVMs = []
+        
+        for document in (snapshot.documents) {
+            if let userName = document.data()[EquipmentKey.userName] as? String,
+                let using = document.data()[EquipmentKey.using] as? Int
+            {
+                equipmentUserVMs?.append(EquipmentUserVM(equipmentUser:
+                    EquipmentUser(userName: userName, using: using)))
             }
         }
     }

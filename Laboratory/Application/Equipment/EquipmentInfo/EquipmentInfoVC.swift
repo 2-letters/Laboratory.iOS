@@ -27,14 +27,15 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private var deleteEquipmentButton: UIButton!
     private var listOfUserButton: UIButton!
     
+    private let showEquipmentUserListFromEquipmentSegue = "showEquipmentUserListFromEquipment"
+    private let unwindFromEquipmentInfoSegue = "unwindFromEquipmentInfo"
+    
+    private var viewModel = EquipmentInfoVM()
     let spinnerVC = SpinnerViewController()
     private lazy var imagePicker: ImagePicker = {
         return ImagePicker(presentationController: self, delegate: self)
     }()
     
-    private var viewModel = EquipmentInfoVM()
-    private let showEquipmentUserListFromEquipmentSegue = "showEquipmentUserListFromEquipment"
-    private let unwindFromEquipmentInfoSegue = "unwindFromEquipmentInfo"
     var equipmentId: String?
     var isEditingEquipment = false
     
@@ -78,7 +79,10 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         }
         
         scrollView.addSubview(equipmentInfoView)
-        
+        setupEquipmentInfoViewConstraints()
+    }
+    
+    private func setupEquipmentInfoViewConstraints() {
         equipmentInfoView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraintHeight = equipmentInfoView.heightAnchor.constraint(equalTo: topView.heightAnchor, constant: 0)
@@ -88,7 +92,6 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
             equipmentInfoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             equipmentInfoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             equipmentInfoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
-            
             equipmentInfoView.widthAnchor.constraint(equalTo: topView.widthAnchor, constant: 0),
             constraintHeight
             ])
@@ -98,6 +101,19 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         editSaveBtn = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(editSubmitButtonTapped))
         navigationItem.rightBarButtonItem = editSaveBtn
         
+        assignViews()
+        assignActions()
+
+        if equipmentId != nil {
+            equipmentInfoView.updateForViewOnly()
+            editSaveBtn.title = "Request an Edit"
+        }
+        
+        addDelegates()
+        addIdentifiers()
+    }
+    
+    private func assignViews() {
         availableTextField = equipmentInfoView.availableTextField
         nameTextView = equipmentInfoView.nameTextView
         locationTextView = equipmentInfoView.locationTextView
@@ -106,20 +122,12 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         addImageButton = equipmentInfoView.addImageButton
         deleteEquipmentButton = equipmentInfoView.deleteEquipmentButton
         listOfUserButton = equipmentInfoView.listOfUserButton
-
-        if equipmentId != nil {
-            equipmentInfoView.update(forEditing: false)
-            editSaveBtn.title = "Request an Edit"
-        }
-        
+    }
+    
+    private func assignActions() {
         addImageButton.addTarget(self, action: #selector(editImage(_ :)), for: .touchUpInside)
         deleteEquipmentButton.addTarget(self, action: #selector(attemptToDeleteEquipment), for: .touchUpInside)
         listOfUserButton.addTarget(self, action: #selector(showListOfUser), for: .touchUpInside)
-        
-//        imagePicker = ImagePicker(presentationController: self, delegate: self)
-        
-        addDelegates()
-        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -128,7 +136,6 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
         nameTextView.delegate = self
         descriptionTextView.delegate = self
         locationTextView.delegate = self
-//        scrollView.keyboardDismissMode = .onDrag
     }
     
     private func addIdentifiers() {
@@ -162,31 +169,38 @@ extension EquipmentInfoVC {
         } else {
             if isEditingEquipment {
                 // finish editing, save the new info to Firestore
-                let newName = nameTextView.text!
-                let newDescription = descriptionTextView.text!
-                let newLocation = locationTextView.text!
-                let newImageUrl = viewModel.getUrl(forImage: imageView.image!)
-                let newAvailable = Int(availableTextField.text ?? "0")!
-                viewModel.saveEquipment(withNewName: newName, newDescription: newDescription, newLocation: newLocation, newImageUrl: newImageUrl, newAvailable: newAvailable, equipmentId: equipmentId) { [weak self] (updateResult) in
-                    guard let self = self else { return }
-                    switch updateResult {
-                    case let .failure(errorStr):
-                        print(errorStr)
-                        self.presentAlert(forCase: .failToSaveEquipment)
-                        return
-                    case .success:
-                        self.presentAlert(forCase: .succeedToSaveEquipment, handler: { action in
-                            self.goBackAndReload()
-                        })
-                    }
-                }
+                saveEquipmentInfo()
             } else {
-                // switch to edit
-                isEditingEquipment = true
-                equipmentInfoView.update(forEditing: true)
-                editSaveBtn.title = "Submit"
+                switchToEquipmentEdit()
             }
         }
+    }
+    
+    private func saveEquipmentInfo() {
+        let newName = nameTextView.text!
+        let newDescription = descriptionTextView.text!
+        let newLocation = locationTextView.text!
+        let newImageUrl = viewModel.getUrl(forImage: imageView.image!)
+        let newAvailable = Int(availableTextField.text ?? "0")!
+        viewModel.saveEquipment(withNewName: newName, newDescription: newDescription, newLocation: newLocation, newImageUrl: newImageUrl, newAvailable: newAvailable, equipmentId: equipmentId) { [weak self] (updateResult) in
+            guard let self = self else { return }
+            switch updateResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                self.presentAlert(forCase: .failToSaveEquipment)
+                return
+            case .success:
+                self.presentAlert(forCase: .succeedToSaveEquipment, handler: { action in
+                    self.goBackAndReload()
+                })
+            }
+        }
+    }
+    
+    private func switchToEquipmentEdit() {
+        isEditingEquipment = true
+        equipmentInfoView.updateForEditing()
+        editSaveBtn.title = "Submit"
     }
     
     @objc private func editImage(_ sender: UIButton) {
@@ -267,17 +281,20 @@ extension EquipmentInfoVC: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        var textLimit = 0
-        
-        if textView == nameTextView {
-            textLimit = MyInt.nameTextLimit
-        } else if textView == locationTextView {
-            textLimit = MyInt.locationTextLimit
-        } else if textView == descriptionTextView {
-            textLimit = MyInt.descriptionTextLimit
-        }
+        let textLimit = getTextLimit(forTextView: textView)
         
         return textView.text.count + text.count - range.length < textLimit + 1
+    }
+    
+    private func getTextLimit(forTextView textView: UITextView) -> Int {
+        if textView == nameTextView {
+            return MyInt.nameTextLimit
+        } else if textView == locationTextView {
+            return MyInt.locationTextLimit
+        } else if textView == descriptionTextView {
+            return MyInt.descriptionTextLimit
+        }
+        return 0
     }
 }
 

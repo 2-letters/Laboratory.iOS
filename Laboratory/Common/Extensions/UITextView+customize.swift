@@ -21,11 +21,7 @@ class MyTextView: UITextView {
     }
     
     private func setup() {
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.masksToBounds = false
-        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        layer.shadowOpacity = 1.0
-        layer.shadowRadius = 0.0
+        setupBorder()
         
         isScrollEnabled = false
         font = UIFont(name: "GillSans", size: 19)
@@ -33,6 +29,14 @@ class MyTextView: UITextView {
         textContainer.lineFragmentPadding = 0
         
         customize(forEditing: true)
+    }
+    
+    private func setupBorder() {
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 0.0
     }
     
     func customize(forEditing isEditing: Bool) {
@@ -62,24 +66,29 @@ class MyTextField: UITextField {
     }
     
     private func setup() {
-        borderStyle = .none
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.masksToBounds = false
-        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
-        layer.shadowOpacity = 1.0
-        layer.shadowRadius = 0.0
+        setupBorder()
         
         font = UIFont(name: "GillSans", size: 19)
         
         customize(forEditing: true)
     }
     
-    func customize(forEditing beingEnabled: Bool) {
-        self.isEnabled = beingEnabled
-        if (beingEnabled) {
-            layer.shadowColor = UIColor.black.cgColor
-        } else {
-            layer.shadowColor = MyColor.lightGray.cgColor
-        }
+    private func setupBorder() {
+        borderStyle = .none
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 0.0
+    }
+    
+    func customizeForEditing() {
+        self.isEnabled = true
+        layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    func customizeForViewOnly() {
+        self.isEnabled = false
+        layer.shadowColor = MyColor.lightGray.cgColor
     }
 }

@@ -14,38 +14,38 @@ class FirestoreUtil {
     static let firestore = Firestore.firestore()
     
     // MARK: - Lab
-    static func getLabs() -> CollectionReference {
+    static func fetchLabs() -> CollectionReference {
         return firestore.collection(FirestoreKey.users).document(UserUtil.userId).collection(FirestoreKey.labs)
     }
     
-    static func getLabsOrdered() -> Query {
-        return getLabs().order(by: LabKey.name, descending: false)
+    static func fetchLabsOrdered() -> Query {
+        return fetchLabs().order(by: LabKey.name, descending: false)
     }
     
-    static func getLab(withId labId: String) -> DocumentReference {
-        return getLabs().document(labId)
+    static func fetchLab(withId labId: String) -> DocumentReference {
+        return fetchLabs().document(labId)
     }
     
-    static func getLabEquipments(withId labId: String) -> CollectionReference {
-        return getLab(withId: labId).collection(FirestoreKey.equipments)
+    static func fetchLabEquipments(withId labId: String) -> CollectionReference {
+        return fetchLab(withId: labId).collection(FirestoreKey.equipments)
     }
     
-    static func getLabEquipment(withLabId labId: String, equipmentId: String) -> DocumentReference {
-        return getLabEquipments(withId: labId).document(equipmentId)
+    static func fetchLabEquipment(withLabId labId: String, equipmentId: String) -> DocumentReference {
+        return fetchLabEquipments(withId: labId).document(equipmentId)
     }
     
     // MARK: - Equipment
-    static func getAllEquipments() -> CollectionReference {
+    static func fetchAllEquipments() -> CollectionReference {
         return firestore.collection(FirestoreKey.institutions)
             .document(UserUtil.institutionId).collection(FirestoreKey.equipments)
     }
     
-    static func getAllEquipmentsOrdered() -> Query {
-        return getAllEquipments().order(by: EquipmentKey.name, descending: false)
+    static func fetchAllEquipmentsOrdered() -> Query {
+        return fetchAllEquipments().order(by: EquipmentKey.name, descending: false)
     }
     
-    static func getEquipment(withId equipmentId: String) -> DocumentReference {
-        return getAllEquipments().document(equipmentId)
+    static func fetchEquipment(withId equipmentId: String) -> DocumentReference {
+        return fetchAllEquipments().document(equipmentId)
     }
 }
 

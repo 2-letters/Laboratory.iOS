@@ -35,10 +35,11 @@ class LabCollectionVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showLabInfoSegue {
             let labInfoVC = segue.destination as! LabInfoViewController
-            // send info to LabInfo View Controller
+            
             guard let sender = sender as? String else {
                 return
             }
+            
             if sender == "creatingNewInstance" {
                 labInfoVC.isCreatingNewLab = true
             } else {
@@ -63,6 +64,13 @@ class LabCollectionVC: UIViewController {
         labSearchBar.backgroundImage = UIImage()
         labCollectionView.backgroundColor = MyColor.superLightGray
         
+        addRefreshControl()
+        
+        addDelegates()
+        addIdentifiers()
+    }
+    
+    private func addRefreshControl() {
         // add refresh control
         refreshControl.attributedTitle = NSAttributedString(string: "Loading Labs Data ...")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
@@ -71,9 +79,6 @@ class LabCollectionVC: UIViewController {
         } else {
             labCollectionView.addSubview(refreshControl)
         }
-        
-        addDelegates()
-        addIdentifiers()
     }
     
     private func addDelegates() {
@@ -106,7 +111,6 @@ class LabCollectionVC: UIViewController {
         }
     }
     
-    
     // MARK: User Interaction
     @objc private func createNewLab() {
         performSegue(withIdentifier: showLabInfoSegue, sender: "creatingNewInstance")
@@ -118,8 +122,8 @@ class LabCollectionVC: UIViewController {
 }
 
 
-// MARK: - Table View
-extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+// MARK: - Collection View
+extension LabCollectionVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.displayingLabVMs?.count ?? 0
     }
@@ -131,12 +135,18 @@ extension LabCollectionVC: UICollectionViewDataSource, UICollectionViewDelegate,
         
         return cell
     }
+}
+
+extension LabCollectionVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedLabId = viewModel.getLabId(at: indexPath.row)
         // show LabInfo View and send labVM to it
         performSegue(withIdentifier: showLabInfoSegue, sender: selectedLabId)
     }
+}
+
+extension LabCollectionVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)

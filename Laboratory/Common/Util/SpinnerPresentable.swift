@@ -29,7 +29,7 @@ extension SpinnerPresentable where Self: UIViewController {
         if spinnerVC.parent != nil {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 guard let self = self else { return }
-                // First, notify the child that it’s about to be removed
+                // notify the child that it’s about to be removed
                 self.spinnerVC.willMove(toParent: nil)
                 // Then, remove the child from its parent
                 self.spinnerVC.view.removeFromSuperview()

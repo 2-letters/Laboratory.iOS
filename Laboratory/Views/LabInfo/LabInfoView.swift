@@ -29,6 +29,10 @@ class LabInfoView: UIView {
         nameTextView.customize(forEditing: true)
         descriptionTextView.customize(forEditing: true)
         
+        customizeButtons()
+    }
+    
+    private func customizeButtons() {
         addEquipmentButton.backgroundColor = MyColor.lightGreen
         addEquipmentButton.setTitleColor(UIColor.white, for: .normal)
         addEquipmentButton.titleLabel?.font = UIFont(name: "GillSans", size: 17)

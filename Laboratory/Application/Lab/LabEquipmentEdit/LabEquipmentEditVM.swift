@@ -70,7 +70,7 @@ class LabEquipmentEditVM: NSObject {
     func updateEquipmentUsing(forLabId labId: String, equipmentId: String, completion: @escaping UpdateFirestoreHandler) {
         let key = EquipmentKey.self
         // Add a new document in collection "cities"
-        FirestoreUtil.getLabEquipment(withLabId: labId, equipmentId: equipmentId).setData([
+        FirestoreUtil.fetchLabEquipment(withLabId: labId, equipmentId: equipmentId).setData([
             key.name: equipmentName,
             key.using: editingQuantity.value
         ]) { err in

@@ -79,20 +79,9 @@ class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresenta
         saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBtn
         
-        // register table cells
-        labEquipmentTableView = labInfoView.labEquipmentTableView
-        let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
-        labEquipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
+        registerCell()
         
-        let addEquipmentButton = labInfoView.addEquipmentButton!
-        if isCreatingNewLab {
-            addEquipmentButton.setTitle("Add Equipments", for: .normal)
-            addEquipmentButton.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
-        } else {
-            addEquipmentButton.setTitle("Edit Equipments", for: .normal)
-            addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
-        }
-        
+        setupAddEquipmentButton()
         
         let deleteLabButton = labInfoView.deleteLabButton!
         deleteLabButton.addTarget(self, action: #selector(attemptToDeleteLab), for: .touchUpInside)
@@ -102,6 +91,23 @@ class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresenta
         
         addDelegates()
         addIdentifiers()
+    }
+    
+    private func registerCell() {
+        labEquipmentTableView = labInfoView.labEquipmentTableView
+        let nib = UINib(nibName: cellReuseIdAndNibName, bundle: nil)
+        labEquipmentTableView.register(nib, forCellReuseIdentifier: cellReuseIdAndNibName)
+    }
+    
+    private func setupAddEquipmentButton() {
+        let addEquipmentButton = labInfoView.addEquipmentButton!
+        if isCreatingNewLab {
+            addEquipmentButton.setTitle("Add Equipments", for: .normal)
+            addEquipmentButton.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
+        } else {
+            addEquipmentButton.setTitle("Edit Equipments", for: .normal)
+            addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
+        }
     }
     
     private func addDelegates() {
@@ -118,8 +124,9 @@ class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresenta
     }
     
     private func loadLabInfo() {
+        viewModel.labId = labId
         // start fetching Lab Equipments
-        viewModel.fetchLabInfo(byId: labId, completion: { [weak self] (fetchResult) in
+        viewModel.fetchLabInfo { [weak self] (fetchResult) in
             guard let self = self else { return }
             switch fetchResult {
             case .success:
@@ -135,7 +142,7 @@ class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresenta
                     self.goBackAndReload()
                 })
             }
-        })
+        }
     }
 }
 
@@ -156,27 +163,32 @@ extension LabInfoViewController {
     
     @objc private func addEquipments() {
         if isCreatingNewLab {
-            let newLabName = labInfoView.nameTextView.text ?? ""
-            let newLabDescription = labInfoView.descriptionTextView.text ?? ""
-            
-            if (newLabName.isEmpty || newLabDescription.isEmpty) {
-                presentAlert(forCase: .invalidLabInfoInput)
-            }
-            
             presentAlert(forCase: .attemptCreateLab, handler: { action in
-                self.attemptToSaveLab(toAddEquipments: true)
+                self.attemptToSaveLab(onSaveButtonTapped: true)
             })
+//            attemptToAddEquipments
+//
+//            let newLabName = labInfoView.nameTextView.text ?? ""
+//            let newLabDescription = labInfoView.descriptionTextView.text ?? ""
+//
+//            if (newLabName.isEmpty || newLabDescription.isEmpty) {
+//                presentAlert(forCase: .invalidLabInfoInput)
+//            } else {
+//
+//            }
         } else {
             goToEquipmentsSelect()
         }
     }
+    
+//    @objc private func
     
     @objc private func attemptToDeleteLab() {
         presentAlert(forCase: .attemptToDeleteLab, handler: deleteLab)
     }
     
     private func deleteLab(alert: UIAlertAction!) {
-        viewModel.deleteLab(withId: labId) { [weak self] (deleteResult) in
+        viewModel.deleteLab(withId: labId!) { [weak self] (deleteResult) in
             guard let self = self else { return }
             switch deleteResult {
             case let .failure(errorStr):
@@ -189,40 +201,46 @@ extension LabInfoViewController {
     }
     
     @objc private func saveButtonTapped() {
-        attemptToSaveLab(toAddEquipments: false)
+        attemptToSaveLab(onSaveButtonTapped: false)
     }
     
-    private func attemptToSaveLab(toAddEquipments: Bool) {
+    private func attemptToSaveLab(onSaveButtonTapped: Bool) {
         let newLabName = labInfoView.nameTextView.text ?? ""
         let newLabDescription = labInfoView.descriptionTextView.text ?? ""
 
-        
         if (newLabName.isEmpty || newLabDescription.isEmpty) {
             presentAlert(forCase: .invalidLabInfoInput)
         } else {
-            if isCreatingNewLab || toAddEquipments {
-                // make sure lab Id is empty if creating a new Lab
-                labId = nil
+            if isCreatingNewLab {
+                viewModel.setupLabInfo(withLabName: newLabName, description: newLabDescription)
+            } else {
+                viewModel.labName = newLabName
+                viewModel.description = newLabDescription
             }
-            viewModel.saveLab(withNewName: newLabName, newDescription: newLabDescription, labId: labId) { [weak self] (updateResult) in
-                guard let self = self else { return }
-                switch updateResult {
-                case let .failure(errorStr):
-                    print(errorStr)
-                    self.presentAlert(forCase: .failToSaveLab)
-                case let .success(newLabId):
-                    if toAddEquipments {
-                        // TODO: test this
-                        // Successfully created a new Lab, to add Equipments
-                        self.isCreatingNewLab = false
-                        self.labId = newLabId
-                        self.goToEquipmentsSelect()
-                    } else {
-                        // Save this lab (either new or old), go back 
-                        self.presentAlert(forCase: .succeedToSaveLab, handler: { action in
-                            self.goBackAndReload()
-                        })
-                    }
+            
+            saveLab(onSaveButtonTapped: onSaveButtonTapped)
+        }
+    }
+    
+    private func saveLab(onSaveButtonTapped: Bool) {
+        viewModel.saveLab() { [weak self] (updateResult) in
+            guard let self = self else { return }
+            switch updateResult {
+            case let .failure(errorStr):
+                print(errorStr)
+                self.presentAlert(forCase: .failToSaveLab)
+            case let .success(newLabId):
+                if onSaveButtonTapped {
+                    // TODO: test this
+                    // Successfully created a new Lab, to add Equipments
+                    self.isCreatingNewLab = false
+                    self.labId = newLabId
+                    self.viewModel.labId = newLabId
+                    self.goToEquipmentsSelect()
+                } else {    // Save button pressed
+                    self.presentAlert(forCase: .succeedToSaveLab, handler: { action in
+                        self.goBackAndReload()
+                    })
                 }
             }
         }
