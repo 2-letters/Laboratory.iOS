@@ -27,6 +27,9 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private var deleteEquipmentButton: UIButton!
     private var listOfUserButton: UIButton!
     
+    var equipmentId: String?
+    var isEditingEquipment = false
+    
     private let showEquipmentUserListFromEquipmentSegue = "showEquipmentUserListFromEquipment"
     private let unwindFromEquipmentInfoSegue = "unwindFromEquipmentInfo"
     
@@ -35,9 +38,6 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
     private lazy var imagePicker: ImagePicker = {
         return ImagePicker(presentationController: self, delegate: self)
     }()
-    
-    var equipmentId: String?
-    var isEditingEquipment = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,10 +148,7 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
             guard let self = self else { return }
             switch fetchResult {
             case .success:
-                DispatchQueue.main.async {
-                    self.equipmentInfoView.viewModel = self.viewModel
-                    self.hideSpinner()
-                }
+                self.handleSucceedFetchingEquipmentInfo()
             case let .failure(errorStr):
                 print(errorStr)
                 // show an alert and return to the previous page
@@ -159,30 +156,76 @@ class EquipmentInfoVC: UIViewController, UIScrollViewDelegate, SpinnerPresentabl
             }
         }
     }
+    
+    private func handleSucceedFetchingEquipmentInfo() {
+        DispatchQueue.main.async {
+//            self.equipmentInfoView.viewModel = self.viewModel
+            self.bindUI()
+        }
+        self.hideSpinner()
+    }
+    
+    private func bindUI() {
+        viewModel.equipmentName.bindAndFire { [unowned self] in
+            self.nameTextView.text = String($0)
+        }
+        viewModel.availableString.bindAndFire { [unowned self] in
+            self.availableTextField.text = String($0)
+        }
+        viewModel.equipmentDescription.bindAndFire { [unowned self] in
+            self.descriptionTextView.text = String($0)
+        }
+        viewModel.location.bindAndFire { [unowned self] in
+            self.locationTextView.text = String($0)
+        }
+//        viewModel.imageUrl.bindAndFire { [unowned self] in
+//            self.saveBtn.isEnabled = $0
+//        }
+    }
 }
 
 // MARK: - User Interaction
 extension EquipmentInfoVC {
     @objc private func editSubmitButtonTapped() {
+        if isEditingEquipment {
+            // finish editing, save the new info to Firestore
+            tryToSaveEquipmentInfo()
+        } else {
+            switchToEquipmentEdit()
+        }
+        
         if isEditingEquipment && isInputInvalid {
             presentAlert(forCase: .invalidEquipmentInfoInput)
         } else {
             if isEditingEquipment {
                 // finish editing, save the new info to Firestore
-                saveEquipmentInfo()
+                tryToSaveEquipmentInfo()
             } else {
                 switchToEquipmentEdit()
             }
         }
     }
     
+    private func tryToSaveEquipmentInfo() {
+        if isInputInvalid {
+            presentAlert(forCase: .invalidEquipmentInfoInput)
+        } else {
+            updateViewModel()
+            saveEquipmentInfo()
+        }
+    }
+    
+    private func updateViewModel() {
+        viewModel.equipmentName.value = nameTextView.text!
+        viewModel.availableString.value = availableTextField.text ?? "0"
+        viewModel.equipmentDescription.value = descriptionTextView.text!
+        viewModel.location.value = locationTextView.text!
+        
+        viewModel.setUrl(forImage: imageView.image!)
+    }
+    
     private func saveEquipmentInfo() {
-        let newName = nameTextView.text!
-        let newDescription = descriptionTextView.text!
-        let newLocation = locationTextView.text!
-        let newImageUrl = viewModel.getUrl(forImage: imageView.image!)
-        let newAvailable = Int(availableTextField.text ?? "0")!
-        viewModel.saveEquipment(withNewName: newName, newDescription: newDescription, newLocation: newLocation, newImageUrl: newImageUrl, newAvailable: newAvailable, equipmentId: equipmentId) { [weak self] (updateResult) in
+        viewModel.saveEquipment(withId: equipmentId) { [weak self] (updateResult) in
             guard let self = self else { return }
             switch updateResult {
             case let .failure(errorStr):

@@ -128,7 +128,6 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
                 self.handleSucceedFetchingEquipmentInfo()
                 
             case .failure:
-                // show an alert and return to the previous page
                 self.presentAlert(forCase: .failToLoadEquipmentInfo, handler: self.goBack)
             }
         }
@@ -136,7 +135,7 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     
     private func handleSucceedFetchingEquipmentInfo() {
         DispatchQueue.main.async {
-            self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
+//            self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
             self.viewModel.updateButtonState()
             self.bindUI()
         }

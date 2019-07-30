@@ -11,23 +11,24 @@ import FirebaseFirestore
 
 import Foundation
 
-class EquipmentInfoVM {
+class EquipmentInfoVM: NSObject {
 //    let cache = NSCache<NSString, FullEquipment>()
     var equipment: FullEquipment?
-    var equipmentName: String { return equipment!.name }
-    var availableString: String { return String(equipment!.available) }
-    var description: String { return equipment!.description }
-    var location: String { return equipment!.location }
-    var imageUrl: String {
-        if equipment?.imageUrl == nil {
-            return "https://i.imgur.com/0ISKm8z.jpg"
-        }
-        return equipment!.imageUrl
-    }
+//    var equipmentName: String { return equipment!.name }
+//    var availableString: String { return String(equipment!.available) }
+//    var description: String { return equipment!.description }
+//    var location: String { return equipment!.location }
     
-    func getUrl(forImage image: UIImage) -> String {
+    var equipmentName: Dynamic<String> = Dynamic(String())
+    var availableString: Dynamic<String> = Dynamic(String())
+    var equipmentDescription: Dynamic<String> = Dynamic(String())
+    var location: Dynamic<String> = Dynamic(String())
+    
+    var imageUrl: Dynamic<String> = Dynamic(String())
+    
+    func setUrl(forImage image: UIImage) {
         // TODO get image url
-        return imageUrl
+        imageUrl.value = "https://i.imgur.com/0ISKm8z.jpg"
     }
     
     func fetchEquipmentInfo(byId equipmentId: String?, completion: @escaping FetchFirestoreHandler) {
@@ -41,6 +42,7 @@ class EquipmentInfoVM {
         let equipmentKey = "Equipment.\(equipmentId)" as NSString
         if let cachedEquipment = MyCache.shared.object(forKey: equipmentKey) {
             equipment = (cachedEquipment as! FullEquipment)
+            self.assignEquipmentInfo()
             completion(.success)
             return
         }
@@ -58,6 +60,7 @@ class EquipmentInfoVM {
                 let imageUrl = docData[key.imageUrl] as! String
                 let equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, imageUrl: imageUrl)
                 self.equipment = equipment
+                self.assignEquipmentInfo()
                 
                 // Cache it
                 MyCache.shared.setObject(equipment, forKey: equipmentKey)
@@ -69,15 +72,23 @@ class EquipmentInfoVM {
         }
     }
     
-    func saveEquipment(withNewName newName: String, newDescription: String, newLocation: String, newImageUrl: String, newAvailable: Int, equipmentId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
+    private func assignEquipmentInfo() {
+        equipmentName.value = equipment!.name
+        availableString.value = String(equipment!.available)
+        equipmentDescription.value = equipment!.description
+        location.value = equipment!.location
+        imageUrl.value = equipment!.imageUrl
+    }
+    
+    func saveEquipment(withId equipmentId: String? = nil, completion: @escaping UpdateFirestoreHandler) {
         if let equipmentId = equipmentId {
             // Update existed equipment
             FirestoreUtil.fetchEquipment(withId: equipmentId).updateData([
-                EquipmentKey.name: newName,
-                EquipmentKey.description: newDescription,
-                EquipmentKey.location: newLocation,
-                EquipmentKey.imageUrl: newImageUrl,
-                EquipmentKey.available: newAvailable
+                EquipmentKey.name: equipmentName.value,
+                EquipmentKey.description: equipmentDescription.value,
+                EquipmentKey.location: location.value,
+                EquipmentKey.imageUrl: imageUrl,
+                EquipmentKey.available: availableString.value
             ]) { err in
                 if let err = err {
                     completion(.failure(err.localizedDescription + "voxERR fail to update Equipment Info"))
@@ -90,11 +101,11 @@ class EquipmentInfoVM {
             // Create a new Equipment
             let newEquipment = FirestoreUtil.fetchAllEquipments().document()
             newEquipment.setData([
-                EquipmentKey.name: newName,
-                EquipmentKey.description: newDescription,
-                EquipmentKey.location: newLocation,
-                EquipmentKey.imageUrl: newImageUrl,
-                EquipmentKey.available: newAvailable
+                EquipmentKey.name: equipmentName.value,
+                EquipmentKey.description: equipmentDescription.value,
+                EquipmentKey.location: location.value,
+                EquipmentKey.imageUrl: imageUrl,
+                EquipmentKey.available: availableString.value
             ]) { err in
                 if let err = err {
                     completion(.failure("voxERR creating a new Equipment \(err)"))
