@@ -9,10 +9,21 @@
 import Foundation
 import FirebaseFirestore
 
-import Foundation
+import CoreData
+
+enum EquipmentKeyPath {
+    case equipmentName
+    case available
+    case equipmentDescription
+    case location
+    case imageUrl
+    
+    var description: String {
+        return String(describing: self)
+    }
+}
 
 class EquipmentInfoVM: NSObject {
-//    let cache = NSCache<NSString, FullEquipment>()
     var equipment: FullEquipment?
 //    var equipmentName: String { return equipment!.name }
 //    var availableString: String { return String(equipment!.available) }
@@ -23,8 +34,19 @@ class EquipmentInfoVM: NSObject {
     var availableString: Dynamic<String> = Dynamic(String())
     var equipmentDescription: Dynamic<String> = Dynamic(String())
     var location: Dynamic<String> = Dynamic(String())
-    
     var imageUrl: Dynamic<String> = Dynamic(String())
+    
+    private let entityName = "FullEquipment"
+    private let nameKeyPath = "equipmentName"
+    private let available = "available"
+    private let descriptionKeyPath = ""
+    
+    private lazy var coreDataStack = MyCoreData(modelName: "Laboratory")
+    private var managedContext: NSManagedObjectContext
+    
+    override init() {
+        managedContext = coreDataStack.managedContext
+    }
     
     func setUrl(forImage image: UIImage) {
         // TODO get image url
@@ -37,15 +59,10 @@ class EquipmentInfoVM: NSObject {
             completion(.failure("ERR could not load Lab Id"))
             return
         }
-        // Check the cache
         
-        let equipmentKey = "Equipment.\(equipmentId)" as NSString
-        if let cachedEquipment = MyCache.shared.object(forKey: equipmentKey) {
-            equipment = (cachedEquipment as! FullEquipment)
-            self.assignEquipmentInfo()
-            completion(.success)
-            return
-        }
+        // Check Core Data
+        
+        
         
         // Else get from Firestore
         FirestoreUtil.fetchEquipment(withId: equipmentId).getDocument { [weak self] (document, error) in
@@ -54,16 +71,26 @@ class EquipmentInfoVM: NSObject {
             if let document = document, document.exists {
                 let docData = document.data()!
                 let equipmentName = docData[key.name] as! String
-                let quantity = docData[key.available] as! Int
+                let available = docData[key.available] as! Int
                 let description = docData[key.description] as! String
                 let location = docData[key.location] as! String
                 let imageUrl = docData[key.imageUrl] as! String
-                let equipment = FullEquipment(name: equipmentName, available: quantity, description: description, location: location, imageUrl: imageUrl)
-                self.equipment = equipment
+//                self.equipment = FullEquipment(name: equipmentName, available: available, description: description, location: location, imageUrl: imageUrl)
+                self.equipment = FullEquipment(co)
+                
+                
                 self.assignEquipmentInfo()
                 
-                // Cache it
-                MyCache.shared.setObject(equipment, forKey: equipmentKey)
+                // Save to Core Data
+                let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: self.managedContext)!
+                
+                let equipment = NSManagedObject(entity: entity, insertInto: self.managedContext)
+                equipment.setValue(equipmentName, forKey: EquipmentKeyPath.equipmentName.description)
+                equipment.setValue(available, forKey: EquipmentKeyPath.available.description)
+                equipment.setValue(description, forKey: EquipmentKeyPath.equipmentDescription.description)
+                equipment.setValue(location, forKey: EquipmentKeyPath.location.description)
+                equipment.setValue(imageUrl, forKey: EquipmentKeyPath.imageUrl.description)
+                
                 completion(.success)
                 
             } else {
@@ -89,11 +116,15 @@ class EquipmentInfoVM: NSObject {
                 EquipmentKey.location: location.value,
                 EquipmentKey.imageUrl: imageUrl,
                 EquipmentKey.available: availableString.value
-            ]) { err in
+            ]) { [weak self] err in
+                guard let self = self else { return }
                 if let err = err {
                     completion(.failure(err.localizedDescription + "voxERR fail to update Equipment Info"))
                 } else {
                     print("Successfully update lab with id: \(equipmentId)")
+                    // TODO save to Core Data
+
+                    
                     completion(.success(nil))
                 }
             }

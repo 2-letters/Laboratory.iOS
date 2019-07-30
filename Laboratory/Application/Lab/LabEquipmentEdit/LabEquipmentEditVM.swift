@@ -27,11 +27,11 @@ class LabEquipmentEditVM: NSObject {
     let editingQuantity: Dynamic<Int>
     
     var equipmentName: String {
-        return equipmentInfoVM.equipment!.name
+        return equipmentInfoVM.equipment!.name!
         
     }
     var available: Int {
-        return equipmentInfoVM.equipment!.available
+        return Int(equipmentInfoVM.equipment!.available)
     }
     
     let isDecreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
