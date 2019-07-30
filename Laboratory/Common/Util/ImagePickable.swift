@@ -44,6 +44,16 @@ class ImagePicker: NSObject {
     // TODO break this function
     func present(from sourceView: UIView) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        addActions(to: alertController)
+        checkIfOnIpadDevice(for: alertController, from: sourceView)
+        
+        alertController.view.accessibilityIdentifier = AccessibilityId.addImageActionSheet.description
+        
+        presentationController?.present(alertController, animated: true)
+    }
+    
+    private func addActions(to alertController: UIAlertController) {
         if let action = action(for: .camera, title: "Take photo") {
             alertController.addAction(action)
         }
@@ -53,18 +63,16 @@ class ImagePicker: NSObject {
         if let action = action(for: .photoLibrary, title: "Photo library") {
             alertController.addAction(action)
         }
-        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        // check if the device is an iPad & set the proper source view & rect if it's needed, otherwise the app will crash on iPads
+    }
+    
+    private func checkIfOnIpadDevice(for alertController: UIAlertController, from sourceView: UIView) {
+        // set the proper source view & rect, otherwise the app will crash on iPads
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView
             alertController.popoverPresentationController?.sourceRect = sourceView.bounds
             alertController.popoverPresentationController?.permittedArrowDirections = [.down, .up]
         }
-        
-        alertController.view.accessibilityIdentifier = AccessibilityId.addImageActionSheet.description
-        
-        presentationController?.present(alertController, animated: true)
     }
     
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {

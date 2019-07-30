@@ -70,7 +70,7 @@ class MyTextField: UITextField {
         
         font = UIFont(name: "GillSans", size: 19)
         
-        customize(forEditing: true)
+        customizeForEditing()
     }
     
     private func setupBorder() {

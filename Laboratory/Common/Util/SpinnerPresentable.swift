@@ -47,10 +47,14 @@ class SpinnerViewController: UIViewController {
         view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
-        spinner.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints()
+        
         spinner.startAnimating()
         view.addSubview(spinner)
-        
+    }
+    
+    private func addConstraints() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
