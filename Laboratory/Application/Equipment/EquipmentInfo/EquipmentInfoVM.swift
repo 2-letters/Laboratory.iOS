@@ -11,16 +11,12 @@ import FirebaseFirestore
 
 import CoreData
 
-enum EquipmentKeyPath {
-    case equipmentName
-    case available
-    case equipmentDescription
-    case location
-    case imageUrl
-    
-    var description: String {
-        return String(describing: self)
-    }
+struct MyCoreDataKey {
+    let equipmentName = "equipmentName"
+    let equipmentAvailable = "available"
+    let equipmentDescription = "equipmentDescription"
+    let equipmentLocation = "location"
+    let equipmentImageUrl = "imageUrl"
 }
 
 class EquipmentInfoVM: NSObject {
@@ -43,6 +39,7 @@ class EquipmentInfoVM: NSObject {
     
     private lazy var coreDataStack = MyCoreData(modelName: "Laboratory")
     private var managedContext: NSManagedObjectContext
+    private lazy var coreDataKey = MyCoreDataKey()
     
     override init() {
         managedContext = coreDataStack.managedContext
@@ -76,20 +73,20 @@ class EquipmentInfoVM: NSObject {
                 let location = docData[key.location] as! String
                 let imageUrl = docData[key.imageUrl] as! String
 //                self.equipment = FullEquipment(name: equipmentName, available: available, description: description, location: location, imageUrl: imageUrl)
-                self.equipment = FullEquipment(co)
                 
                 
-                self.assignEquipmentInfo()
                 
                 // Save to Core Data
                 let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: self.managedContext)!
                 
                 let equipment = NSManagedObject(entity: entity, insertInto: self.managedContext)
-                equipment.setValue(equipmentName, forKey: EquipmentKeyPath.equipmentName.description)
-                equipment.setValue(available, forKey: EquipmentKeyPath.available.description)
-                equipment.setValue(description, forKey: EquipmentKeyPath.equipmentDescription.description)
-                equipment.setValue(location, forKey: EquipmentKeyPath.location.description)
-                equipment.setValue(imageUrl, forKey: EquipmentKeyPath.imageUrl.description)
+                equipment.setValue(equipmentName, forKey: self.coreDataKey.equipmentName)
+                equipment.setValue(available, forKey: self.coreDataKey.equipmentAvailable)
+                equipment.setValue(description, forKey: self.coreDataKey.equipmentDescription)
+                equipment.setValue(location, forKey: self.coreDataKey.equipmentLocation)
+                equipment.setValue(imageUrl, forKey: self.coreDataKey.equipmentDescription)
+                
+                self.assignEquipmentInfo()
                 
                 completion(.success)
                 
@@ -100,6 +97,8 @@ class EquipmentInfoVM: NSObject {
     }
     
     private func assignEquipmentInfo() {
+        
+        // TODO get from coredata
         equipmentName.value = equipment!.name
         availableString.value = String(equipment!.available)
         equipmentDescription.value = equipment!.description
