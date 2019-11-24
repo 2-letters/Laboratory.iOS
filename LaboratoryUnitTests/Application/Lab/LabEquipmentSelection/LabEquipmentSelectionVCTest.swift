@@ -102,4 +102,9 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         // THEN
         XCTAssertEqual(mockSearchBar.text, "")
     }
+    
+    func returnDetailViewController() -> EquipmentDetailViewController {
+        let destinationVC = EquipmentDetailViewController()
+        return destinationVC
+    }
 }

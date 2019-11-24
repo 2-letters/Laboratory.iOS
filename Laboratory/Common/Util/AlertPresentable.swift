@@ -163,8 +163,4 @@ extension AlertPresentable where Self: UIViewController {
         // present
         self.present(ac, animated: true, completion: nil)
     }
-    
-    private func handleIpad() {
-        
-    }
 }
