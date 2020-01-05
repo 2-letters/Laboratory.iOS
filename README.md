@@ -12,3 +12,13 @@ An iOS application that helps scientific professionals manage laboratory section
 
 
 TO BE UPDATED..
+
+<h2>Screenshots</h2>
+
+<p float="left">
+  <img src="Screenshots/equipmentList.png" width="215" />
+  <img src="Screenshots/addNewLab.png" width="215" />
+  <img src="Screenshots/labInfo.png" width="215" />
+  <img src="Screenshots/addLabEquipment.png" width="215" />
+</p>
+
