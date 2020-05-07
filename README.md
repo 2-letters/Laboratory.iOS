@@ -1,5 +1,3 @@
-# Laboratory.iOS
-
 ![alt laboratory](cover1.png)
 An iOS application that helps scientific professionals manage laboratory sections and equipment more collaboratively.
 
