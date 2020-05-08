@@ -1,6 +1,7 @@
 ![alt laboratory](cover1.png)
 An iOS application that helps scientific professionals manage laboratory sections and equipment more collaboratively.
 
+<br/>
 <h2>Key features:</h2>
 <ul>
     <li>Add Equipment including pictures and locations.</li>
