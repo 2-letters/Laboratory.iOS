@@ -17,3 +17,5 @@ An iOS application that helps scientific professionals manage laboratory section
   <img src="Screenshots/addLabEquipment.png" width="215" />
 </p>
 
+<h2>Technologies</h2>
+<p>Xcode, Swift, MVVM, Google Firebase SDKs.</p>
