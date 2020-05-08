@@ -8,6 +8,9 @@ An iOS application that helps scientific professionals manage laboratory section
     <li>Use the equipment in a collaborative manner by sharing them and letting others know that you are.</li>
 </ul>
 
+<h2>Technologies</h2>
+<p>Xcode, Swift, MVVM, Google Firebase SDKs.</p>
+
 <h2>Screenshots</h2>
 
 <p float="left">
@@ -16,6 +19,3 @@ An iOS application that helps scientific professionals manage laboratory section
   <img src="Screenshots/labInfo.png" width="215" />
   <img src="Screenshots/addLabEquipment.png" width="215" />
 </p>
-
-<h2>Technologies</h2>
-<p>Xcode, Swift, MVVM, Google Firebase SDKs.</p>
