@@ -21,3 +21,6 @@ DerivedData
 
 #CocoaPods
 Pods
+
+#Snapshot Tests
+LaboratoryUnitTests/ReferenceImages_64
