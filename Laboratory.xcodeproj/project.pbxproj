@@ -96,6 +96,7 @@
 		DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */; };
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
 		DE4F9A19246877300065FCEF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4F9A18246877300065FCEF /* Login.storyboard */; };
+		DE4F9A1C246883200065FCEF /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A1B246883200065FCEF /* LoginTextField.swift */; };
 		DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* MyColor.swift */; };
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
 		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
@@ -237,6 +238,7 @@
 		DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVM.swift; sourceTree = "<group>"; };
 		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		DE4F9A18246877300065FCEF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DE4F9A1B246883200065FCEF /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		DE59D055229AFD7300E7FDF1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
 		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
@@ -591,6 +593,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		DE4F9A1A246882DD0065FCEF /* ViewItems */ = {
+			isa = PBXGroup;
+			children = (
+				C938A9CA22D3D8E5004C05D1 /* MyButton.swift */,
+				DE4F9A1B246883200065FCEF /* LoginTextField.swift */,
+			);
+			path = ViewItems;
+			sourceTree = "<group>";
+		};
 		DE6B4D7E22ACBDBF006CE211 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +647,7 @@
 		DE6B4D8222ACC28C006CE211 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DE4F9A1A246882DD0065FCEF /* ViewItems */,
 				C90035812296EE6F00471EE7 /* Constants */,
 				C940B95E22AA97230025E5AC /* Extensions */,
 				DE6B4D7E22ACBDBF006CE211 /* Util */,
@@ -913,7 +925,6 @@
 		DEC45BE92291004D00F164BD /* Miscs */ = {
 			isa = PBXGroup;
 			children = (
-				C938A9CA22D3D8E5004C05D1 /* MyButton.swift */,
 				C900357F2296E96500471EE7 /* Enums.swift */,
 				C9EED950229D9707006314A8 /* FirestoreSvc.swift */,
 				C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */,
@@ -1166,6 +1177,7 @@
 				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
 				C94020B622C681A2006D71DA /* EquipmentUserListVC.swift in Sources */,
 				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
+				DE4F9A1C246883200065FCEF /* LoginTextField.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */,
 				C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */,
