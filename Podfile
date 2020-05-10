@@ -1,11 +1,26 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '12.2'
+
 
 target 'Laboratory' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Laboratory
+  	use_frameworks!
+  	# Pods for Laboratory
 	pod 'Firebase/Core'
   	pod 'Firebase/Firestore'
+
+	
 end
+
+target 'LaboratoryUnitTests' do
+	inherit! :search_paths
+	pod 'Firebase'
+	use_frameworks!
+  	pod 'iOSSnapshotTestCase'
+end
+
+# target 'LaboratoryUITests' do
+	# use_frameworks!
+  	# pod 'iOSSnapshotTestCase'
+	# inherit! :search_paths
+	# pod 'Firebase'
+# end

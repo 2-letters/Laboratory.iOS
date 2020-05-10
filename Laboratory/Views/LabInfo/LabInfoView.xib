@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LabInfoView" customModule="Laboratory" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-7B-HEu">
+                    <rect key="frame" x="20" y="52" width="374" height="258"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-9h-ENZ" customClass="MyTextView" customModule="Laboratory" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-q2-dRz">
+                            <rect key="frame" x="0.0" y="63.5" width="374" height="17.5"/>
+                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-lF-bNE" customClass="MyTextView" customModule="Laboratory" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="89" width="374" height="55.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBV-CB-8hv">
+                            <rect key="frame" x="0.0" y="152.5" width="374" height="17.5"/>
+                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-bB-Eni">
+                            <rect key="frame" x="0.0" y="178" width="374" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="Xd6-tA-RiU"/>
+                            </constraints>
+                            <state key="normal" title="Add Equipment"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dck-os-CAM">
+                            <rect key="frame" x="0.0" y="222" width="374" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="PCJ-rH-kfc"/>
+                            </constraints>
+                            <state key="normal" title="🗑️ Delete Lab">
+                                <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Dck-os-CAM" secondAttribute="trailing" id="AOx-94-fbd"/>
+                        <constraint firstAttribute="trailing" secondItem="mBV-CB-8hv" secondAttribute="trailing" id="CIA-hu-LZS"/>
+                        <constraint firstAttribute="trailing" secondItem="Vv7-q2-dRz" secondAttribute="trailing" id="CX1-Ue-rXE"/>
+                        <constraint firstItem="Dck-os-CAM" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="GWr-u9-WCa"/>
+                        <constraint firstAttribute="trailing" secondItem="7fa-lF-bNE" secondAttribute="trailing" id="QBB-U9-iaZ"/>
+                        <constraint firstItem="gSt-bB-Eni" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="Xxl-Og-Zc5"/>
+                        <constraint firstItem="I5b-9h-ENZ" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="b6a-xT-gsC"/>
+                        <constraint firstItem="7fa-lF-bNE" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="fIP-MR-Ns6"/>
+                        <constraint firstItem="mBV-CB-8hv" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="gjr-Xi-gMN"/>
+                        <constraint firstAttribute="trailing" secondItem="gSt-bB-Eni" secondAttribute="trailing" id="mtm-ni-DC0"/>
+                        <constraint firstAttribute="trailing" secondItem="I5b-9h-ENZ" secondAttribute="trailing" id="vMu-BY-aPF"/>
+                        <constraint firstItem="Vv7-q2-dRz" firstAttribute="leading" secondItem="x5K-7B-HEu" secondAttribute="leading" id="ylQ-Ld-CsT"/>
+                    </constraints>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7i-yQ-Tle">
+                    <rect key="frame" x="0.0" y="318" width="414" height="544"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="e7i-yQ-Tle" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CRe-vJ-Jpe"/>
+                <constraint firstItem="x5K-7B-HEu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DYQ-kX-TDC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e7i-yQ-Tle" secondAttribute="trailing" id="noV-sa-aMz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x5K-7B-HEu" secondAttribute="trailing" constant="20" id="pEQ-sA-cmk"/>
+                <constraint firstItem="e7i-yQ-Tle" firstAttribute="top" secondItem="x5K-7B-HEu" secondAttribute="bottom" constant="8" id="sNo-Xg-RXu"/>
+                <constraint firstItem="x5K-7B-HEu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="uU8-54-U21"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="e7i-yQ-Tle" secondAttribute="bottom" id="uVk-hE-SpD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addEquipmentButton" destination="gSt-bB-Eni" id="5xp-8y-pGU"/>
+                <outlet property="deleteLabButton" destination="Dck-os-CAM" id="Z0F-dT-fR9"/>
+                <outlet property="descriptionTextView" destination="7fa-lF-bNE" id="kAF-Hm-35a"/>
+                <outlet property="labEquipmentTableView" destination="e7i-yQ-Tle" id="AxT-zH-BMo"/>
+                <outlet property="nameTextView" destination="I5b-9h-ENZ" id="bfF-S0-yXf"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="104"/>
+        </view>
+    </objects>
+</document>

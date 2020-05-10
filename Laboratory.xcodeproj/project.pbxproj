@@ -3,53 +3,268 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7FE385219D7705C87E4DF40D /* Pods_Laboratory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */; };
 		C34438632281DDFA0021168B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438622281DDFA0021168B /* AppDelegate.swift */; };
 		C34438682281DDFA0021168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34438662281DDFA0021168B /* Main.storyboard */; };
 		C344386A2281DDFC0021168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34438692281DDFC0021168B /* Assets.xcassets */; };
 		C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C344386B2281DDFC0021168B /* LaunchScreen.storyboard */; };
-		C34438772281F7970021168B /* LabTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438752281F7970021168B /* LabTVCell.swift */; };
-		C34438782281F7970021168B /* LabTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34438762281F7970021168B /* LabTVCell.xib */; };
-		C344387B2281FC9E0021168B /* LabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabVC.swift */; };
+		C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387A2281FC9E0021168B /* LabCollectionVC.swift */; };
 		C344387E2282041F0021168B /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344387D2282041F0021168B /* Lab.swift */; };
-		C34438812282094A0021168B /* LabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabVM.swift */; };
-		C361E0FC2283258900938933 /* LabSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FB2283258900938933 /* LabSvc.swift */; };
-		C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361E0FD22833EC800938933 /* LabCreateVC.swift */; };
-		C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E02283849C00966461 /* LabItemTVCell.swift */; };
-		C3A1C7E32283849C00966461 /* LabItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A1C7E12283849C00966461 /* LabItemTVCell.xib */; };
-		C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabItemVM.swift */; };
-		C3A1C7E7228385B700966461 /* LabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabItem.swift */; };
-		C3AEBD002285D2D50031DA3F /* LabItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */; };
+		C34438812282094A0021168B /* LabCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438802282094A0021168B /* LabCollectionVM.swift */; };
+		C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */; };
+		C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */; };
+		C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */; };
+		C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A1C7E6228385B700966461 /* LabEquipment.swift */; };
 		C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C64F202284C6D300222828 /* GoogleService-Info.plist */; };
+		C90035802296E96500471EE7 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900357F2296E96500471EE7 /* Enums.swift */; };
+		C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */; };
+		C903D5AD22AAEFA900D1A79B /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5AC22AAEFA900D1A79B /* FakeData.swift */; };
+		C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */; };
+		C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */; };
+		C903D5B322AB0EF600D1A79B /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B222AB0EF600D1A79B /* MyViewController.swift */; };
+		C910FDC122B2E14100DBF442 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */; };
+		C9154D3322CD211100ADDE8F /* EquipmentCreateUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9154D3222CD211100ADDE8F /* EquipmentCreateUITest.swift */; };
+		C9156F7222C144350039DC18 /* LabCreateUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9156F7122C144350039DC18 /* LabCreateUITest.swift */; };
+		C938A9C922D39A4B004C05D1 /* InputHighlightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */; };
+		C938A9CB22D3D8E5004C05D1 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CA22D3D8E5004C05D1 /* MyButton.swift */; };
+		C938A9CD22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */; };
+		C938A9CE22D3F048004C05D1 /* ReusableView&NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */; };
+		C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF322AE970B0035A9FA /* LabCellVM.swift */; };
+		C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */; };
+		C93B0FFD22AEE7880035A9FA /* LabEquipmentTVCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */; };
+		C93B100022AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */; };
+		C93B100222AEEBAD0035A9FA /* LabCollectionVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */; };
+		C93B100422AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100322AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift */; };
+		C93B100622AEF8730035A9FA /* LabEquipmentEditVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100522AEF8730035A9FA /* LabEquipmentEditVMTest.swift */; };
+		C93B100A22AF04660035A9FA /* EquipmentInfoVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100922AF04660035A9FA /* EquipmentInfoVMTest.swift */; };
+		C93B100E22AF05DB0035A9FA /* EquipmentListVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100D22AF05DB0035A9FA /* EquipmentListVMTest.swift */; };
+		C93B101022AF077D0035A9FA /* EquipmentListVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B100F22AF077D0035A9FA /* EquipmentListVCTest.swift */; };
+		C94020B622C681A2006D71DA /* EquipmentUserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */; };
+		C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020B822C68865006D71DA /* EquipmentUserListVM.swift */; };
+		C94020BB22C688A0006D71DA /* EquipmentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020BA22C688A0006D71DA /* EquipmentUser.swift */; };
+		C940B96022AA98380025E5AC /* MyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B95F22AA98380025E5AC /* MyFont.swift */; };
+		C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
+		C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96422AAC0FF0025E5AC /* TestUtil.swift */; };
+		C94F58DF22B3EF8E007DEF03 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B222AB0EF600D1A79B /* MyViewController.swift */; };
+		C94F58E022B3F625007DEF03 /* MyStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */; };
+		C94F58E222B402AB007DEF03 /* MyUITestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F58E122B402AB007DEF03 /* MyUITestDelegate.swift */; };
+		C94F58E522B40429007DEF03 /* LabInfoViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F58E422B40429007DEF03 /* LabInfoViewControllerUITest.swift */; };
+		C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */; };
+		C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */; };
+		C961847122CA582300B397AD /* EquipmentUserListVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961847022CA582300B397AD /* EquipmentUserListVCTest.swift */; };
+		C961847322CA63D600B397AD /* EquipmentInfoVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961847222CA63D600B397AD /* EquipmentInfoVCTest.swift */; };
+		C961847522CA668100B397AD /* EquipmentUserListVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961847422CA668100B397AD /* EquipmentUserListVCSnapshotTest.swift */; };
+		C961847822CA730000B397AD /* EquipmentUserListViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961847722CA730000B397AD /* EquipmentUserListViewControllerUITest.swift */; };
+		C961847C22CA7DB700B397AD /* EquipmentUserListVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961847B22CA7DB700B397AD /* EquipmentUserListVMTest.swift */; };
+		C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96785C5228DB921005A523A /* EquipmentInfoVC.swift */; };
+		C9700C8822B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */; };
+		C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */; };
+		C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */; };
+		C9700C9122B29852004B6B71 /* LabCollectionViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9022B29852004B6B71 /* LabCollectionViewControllerUITest.swift */; };
+		C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */; };
+		C9700C9522B2AA9B004B6B71 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */; };
+		C973004822A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */; };
+		C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B114422949B5C00E90B46 /* FullEquipment.swift */; };
+		C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11462294A4EB00E90B46 /* LabInfo.swift */; };
+		C97B11492294A57400E90B46 /* LabInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B11482294A57400E90B46 /* LabInfoViewModel.swift */; };
+		C9BA6F6E22CC002B003A2254 /* EquipmentInfoViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA6F6D22CC002B003A2254 /* EquipmentInfoViewControllerUITest.swift */; };
+		C9C6D3262295D75500D12D87 /* LabEquipmentSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */; };
+		C9EE234922B18731004AB9BB /* LabCollectionVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE234822B18731004AB9BB /* LabCollectionVCSnapshotTest.swift */; };
+		C9EE234B22B18874004AB9BB /* LabInfoVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE234A22B18874004AB9BB /* LabInfoVCSnapshotTest.swift */; };
+		C9EE234D22B188F3004AB9BB /* LabEquipmentSelectionVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE234C22B188F3004AB9BB /* LabEquipmentSelectionVCSnapshotTest.swift */; };
+		C9EE234F22B18960004AB9BB /* LabEquipmentEditVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE234E22B18960004AB9BB /* LabEquipmentEditVCSnapshotTest.swift */; };
+		C9EE235122B19211004AB9BB /* EquipmentListVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE235022B19211004AB9BB /* EquipmentListVCSnapshotTest.swift */; };
+		C9EE235322B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE235222B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift */; };
+		C9EE235522B19884004AB9BB /* LabCollectionCellSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE235422B19884004AB9BB /* LabCollectionCellSnapshotTest.swift */; };
+		C9EE235722B19E9B004AB9BB /* LabEquipmentTVCellSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE235622B19E9B004AB9BB /* LabEquipmentTVCellSnapshotTest.swift */; };
+		C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */; };
+		C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EED950229D9707006314A8 /* FirestoreSvc.swift */; };
+		C9F43E74228F2B740049C68D /* LabInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F43E73228F2B740049C68D /* LabInfoViewController.swift */; };
+		C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD440422C4094B007CA394 /* ImagePickable.swift */; };
+		DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */; };
+		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
+		DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28679E22BD9C5300CBFC5F /* MyInt.swift */; };
+		DE2867A022BD9C5300CBFC5F /* MyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28679E22BD9C5300CBFC5F /* MyInt.swift */; };
+		DE2867A222BDB32700CBFC5F /* LabInfoVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */; };
+		DE2867A522BEF3CD00CBFC5F /* AppDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A422BEF3CD00CBFC5F /* AppDelegateTest.swift */; };
+		DE2867A722BFD8AE00CBFC5F /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */; };
+		DE2867A922BFE40B00CBFC5F /* FirestoreUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */; };
+		DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */; };
+		DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */; };
+		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
+		DE4F9A19246877300065FCEF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4F9A18246877300065FCEF /* Login.storyboard */; };
+		DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* MyColor.swift */; };
+		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
+		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
+		DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */; };
+		DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */; };
+		DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */; };
+		DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */; };
+		DE6B4D8522AD507F006CE211 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D8422AD507F006CE211 /* Mocks.swift */; };
+		DE6B4D9322AD5A51006CE211 /* LabEquipmentEditVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */; };
+		DE6B4DA022AD8BEC006CE211 /* SpinnerPresentableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4D9F22AD8BEC006CE211 /* SpinnerPresentableTest.swift */; };
+		DE6B4DB022AD9DB5006CE211 /* AlertPresentableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4DAF22AD9DB5006CE211 /* AlertPresentableTest.swift */; };
+		DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */; };
+		DE75CF5522B5C026006A0780 /* XCUIElement+clearText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */; };
+		DE75CF5622B5DCC4006A0780 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940B96122AA98990025E5AC /* AlertPresentable.swift */; };
+		DE75CF5922B5E3A6006A0780 /* LabEquipmentSelectionViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF5822B5E3A6006A0780 /* LabEquipmentSelectionViewControllerUITest.swift */; };
+		DE75CF5E22B6E507006A0780 /* LabEquipmentEditUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF5D22B6E507006A0780 /* LabEquipmentEditUITest.swift */; };
+		DE75CF6222B709DC006A0780 /* EquipmentListViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75CF6122B709DC006A0780 /* EquipmentListViewControllerUITest.swift */; };
+		DE7AF431229A094F0008181E /* UITextView+customize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7AF430229A094F0008181E /* UITextView+customize.swift */; };
+		DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9629612287C81800E9EC8D /* LabInfoView.xib */; };
+		DEBCB9B522D6202700852B01 /* GillSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B322D6202700852B01 /* GillSans.ttf */; };
+		DEBCB9B622D6202700852B01 /* GillSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */; };
+		DEBCB9B822DBACC100852B01 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B722DBACC100852B01 /* Dynamic.swift */; };
+		DEBCB9BA22DC2ECE00852B01 /* MyCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCB9B922DC2ECE00852B01 /* MyCache.swift */; };
+		DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */; };
+		DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */; };
+		EC182607B74D439754F3CC77 /* Pods_Laboratory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7478D3EDDC112D5BBB41CF6A /* Pods_Laboratory.framework */; };
+		EDAFBC08C0F16400DDC7A3CE /* Pods_LaboratoryUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41678ABC9A3EA25B9A1BE722 /* Pods_LaboratoryUnitTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C96425E322B0513200B627F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C34438572281DDFA0021168B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C344385E2281DDFA0021168B;
+			remoteInfo = Laboratory;
+		};
+		C973004222A85D940043E2A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C34438572281DDFA0021168B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C344385E2281DDFA0021168B;
+			remoteInfo = Laboratory;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laboratory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		10E3DC84E0FAA2F2E16F3680 /* Pods-Laboratory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laboratory.release.xcconfig"; path = "Target Support Files/Pods-Laboratory/Pods-Laboratory.release.xcconfig"; sourceTree = "<group>"; };
-		1FDB943BA37C730DFBD050AC /* Pods-Laboratory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laboratory.debug.xcconfig"; path = "Target Support Files/Pods-Laboratory/Pods-Laboratory.debug.xcconfig"; sourceTree = "<group>"; };
+		0F07920B5B9C81E6404AB412 /* Pods-Laboratory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laboratory.debug.xcconfig"; path = "Target Support Files/Pods-Laboratory/Pods-Laboratory.debug.xcconfig"; sourceTree = "<group>"; };
+		41678ABC9A3EA25B9A1BE722 /* Pods_LaboratoryUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaboratoryUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7478D3EDDC112D5BBB41CF6A /* Pods_Laboratory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laboratory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C344385F2281DDFA0021168B /* Laboratory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laboratory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34438622281DDFA0021168B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C34438672281DDFA0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C34438692281DDFC0021168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C344386C2281DDFC0021168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C344386E2281DDFC0021168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C34438752281F7970021168B /* LabTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTVCell.swift; sourceTree = "<group>"; };
-		C34438762281F7970021168B /* LabTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabTVCell.xib; sourceTree = "<group>"; };
-		C344387A2281FC9E0021168B /* LabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVC.swift; sourceTree = "<group>"; };
+		C344387A2281FC9E0021168B /* LabCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVC.swift; sourceTree = "<group>"; };
 		C344387D2282041F0021168B /* Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
-		C34438802282094A0021168B /* LabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabVM.swift; sourceTree = "<group>"; };
-		C361E0FB2283258900938933 /* LabSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabSvc.swift; sourceTree = "<group>"; };
-		C361E0FD22833EC800938933 /* LabCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateVC.swift; sourceTree = "<group>"; };
-		C3A1C7E02283849C00966461 /* LabItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemTVCell.swift; sourceTree = "<group>"; };
-		C3A1C7E12283849C00966461 /* LabItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabItemTVCell.xib; sourceTree = "<group>"; };
-		C3A1C7E42283854D00966461 /* LabItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVM.swift; sourceTree = "<group>"; };
-		C3A1C7E6228385B700966461 /* LabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItem.swift; sourceTree = "<group>"; };
-		C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabItemVC.swift; sourceTree = "<group>"; };
+		C34438802282094A0021168B /* LabCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVM.swift; sourceTree = "<group>"; };
+		C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCell.swift; sourceTree = "<group>"; };
+		C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabEquipmentTVCell.xib; sourceTree = "<group>"; };
+		C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentVM.swift; sourceTree = "<group>"; };
+		C3A1C7E6228385B700966461 /* LabEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipment.swift; sourceTree = "<group>"; };
+		C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVC.swift; sourceTree = "<group>"; };
 		C3C64F202284C6D300222828 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C883323A7654C17EE2EAB70F /* Pods-LaboratoryUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaboratoryUnitTests.debug.xcconfig"; path = "Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C900357F2296E96500471EE7 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVC.swift; sourceTree = "<group>"; };
+		C903D5AC22AAEFA900D1A79B /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVCTest.swift; sourceTree = "<group>"; };
+		C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoryboard.swift; sourceTree = "<group>"; };
+		C903D5B222AB0EF600D1A79B /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		C9154D3222CD211100ADDE8F /* EquipmentCreateUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCreateUITest.swift; sourceTree = "<group>"; };
+		C9156F7122C144350039DC18 /* LabCreateUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCreateUITest.swift; sourceTree = "<group>"; };
+		C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHighlightable.swift; sourceTree = "<group>"; };
+		C938A9CA22D3D8E5004C05D1 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView&NibLoadableView.swift"; sourceTree = "<group>"; };
+		C93B0FF322AE970B0035A9FA /* LabCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabCellVM.swift; sourceTree = "<group>"; };
+		C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionCellTest.swift; sourceTree = "<group>"; };
+		C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCellTest.swift; sourceTree = "<group>"; };
+		C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCellTest.swift; sourceTree = "<group>"; };
+		C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVMTest.swift; sourceTree = "<group>"; };
+		C93B100322AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVMTest.swift; sourceTree = "<group>"; };
+		C93B100522AEF8730035A9FA /* LabEquipmentEditVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVMTest.swift; sourceTree = "<group>"; };
+		C93B100922AF04660035A9FA /* EquipmentInfoVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVMTest.swift; sourceTree = "<group>"; };
+		C93B100D22AF05DB0035A9FA /* EquipmentListVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVMTest.swift; sourceTree = "<group>"; };
+		C93B100F22AF077D0035A9FA /* EquipmentListVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVCTest.swift; sourceTree = "<group>"; };
+		C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVC.swift; sourceTree = "<group>"; };
+		C94020B822C68865006D71DA /* EquipmentUserListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVM.swift; sourceTree = "<group>"; };
+		C94020BA22C688A0006D71DA /* EquipmentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUser.swift; sourceTree = "<group>"; };
+		C940B95F22AA98380025E5AC /* MyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFont.swift; sourceTree = "<group>"; };
+		C940B96122AA98990025E5AC /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
+		C94F58E122B402AB007DEF03 /* MyUITestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITestDelegate.swift; sourceTree = "<group>"; };
+		C94F58E422B40429007DEF03 /* LabInfoViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerUITest.swift; sourceTree = "<group>"; };
+		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
+		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
+		C961847022CA582300B397AD /* EquipmentUserListVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVCTest.swift; sourceTree = "<group>"; };
+		C961847222CA63D600B397AD /* EquipmentInfoVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVCTest.swift; sourceTree = "<group>"; };
+		C961847422CA668100B397AD /* EquipmentUserListVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C961847722CA730000B397AD /* EquipmentUserListViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListViewControllerUITest.swift; sourceTree = "<group>"; };
+		C961847B22CA7DB700B397AD /* EquipmentUserListVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVMTest.swift; sourceTree = "<group>"; };
+		C96425DE22B0513200B627F1 /* LaboratoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96425E222B0513200B627F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C96785C5228DB921005A523A /* EquipmentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVC.swift; sourceTree = "<group>"; };
+		C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentCellSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewSnapshotTest.swift; sourceTree = "<group>"; };
+		C9700C9022B29852004B6B71 /* LabCollectionViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewControllerUITest.swift; sourceTree = "<group>"; };
+		C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addTapRecognizer.swift"; sourceTree = "<group>"; };
+		C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
+		C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboratoryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C973004122A85D940043E2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewControllerTest.swift; sourceTree = "<group>"; };
+		C97B114422949B5C00E90B46 /* FullEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEquipment.swift; sourceTree = "<group>"; };
+		C97B11462294A4EB00E90B46 /* LabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfo.swift; sourceTree = "<group>"; };
+		C97B11482294A57400E90B46 /* LabInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewModel.swift; sourceTree = "<group>"; };
+		C9BA6F6D22CC002B003A2254 /* EquipmentInfoViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoViewControllerUITest.swift; sourceTree = "<group>"; };
+		C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVM.swift; sourceTree = "<group>"; };
+		C9EE234822B18731004AB9BB /* LabCollectionVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE234A22B18874004AB9BB /* LabInfoVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE234C22B188F3004AB9BB /* LabEquipmentSelectionVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE234E22B18960004AB9BB /* LabEquipmentEditVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE235022B19211004AB9BB /* EquipmentListVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE235222B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVCSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE235422B19884004AB9BB /* LabCollectionCellSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionCellSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EE235622B19E9B004AB9BB /* LabEquipmentTVCellSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentTVCellSnapshotTest.swift; sourceTree = "<group>"; };
+		C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVM.swift; sourceTree = "<group>"; };
+		C9EED950229D9707006314A8 /* FirestoreSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSvc.swift; sourceTree = "<group>"; };
+		C9F43E73228F2B740049C68D /* LabInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewController.swift; sourceTree = "<group>"; };
+		C9FD440422C4094B007CA394 /* ImagePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickable.swift; sourceTree = "<group>"; };
+		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
+		DE28679E22BD9C5300CBFC5F /* MyInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInt.swift; sourceTree = "<group>"; };
+		DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVMTest.swift; sourceTree = "<group>"; };
+		DE2867A422BEF3CD00CBFC5F /* AppDelegateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTest.swift; sourceTree = "<group>"; };
+		DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
+		DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUtil.swift; sourceTree = "<group>"; };
+		DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVC.swift; sourceTree = "<group>"; };
+		DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVM.swift; sourceTree = "<group>"; };
+		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		DE4F9A18246877300065FCEF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DE59D055229AFD7300E7FDF1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
+		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
+		DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentTVCell.swift; sourceTree = "<group>"; };
+		DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEquipmentTVCell.xib; sourceTree = "<group>"; };
+		DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquipmentVM.swift; sourceTree = "<group>"; };
+		DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerTest.swift; sourceTree = "<group>"; };
+		DE6B4D8422AD507F006CE211 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditVCTest.swift; sourceTree = "<group>"; };
+		DE6B4D9F22AD8BEC006CE211 /* SpinnerPresentableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpinnerPresentableTest.swift; path = LaboratoryUnitTests/Common/Util/SpinnerPresentableTest.swift; sourceTree = SOURCE_ROOT; };
+		DE6B4DAF22AD9DB5006CE211 /* AlertPresentableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentableTest.swift; sourceTree = "<group>"; };
+		DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+initFromNib.swift"; sourceTree = "<group>"; };
+		DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+clearText.swift"; sourceTree = "<group>"; };
+		DE75CF5822B5E3A6006A0780 /* LabEquipmentSelectionViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentSelectionViewControllerUITest.swift; sourceTree = "<group>"; };
+		DE75CF5D22B6E507006A0780 /* LabEquipmentEditUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabEquipmentEditUITest.swift; sourceTree = "<group>"; };
+		DE75CF6122B709DC006A0780 /* EquipmentListViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListViewControllerUITest.swift; sourceTree = "<group>"; };
+		DE7AF430229A094F0008181E /* UITextView+customize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+customize.swift"; sourceTree = "<group>"; };
+		DE9629612287C81800E9EC8D /* LabInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabInfoView.xib; sourceTree = "<group>"; };
+		DEBCB9B322D6202700852B01 /* GillSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GillSans.ttf; sourceTree = "<group>"; };
+		DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GillSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		DEBCB9B722DBACC100852B01 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		DEBCB9B922DC2ECE00852B01 /* MyCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCache.swift; sourceTree = "<group>"; };
+		DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabCollectionViewCell.xib; sourceTree = "<group>"; };
+		DED9152322A2DEC2008139E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DED9152422A2DF32008139E9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E25641097FFA2EE6D6037CAB /* Pods-Laboratory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laboratory.release.xcconfig"; path = "Target Support Files/Pods-Laboratory/Pods-Laboratory.release.xcconfig"; sourceTree = "<group>"; };
+		FB04A1C0046BCD63843BEEC7 /* Pods-LaboratoryUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaboratoryUnitTests.release.xcconfig"; path = "Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +272,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE385219D7705C87E4DF40D /* Pods_Laboratory.framework in Frameworks */,
+				EC182607B74D439754F3CC77 /* Pods_Laboratory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C96425DB22B0513200B627F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C973003A22A85D940043E2A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDAFBC08C0F16400DDC7A3CE /* Pods_LaboratoryUnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,16 +297,19 @@
 		17650FFA73020AE298122108 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1FDB943BA37C730DFBD050AC /* Pods-Laboratory.debug.xcconfig */,
-				10E3DC84E0FAA2F2E16F3680 /* Pods-Laboratory.release.xcconfig */,
+				0F07920B5B9C81E6404AB412 /* Pods-Laboratory.debug.xcconfig */,
+				E25641097FFA2EE6D6037CAB /* Pods-Laboratory.release.xcconfig */,
+				C883323A7654C17EE2EAB70F /* Pods-LaboratoryUnitTests.debug.xcconfig */,
+				FB04A1C0046BCD63843BEEC7 /* Pods-LaboratoryUnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		47C19EBEBC9CCBED164DA046 /* Frameworks */ = {
+		47A919DA5F131794FA99AC45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0B1C97F30C58161CFE1CA1C7 /* Pods_Laboratory.framework */,
+				7478D3EDDC112D5BBB41CF6A /* Pods_Laboratory.framework */,
+				41678ABC9A3EA25B9A1BE722 /* Pods_LaboratoryUnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -85,9 +318,11 @@
 			isa = PBXGroup;
 			children = (
 				C34438612281DDFA0021168B /* Laboratory */,
+				C973003E22A85D940043E2A9 /* LaboratoryUnitTests */,
+				C96425DF22B0513200B627F1 /* LaboratoryUITests */,
 				C34438602281DDFA0021168B /* Products */,
 				17650FFA73020AE298122108 /* Pods */,
-				47C19EBEBC9CCBED164DA046 /* Frameworks */,
+				47A919DA5F131794FA99AC45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				C344385F2281DDFA0021168B /* Laboratory.app */,
+				C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */,
+				C96425DE22B0513200B627F1 /* LaboratoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,66 +339,589 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
-				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
-				C361E0FA2283254E00938933 /* Service */,
-				C344387F228206A80021168B /* ViewModel */,
-				C344387C228202AA0021168B /* Model */,
-				C34438742281F6F10021168B /* View */,
-				C34438792281FC370021168B /* Controller */,
-				C34438622281DDFA0021168B /* AppDelegate.swift */,
-				C34438662281DDFA0021168B /* Main.storyboard */,
-				C34438692281DDFC0021168B /* Assets.xcassets */,
-				C344386B2281DDFC0021168B /* LaunchScreen.storyboard */,
-				C344386E2281DDFC0021168B /* Info.plist */,
+				DE6B4D8222ACC28C006CE211 /* Common */,
+				C344387C228202AA0021168B /* Models */,
+				C34438742281F6F10021168B /* Views */,
+				DE6B4D7F22ACC146006CE211 /* Application */,
+				DE6B4D8122ACC23A006CE211 /* Storyboards */,
+				DE6B4D8322ACC2FE006CE211 /* Resources */,
 			);
 			path = Laboratory;
 			sourceTree = "<group>";
 		};
-		C34438742281F6F10021168B /* View */ = {
+		C34438742281F6F10021168B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C34438752281F7970021168B /* LabTVCell.swift */,
-				C34438762281F7970021168B /* LabTVCell.xib */,
-				C3A1C7E02283849C00966461 /* LabItemTVCell.swift */,
-				C3A1C7E12283849C00966461 /* LabItemTVCell.xib */,
+				DE6B4D8822AD56B3006CE211 /* LabCollectionCell */,
+				C93B0FF222AE954A0035A9FA /* LabInfo */,
+				DE6B4D8A22AD571E006CE211 /* LabEquipmentCell */,
+				DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */,
+				DE6B4D8B22AD576E006CE211 /* EquipmentInfo */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		C34438792281FC370021168B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C344387A2281FC9E0021168B /* LabVC.swift */,
-				C361E0FD22833EC800938933 /* LabCreateVC.swift */,
-				C3AEBCFF2285D2D50031DA3F /* LabItemVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C344387C228202AA0021168B /* Model */ = {
+		C344387C228202AA0021168B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C344387D2282041F0021168B /* Lab.swift */,
-				C3A1C7E6228385B700966461 /* LabItem.swift */,
+				C3A1C7E6228385B700966461 /* LabEquipment.swift */,
+				DE42094A228BCCF100ADFEA1 /* Equipment.swift */,
+				C97B114422949B5C00E90B46 /* FullEquipment.swift */,
+				C97B11462294A4EB00E90B46 /* LabInfo.swift */,
+				C94020BA22C688A0006D71DA /* EquipmentUser.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		C344387F228206A80021168B /* ViewModel */ = {
+		C90035812296EE6F00471EE7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				C34438802282094A0021168B /* LabVM.swift */,
-				C3A1C7E42283854D00966461 /* LabItemVM.swift */,
+				DE59D055229AFD7300E7FDF1 /* MyColor.swift */,
+				C940B95F22AA98380025E5AC /* MyFont.swift */,
+				C9700C9422B2AA9B004B6B71 /* AccessibilityIdentifier.swift */,
+				DE28679E22BD9C5300CBFC5F /* MyInt.swift */,
 			);
-			path = ViewModel;
+			path = Constants;
 			sourceTree = "<group>";
 		};
-		C361E0FA2283254E00938933 /* Service */ = {
+		C910FDC322B2EC0500DBF442 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C361E0FB2283258900938933 /* LabSvc.swift */,
+				C94F58E122B402AB007DEF03 /* MyUITestDelegate.swift */,
+				DE75CF5422B5C026006A0780 /* XCUIElement+clearText.swift */,
 			);
-			path = Service;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C93B0FF222AE954A0035A9FA /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DE9629612287C81800E9EC8D /* LabInfoView.xib */,
+				DE170D3A228883BE0086DB85 /* LabInfoView.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		C93B0FF822AEB6940035A9FA /* LabCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C93B0FF922AEB6C80035A9FA /* LabCollectionCellTest.swift */,
+				C9EE235422B19884004AB9BB /* LabCollectionCellSnapshotTest.swift */,
+			);
+			path = LabCollectionCell;
+			sourceTree = "<group>";
+		};
+		C93B0FFB22AEE75D0035A9FA /* LabEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C93B0FFC22AEE7880035A9FA /* LabEquipmentTVCellTest.swift */,
+				C9EE235622B19E9B004AB9BB /* LabEquipmentTVCellSnapshotTest.swift */,
+			);
+			path = LabEquipmentCell;
+			sourceTree = "<group>";
+		};
+		C93B0FFE22AEE84F0035A9FA /* SimpleEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C93B0FFF22AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift */,
+				C9700C8722B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift */,
+			);
+			path = SimpleEquipmentCell;
+			sourceTree = "<group>";
+		};
+		C93B100822AF044D0035A9FA /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C93B100922AF04660035A9FA /* EquipmentInfoVMTest.swift */,
+				C9EE235222B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift */,
+				C961847222CA63D600B397AD /* EquipmentInfoVCTest.swift */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		C93B100B22AF05940035A9FA /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				C93B100C22AF05B30035A9FA /* EquipmentList */,
+				C93B100822AF044D0035A9FA /* EquipmentInfo */,
+				C961846F22CA57CB00B397AD /* EquipmentUserList */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		C93B100C22AF05B30035A9FA /* EquipmentList */ = {
+			isa = PBXGroup;
+			children = (
+				C93B100D22AF05DB0035A9FA /* EquipmentListVMTest.swift */,
+				C93B100F22AF077D0035A9FA /* EquipmentListVCTest.swift */,
+				C9EE235022B19211004AB9BB /* EquipmentListVCSnapshotTest.swift */,
+			);
+			path = EquipmentList;
+			sourceTree = "<group>";
+		};
+		C94020B722C686FC006D71DA /* EquipmentUserList */ = {
+			isa = PBXGroup;
+			children = (
+				C94020B522C681A2006D71DA /* EquipmentUserListVC.swift */,
+				C94020B822C68865006D71DA /* EquipmentUserListVM.swift */,
+			);
+			path = EquipmentUserList;
+			sourceTree = "<group>";
+		};
+		C940B95E22AA97230025E5AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE7AF430229A094F0008181E /* UITextView+customize.swift */,
+				DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */,
+				C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C940B96322AAC0890025E5AC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C940B96422AAC0FF0025E5AC /* TestUtil.swift */,
+				C903D5AC22AAEFA900D1A79B /* FakeData.swift */,
+				DE6B4D8422AD507F006CE211 /* Mocks.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C94F58E322B403CD007DEF03 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C94F58E422B40429007DEF03 /* LabInfoViewControllerUITest.swift */,
+				C9156F7122C144350039DC18 /* LabCreateUITest.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		C95F724422B1474E0005F31C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DE75CF5F22B70922006A0780 /* Equipment */,
+				C95F724522B147540005F31C /* Lab */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C95F724522B147540005F31C /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				C95F724622B1475D0005F31C /* LabCollection */,
+				C94F58E322B403CD007DEF03 /* LabInfo */,
+				DE75CF5722B5E340006A0780 /* LabEquipmentSelection */,
+				DE75CF5C22B6E4B8006A0780 /* LabEquipmentEdit */,
+			);
+			path = Lab;
+			sourceTree = "<group>";
+		};
+		C95F724622B1475D0005F31C /* LabCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C9700C9022B29852004B6B71 /* LabCollectionViewControllerUITest.swift */,
+			);
+			path = LabCollection;
+			sourceTree = "<group>";
+		};
+		C961846F22CA57CB00B397AD /* EquipmentUserList */ = {
+			isa = PBXGroup;
+			children = (
+				C961847022CA582300B397AD /* EquipmentUserListVCTest.swift */,
+				C961847422CA668100B397AD /* EquipmentUserListVCSnapshotTest.swift */,
+				C961847B22CA7DB700B397AD /* EquipmentUserListVMTest.swift */,
+			);
+			path = EquipmentUserList;
+			sourceTree = "<group>";
+		};
+		C961847622CA72DC00B397AD /* EquipmentUserList */ = {
+			isa = PBXGroup;
+			children = (
+				C961847722CA730000B397AD /* EquipmentUserListViewControllerUITest.swift */,
+			);
+			path = EquipmentUserList;
+			sourceTree = "<group>";
+		};
+		C96425DF22B0513200B627F1 /* LaboratoryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C910FDC322B2EC0500DBF442 /* Utilities */,
+				C95F724422B1474E0005F31C /* Application */,
+				C96425E222B0513200B627F1 /* Info.plist */,
+			);
+			path = LaboratoryUITests;
+			sourceTree = "<group>";
+		};
+		C9700C8D22B28FF7004B6B71 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9700C8E22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		C973003E22A85D940043E2A9 /* LaboratoryUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D9722AD6DA1006CE211 /* Common */,
+				DE6B4DB422ADA6E5006CE211 /* Views */,
+				DE6B4D9422AD6CF0006CE211 /* Application */,
+				C940B96322AAC0890025E5AC /* Utilities */,
+				C973004122A85D940043E2A9 /* Info.plist */,
+			);
+			path = LaboratoryUnitTests;
+			sourceTree = "<group>";
+		};
+		C9BA6F6C22CC0011003A2254 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9BA6F6D22CC002B003A2254 /* EquipmentInfoViewControllerUITest.swift */,
+				C9154D3222CD211100ADDE8F /* EquipmentCreateUITest.swift */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		DE2867A322BEF3A800CBFC5F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DE2867A422BEF3CD00CBFC5F /* AppDelegateTest.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DE6B4D7E22ACBDBF006CE211 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */,
+				C940B96122AA98990025E5AC /* AlertPresentable.swift */,
+				DE2867A622BFD8AE00CBFC5F /* UserUtil.swift */,
+				DE2867A822BFE40B00CBFC5F /* FirestoreUtil.swift */,
+				C9FD440422C4094B007CA394 /* ImagePickable.swift */,
+				C938A9C822D39A4B004C05D1 /* InputHighlightable.swift */,
+				C938A9CC22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		DE6B4D7F22ACC146006CE211 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D8022ACC14E006CE211 /* Main */,
+				DE6B4D8F22AD588A006CE211 /* Lab */,
+				DE6B4D9022AD5907006CE211 /* Equipment */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DE6B4D8022ACC14E006CE211 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C34438622281DDFA0021168B /* AppDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DE6B4D8122ACC23A006CE211 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C344386B2281DDFC0021168B /* LaunchScreen.storyboard */,
+				C34438662281DDFA0021168B /* Main.storyboard */,
+				DE4F9A18246877300065FCEF /* Login.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DE6B4D8222ACC28C006CE211 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C90035812296EE6F00471EE7 /* Constants */,
+				C940B95E22AA97230025E5AC /* Extensions */,
+				DE6B4D7E22ACBDBF006CE211 /* Util */,
+				DEC45BE92291004D00F164BD /* Miscs */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DE6B4D8322ACC2FE006CE211 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCB9B222D61F4400852B01 /* Fonts */,
+				C3C64F202284C6D300222828 /* GoogleService-Info.plist */,
+				C34438692281DDFC0021168B /* Assets.xcassets */,
+				C344386E2281DDFC0021168B /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DE6B4D8622AD55BA006CE211 /* LabCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C344387A2281FC9E0021168B /* LabCollectionVC.swift */,
+				C34438802282094A0021168B /* LabCollectionVM.swift */,
+			);
+			path = LabCollection;
+			sourceTree = "<group>";
+		};
+		DE6B4D8722AD55D1006CE211 /* EquipmentList */ = {
+			isa = PBXGroup;
+			children = (
+				DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */,
+				DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */,
+			);
+			path = EquipmentList;
+			sourceTree = "<group>";
+		};
+		DE6B4D8822AD56B3006CE211 /* LabCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				DEC9C88222A0C79D00DA80FD /* LabCollectionViewCell.swift */,
+				DEC9C88322A0C79D00DA80FD /* LabCollectionViewCell.xib */,
+				C93B0FF322AE970B0035A9FA /* LabCellVM.swift */,
+			);
+			path = LabCollectionCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8922AD56DF006CE211 /* SimpleEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE605A2422892E4E00D1B679 /* SimpleEquipmentTVCell.swift */,
+				DE605A2522892E4E00D1B679 /* SimpleEquipmentTVCell.xib */,
+				DE605A282289337800D1B679 /* SimpleEquipmentVM.swift */,
+			);
+			path = SimpleEquipmentCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8A22AD571E006CE211 /* LabEquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				C3A1C7E02283849C00966461 /* LabEquipmentTVCell.swift */,
+				C3A1C7E12283849C00966461 /* LabEquipmentTVCell.xib */,
+				C3A1C7E42283854D00966461 /* LabEquipmentVM.swift */,
+			);
+			path = LabEquipmentCell;
+			sourceTree = "<group>";
+		};
+		DE6B4D8B22AD576E006CE211 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */,
+				C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4D8C22AD5819006CE211 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9F43E73228F2B740049C68D /* LabInfoViewController.swift */,
+				C97B11482294A57400E90B46 /* LabInfoViewModel.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4D8D22AD5850006CE211 /* LabEquipmentSelection */ = {
+			isa = PBXGroup;
+			children = (
+				C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */,
+				C9C6D3252295D75500D12D87 /* LabEquipmentSelectionVM.swift */,
+			);
+			path = LabEquipmentSelection;
+			sourceTree = "<group>";
+		};
+		DE6B4D8E22AD5872006CE211 /* LabEquipmentEdit */ = {
+			isa = PBXGroup;
+			children = (
+				C900C39D229730C60053FDBD /* LabEquipmentEditVC.swift */,
+				C9EED94E229D8323006314A8 /* LabEquipmentEditVM.swift */,
+			);
+			path = LabEquipmentEdit;
+			sourceTree = "<group>";
+		};
+		DE6B4D8F22AD588A006CE211 /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D8622AD55BA006CE211 /* LabCollection */,
+				DE6B4D8C22AD5819006CE211 /* LabInfo */,
+				DE6B4D8D22AD5850006CE211 /* LabEquipmentSelection */,
+				DE6B4D8E22AD5872006CE211 /* LabEquipmentEdit */,
+			);
+			path = Lab;
+			sourceTree = "<group>";
+		};
+		DE6B4D9022AD5907006CE211 /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D8722AD55D1006CE211 /* EquipmentList */,
+				DE6B4D9122AD5927006CE211 /* EquipmentInfo */,
+				C94020B722C686FC006D71DA /* EquipmentUserList */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		DE6B4D9122AD5927006CE211 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C96785C5228DB921005A523A /* EquipmentInfoVC.swift */,
+				DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4D9422AD6CF0006CE211 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DE2867A322BEF3A800CBFC5F /* Main */,
+				C93B100B22AF05940035A9FA /* Equipment */,
+				DE6B4D9522AD6CFB006CE211 /* Lab */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DE6B4D9522AD6CFB006CE211 /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D9922AD6DBD006CE211 /* LabCollection */,
+				DE6B4D9C22AD6DE2006CE211 /* LabInfo */,
+				DE6B4D9B22AD6DD8006CE211 /* LabEquipmentSelection */,
+				DE6B4D9A22AD6DCF006CE211 /* LabEquipmentEdit */,
+			);
+			path = Lab;
+			sourceTree = "<group>";
+		};
+		DE6B4D9722AD6DA1006CE211 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D9822AD6DA8006CE211 /* Util */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DE6B4D9822AD6DA8006CE211 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D9F22AD8BEC006CE211 /* SpinnerPresentableTest.swift */,
+				DE6B4DAF22AD9DB5006CE211 /* AlertPresentableTest.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		DE6B4D9922AD6DBD006CE211 /* LabCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C973004722A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift */,
+				C93B100122AEEBAD0035A9FA /* LabCollectionVMTest.swift */,
+				C9EE234822B18731004AB9BB /* LabCollectionVCSnapshotTest.swift */,
+			);
+			path = LabCollection;
+			sourceTree = "<group>";
+		};
+		DE6B4D9A22AD6DCF006CE211 /* LabEquipmentEdit */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D9222AD5A51006CE211 /* LabEquipmentEditVCTest.swift */,
+				C93B100522AEF8730035A9FA /* LabEquipmentEditVMTest.swift */,
+				C9EE234E22B18960004AB9BB /* LabEquipmentEditVCSnapshotTest.swift */,
+			);
+			path = LabEquipmentEdit;
+			sourceTree = "<group>";
+		};
+		DE6B4D9B22AD6DD8006CE211 /* LabEquipmentSelection */ = {
+			isa = PBXGroup;
+			children = (
+				C903D5AE22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift */,
+				C93B100322AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift */,
+				C9EE234C22B188F3004AB9BB /* LabEquipmentSelectionVCSnapshotTest.swift */,
+			);
+			path = LabEquipmentSelection;
+			sourceTree = "<group>";
+		};
+		DE6B4D9C22AD6DE2006CE211 /* LabInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DE6B4D7C22AA1D50006CE211 /* LabInfoViewControllerTest.swift */,
+				C9EE234A22B18874004AB9BB /* LabInfoVCSnapshotTest.swift */,
+				DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */,
+			);
+			path = LabInfo;
+			sourceTree = "<group>";
+		};
+		DE6B4DB422ADA6E5006CE211 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9700C8D22B28FF7004B6B71 /* LabInfo */,
+				C93B0FF822AEB6940035A9FA /* LabCollectionCell */,
+				C93B0FFB22AEE75D0035A9FA /* LabEquipmentCell */,
+				C93B0FFE22AEE84F0035A9FA /* SimpleEquipmentCell */,
+				DE6B4DB522ADA73C006CE211 /* EquipmentInfo */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE6B4DB522ADA73C006CE211 /* EquipmentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9700C8B22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift */,
+			);
+			path = EquipmentInfo;
+			sourceTree = "<group>";
+		};
+		DE75CF5722B5E340006A0780 /* LabEquipmentSelection */ = {
+			isa = PBXGroup;
+			children = (
+				DE75CF5822B5E3A6006A0780 /* LabEquipmentSelectionViewControllerUITest.swift */,
+			);
+			path = LabEquipmentSelection;
+			sourceTree = "<group>";
+		};
+		DE75CF5C22B6E4B8006A0780 /* LabEquipmentEdit */ = {
+			isa = PBXGroup;
+			children = (
+				DE75CF5D22B6E507006A0780 /* LabEquipmentEditUITest.swift */,
+			);
+			path = LabEquipmentEdit;
+			sourceTree = "<group>";
+		};
+		DE75CF5F22B70922006A0780 /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				C9BA6F6C22CC0011003A2254 /* EquipmentInfo */,
+				C961847622CA72DC00B397AD /* EquipmentUserList */,
+				DE75CF6022B7092A006A0780 /* EquipmentList */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		DE75CF6022B7092A006A0780 /* EquipmentList */ = {
+			isa = PBXGroup;
+			children = (
+				DE75CF6122B709DC006A0780 /* EquipmentListViewControllerUITest.swift */,
+			);
+			path = EquipmentList;
+			sourceTree = "<group>";
+		};
+		DEBCB9B222D61F4400852B01 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCB9B422D6202700852B01 /* GillSans-SemiBold.ttf */,
+				DEBCB9B322D6202700852B01 /* GillSans.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DEC45BE92291004D00F164BD /* Miscs */ = {
+			isa = PBXGroup;
+			children = (
+				C938A9CA22D3D8E5004C05D1 /* MyButton.swift */,
+				C900357F2296E96500471EE7 /* Enums.swift */,
+				C9EED950229D9707006314A8 /* FirestoreSvc.swift */,
+				C903D5B022AB0B8F00D1A79B /* MyStoryboard.swift */,
+				C903D5B222AB0EF600D1A79B /* MyViewController.swift */,
+				DEBCB9B722DBACC100852B01 /* Dynamic.swift */,
+				DEBCB9B922DC2ECE00852B01 /* MyCache.swift */,
+			);
+			path = Miscs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,11 +931,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C34438712281DDFC0021168B /* Build configuration list for PBXNativeTarget "Laboratory" */;
 			buildPhases = (
-				3F62CFA73FDB12B48C9AFFED /* [CP] Check Pods Manifest.lock */,
+				4180ECFFE5A374B6C4293933 /* [CP] Check Pods Manifest.lock */,
 				C344385B2281DDFA0021168B /* Sources */,
 				C344385C2281DDFA0021168B /* Frameworks */,
 				C344385D2281DDFA0021168B /* Resources */,
-				A31AF45258D394B0884A2036 /* [CP] Embed Pods Frameworks */,
+				697637AEEC954E36CC7463DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,18 +946,71 @@
 			productReference = C344385F2281DDFA0021168B /* Laboratory.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C96425DD22B0513200B627F1 /* LaboratoryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C96425E722B0513200B627F1 /* Build configuration list for PBXNativeTarget "LaboratoryUITests" */;
+			buildPhases = (
+				C96425DA22B0513200B627F1 /* Sources */,
+				C96425DB22B0513200B627F1 /* Frameworks */,
+				C96425DC22B0513200B627F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C96425E422B0513200B627F1 /* PBXTargetDependency */,
+			);
+			name = LaboratoryUITests;
+			productName = LaboratoryUITests;
+			productReference = C96425DE22B0513200B627F1 /* LaboratoryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		C973003C22A85D940043E2A9 /* LaboratoryUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C973004422A85D940043E2A9 /* Build configuration list for PBXNativeTarget "LaboratoryUnitTests" */;
+			buildPhases = (
+				701C2119F39D3DD775420916 /* [CP] Check Pods Manifest.lock */,
+				C973003922A85D940043E2A9 /* Sources */,
+				C973003A22A85D940043E2A9 /* Frameworks */,
+				C973003B22A85D940043E2A9 /* Resources */,
+				90BBD9586A7E73830ADB6BAA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C973004322A85D940043E2A9 /* PBXTargetDependency */,
+			);
+			name = LaboratoryUnitTests;
+			productName = LaboratoryUnitTests;
+			productReference = C973003D22A85D940043E2A9 /* LaboratoryUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C34438572281DDFA0021168B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = 2Letters;
 				TargetAttributes = {
 					C344385E2281DDFA0021168B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
+					C96425DD22B0513200B627F1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = C344385E2281DDFA0021168B;
+					};
+					C973003C22A85D940043E2A9 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = C344385E2281DDFA0021168B;
 					};
 				};
 			};
@@ -208,6 +1021,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = C34438562281DDFA0021168B;
 			productRefGroup = C34438602281DDFA0021168B /* Products */;
@@ -215,6 +1029,8 @@
 			projectRoot = "";
 			targets = (
 				C344385E2281DDFA0021168B /* Laboratory */,
+				C973003C22A85D940043E2A9 /* LaboratoryUnitTests */,
+				C96425DD22B0513200B627F1 /* LaboratoryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,19 +1040,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE605A2722892E4E00D1B679 /* SimpleEquipmentTVCell.xib in Resources */,
+				DEBCB9B522D6202700852B01 /* GillSans.ttf in Resources */,
 				C344386D2281DDFC0021168B /* LaunchScreen.storyboard in Resources */,
+				DEC9C88522A0C79D00DA80FD /* LabCollectionViewCell.xib in Resources */,
+				C9602492228CBC2800CC77A9 /* EquipmentInfoView.xib in Resources */,
+				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
-				C34438782281F7970021168B /* LabTVCell.xib in Resources */,
-				C3A1C7E32283849C00966461 /* LabItemTVCell.xib in Resources */,
+				DE4F9A19246877300065FCEF /* Login.storyboard in Resources */,
+				DEBCB9B622D6202700852B01 /* GillSans-SemiBold.ttf in Resources */,
+				C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */,
 				C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C96425DC22B0513200B627F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C973003B22A85D940043E2A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3F62CFA73FDB12B48C9AFFED /* [CP] Check Pods Manifest.lock */ = {
+		4180ECFFE5A374B6C4293933 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,7 +1094,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A31AF45258D394B0884A2036 /* [CP] Embed Pods Frameworks */ = {
+		697637AEEC954E36CC7463DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		701C2119F39D3DD775420916 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,30 +1119,35 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"$(DERIVED_FILE_DIR)/Pods-LaboratoryUnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90BBD9586A7E73830ADB6BAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -299,27 +1157,147 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C361E0FE22833EC800938933 /* LabCreateVC.swift in Sources */,
-				C344387B2281FC9E0021168B /* LabVC.swift in Sources */,
-				C3A1C7E7228385B700966461 /* LabItem.swift in Sources */,
-				C34438772281F7970021168B /* LabTVCell.swift in Sources */,
+				C93B0FF422AE970B0035A9FA /* LabCellVM.swift in Sources */,
+				C938A9CD22D3F01D004C05D1 /* ReusableView&NibLoadableView.swift in Sources */,
+				DE605A2622892E4E00D1B679 /* SimpleEquipmentTVCell.swift in Sources */,
+				DEBCB9B822DBACC100852B01 /* Dynamic.swift in Sources */,
+				DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */,
+				C97B11472294A4EB00E90B46 /* LabInfo.swift in Sources */,
+				C9602490228CBB4700CC77A9 /* EquipmentInfoView.swift in Sources */,
+				C94020B622C681A2006D71DA /* EquipmentUserListVC.swift in Sources */,
+				DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */,
+				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
+				DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */,
+				C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */,
+				DE2867A722BFD8AE00CBFC5F /* UserUtil.swift in Sources */,
+				DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */,
+				C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */,
+				C903D5B322AB0EF600D1A79B /* MyViewController.swift in Sources */,
+				C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */,
+				DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */,
+				C9C6D3262295D75500D12D87 /* LabEquipmentSelectionVM.swift in Sources */,
+				DE7AF431229A094F0008181E /* UITextView+customize.swift in Sources */,
+				C9F43E74228F2B740049C68D /* LabInfoViewController.swift in Sources */,
+				C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */,
+				C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
-				C3AEBD002285D2D50031DA3F /* LabItemVC.swift in Sources */,
-				C361E0FC2283258900938933 /* LabSvc.swift in Sources */,
+				C938A9C922D39A4B004C05D1 /* InputHighlightable.swift in Sources */,
+				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
+				C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */,
+				C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */,
+				C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
-				C3A1C7E22283849C00966461 /* LabItemTVCell.swift in Sources */,
-				C3A1C7E52283854D00966461 /* LabItemVM.swift in Sources */,
-				C34438812282094A0021168B /* LabVM.swift in Sources */,
+				C940B96022AA98380025E5AC /* MyFont.swift in Sources */,
+				C90035802296E96500471EE7 /* Enums.swift in Sources */,
+				C9700C9522B2AA9B004B6B71 /* AccessibilityIdentifier.swift in Sources */,
+				DE2867A922BFE40B00CBFC5F /* FirestoreUtil.swift in Sources */,
+				DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */,
+				DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */,
+				C3A1C7E22283849C00966461 /* LabEquipmentTVCell.swift in Sources */,
+				C938A9CB22D3D8E5004C05D1 /* MyButton.swift in Sources */,
+				C97B11492294A57400E90B46 /* LabInfoViewModel.swift in Sources */,
+				C3A1C7E52283854D00966461 /* LabEquipmentVM.swift in Sources */,
+				C940B96222AA98990025E5AC /* AlertPresentable.swift in Sources */,
+				DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */,
+				DEBCB9BA22DC2ECE00852B01 /* MyCache.swift in Sources */,
+				C34438812282094A0021168B /* LabCollectionVM.swift in Sources */,
+				DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */,
+				C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */,
+				DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */,
+				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,
+				C94020BB22C688A0006D71DA /* EquipmentUser.swift in Sources */,
+				C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C96425DA22B0513200B627F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE75CF5522B5C026006A0780 /* XCUIElement+clearText.swift in Sources */,
+				C94F58E022B3F625007DEF03 /* MyStoryboard.swift in Sources */,
+				DE2867A022BD9C5300CBFC5F /* MyInt.swift in Sources */,
+				C9BA6F6E22CC002B003A2254 /* EquipmentInfoViewControllerUITest.swift in Sources */,
+				DE75CF5E22B6E507006A0780 /* LabEquipmentEditUITest.swift in Sources */,
+				DE75CF5622B5DCC4006A0780 /* AlertPresentable.swift in Sources */,
+				C9700C9122B29852004B6B71 /* LabCollectionViewControllerUITest.swift in Sources */,
+				C910FDC122B2E14100DBF442 /* AccessibilityIdentifier.swift in Sources */,
+				C961847822CA730000B397AD /* EquipmentUserListViewControllerUITest.swift in Sources */,
+				C94F58E522B40429007DEF03 /* LabInfoViewControllerUITest.swift in Sources */,
+				C94F58E222B402AB007DEF03 /* MyUITestDelegate.swift in Sources */,
+				DE75CF5922B5E3A6006A0780 /* LabEquipmentSelectionViewControllerUITest.swift in Sources */,
+				C9154D3322CD211100ADDE8F /* EquipmentCreateUITest.swift in Sources */,
+				C94F58DF22B3EF8E007DEF03 /* MyViewController.swift in Sources */,
+				DE75CF6222B709DC006A0780 /* EquipmentListViewControllerUITest.swift in Sources */,
+				C9156F7222C144350039DC18 /* LabCreateUITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C973003922A85D940043E2A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C93B100222AEEBAD0035A9FA /* LabCollectionVMTest.swift in Sources */,
+				C9EE234D22B188F3004AB9BB /* LabEquipmentSelectionVCSnapshotTest.swift in Sources */,
+				C940B96522AAC0FF0025E5AC /* TestUtil.swift in Sources */,
+				C973004822A85E0E0043E2A9 /* LabCollectionViewControllerTest.swift in Sources */,
+				C9EE235722B19E9B004AB9BB /* LabEquipmentTVCellSnapshotTest.swift in Sources */,
+				C9EE235522B19884004AB9BB /* LabCollectionCellSnapshotTest.swift in Sources */,
+				C961847522CA668100B397AD /* EquipmentUserListVCSnapshotTest.swift in Sources */,
+				C93B100E22AF05DB0035A9FA /* EquipmentListVMTest.swift in Sources */,
+				C93B100A22AF04660035A9FA /* EquipmentInfoVMTest.swift in Sources */,
+				DE6B4DB022AD9DB5006CE211 /* AlertPresentableTest.swift in Sources */,
+				C93B100422AEF37B0035A9FA /* LabEquipmentSelectionVMTest.swift in Sources */,
+				C938A9CE22D3F048004C05D1 /* ReusableView&NibLoadableView.swift in Sources */,
+				C903D5AD22AAEFA900D1A79B /* FakeData.swift in Sources */,
+				C9EE234B22B18874004AB9BB /* LabInfoVCSnapshotTest.swift in Sources */,
+				DE2867A522BEF3CD00CBFC5F /* AppDelegateTest.swift in Sources */,
+				DE6B4DA022AD8BEC006CE211 /* SpinnerPresentableTest.swift in Sources */,
+				C93B0FFD22AEE7880035A9FA /* LabEquipmentTVCellTest.swift in Sources */,
+				C9EE234F22B18960004AB9BB /* LabEquipmentEditVCSnapshotTest.swift in Sources */,
+				DE6B4D8522AD507F006CE211 /* Mocks.swift in Sources */,
+				C93B100022AEE89C0035A9FA /* SimpleEquipmentTVCellTest.swift in Sources */,
+				C93B101022AF077D0035A9FA /* EquipmentListVCTest.swift in Sources */,
+				DE6B4D9322AD5A51006CE211 /* LabEquipmentEditVCTest.swift in Sources */,
+				DE2867A222BDB32700CBFC5F /* LabInfoVMTest.swift in Sources */,
+				C93B100622AEF8730035A9FA /* LabEquipmentEditVMTest.swift in Sources */,
+				C961847122CA582300B397AD /* EquipmentUserListVCTest.swift in Sources */,
+				C9EE235322B1928E004AB9BB /* EquipmentInfoVCSnapshotTest.swift in Sources */,
+				C9700C8822B2805A004B6B71 /* SimpleEquipmentCellSnapshotTest.swift in Sources */,
+				C9EE235122B19211004AB9BB /* EquipmentListVCSnapshotTest.swift in Sources */,
+				C93B0FFA22AEB6C80035A9FA /* LabCollectionCellTest.swift in Sources */,
+				C9EE234922B18731004AB9BB /* LabCollectionVCSnapshotTest.swift in Sources */,
+				C961847C22CA7DB700B397AD /* EquipmentUserListVMTest.swift in Sources */,
+				C961847322CA63D600B397AD /* EquipmentInfoVCTest.swift in Sources */,
+				C9700C8F22B2900A004B6B71 /* LabInfoViewSnapshotTest.swift in Sources */,
+				C9700C8C22B28D0D004B6B71 /* EquipmentInfoViewSnapshotTest.swift in Sources */,
+				C903D5AF22AB096D00D1A79B /* LabEquipmentSelectionVCTest.swift in Sources */,
+				DE6B4D7D22AA1D50006CE211 /* LabInfoViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C96425E422B0513200B627F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C344385E2281DDFA0021168B /* Laboratory */;
+			targetProxy = C96425E322B0513200B627F1 /* PBXContainerItemProxy */;
+		};
+		C973004322A85D940043E2A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C344385E2281DDFA0021168B /* Laboratory */;
+			targetProxy = C973004222A85D940043E2A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C34438662281DDFA0021168B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C34438672281DDFA0021168B /* Base */,
+				DED9152322A2DEC2008139E9 /* en */,
+				DED9152422A2DF32008139E9 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -339,6 +1317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -386,7 +1365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -400,6 +1379,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -441,7 +1421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -453,13 +1433,14 @@
 		};
 		C34438722281DDFC0021168B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FDB943BA37C730DFBD050AC /* Pods-Laboratory.debug.xcconfig */;
+			baseConfigurationReference = 0F07920B5B9C81E6404AB412 /* Pods-Laboratory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
-				INFOPLIST_FILE = Laboratory/Info.plist;
+				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,20 +1448,21 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		C34438732281DDFC0021168B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10E3DC84E0FAA2F2E16F3680 /* Pods-Laboratory.release.xcconfig */;
+			baseConfigurationReference = E25641097FFA2EE6D6037CAB /* Pods-Laboratory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H63XNGVZ25;
-				INFOPLIST_FILE = Laboratory/Info.plist;
+				INFOPLIST_FILE = Laboratory/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,8 +1470,100 @@
 				PRODUCT_BUNDLE_IDENTIFIER = twoletters.Laboratory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C96425E522B0513200B627F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				INFOPLIST_FILE = LaboratoryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Laboratory;
+			};
+			name = Debug;
+		};
+		C96425E622B0513200B627F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				INFOPLIST_FILE = LaboratoryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Laboratory;
+			};
+			name = Release;
+		};
+		C973004522A85D940043E2A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C883323A7654C17EE2EAB70F /* Pods-LaboratoryUnitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
+				INFOPLIST_FILE = LaboratoryUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laboratory.app/Laboratory";
+			};
+			name = Debug;
+		};
+		C973004622A85D940043E2A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB04A1C0046BCD63843BEEC7 /* Pods-LaboratoryUnitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H63XNGVZ25;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
+				INFOPLIST_FILE = LaboratoryUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = twoletters.LaboratoryUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laboratory.app/Laboratory";
 			};
 			name = Release;
 		};
@@ -503,7 +1577,7 @@
 				C34438702281DDFC0021168B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C34438712281DDFC0021168B /* Build configuration list for PBXNativeTarget "Laboratory" */ = {
 			isa = XCConfigurationList;
@@ -512,7 +1586,25 @@
 				C34438732281DDFC0021168B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		C96425E722B0513200B627F1 /* Build configuration list for PBXNativeTarget "LaboratoryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C96425E522B0513200B627F1 /* Debug */,
+				C96425E622B0513200B627F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C973004422A85D940043E2A9 /* Build configuration list for PBXNativeTarget "LaboratoryUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C973004522A85D940043E2A9 /* Debug */,
+				C973004622A85D940043E2A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
