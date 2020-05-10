@@ -47,10 +47,10 @@ class SpinnerViewController: UIViewController {
         view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
+        view.addSubview(spinner)
         addConstraints()
         
         spinner.startAnimating()
-        view.addSubview(spinner)
     }
     
     private func addConstraints() {

@@ -102,10 +102,10 @@ class LabInfoViewController: UIViewController, SpinnerPresentable, AlertPresenta
     private func setupAddEquipmentButton() {
         let addEquipmentButton = labInfoView.addEquipmentButton!
         if isCreatingNewLab {
-            addEquipmentButton.setTitle("Add Equipments", for: .normal)
+            addEquipmentButton.setTitle("Add Equipment", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(addEquipments), for: .touchUpInside)
         } else {
-            addEquipmentButton.setTitle("Edit Equipments", for: .normal)
+            addEquipmentButton.setTitle("Edit Equipment", for: .normal)
             addEquipmentButton.addTarget(self, action: #selector(editEquipments), for: .touchUpInside)
         }
     }

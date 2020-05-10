@@ -49,7 +49,7 @@ class EquipmentListVC: UIViewController {
     
     // MARK: Layout
     private func setupUI() {
-        navigationItem.title = "Equipments"
+        navigationItem.title = "Equipment"
         
         searchBar.backgroundImage = UIImage()
         
@@ -69,7 +69,7 @@ class EquipmentListVC: UIViewController {
     }
     
     private func addRefreshControl() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipments Data ...")
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Equipment Data ...")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         if #available(iOS 10.0, *) {
             equipmentTableView.refreshControl = refreshControl

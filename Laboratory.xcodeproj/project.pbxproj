@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -95,6 +95,7 @@
 		DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */; };
 		DE420949228BCC6A00ADFEA1 /* EquipmentInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */; };
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
+		DE4F9A19246877300065FCEF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4F9A18246877300065FCEF /* Login.storyboard */; };
 		DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* MyColor.swift */; };
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
 		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
@@ -190,7 +191,6 @@
 		C940B96422AAC0FF0025E5AC /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		C94F58E122B402AB007DEF03 /* MyUITestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITestDelegate.swift; sourceTree = "<group>"; };
 		C94F58E422B40429007DEF03 /* LabInfoViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewControllerUITest.swift; sourceTree = "<group>"; };
-		C95B514822D78815006B18CF /* Laboratory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Laboratory.entitlements; sourceTree = "<group>"; };
 		C960248F228CBB4700CC77A9 /* EquipmentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoView.swift; sourceTree = "<group>"; };
 		C9602491228CBC2800CC77A9 /* EquipmentInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentInfoView.xib; sourceTree = "<group>"; };
 		C961847022CA582300B397AD /* EquipmentUserListVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUserListVCTest.swift; sourceTree = "<group>"; };
@@ -236,6 +236,7 @@
 		DE420944228BC15900ADFEA1 /* EquipmentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVC.swift; sourceTree = "<group>"; };
 		DE420948228BCC6A00ADFEA1 /* EquipmentInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentInfoVM.swift; sourceTree = "<group>"; };
 		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		DE4F9A18246877300065FCEF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DE59D055229AFD7300E7FDF1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
 		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
@@ -338,7 +339,6 @@
 		C34438612281DDFA0021168B /* Laboratory */ = {
 			isa = PBXGroup;
 			children = (
-				C95B514822D78815006B18CF /* Laboratory.entitlements */,
 				DE6B4D8222ACC28C006CE211 /* Common */,
 				C344387C228202AA0021168B /* Models */,
 				C34438742281F6F10021168B /* Views */,
@@ -628,6 +628,7 @@
 			children = (
 				C344386B2281DDFC0021168B /* LaunchScreen.storyboard */,
 				C34438662281DDFA0021168B /* Main.storyboard */,
+				DE4F9A18246877300065FCEF /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1047,6 +1048,7 @@
 				DE9629622287C81800E9EC8D /* LabInfoView.xib in Resources */,
 				C344386A2281DDFC0021168B /* Assets.xcassets in Resources */,
 				C34438682281DDFA0021168B /* Main.storyboard in Resources */,
+				DE4F9A19246877300065FCEF /* Login.storyboard in Resources */,
 				DEBCB9B622D6202700852B01 /* GillSans-SemiBold.ttf in Resources */,
 				C3A1C7E32283849C00966461 /* LabEquipmentTVCell.xib in Resources */,
 				C3C64F212284C6D300222828 /* GoogleService-Info.plist in Resources */,
@@ -1098,28 +1100,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Laboratory/Pods-Laboratory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1154,20 +1139,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-LaboratoryUnitTests/Pods-LaboratoryUnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

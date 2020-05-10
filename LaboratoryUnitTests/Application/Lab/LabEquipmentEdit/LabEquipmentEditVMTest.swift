@@ -30,15 +30,15 @@ class LabEquipmentEditVMTest: XCTestCase {
     
     func testVariables() {
         // GIVEN
-        sut.editingQuantity = 0
+        sut.editingQuantity.value = 0
         
         // THEN
         XCTAssertEqual(sut.equipmentName, FakeData.fullEquipment.name)
         XCTAssertEqual(sut.available, FakeData.fullEquipment.available)
-        XCTAssertEqual(sut.isDecreaseBtnEnabled, false)
-        XCTAssertEqual(sut.isIncreaseBtnEnabled, true)
-        XCTAssertEqual(sut.isRemoveBtnEnabled, false)
-        XCTAssertEqual(sut.isSaveBtnEnabled, true)
+        XCTAssertEqual(sut.isDecreaseBtnEnabled.value, false)
+        XCTAssertEqual(sut.isIncreaseBtnEnabled.value, true)
+        XCTAssertEqual(sut.isRemoveBtnEnabled.value, false)
+        XCTAssertEqual(sut.isSaveBtnEnabled.value, true)
     }
     
     // TODO: implement
@@ -70,12 +70,12 @@ class LabEquipmentEditVMTest: XCTestCase {
     func testUpdateQuantityTextField() {
         // GIVEN
         let inputText = "1"
-        sut.editingQuantity = 0
+        sut.editingQuantity.value = 0
         
         // WHEN
         sut.updateQuantityTextField(withText: inputText)
         
         // THEN
-        XCTAssertEqual(sut.editingQuantity, 1)
+        XCTAssertEqual(sut.editingQuantity.value, 1)
     }
 }

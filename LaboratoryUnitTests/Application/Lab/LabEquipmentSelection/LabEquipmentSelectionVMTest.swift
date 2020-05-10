@@ -32,7 +32,7 @@ class LabEquipmentSelectionVMTest: XCTestCase {
         sut.allAvailableEquipmentVMs = FakeData.simpleEquipmentVMs
         sut.displayingAddedEquipmentVMs = []
         sut.displayingAvailableEquipmentVMs = []
-        sut.search(by: searchText1)
+//        sut.search(by: searchText1)
         
         // THEN
         XCTAssertEqual(sut.allAddedEquipmentVMs?.count, sut.displayingAddedEquipmentVMs?.count)
@@ -48,7 +48,7 @@ class LabEquipmentSelectionVMTest: XCTestCase {
         sut.allAvailableEquipmentVMs = FakeData.simpleEquipmentVMs
         sut.displayingAddedEquipmentVMs = []
         sut.displayingAvailableEquipmentVMs = []
-        sut.search(by: searchText2)
+//        sut.search(by: searchText2)
         
         // THEN
         XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 2)
@@ -64,7 +64,7 @@ class LabEquipmentSelectionVMTest: XCTestCase {
         sut.allAvailableEquipmentVMs = FakeData.simpleEquipmentVMs
         sut.displayingAddedEquipmentVMs = []
         sut.displayingAvailableEquipmentVMs = []
-        sut.search(by: searchText3)
+//        sut.search(by: searchText3)
         
         // THEN
         XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 1)

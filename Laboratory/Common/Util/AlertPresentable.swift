@@ -43,7 +43,7 @@ struct AlertString {
     // Titles
     static let succeedToSaveLabTitle = "Successfully saved this lab"
     static let succeedToSaveEquipmentTitle = "Successfully saved this equipment"
-    static let failToLoadLabEquipmentsTitle = "Cannot load equipments"
+    static let failToLoadLabEquipmentsTitle = "Cannot load equipment"
     static let failToLoadEquipmentUserTitle = "Cannot load users"
     static let failToSaveEditTitle = "Cannot save this edit"
     static let failToSaveLabTitle = "Cannot save this Lab"
@@ -58,7 +58,7 @@ struct AlertString {
     // Messages
     static let succeedToSaveLabMessage = "Your lab has been successfully saved"
     static let succeedToSaveEquipmentMessage = "Your equipment has been successfully saved"
-    static let failToLoadLabEquipmentsMessage = "Fail to load equipments for this lab. Please try again later"
+    static let failToLoadLabEquipmentsMessage = "Fail to load equipment for this lab. Please try again later"
     static let failToLoadEquipmentUserMessage = "Fail to load users for this equipment"
     static let failToSaveLabMesage = "Fail to save this lab. Please try again later"
     static let failToSaveEquipmentMessage = "Fail to save this equipment. Please try again later"
@@ -66,7 +66,7 @@ struct AlertString {
     static let failToDeleteLabMessage = "Fail to delete this lab. Please try again later"
     static let failToDeleteEquipmentMessage = "Fail to delete this equipment. Please try again later"
     
-    static let attemptToCreateLabMessage = "Create a Lab is required to add equipments. Would you like to create this Lab?"
+    static let attemptToCreateLabMessage = "Create a Lab is required to add equipment. Would you like to create this Lab?"
     static let attemptToDeleteLabMessage = "Are you sure you want to delete this lab?"
     static let attemptToDeleteEquipmentMessage = "Are you sure you want to delete this equipment?"
     

@@ -37,7 +37,7 @@ class EquipmentListVMTest: XCTestCase {
         // GIVEN
         var isSuccessful = false
         var responseError: String?
-        let promise = expectation(description: "did Fetch all equipments")
+        let promise = expectation(description: "did Fetch all equipment")
         
         // test success
         // WHEN

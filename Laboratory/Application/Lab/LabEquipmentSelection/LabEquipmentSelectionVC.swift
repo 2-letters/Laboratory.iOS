@@ -66,7 +66,7 @@ class LabEquipmentSelectionVC: UIViewController, SpinnerPresentable, AlertPresen
     
     // MARK: Layout
     private func setupUI() {
-        navigationItem.title = "Edit Equipments"
+        navigationItem.title = "Edit Equipment"
         
         searchBar.backgroundImage = UIImage()
         

@@ -52,12 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: "GillSans-SemiBold"))
         
-        // change Status Bar color
-        if application.responds(to: Selector(("statusBar"))),
-        let statusBar = application.value(forKey: "statusBar") as? UIView,
-            statusBar.responds(to: #selector(getter: CATextLayer.foregroundColor)) {
-            statusBar.setValue(UIColor.white, forKey: "foregroundColor")
-        }
+//        // change Status Bar color
+//        if application.responds(to: Selector(("statusBar"))),
+//        let statusBar = application.value(forKey: "statusBar") as? UIView,
+//            statusBar.responds(to: #selector(getter: CATextLayer.foregroundColor)) {
+//            statusBar.setValue(UIColor.white, forKey: "foregroundColor")
+//        }
         
         // change Navigation Bar Background Color
         UINavigationBar.appearance().barTintColor = MyColor.lightLavender

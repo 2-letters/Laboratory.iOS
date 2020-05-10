@@ -14,7 +14,7 @@ class LabCollectionCellSnapshotTest: FBSnapshotTestCase {
     private let cellNibName = "LabCollectionViewCell"
     override func setUp() {
         super.setUp()
-        recordMode = false
+        recordMode = true
     }
     
     func test() {

@@ -34,7 +34,7 @@ class LabEquipmentSelectionVCTest: XCTestCase {
         
         // THEN
         XCTAssertEqual(gestureRecognizers?.count, 1)
-        XCTAssertEqual(sut.navigationItem.title, "Edit Equipments")
+        XCTAssertEqual(sut.navigationItem.title, "Edit Equipment")
         XCTAssertNotNil(sut.spinnerVC.view)
     }
     

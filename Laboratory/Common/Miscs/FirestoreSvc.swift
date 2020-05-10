@@ -14,7 +14,7 @@ struct FirestoreSvc {
     static func fetchAllEquipments(completion: @escaping FetchAllEquipmentHandler) {
         FirestoreUtil.fetchAllEquipmentsOrdered().getDocuments { (snapshot, error) in
             if error != nil {
-                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipments data"))
+                completion(.failure(error?.localizedDescription ?? "ERR fetching Equipment data"))
             } else {
                 var equipmentVMs = [SimpleEquipmentVM]()
                 for document in (snapshot!.documents) {
@@ -31,7 +31,7 @@ struct FirestoreSvc {
         FirestoreUtil.fetchLabEquipments(withId: labId).getDocuments { (snapshot, error) in
                 if error != nil {
                     completion(.failure(error?.localizedDescription
-                        ?? "ERR fetching Lab Equipments data"))
+                        ?? "ERR fetching Lab Equipment data"))
                 } else {
                     var addedEquipments = [LabEquipment]()
                     for document in (snapshot!.documents) {

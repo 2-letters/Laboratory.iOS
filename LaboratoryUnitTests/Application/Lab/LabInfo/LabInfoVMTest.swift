@@ -15,6 +15,7 @@ class LabInfoVMTest: XCTestCase {
     override func setUp() {
         super.setUp()
         sut = FakeData.labInfoVM
+        sut.labInfo = FakeData.labInfo
     }
 
     override func tearDown() {
@@ -31,8 +32,8 @@ class LabInfoVMTest: XCTestCase {
         
         // WHEN
         UserUtil.userId = FakeData.userId
-        
-        sut.fetchLabInfo(byId: FakeData.labId) { (fetchResult) in
+        sut.labId = FakeData.labId
+        sut.fetchLabInfo() { (fetchResult) in
             switch fetchResult {
             case let .failure(errorStr):
                 responseError = errorStr
@@ -54,8 +55,8 @@ class LabInfoVMTest: XCTestCase {
         
         // THEN
         UserUtil.userId = FakeData.wrongUserId
-        
-        sut.fetchLabInfo(byId: FakeData.labId) { (fetchResult) in
+        sut.labId = FakeData.labId
+        sut.fetchLabInfo() { (fetchResult) in
             switch fetchResult {
             case let .failure(errorStr):
                 responseError = errorStr
@@ -81,8 +82,10 @@ class LabInfoVMTest: XCTestCase {
         
         // WHEN
         UserUtil.userId = FakeData.userId
-        
-        sut.saveLab(withNewName: FakeData.newLabNameSave, newDescription: FakeData.newLabDescriptionSave, labId: FakeData.labId) { (updateResult) in
+        sut.labId = FakeData.labId
+        sut.labName = FakeData.newLabNameSave
+        sut.description = FakeData.newLabDescriptionSave
+        sut.saveLab() { (updateResult) in
             switch updateResult {
             case let .failure(errorStr):
                 responseError = errorStr
@@ -101,9 +104,12 @@ class LabInfoVMTest: XCTestCase {
         // GIVEN
         isSuccessful = false
         promise = expectation(description: "Did save lab")
+        sut.labId = nil
+        sut.labName = FakeData.newLabNameCreate
+        sut.description = FakeData.newLabDescriptionCreate
         
         // WHEN
-        sut.saveLab(withNewName: FakeData.newLabNameCreate, newDescription: FakeData.newLabDescriptionCreate, labId: nil) { (updateResult) in
+        sut.saveLab() { (updateResult) in
             switch updateResult {
             case let .failure(errorStr):
                 responseError = errorStr

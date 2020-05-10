@@ -53,7 +53,7 @@ struct FirestoreKey {
     static let users = "users"
     static let institutions = "institutions"
     static let labs = "labs"
-    static let equipments = "equipments"
+    static let equipments = "equipment"
 }
 
 struct LabKey {

@@ -13,7 +13,7 @@ class LabCollectionVCSnapshotTest: FBSnapshotTestCase {
     
     override func setUp() {
         super.setUp()
-        recordMode = false
+        recordMode = true
     }
     
     func test() {

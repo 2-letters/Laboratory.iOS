@@ -11,8 +11,8 @@ import FirebaseFirestore
 
 class LabEquipmentSelectionVM {
     
-    let addedSectionHeader = "Added Equipments"
-    let availableSectionHeader = "Available Equipments"
+    let addedSectionHeader = "Added Equipment"
+    let availableSectionHeader = "Available Equipment"
     
     // "all" keep a copy of everything before the search
     var allAddedEquipmentVMs: [LabEquipmentVM]?
