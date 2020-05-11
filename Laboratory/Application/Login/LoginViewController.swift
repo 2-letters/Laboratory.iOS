@@ -10,13 +10,22 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var loginLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        // TODO: save the actual token
+        let keychain = KeychainUtil().keyChain
+        try! keychain.set("token", key: "token")
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MyViewController.homeTabBar.instance
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -9,6 +9,7 @@
 import UIKit
 
 enum MyViewController: String {
+    case homeTabBar = "HomeTabBarVC"
     case labCollection = "LabCollectionVC"
     case labInfo = "LabInfoVC"
     case labEquipmentSelection = "LabEquipmentSelectionVC"
@@ -16,7 +17,19 @@ enum MyViewController: String {
     case equipmentList = "EquipmentListVC"
     case equipmentInfo = "EquipmentInfoVC"
     case equipmentUserList = "EquipmentUserListVC"
+    
+    case loginNavigation = "LoginNavigationVC"
+    case login = "LoginVC"
+    case signUp = "SignUpVC"
+    case forgotPassword = "ForgotPasswordVC"
     var instance: UIViewController {
-        return MyStoryboard.main.instance.instantiateViewController(withIdentifier: self.rawValue)
+        var storyboard: UIStoryboard
+        switch self {
+            case .loginNavigation, .login, .signUp, .forgotPassword:
+                storyboard = MyStoryboard.login.instance
+            default:
+                storyboard = MyStoryboard.main.instance
+        }
+        return storyboard.instantiateViewController(withIdentifier: self.rawValue)
     }
 }

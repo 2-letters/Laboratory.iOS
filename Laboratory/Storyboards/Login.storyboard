@@ -11,7 +11,7 @@
         <!--Navigation Controller-->
         <scene sceneID="QSY-uW-YR6">
             <objects>
-                <navigationController navigationBarHidden="YES" id="hL7-k1-7BC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationVC" navigationBarHidden="YES" id="hL7-k1-7BC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cbn-Bc-i3a">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-341" y="52"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="GQk-qT-DpV">
             <objects>
-                <viewController id="xDz-Bu-wka" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="xDz-Bu-wka" customClass="LoginViewController" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MDU-Ge-x7A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,6 +86,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-2R-5zE">
                                 <rect key="frame" x="24" y="234" width="272" height="30"/>
                                 <state key="normal" title="LOGIN"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="xDz-Bu-wka" eventType="touchUpInside" id="nj5-in-PZd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -103,15 +106,18 @@
                         <viewLayoutGuide key="safeArea" id="8qh-7B-1Wj"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xte-aY-7sa"/>
+                    <connections>
+                        <outlet property="loginLabel" destination="Ktx-Bh-bIS" id="Eim-PQ-980"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDq-10-hnr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="469.56521739130437" y="51.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="epL-BZ-xdp">
             <objects>
-                <viewController id="bgQ-Eb-c7F" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" id="bgQ-Eb-c7F" customClass="SignUpViewController" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="La6-mI-JNz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="1326" y="51"/>
         </scene>
-        <!--View Controller-->
+        <!--Forgot Password View Controller-->
         <scene sceneID="azM-2y-GJ6">
             <objects>
-                <viewController id="caP-4u-U4w" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordVC" id="caP-4u-U4w" customClass="ForgotPasswordViewController" customModule="Laboratory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ex-r2-XZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

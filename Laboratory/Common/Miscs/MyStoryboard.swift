@@ -10,6 +10,7 @@ import UIKit
 
 enum MyStoryboard: String {
     case main = "Main"
+    case login = "Login"
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)
     }

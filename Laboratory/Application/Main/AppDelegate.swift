@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import KeychainAccess
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,37 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-            
-//        NSSetUncaughtExceptionHandler { exception in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGABRT) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGILL) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGSEGV) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGFPE) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGBUS) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-//        
-//        signal(SIGPIPE) { _ in
-//            print(Thread.callStackSymbols)
-//        }
-        
-        
+        // initial configuration
         FirebaseApp.configure()
+        let keychain = KeychainUtil().keyChain
+        
+        // check if the user logged in
+        if keychain["token"] == nil {
+            showLoginView()
+        } else {
+            showHomeView()
+        }
         
         UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: "GillSans-SemiBold"))
         
@@ -95,7 +74,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    // MARK: - Helpers
+    func showLoginView() {
+        let loginViewController = MyViewController.login.instance
+        let loginNavigationViewController = UINavigationController(rootViewController: loginViewController)
+        self.window?.rootViewController = loginNavigationViewController
+    }
+    
+    func showHomeView() {
+        let homeTabBar = MyViewController.homeTabBar.instance
+        self.window?.rootViewController = homeTabBar
+    }
 }
 
