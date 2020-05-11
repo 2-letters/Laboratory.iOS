@@ -105,6 +105,7 @@ PODS:
   - iOSSnapshotTestCase/Core (6.2.0)
   - iOSSnapshotTestCase/SwiftSupport (6.2.0):
     - iOSSnapshotTestCase/Core
+  - KeychainAccess (4.2.0)
   - leveldb-library (1.22)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -118,6 +119,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - iOSSnapshotTestCase
+  - KeychainAccess
 
 SPEC REPOS:
   trunk:
@@ -137,6 +139,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - iOSSnapshotTestCase
+    - KeychainAccess
     - leveldb-library
     - nanopb
     - Protobuf
@@ -158,10 +161,11 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
+  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
 
-PODFILE CHECKSUM: aaec8cc404fdc8f7f94a075d0330293794794094
+PODFILE CHECKSUM: bf833f0c13c36c11f3f7d85e8dc835ae91be9043
 
 COCOAPODS: 1.8.3

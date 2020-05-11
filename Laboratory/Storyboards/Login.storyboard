@@ -70,10 +70,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmO-k6-a83">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="30"/>
                                         <state key="normal" title="SIGN UP"/>
+                                        <connections>
+                                            <segue destination="bgQ-Eb-c7F" kind="show" id="TT9-5O-R9c"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-k6-wBe">
                                         <rect key="frame" x="0.0" y="42" width="272" height="30"/>
                                         <state key="normal" title="FORGOT PASSWORD?"/>
+                                        <connections>
+                                            <segue destination="caP-4u-U4w" kind="presentation" id="Kkc-VD-DMF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -171,17 +177,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SWC-hg-djs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="HyS-vI-gsE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBZ-E0-TZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="758"/>
+            <point key="canvasLocation" x="1326" y="51"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="azM-2y-GJ6">
             <objects>
                 <viewController id="caP-4u-U4w" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ex-r2-XZ2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="al2-1X-QXj">
@@ -227,7 +234,7 @@ Password?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuC-Jw-ddH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="758"/>
+            <point key="canvasLocation" x="469" y="839"/>
         </scene>
     </scenes>
 </document>

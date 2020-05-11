@@ -97,6 +97,9 @@
 		DE42094B228BCCF100ADFEA1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42094A228BCCF100ADFEA1 /* Equipment.swift */; };
 		DE4F9A19246877300065FCEF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4F9A18246877300065FCEF /* Login.storyboard */; };
 		DE4F9A1C246883200065FCEF /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A1B246883200065FCEF /* LoginTextField.swift */; };
+		DE4F9A1F2468C0010065FCEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A1E2468C0010065FCEF /* LoginViewController.swift */; };
+		DE4F9A212468C24C0065FCEF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A202468C24C0065FCEF /* SignUpViewController.swift */; };
+		DE4F9A232468C25B0065FCEF /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A222468C25B0065FCEF /* ForgotPasswordViewController.swift */; };
 		DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* MyColor.swift */; };
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
 		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
@@ -239,6 +242,9 @@
 		DE42094A228BCCF100ADFEA1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		DE4F9A18246877300065FCEF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DE4F9A1B246883200065FCEF /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		DE4F9A1E2468C0010065FCEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DE4F9A202468C24C0065FCEF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DE4F9A222468C25B0065FCEF /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		DE59D055229AFD7300E7FDF1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
 		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
@@ -602,6 +608,16 @@
 			path = ViewItems;
 			sourceTree = "<group>";
 		};
+		DE4F9A1D2468BFC20065FCEF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DE4F9A1E2468C0010065FCEF /* LoginViewController.swift */,
+				DE4F9A202468C24C0065FCEF /* SignUpViewController.swift */,
+				DE4F9A222468C25B0065FCEF /* ForgotPasswordViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		DE6B4D7E22ACBDBF006CE211 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +635,7 @@
 		DE6B4D7F22ACC146006CE211 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				DE4F9A1D2468BFC20065FCEF /* Login */,
 				DE6B4D8022ACC14E006CE211 /* Main */,
 				DE6B4D8F22AD588A006CE211 /* Lab */,
 				DE6B4D9022AD5907006CE211 /* Equipment */,
@@ -1192,6 +1209,7 @@
 				C9F43E74228F2B740049C68D /* LabInfoViewController.swift in Sources */,
 				C344387B2281FC9E0021168B /* LabCollectionVC.swift in Sources */,
 				C3A1C7E7228385B700966461 /* LabEquipment.swift in Sources */,
+				DE4F9A1F2468C0010065FCEF /* LoginViewController.swift in Sources */,
 				C344387E2282041F0021168B /* Lab.swift in Sources */,
 				C938A9C922D39A4B004C05D1 /* InputHighlightable.swift in Sources */,
 				C96785C6228DB921005A523A /* EquipmentInfoVC.swift in Sources */,
@@ -1199,6 +1217,7 @@
 				C94020B922C68865006D71DA /* EquipmentUserListVM.swift in Sources */,
 				C9EED94F229D8323006314A8 /* LabEquipmentEditVM.swift in Sources */,
 				C34438632281DDFA0021168B /* AppDelegate.swift in Sources */,
+				DE4F9A212468C24C0065FCEF /* SignUpViewController.swift in Sources */,
 				C940B96022AA98380025E5AC /* MyFont.swift in Sources */,
 				C90035802296E96500471EE7 /* Enums.swift in Sources */,
 				C9700C9522B2AA9B004B6B71 /* AccessibilityIdentifier.swift in Sources */,
@@ -1216,6 +1235,7 @@
 				DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */,
 				C903D5B122AB0B8F00D1A79B /* MyStoryboard.swift in Sources */,
 				DEC9C88422A0C79D00DA80FD /* LabCollectionViewCell.swift in Sources */,
+				DE4F9A232468C25B0065FCEF /* ForgotPasswordViewController.swift in Sources */,
 				DE420945228BC15900ADFEA1 /* EquipmentListVC.swift in Sources */,
 				C94020BB22C688A0006D71DA /* EquipmentUser.swift in Sources */,
 				C97B114522949B5C00E90B46 /* FullEquipment.swift in Sources */,

@@ -7,8 +7,9 @@ target 'Laboratory' do
   	# Pods for Laboratory
 	pod 'Firebase/Core'
   	pod 'Firebase/Firestore'
-
 	
+	# https://github.com/kishikawakatsumi/KeychainAccess
+	pod 'KeychainAccess'
 end
 
 target 'LaboratoryUnitTests' do
