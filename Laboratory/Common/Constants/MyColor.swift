@@ -22,4 +22,10 @@ struct MyColor {
 //    UIColor(red:0.50, green:0.45, blue:0.70, alpha:1.0)
     
     static let redWarning = UIColor(red:0.90, green:0.27, blue:0.43, alpha:1.0)
+    
+    static let loginPurple1 = UIColor(red: 0.52, green: 0.37, blue: 0.76, alpha: 1.00)
+    static let loginPurple2 = UIColor(red: 0.57, green: 0.42, blue: 0.81, alpha: 1.00)
+    static let loginPurple3 = UIColor(red: 0.63, green: 0.47, blue: 0.87, alpha: 1.00)
+    static let loginPurple4 = UIColor(red: 0.69, green: 0.52, blue: 0.93, alpha: 1.00)
+    static let loginPurple5 = UIColor(red: 0.75, green: 0.58, blue: 0.99, alpha: 1.00)
 }
