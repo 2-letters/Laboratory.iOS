@@ -37,7 +37,7 @@ Users can create, view, edit, and delete lab sections.
 1. Create a new lab section with helpful information such as name, description, and the list of equipment
 2. View and search by keywords lab sections that the users are in charge of.
 3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.
-4. Delete the unwanted sections.
+4. Delete the sections that are no longer needed.
 
 </br>
 
@@ -63,6 +63,8 @@ In progress.
 
 ## Extras
 Use case diagram
+
+<img src="diagram.png" alt="diagram" width="500"/>
 
 [Project Proposal]: https://drive.google.com/file/d/1MCzDw_U9_WsVgIXtvqrS8UXya_c9Lw3B/view?usp=sharing
 [Project Poster]: https://drive.google.com/file/d/1XkFxiIdr9Jf-WzJl3VLbwwOGRJkKqm9e/view?usp=sharing
