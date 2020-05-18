@@ -40,22 +40,22 @@ of.
 
 ***2.Lab sections***
 
-Users can create, view, edit, and delete lab sections.
-1. Create a new lab section with helpful information such as name, description, and the list of equipment
-2. View and search by keywords lab sections that the users are in charge of.
-3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.
-4. Delete the sections that are no longer needed.
+&nbsp;&nbsp;Users can create, view, edit, and delete lab sections.
+
+&nbsp;&nbsp;1. Create a new lab section with helpful information such as name, description, and the list of equipment
+
+&nbsp;&nbsp;2. View and search by keywords lab sections that the users are in charge of.
+
+&nbsp;&nbsp;3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.
+
+&nbsp;&nbsp;4. Delete the sections that are no longer needed.
 
 </br>
 </br>
 </br>
 </br>
-</br>
-</br>
-</br>
-</br>
 
-<img align="right" src="https://media.giphy.com/media/XcjOToeWwE6N76oL1s/giphy.gif" width="250">
+<img align="right" src="https://media.giphy.com/media/cO7oACdh14Mb3C4zhG/giphy.gif" width="250">
 
 
 ***3.Equipment***
@@ -66,6 +66,8 @@ Normal users can view equipment and request an edit from the department.
 2. Equipment info includes information such as name, description, location, a preview picture, and **a list of users**
 3. The list of users is an important piece of information and can be used to collaborate and share the available equipment in a better manner.
 
+</br>
+</br>
 </br>
 </br>
 </br>
@@ -82,6 +84,8 @@ Normal users can view equipment and request an edit from the department.
   <img src="Screenshots/equipmentInfo.png" width="142" />
   <img src="Screenshots/signUp.png" width="142" />
 </p>
+
+</br>
 
 ## Use case diagram
 
