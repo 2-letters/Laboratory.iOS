@@ -36,7 +36,7 @@ of.
 </br>
 </br>
 
-<img align="left" src="https://media.giphy.com/media/XcjOToeWwE6N76oL1s/giphy.gif" width="250">
+<img align="left" src="https://media.giphy.com/media/gdf1UxIDB5hRS4UwoV/giphy.gif" width="250">
 
 
 
