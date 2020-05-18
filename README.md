@@ -25,9 +25,9 @@ should have different roles, as described in this [diagram](#use-case-diagram).
 1. Both moderators and normal users can sign up and log in 🔑.
 2. Normal users can manage their laboratory sections, meaning viewing, creating, and editing the sections that they are in charge
 of.
-3. Moderators 👩‍💼 can manage laboratory sections of their departmental members.
+3. Moderators can manage laboratory sections of their departmental members.
 4. Normal users can view 🔎 equipment that is available in their department.
-5. Moderators 👩‍💼 can manage the equipment, meaning creating, viewing, and edit equipment of the department.
+5. Moderators can manage the equipment, meaning creating, viewing, and edit equipment of the department.
 
 </br>
 </br>
