@@ -1,13 +1,19 @@
 ![alt laboratory](cover1.png)
+
+![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
+![Swift](https://github.com/2-letters/Laboratory.iOS/workflows/Swift/badge.svg)
+![last commit](https://img.shields.io/github/last-commit/2-letters/Laboratory.iOS)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 An iOS application that helps scientific professionals manage laboratory sections and equipment more collaboratively.
 ## Publications
-There are 2 publications about the projects: [project proposal] and [project poster].
+There are 2 publications about the projects: [Project Proposal] and [Project Poster].
 
 ## Technologies
 Xcode, Swift, MVVM, Google Firebase SDKs.
 
 ## Main features:
-<img align="right" src="Screenshots/places.png" width="250">
+<img align="right" src="https://i.pinimg.com/originals/fa/a1/9f/faa19f083a4c7e5dd0487dd0a64dd163.gif" width="250">
 
 ***1. Users***
 
@@ -35,5 +41,5 @@ of.
 
 ## More information
 
-[project proposal]: https://drive.google.com/file/d/1MCzDw_U9_WsVgIXtvqrS8UXya_c9Lw3B/view?usp=sharing
-[project poster]: https://drive.google.com/file/d/1XkFxiIdr9Jf-WzJl3VLbwwOGRJkKqm9e/view?usp=sharing
+[Project Proposal]: https://drive.google.com/file/d/1MCzDw_U9_WsVgIXtvqrS8UXya_c9Lw3B/view?usp=sharing
+[Project Poster]: https://drive.google.com/file/d/1XkFxiIdr9Jf-WzJl3VLbwwOGRJkKqm9e/view?usp=sharing
