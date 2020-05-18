@@ -61,10 +61,14 @@ In progress.
   <img src="Screenshots/addLabEquipment.png" width="215" />
 </p>
 
-## Extras
-Use case diagram
+## Use case diagram
 
-<img src="diagram.png" alt="diagram" width="500"/>
+<img src="diagram.png" alt="diagram" width="500"/>.
+
+## Contributing and License
+Contributions are more than welcome.
+
+Laboratory is released under the MIT license. [See LICENSE](https://github.com/2-letters/Laboratory.iOS/blob/master/LICENSE) for details.
 
 [Project Proposal]: https://drive.google.com/file/d/1MCzDw_U9_WsVgIXtvqrS8UXya_c9Lw3B/view?usp=sharing
 [Project Poster]: https://drive.google.com/file/d/1XkFxiIdr9Jf-WzJl3VLbwwOGRJkKqm9e/view?usp=sharing
