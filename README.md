@@ -30,6 +30,13 @@ of.
 5. Moderators can manage the equipment, meaning creating, viewing, and edit equipment of the department.
 
 </br>
+</br>
+</br>
+</br>
+
+<img align="left" src="https://media.giphy.com/media/XcjOToeWwE6N76oL1s/giphy.gif" width="250">
+
+
 
 ***2.Lab sections***
 
@@ -40,6 +47,16 @@ Users can create, view, edit, and delete lab sections.
 4. Delete the sections that are no longer needed.
 
 </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<img align="right" src="https://media.giphy.com/media/XcjOToeWwE6N76oL1s/giphy.gif" width="250">
+
 
 ***3.Equipment***
 
@@ -49,8 +66,11 @@ Normal users can view equipment and request an edit from the department.
 2. Equipment info includes information such as name, description, location, a preview picture, and **a list of users**
 3. The list of users is an important piece of information and can be used to collaborate and share the available equipment in a better manner.
 
-## Demos
-In progress.
+</br>
+</br>
+</br>
+</br>
+</br>
 
 ## Screenshots
 
