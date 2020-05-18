@@ -33,6 +33,8 @@ of.
 </br>
 </br>
 </br>
+</br>
+</br>
 
 <img align="left" src="https://media.giphy.com/media/XcjOToeWwE6N76oL1s/giphy.gif" width="250">
 
@@ -46,6 +48,7 @@ of.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Delete the sections that are no longer needed.  
 
+</br>
 </br>
 </br>
 </br>
