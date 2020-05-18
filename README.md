@@ -38,14 +38,16 @@ of.
 
 
 
-***2.Lab sections***
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***2.Lab sections***
 
-&nbsp;&nbsp;Users can create, view, edit, and delete lab sections.  
-&nbsp;&nbsp;1. Create a new lab section with helpful information such as name, description, and the list of equipment.  
-&nbsp;&nbsp;2. View and search by keywords lab sections that the users are in charge of.   
-&nbsp;&nbsp;3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.   
-&nbsp;&nbsp;4. Delete the sections that are no longer needed.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users can create, view, edit, and delete lab sections.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Create a new lab section with helpful information such as name, description, and the list of equipment.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. View and search by keywords lab sections that the users are in charge of.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Edit the name, description, or the list of equipment by changing the quantity of the equipment being used.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Delete the sections that are no longer needed.  
 
+</br>
+</br>
 </br>
 </br>
 </br>
