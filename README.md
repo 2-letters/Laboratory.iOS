@@ -14,7 +14,7 @@ There are 2 publications about the projects: [Project Proposal] and [Project Pos
 [Xcode], [Swift], [MVVM], [Google Firebase SDKs].
 
 ## Main features:
-<img align="right" src="https://media.giphy.com/media/U3yF1DsaNMy1GtStU4/giphy.gif" width="250">
+<img align="right" src="https://media.giphy.com/media/Rfq31tYBT8uFNOWEXT/giphy.gif" width="250">
 
 ***1. Users***
 
@@ -55,10 +55,11 @@ In progress.
 ## Screenshots
 
 <p float="left">
-  <img src="Screenshots/equipmentList.png" width="215" />
-  <img src="Screenshots/addNewLab.png" width="215" />
-  <img src="Screenshots/labInfo.png" width="215" />
-  <img src="Screenshots/addLabEquipment.png" width="215" />
+  <img src="Screenshots/login.png" width="172" />
+  <img src="Screenshots/laboratoryList.png" width="172" />
+  <img src="Screenshots/addNewLab.png" width="172" />
+  <img src="Screenshots/labInfo.png" width="172" />
+  <img src="Screenshots/equipmentInfo.png" width="172" />
 </p>
 
 ## Use case diagram
