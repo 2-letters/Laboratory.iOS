@@ -3,6 +3,7 @@
 ![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
 ![Swift](https://github.com/2-letters/Laboratory.iOS/workflows/Swift/badge.svg)
 ![last commit](https://img.shields.io/github/last-commit/2-letters/Laboratory.iOS)
+[![codecov](https://codecov.io/gh/2-letters/Laboratory.iOS/branch/master/graph/badge.svg)](https://codecov.io/gh/2-letters/Laboratory.iOS)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 An iOS application that helps scientific professionals manage laboratory sections and equipment more collaboratively.
@@ -13,8 +14,7 @@ There are 2 publications about the projects: [Project Proposal] and [Project Pos
 Xcode, Swift, MVVM, Google Firebase SDKs.
 
 ## Main features:
-<img align="right" src="https://i.pinimg.com/originals/fa/a1/9f/faa19f083a4c7e5dd0487dd0a64dd163.gif" width="250">
-
+<img align="right" src="https://media.giphy.com/media/U3yF1DsaNMy1GtStU4/giphy.gif" width="250">
 ***1. Users***
 
 Users can sign up and login using their emails.
