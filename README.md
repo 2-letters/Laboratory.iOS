@@ -11,15 +11,16 @@ An iOS application that helps scientific professionals manage laboratory section
 There are 2 publications about the projects: [Project Proposal] and [Project Poster].
 
 ## Technologies
-Xcode, Swift, MVVM, Google Firebase SDKs.
+[Xcode], [Swift], [MVVM], [Google Firebase SDKs].
 
 ## Main features:
 <img align="right" src="https://media.giphy.com/media/U3yF1DsaNMy1GtStU4/giphy.gif" width="250">
+
 ***1. Users***
 
 Users can sign up and login using their emails.
 The are two types of users, normal users and moderators. And they have different roles.
-should have different roles, as in this [diagram](#more-information)
+should have different roles, as described in this [diagram](#more-information).
 1. Both moderators and normal users can sign up and log in.
 2. Normal users can manage their laboratory sections, meaning viewing, creating, and editing the sections that they are in charge
 of.
@@ -27,8 +28,24 @@ of.
 4. Normal users can view equipment that is available in their department.
 5. Moderators can manage the equipment, meaning creating, viewing, and edit equipment of the department.
 
-## Demos
+</br>
+</br>
 
+***2.Lab sections***
+
+Users can create, view, edit, and delete lab sections.
+1. Create a new lab section with helpful information such as name, description, and the list of equipment
+2. View and search by keywords lab sections that the users are in charge.
+3. Edit the name, description, or the list of equipment by changing the quantity of using equipment.
+4. Delete the unwanted sections.
+
+</br>
+</br>
+
+***3.Equipment***
+
+## Demos
+In progress.
 
 ## Screenshots
 
@@ -43,3 +60,7 @@ of.
 
 [Project Proposal]: https://drive.google.com/file/d/1MCzDw_U9_WsVgIXtvqrS8UXya_c9Lw3B/view?usp=sharing
 [Project Poster]: https://drive.google.com/file/d/1XkFxiIdr9Jf-WzJl3VLbwwOGRJkKqm9e/view?usp=sharing
+[Xcode]: https://developer.apple.com/xcode
+[Swift]: https://developer.apple.com/swift
+[MVVM]: https://cocoacasts.com/model-view-viewmodel-in-swift
+[Google Firebase SDKs]: https://firebase.google.com/docs/storage/ios/start
