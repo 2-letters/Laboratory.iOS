@@ -55,11 +55,12 @@ In progress.
 ## Screenshots
 
 <p float="left">
-  <img src="Screenshots/login.png" width="172" />
-  <img src="Screenshots/laboratoryList.png" width="172" />
-  <img src="Screenshots/addNewLab.png" width="172" />
-  <img src="Screenshots/labInfo.png" width="172" />
-  <img src="Screenshots/equipmentInfo.png" width="172" />
+  <img src="Screenshots/login.png" width="142" />
+  <img src="Screenshots/laboratoryList.png" width="142" />
+  <img src="Screenshots/addNewLab.png" width="142" />
+  <img src="Screenshots/labInfo.png" width="142" />
+  <img src="Screenshots/equipmentInfo.png" width="142" />
+  <img src="Screenshots/signUp.png" width="142" />
 </p>
 
 ## Use case diagram
