@@ -86,6 +86,8 @@
 		C9FD440522C4094B007CA394 /* ImagePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD440422C4094B007CA394 /* ImagePickable.swift */; };
 		DE02CA4822924DA60078A993 /* LabEquipmentSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEBCFF2285D2D50031DA3F /* LabEquipmentSelectionVC.swift */; };
 		DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE170D3A228883BE0086DB85 /* LabInfoView.swift */; };
+		DE24224C246E2DDB00C3E3D7 /* UIButton+customize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24224B246E2DDB00C3E3D7 /* UIButton+customize.swift */; };
+		DE24224E246E46CA00C3E3D7 /* UIViewController+setGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24224D246E46CA00C3E3D7 /* UIViewController+setGradientBackground.swift */; };
 		DE28679F22BD9C5300CBFC5F /* MyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28679E22BD9C5300CBFC5F /* MyInt.swift */; };
 		DE2867A022BD9C5300CBFC5F /* MyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28679E22BD9C5300CBFC5F /* MyInt.swift */; };
 		DE2867A222BDB32700CBFC5F /* LabInfoVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */; };
@@ -101,6 +103,7 @@
 		DE4F9A212468C24C0065FCEF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A202468C24C0065FCEF /* SignUpViewController.swift */; };
 		DE4F9A232468C25B0065FCEF /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A222468C25B0065FCEF /* ForgotPasswordViewController.swift */; };
 		DE4F9A25246904A50065FCEF /* KeychainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A24246904A50065FCEF /* KeychainUtil.swift */; };
+		DE4F9A27246918490065FCEF /* UILabel+customize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F9A26246918490065FCEF /* UILabel+customize.swift */; };
 		DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D055229AFD7300E7FDF1 /* MyColor.swift */; };
 		DE59D058229B501F00E7FDF1 /* EquipmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */; };
 		DE59D060229C420700E7FDF1 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */; };
@@ -233,6 +236,8 @@
 		C9F43E73228F2B740049C68D /* LabInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoViewController.swift; sourceTree = "<group>"; };
 		C9FD440422C4094B007CA394 /* ImagePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickable.swift; sourceTree = "<group>"; };
 		DE170D3A228883BE0086DB85 /* LabInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoView.swift; sourceTree = "<group>"; };
+		DE24224B246E2DDB00C3E3D7 /* UIButton+customize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+customize.swift"; sourceTree = "<group>"; };
+		DE24224D246E46CA00C3E3D7 /* UIViewController+setGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+setGradientBackground.swift"; sourceTree = "<group>"; };
 		DE28679E22BD9C5300CBFC5F /* MyInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInt.swift; sourceTree = "<group>"; };
 		DE2867A122BDB32700CBFC5F /* LabInfoVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInfoVMTest.swift; sourceTree = "<group>"; };
 		DE2867A422BEF3CD00CBFC5F /* AppDelegateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTest.swift; sourceTree = "<group>"; };
@@ -247,6 +252,7 @@
 		DE4F9A202468C24C0065FCEF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DE4F9A222468C25B0065FCEF /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		DE4F9A24246904A50065FCEF /* KeychainUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUtil.swift; sourceTree = "<group>"; };
+		DE4F9A26246918490065FCEF /* UILabel+customize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+customize.swift"; sourceTree = "<group>"; };
 		DE59D055229AFD7300E7FDF1 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		DE59D057229B501F00E7FDF1 /* EquipmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentListVM.swift; sourceTree = "<group>"; };
 		DE59D05F229C420700E7FDF1 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
@@ -485,6 +491,9 @@
 				DE7AF430229A094F0008181E /* UITextView+customize.swift */,
 				DE6B4DC122ADB69E006CE211 /* UIView+initFromNib.swift */,
 				C9700C9222B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift */,
+				DE4F9A26246918490065FCEF /* UILabel+customize.swift */,
+				DE24224B246E2DDB00C3E3D7 /* UIButton+customize.swift */,
+				DE24224D246E46CA00C3E3D7 /* UIViewController+setGradientBackground.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1200,13 +1209,16 @@
 				DE4F9A1C246883200065FCEF /* LoginTextField.swift in Sources */,
 				DE170D3B228883BE0086DB85 /* LabInfoView.swift in Sources */,
 				DE6B4DC222ADB69E006CE211 /* UIView+initFromNib.swift in Sources */,
+				DE4F9A27246918490065FCEF /* UILabel+customize.swift in Sources */,
 				C9700C9322B29DC6004B6B71 /* UIViewController+addTapRecognizer.swift in Sources */,
 				DE2867A722BFD8AE00CBFC5F /* UserUtil.swift in Sources */,
+				DE24224C246E2DDB00C3E3D7 /* UIButton+customize.swift in Sources */,
 				DE59D056229AFD7300E7FDF1 /* MyColor.swift in Sources */,
 				C900C39E229730C60053FDBD /* LabEquipmentEditVC.swift in Sources */,
 				C903D5B322AB0EF600D1A79B /* MyViewController.swift in Sources */,
 				C9EED951229D9707006314A8 /* FirestoreSvc.swift in Sources */,
 				DE605A292289337800D1B679 /* SimpleEquipmentVM.swift in Sources */,
+				DE24224E246E46CA00C3E3D7 /* UIViewController+setGradientBackground.swift in Sources */,
 				C9C6D3262295D75500D12D87 /* LabEquipmentSelectionVM.swift in Sources */,
 				DE7AF431229A094F0008181E /* UITextView+customize.swift in Sources */,
 				C9F43E74228F2B740049C68D /* LabInfoViewController.swift in Sources */,

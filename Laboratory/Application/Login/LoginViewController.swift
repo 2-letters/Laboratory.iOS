@@ -10,12 +10,35 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var laboratoryTitle: UILabel!
     @IBOutlet var loginLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var passwordLabel: UILabel!
+    @IBOutlet var rememberMeLabel: UILabel!
+    @IBOutlet var emailTextField: MyTextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var rememberMeSwitch: UISwitch!
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var forgotPasswordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addTapRecognizer()
+        customizeUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // hide navigation bar for login view
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // show navigation bar for other views
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -35,5 +58,21 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Helper
+    func customizeUI() {
+        setGradientBackground()
+        
+        laboratoryTitle.setTitle()
+        loginLabel.setBigBold()
+        emailLabel.setNormal()
+        passwordLabel.setNormal()
+        rememberMeLabel.setNormal()
+        loginButton.setWhite()
+        signUpButton.setGreen()
+        rememberMeSwitch.onTintColor = MyColor.lightGreen
+        forgotPasswordButton.setWhite()
+    }
+    
+    
 }

@@ -10,13 +10,24 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
 
+    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var forgotPasswordLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var emailTextField: MyTextField!
+    @IBOutlet var sendPasswordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addTapRecognizer()
+        customizeUI()
+    }
+
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -26,5 +37,17 @@ class ForgotPasswordViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Helper
+    func customizeUI() {
+        setGradientBackground()
+        
+        doneButton.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "GillSans", size: 19.0)!
+        ], for: .normal)
+        forgotPasswordLabel.setBigBold()
+        emailLabel.setNormal()
+        sendPasswordButton.setWhite()
+    }
 
 }
