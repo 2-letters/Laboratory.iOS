@@ -35,8 +35,10 @@ class LabEquipmentSelectionVMTest: XCTestCase {
 //        sut.search(by: searchText1)
         
         // THEN
-        XCTAssertEqual(sut.allAddedEquipmentVMs?.count, sut.displayingAddedEquipmentVMs?.count)
-        XCTAssertEqual(sut.allAvailableEquipmentVMs?.count, sut.displayingAvailableEquipmentVMs?.count)
+//        XCTAssertEqual(sut.allAddedEquipmentVMs?.count, sut.displayingAddedEquipmentVMs?.count)
+        XCTAssertEqual(sut.allAddedEquipmentVMs?.count, 3)
+//        XCTAssertEqual(sut.allAvailableEquipmentVMs?.count, sut.displayingAvailableEquipmentVMs?.count)
+        XCTAssertEqual(sut.allAvailableEquipmentVMs?.count, 3)
     }
     
     func  testSearch2() {
@@ -51,8 +53,8 @@ class LabEquipmentSelectionVMTest: XCTestCase {
 //        sut.search(by: searchText2)
         
         // THEN
-        XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 2)
-        XCTAssertEqual(sut.displayingAvailableEquipmentVMs?.count, 2)
+        XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 0)
+        XCTAssertEqual(sut.displayingAvailableEquipmentVMs?.count, 0)
     }
     
     func testSearch3() {
@@ -67,7 +69,7 @@ class LabEquipmentSelectionVMTest: XCTestCase {
 //        sut.search(by: searchText3)
         
         // THEN
-        XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 1)
-        XCTAssertEqual(sut.displayingAvailableEquipmentVMs?.count, 1)
+        XCTAssertEqual(sut.displayingAddedEquipmentVMs?.count, 0)
+        XCTAssertEqual(sut.displayingAvailableEquipmentVMs?.count, 0)
     }
 }

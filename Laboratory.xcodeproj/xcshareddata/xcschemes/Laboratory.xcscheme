@@ -364,16 +364,44 @@
                BlueprintName = "LaboratoryUnitTests"
                ReferencedContainer = "container:Laboratory.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C96425DD22B0513200B627F1"
-               BuildableName = "LaboratoryUITests.xctest"
-               BlueprintName = "LaboratoryUITests"
-               ReferencedContainer = "container:Laboratory.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "EquipmentInfoVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "EquipmentInfoViewSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "EquipmentListVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "EquipmentUserListVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabCollectionCellSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabCollectionVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabEquipmentCellSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabEquipmentEditVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabEquipmentSelectionSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabInfoVCSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "LabInfoViewSnapshotTest">
+               </Test>
+               <Test
+                  Identifier = "SimpleEquipmentCellSnapshotTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

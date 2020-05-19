@@ -137,28 +137,20 @@ class LabEquipmentEditVC: UIViewController, SpinnerPresentable, AlertPresentable
     private func handleSucceedFetchingEquipmentInfo() {
         DispatchQueue.main.async {
             self.equipmentInfoView.viewModel = self.viewModel.equipmentInfoVM
-            self.viewModel.updateButtonState()
-            self.bindUI()
+            self.updateUI()
         }
         self.hideSpinner()
     }
     
-    private func bindUI() {
-        viewModel.editingQuantity.bindAndFire { [unowned self] in
-            self.usingQuantityTextField.text = String($0)
-        }
-        viewModel.isDecreaseBtnEnabled.bindAndFire { [unowned self] in
-            self.decreaseButton.isEnabled = $0
-        }
-        viewModel.isIncreaseBtnEnabled.bindAndFire { [unowned self] in
-            self.increaseButton.isEnabled = $0
-        }
-        viewModel.isRemoveBtnEnabled.bindAndFire { [unowned self] in
-            self.removeButton.isEnabled = $0
-        }
-        viewModel.isSaveBtnEnabled.bindAndFire { [unowned self] in
-            self.saveBtn.isEnabled = $0
-        }
+    private func updateUI() {
+        // Quantity Layout
+        usingQuantityTextField.text = String(viewModel.editingQuantity)
+        
+        decreaseButton.isEnabled = viewModel.isDecreaseBtnEnabled
+        increaseButton.isEnabled = viewModel.isIncreaseBtnEnabled
+        removeButton.isEnabled = viewModel.isRemoveBtnEnabled
+        
+        saveBtn.isEnabled = viewModel.isSaveBtnEnabled
     }
     
     

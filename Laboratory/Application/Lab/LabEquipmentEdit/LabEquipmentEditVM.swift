@@ -20,11 +20,11 @@ class LabEquipmentEditVM: NSObject {
     
     var usingQuantity = 0 {
         didSet {
-            editingQuantity.value = usingQuantity
+            editingQuantity = usingQuantity
         }
     }
     
-    let editingQuantity: Dynamic<Int>
+    var editingQuantity = 0
     
     var equipmentName: String {
         return equipmentInfoVM.equipment!.name
@@ -34,37 +34,35 @@ class LabEquipmentEditVM: NSObject {
         return equipmentInfoVM.equipment!.available
     }
     
-    let isDecreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
-    let isIncreaseBtnEnabled: Dynamic<Bool> = Dynamic(false)
-    let isRemoveBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    var isDecreaseBtnEnabled: Bool {
+        return editingQuantity != 0
+    }
+    var isIncreaseBtnEnabled: Bool {
+        return editingQuantity != available
+    }
+    var isRemoveBtnEnabled: Bool {
+        return editingQuantity != 0
+    }
     // "Save" button is only enable when there's change in quantity
-    let isSaveBtnEnabled: Dynamic<Bool> = Dynamic(false)
+    var isSaveBtnEnabled: Bool {
+        return editingQuantity != usingQuantity
+    }
     
     init(usingQuantity: Int = 0) {
         self.usingQuantity = usingQuantity
-        editingQuantity = Dynamic(usingQuantity)
+        editingQuantity = usingQuantity
         super.init()
     }
     
     func changeQuantity(by change: QuantityChange) {
         switch change {
         case .increase:
-            editingQuantity.value += 1
+            editingQuantity += 1
         case .decrease:
-            editingQuantity.value -= 1
+            editingQuantity -= 1
         case .remove:
-            editingQuantity.value = 0
+            editingQuantity = 0
         }
-        
-        updateButtonState()
-    }
-    
-    func updateButtonState() {
-        isDecreaseBtnEnabled.value = editingQuantity.value != 0
-        isIncreaseBtnEnabled.value = editingQuantity.value != available
-        isRemoveBtnEnabled.value = editingQuantity.value != 0
-        // "Save" button is only enable when there's change in quantity
-        isSaveBtnEnabled.value = editingQuantity.value != usingQuantity
     }
     
     func updateEquipmentUsing(forLabId labId: String, equipmentId: String, completion: @escaping UpdateFirestoreHandler) {
@@ -72,7 +70,7 @@ class LabEquipmentEditVM: NSObject {
         // Add a new document in collection "cities"
         FirestoreUtil.fetchLabEquipment(withLabId: labId, equipmentId: equipmentId).setData([
             key.name: equipmentName,
-            key.using: editingQuantity.value
+            key.using: editingQuantity
         ]) { err in
             if let err = err {
                 completion(.failure(err.localizedDescription + "ERR fail to update Equipment using"))
@@ -88,6 +86,6 @@ class LabEquipmentEditVM: NSObject {
         if inputedQuantity > available {
             inputedQuantity = available
         }
-        editingQuantity.value = inputedQuantity
+        editingQuantity = inputedQuantity
     }
 }
