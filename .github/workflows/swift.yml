@@ -18,6 +18,6 @@ jobs:
     - name: Dependencies
       run: bundle exec pod install
     - name: Build
-      run: swift build -v
+      run: bundle exec fastlane scan --destination "${destination}" --scheme "Laboratory"
     - name: Run tests
       run: swift test -v
