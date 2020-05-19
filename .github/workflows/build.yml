@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Set XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.app
     - name: CocoaPods Action
       uses: ty0x2333/cocoapods-action@0.2.0  
       with:
