@@ -14,7 +14,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet var forgotPasswordLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var emailTextField: MyTextField!
-    @IBOutlet var sendPasswordButton: UIButton!
+    @IBOutlet var sendEmailButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class ForgotPasswordViewController: UIViewController {
         ], for: .normal)
         forgotPasswordLabel.setBigBold()
         emailLabel.setNormal()
-        sendPasswordButton.setWhite()
+        sendEmailButton.setWhite()
     }
 
 }

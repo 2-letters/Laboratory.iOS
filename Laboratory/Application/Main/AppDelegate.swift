@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showLoginView()
         } else {
             showHomeView()
+            keychain["token"] = nil
         }
         
         UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: "GillSans-SemiBold"))
@@ -77,8 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Helpers
     func showLoginView() {
-        let loginViewController = MyViewController.login.instance
-        let loginNavigationViewController = UINavigationController(rootViewController: loginViewController)
+        let loginNavigationViewController = MyViewController.loginNavigation.instance
         self.window?.rootViewController = loginNavigationViewController
     }
     

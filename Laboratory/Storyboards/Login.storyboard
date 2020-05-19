@@ -66,7 +66,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-qe-OLI" customClass="MyTextField" customModule="Laboratory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="272" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -213,7 +213,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OnC-vB-WAb" customClass="MyTextField" customModule="Laboratory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="272" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -229,7 +229,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-6L-XOJ" customClass="MyTextField" customModule="Laboratory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="272" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -317,7 +317,7 @@ Password?</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Pqc-ui-E5f"/>
                                 </constraints>
-                                <state key="normal" title="SEND PASSWORD"/>
+                                <state key="normal" title="SEND EMAIL"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -346,7 +346,7 @@ Password?</string>
                         <outlet property="emailLabel" destination="a8o-ox-7I6" id="htM-3S-zwQ"/>
                         <outlet property="emailTextField" destination="vUD-K2-6Yx" id="IrY-np-Zw6"/>
                         <outlet property="forgotPasswordLabel" destination="6Er-jO-2aC" id="86w-wJ-rgI"/>
-                        <outlet property="sendPasswordButton" destination="8QY-wv-zWn" id="xZa-ru-jcx"/>
+                        <outlet property="sendEmailButton" destination="8QY-wv-zWn" id="xZa-ru-jcx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuC-Jw-ddH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

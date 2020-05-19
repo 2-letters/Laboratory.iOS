@@ -42,11 +42,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        // TODO: save the actual token
-        let keychain = KeychainUtil().keyChain
-        try! keychain.set("token", key: "token")
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController = MyViewController.homeTabBar.instance
+        if isInputInvalid() {
+            // TODO remind user to fill in all inputs
+        } else {
+            let email = emailTextField.text!
+            let password = passwordTextField.text!
+            if isUserValid(withEmail: email, and: password) {
+                saveSessionAndGoToHomeScreen()
+            } else {
+                // TODO warn user wrong info
+            }
+        }
     }
     
     /*
@@ -75,4 +81,26 @@ class LoginViewController: UIViewController {
     }
     
     
+}
+
+
+// MARK: - Handle Login
+extension LoginViewController {
+    func isInputInvalid() -> Bool {
+        // TODO check if inputs are valid including valid non-empty email, valid non-empty passowrd
+        return false;
+    }
+    
+    func isUserValid(withEmail email: String, and password: String) -> Bool {
+        // TODO check if the email and password are in the database
+        return true;
+    }
+    
+    func saveSessionAndGoToHomeScreen() {
+        // TODO: save the actual token
+        let keychain = KeychainUtil().keyChain
+        try! keychain.set("token", key: "token")
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MyViewController.homeTabBar.instance
+    }
 }
