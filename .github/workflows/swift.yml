@@ -17,5 +17,7 @@ jobs:
       run: bundle install
     - name: Dependencies
       run: bundle exec pod install
+    - name: List Simulators
+      run: xcrun instruments -s
     - name: Build
-      run: xcodebuild test -workspace "Laboratory.xcworkspace" -scheme "Laboratory" -destination "platform=iOS Simulator,name=iPhone 11 Pro,OS=latest"
+      run: xcodebuild -workspace "Laboratory.xcworkspace" -scheme "Laboratory" -destination "platform=iOS Simulator,name=iPhone 8,OS=latest"
