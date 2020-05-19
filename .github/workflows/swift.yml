@@ -18,6 +18,4 @@ jobs:
     - name: Dependencies
       run: bundle exec pod install
     - name: Build
-      run: bundle exec fastlane scan --destination "${destination}" --scheme "Laboratory"
-    - name: Run tests
-      run: swift test -v
+      run: xcodebuild test -workspace "Laboratory.xcworkspace" -scheme "Laboratory" -destination "platform=iOS Simulator,name=iPhone 11 Pro,OS=latest"
