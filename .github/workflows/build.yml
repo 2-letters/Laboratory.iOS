@@ -18,6 +18,8 @@ jobs:
       with:
         # .xcworkspace file
         workspace: Laboratory.xcworkspace
+        # Shared scheme
+        scheme: Laboratory
     - name: Build
       run: swift build -v
     - name: Run tests
