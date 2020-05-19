@@ -15,6 +15,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: CocoaPods Action
       uses: ty0x2333/cocoapods-action@0.2.0  
+      with:
+        # .xcworkspace file
+        workspace: Laboratory.xcworkspace
     - name: Build
       run: swift build -v
     - name: Run tests
