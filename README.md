@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 An iOS application that helps scientific professionals manage laboratory sections and equipment more collaboratively.
+
+The project is on [Travis CI](https://travis-ci.org/github/2-letters/Laboratory.iOS) and the current status is ![](https://api.travis-ci.org/2-letters/Laboratory.iOS.svg?branch=master)
 ## Publications 
 There are 2 publications about the projects: [Project Proposal] and [Project Poster] ✍️.
 
