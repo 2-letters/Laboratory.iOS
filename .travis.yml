@@ -1,5 +1,5 @@
 language: Swift
 os: osx
-xcode_project: Laboratory.xcodeproj # path to your xcodeproj folder
+xcode_workspace: Laboratory.xcworkspace # path to your xcodeproj folder
 xcode_scheme: Laboratory
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
