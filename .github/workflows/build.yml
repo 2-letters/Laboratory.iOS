@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.app
+    - name: CocoaPods Action
+      uses: ty0x2333/cocoapods-action@0.2.0  
+      with:
+        # .xcworkspace file
+        workspace: Laboratory.xcworkspace
+        # Shared scheme
+        scheme: Laboratory
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v

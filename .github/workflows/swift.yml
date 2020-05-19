@@ -1,4 +1,4 @@
-name: Swift
+name: Run
 
 on:
   push:
@@ -12,8 +12,12 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
+    - name: Set XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.app
+    - name: Bundle Install
+      run: bundle install
+    - name: Dependencies
+      run: bundle exec pod install
     - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      run: xcodebuild -workspace "Laboratory.xcworkspace" -scheme "Laboratory"

@@ -1,7 +1,6 @@
 ![alt laboratory](cover1.png)
 
 ![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
-![Swift](https://github.com/2-letters/Laboratory.iOS/workflows/Swift/badge.svg)
 ![last commit](https://img.shields.io/github/last-commit/2-letters/Laboratory.iOS)
 [![codecov](https://codecov.io/gh/2-letters/Laboratory.iOS/branch/master/graph/badge.svg)](https://codecov.io/gh/2-letters/Laboratory.iOS)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
