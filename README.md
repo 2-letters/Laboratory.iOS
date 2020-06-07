@@ -1,4 +1,4 @@
-![alt laboratory](cover1.png)
+![alt laboratory](logo.png)
 
 ![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
 ![last commit](https://img.shields.io/github/last-commit/2-letters/Laboratory.iOS)
